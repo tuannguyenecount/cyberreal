@@ -12,13 +12,14 @@
     </div>
 </div>
 <?php include 'partial/search.php'; ?>
-
 <main>
    <div class="top-offices py-5 bg-home">
       <div class="container">
-         <h3 class="heading pb-2">Văn phòng cho thuê                    <strong class="text-blue">vị trí tốt nhất</strong></h3>
+         <h3 class="heading pb-2">Văn phòng cho thuê                    
+            <strong class="text-blue">vị trí tốt nhất</strong>
+         </h3>
          <div class="row">
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4  office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -46,7 +47,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4  office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -74,7 +75,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4  office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -102,7 +103,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4  office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -130,7 +131,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4  office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -158,7 +159,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4  office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -186,7 +187,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4  office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -214,7 +215,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4  office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -247,9 +248,10 @@
    </div>
    <div class="top-offices py-5 bg-home">
       <div class="container">
-         <h3 class="heading pb-2">Văn phòng trọn gói                    <strong class="text-blue">vị trí tốt nhất</strong></h3>
+         <h3 class="heading pb-2">Văn phòng trọn gói                    
+            <strong class="text-blue">vị trí tốt nhất</strong></h3>
          <div class="row">
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4  office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -277,7 +279,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4  office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -305,7 +307,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4  office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -333,7 +335,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4  office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -361,7 +363,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4  office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -389,7 +391,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4  office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -417,7 +419,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4 office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -445,7 +447,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4 office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -480,7 +482,7 @@
       <div class="container">
          <h3 class="heading pb-2">Văn phòng giá rẻ                    <strong class="text-blue">vị trí tốt nhất</strong></h3>
          <div class="row">
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4 office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -508,7 +510,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4  office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -536,7 +538,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4  office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -564,7 +566,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4  office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -592,7 +594,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4  office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -620,7 +622,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4  office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -648,7 +650,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4  office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
@@ -676,7 +678,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-3 office mb-4">
+            <div class="col-md-4  office mb-4">
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
