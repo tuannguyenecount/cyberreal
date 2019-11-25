@@ -28,7 +28,7 @@
                     <div class="container">
                         <div class="row no-gutters">
                             <div class="col-lg-3">
-                                <a class="logo" href="/"><img src="<?= base_url ?>/images/logo.png" alt=""></a>                    </div>
+                                <a class="logo" href="<?= base_url ?>"><img src="<?= base_url ?>/images/logo.png" alt=""></a>                    </div>
                             <div class="col-lg-auto ml-lg-auto information d-none d-md-flex mt-md-2 mt-lg-0">
                                 <div class="row">
                                     <div class="col-md">
@@ -70,7 +70,7 @@
                             <i class="fas fa-bars"></i> MENU
                         </button>
                         <div id="main-menu">
-                            <ul id="w0" class="navbar-nav mr-auto nav"><li class="nav-item"><a class="nav-link" href="/"><i class="fas fa-home"></i></a></li>
+                            <ul id="w0" class="navbar-nav mr-auto nav"><li class="nav-item"><a class="nav-link" href="<?= base_url ?>"><i class="fas fa-home"></i></a></li>
                                 <li class="dropdown nav-item"><a class="dropdown-toggle nav-link" href="/van-phong-cho-thue" data-toggle="dropdown">Văn phòng theo quận<span class="fas fa-angle-down"></span></a><div id="w1" class="dropdown-menu"><a class="dropdown-item" href="/van-phong-cho-thue/quan-1">Quận 1</a>
                                         <a class="dropdown-item" href="/van-phong-cho-thue/quan-2">Quận 2</a>
                                         <a class="dropdown-item" href="/van-phong-cho-thue/quan-3">Quận 3</a>

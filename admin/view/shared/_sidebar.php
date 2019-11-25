@@ -16,7 +16,7 @@
         </li>
         
         <li>
-            <a href="<?=base_url_admin?>/project/add">
+            <a href="<?=base_url_admin?>/product/create">
                 <i class="fa fa-plus"></i> <span>Thêm Dự Án</span>
                 <span class="pull-right-container">
                     <small class="label pull-right bg-red">new</small>
@@ -25,16 +25,16 @@
         </li>
         
         <li>
-            <a href="<?=base_url_admin?>/project">
+            <a href="<?=base_url_admin?>/product">
                 <i class="fa fa-newspaper-o"></i> <span>Dự Án</span>
             </a>
         </li>
 
-        <li>
+       <!--  <li>
             <a href="<?=base_url_admin?>/user">
                 <i class="fa fa-user-circle-o"></i> <span>Thành Viên</span>
             </a>
-        </li>
+        </li> -->
 
         <li>
             <a href="<?=base_url_admin?>/popup">

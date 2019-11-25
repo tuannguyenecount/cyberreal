@@ -15,6 +15,8 @@ RewriteRule ^area/adminarea/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)&(.*)$ admin/index.
 
 RewriteRule ^area/adminarea/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/(.*)$ admin/index.php?controller=$1&action=$2&id=$3&area=admin
 
+RewriteRule ^area/adminarea/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([0-9]+)$ admin/index.php?controller=$1&action=$2&id=$3&area=admin 
+
 RewriteRule ^area/adminarea/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([0-9]+)&(.*)$ admin/index.php?controller=$1&action=$2&id=$3&area=admin&$4 
 
 
