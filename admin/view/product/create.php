@@ -17,7 +17,6 @@
                         <?php 
                           $token = NoCSRF::generate( 'csrf_token' );
                         ?>
-                        <!-- <input type="hidden" name="csrf_token" value="<?= $token ?>">  -->
                         <?php include_once 'view/shared/_errors.php'; ?>
                         <div class="col-md-12">
                             <table class="table table-border-none table-middle">
@@ -97,7 +96,6 @@
                                         <td class="col-md-2">Quận/Huyện</td>
                                         <td>
                                            <select id="District" data-selected="<?= isset($_POST['District']) ? $_POST['District'] : "" ?>"  class="form-control" name="District"> 
-                                                
                                            </select>
                                         </td>
                                     </tr>
@@ -153,7 +151,7 @@
                                         <td>
                                             <input  <?= isset($_POST['Status']) ? "checked" : "" ?> type="checkbox" name="Status" value="1" />
                                         </td>
-                                    </tr>
+                                    </tr>                              
                                 </tbody>
                                 <tfoot>
                                     <tr>

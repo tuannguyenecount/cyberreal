@@ -29,7 +29,6 @@
                                         <td class="col-md-2">Tên Dự Án</td>
                                         <td>
                                             <input id="Name" type="text" value="<?= isset($_POST['Name']) ? $_POST['Name'] : $view_data['model']['Name'] ?>" name="Name"  class="form-control" />
-                                        </td>
                                     </tr>
                                     <tr>
                                         <td class="col-md-2">Bí danh</td>
@@ -44,6 +43,15 @@
                                                 <?php foreach($view_data['categories'] as $category) { ?>
                                                     <option <?= isset($_POST['CategoryId']) && $_POST['CategoryId'] == $category['Id'] ? "selected=''" : (!isset($_POST['CategoryId']) && $view_data['model']['CategoryId'] == $category['Id'] ? "selected" : ""  )   ?>  value="<?= $category['Id'] ?>"><?= $category['Name'] ?></option>
                                                 <?php } ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-2">Thuộc chuyên mục</td>
+                                        <td>
+                                            <select required="" class="form-control" name="cat_id">
+                                            <?php foreach($view_data['categories'] as $category) { ?>
+                                                <option <?= isset($cat_id) && $cat_id == $category['id'] ? "selected='selected'" : "" ?> value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                                            <?php } ?>
                                             </select>
                                         </td>
                                     </tr>
@@ -157,7 +165,6 @@
                                         <td class="col-md-2">Trạng thái</td>
                                         <td>
                                             <input  <?= isset($_POST['Status']) ? "checked" : ($view_data['model']['Status'] == true ? "checked" : "") ?> type="checkbox" name="Status" value="1" />
-                                        </td>
                                     </tr>
                                 </tbody>
                                 <tfoot>

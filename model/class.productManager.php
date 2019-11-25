@@ -77,7 +77,7 @@ class ProductManager
 	}
 
 	public function CheckExistsAlias($alias)
-{
+    {
         $tsql = "SELECT COUNT(*)  AS CNT
                 FROM product
                 WHERE Alias = ? ";  
@@ -102,9 +102,8 @@ class ProductManager
         $tsql = "UPDATE `product` SET `Name`= ?,`CategoryId`=?,`Area`=?,`Direction`=?,`Rank`=?,`Address`=?,`Province`=?,`District`=?,`Ward`=?,`Street`=?,`GeneralInformation`=?,`Location`=?,`Structure`=?,`ServiceCharge`=?,`Advantages`=?, `Price`=?,`Image`=?,`Alias`=?,`Status`=? WHERE `Id` = ? ";   
 
         $params =  array($model['Name'], $model['CategoryId'], $model['Area'], $model['Direction'], $model['Rank'], $model['Address'], $model['Province'], $model['District'], $model['Ward'], $model['Street'], $model['GeneralInformation'], $model['Location'], $model['Structure'], $model['ServiceCharge'], $model['Advantages'], $model['Price'], $model['Image'] , $model['Alias'], $model['Status'], $model['Id']);
-
-        $database_Model = new Database();
-	    return $database_Model->Execute($tsql, $params);
+	    $result = $database_Model->Execute($tsql, $params);
+        return $result;
 	}
 
 	public function Delete($id)

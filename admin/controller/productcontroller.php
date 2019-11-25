@@ -31,7 +31,6 @@
         try 
         {       
           $_POST['Image'] = null;
-          
           if(isset($_FILES["file"]) && !empty($_FILES['file']['tmp_name'])) {
               $check = getimagesize($_FILES["file"]["tmp_name"]);
               if($check !== false)
@@ -120,7 +119,6 @@
           $view_data['errors'][] = $ex->getMessage();
         }
       } 
-      
       break;
     }
   	case "delete":
