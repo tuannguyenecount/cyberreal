@@ -6,21 +6,26 @@ class ProductManager
         $params = array();
         if($status == null)
         {
-            $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, C._name AS DistrictName, D._name AS WardName, E._name AS StreetName
+            $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, CONCAT(C._prefix,' ', C._name) AS DistrictName, CONCAT(D._prefix ,' ',D._name) AS WardName, CONCAT(E._prefix,' ',E._name) AS StreetName, F.Name As DirectionName
                     FROM product A INNER JOIN category B  
                     ON A.CategoryId = B.Id
                     LEFT JOIN District C ON A.District = C.id AND C._province_id = 1
                     LEFT JOIN Ward D ON A.Ward = D.id AND D._district_id = C.id
                     LEFT JOIN Street E ON A.Street = E.id AND E._district_id = C.id
+                    LEFT JOIN Direction F ON A.Direction = F.Id 
                     ORDER BY A.Id desc";  
         }
         else 
         {
-             $tsql = "SELECT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias
+             $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, CONCAT(C._prefix,' ', C._name) AS DistrictName, CONCAT(D._prefix ,' ',D._name) AS WardName, CONCAT(E._prefix,' ',E._name) AS StreetName, F.Name As DirectionName
                     FROM product A INNER JOIN category B  
                     ON A.CategoryId = B.Id
+                    LEFT JOIN District C ON A.District = C.id AND C._province_id = 1
+                    LEFT JOIN Ward D ON A.Ward = D.id AND D._district_id = C.id
+                    LEFT JOIN Street E ON A.Street = E.id AND E._district_id = C.id
+                    LEFT JOIN Direction F ON A.Direction = F.Id 
                     WHERE A.Status = ?
-                    ORDER BY Id desc"; 
+                    ORDER BY A.Id desc"; 
              $params = array($status);
         }
         $database_Model = new Database();
@@ -99,9 +104,12 @@ class ProductManager
 
 	public function Edit($model)
 	{
+
         $tsql = "UPDATE `product` SET `Name`= ?,`CategoryId`=?,`Area`=?,`Direction`=?,`Rank`=?,`Address`=?,`Province`=?,`District`=?,`Ward`=?,`Street`=?,`GeneralInformation`=?,`Location`=?,`Structure`=?,`ServiceCharge`=?,`Advantages`=?, `Price`=?,`Image`=?,`Alias`=?,`Status`=? WHERE `Id` = ? ";   
 
         $params =  array($model['Name'], $model['CategoryId'], $model['Area'], $model['Direction'], $model['Rank'], $model['Address'], $model['Province'], $model['District'], $model['Ward'], $model['Street'], $model['GeneralInformation'], $model['Location'], $model['Structure'], $model['ServiceCharge'], $model['Advantages'], $model['Price'], $model['Image'] , $model['Alias'], $model['Status'], $model['Id']);
+
+        $database_Model = new Database();
 	    $result = $database_Model->Execute($tsql, $params);
         return $result;
 	}
@@ -113,6 +121,13 @@ class ProductManager
         $database_Model = new Database();
 	    return $database_Model->Execute($tsql, $params);
 	}
+
+    public function GetListArea($take)
+    {
+        $tsql = "SELECT DISTINCT Area FROM product Order by Area limit 0, $take ";  
+        $database_Model = new Database();
+        return $database_Model->GetList($tsql);
+    }
 
 	public function GetErrorsMessage($model, $checkexistsName, $checkexistsAlias)
 	{

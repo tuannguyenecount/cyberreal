@@ -8,6 +8,8 @@
         {
             $model = $locationManager->GetDistrictsByProvince($_POST['Province']);
             $dataSelected = $_POST['dataSelected'];
+            $showValueAll = isset($_POST['showValueAll']) ? (int)$_POST['showValueAll'] : 0;
+            $textValueAll = "Tất cả quận huyện";
             include 'partial/loadlocation.php'; 
             exit();
         }
@@ -15,6 +17,8 @@
         {
             $model = $locationManager->GetWardsByDistrict($_POST['District']);
             $dataSelected = $_POST['dataSelected'];
+            $showValueAll = isset($_POST['showValueAll']) ? (int)$_POST['showValueAll'] : 0;
+            $textValueAll = "Tất cả phường xã";
             include 'partial/loadlocation.php'; 
             exit();
         }
@@ -22,6 +26,8 @@
         {
             $model = $locationManager->GetStreetsByDistrict($_POST['District']);
             $dataSelected = $_POST['dataSelected'];
+            $showValueAll = isset($_POST['showValueAll']) ? (int)$_POST['showValueAll'] : 0;
+            $textValueAll = "Tất cả đường";
             include 'partial/loadlocation.php'; 
             exit();
         }

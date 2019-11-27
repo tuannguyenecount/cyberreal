@@ -1,15 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< HEAD
--- Generation Time: Nov 25, 2019 at 06:50 PM
-=======
--- Generation Time: Nov 25, 2019 at 02:10 AM
->>>>>>> c7bdd75669e9f6ed0b8491f53a3fc605cdff7f8c
--- Server version: 10.1.37-MariaDB
--- PHP Version: 5.6.39
+-- Generation Time: Nov 27, 2019 at 06:24 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -35,9 +31,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `article` (
   `Id` int(11) NOT NULL,
   `Title` varchar(256) CHARACTER SET utf8mb4 NOT NULL,
-  `Description` text CHARACTER SET utf8mb4,
-  `Content` longtext CHARACTER SET utf8mb4,
-  `Image` longtext CHARACTER SET utf8mb4,
+  `Description` text CHARACTER SET utf8mb4 DEFAULT NULL,
+  `Content` longtext CHARACTER SET utf8mb4 DEFAULT NULL,
+  `Image` longtext CHARACTER SET utf8mb4 DEFAULT NULL,
   `CreatedDate` datetime(6) DEFAULT NULL,
   `Sort_Order` int(11) DEFAULT NULL,
   `Status` tinyint(1) DEFAULT NULL,
@@ -64,7 +60,6 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`Id`, `Name`, `Alias`, `ParentId`, `Sort_Order`) VALUES
-(1, 'Nhà Phố', 'nha-pho', NULL, 1),
 (2, 'Căn Hộ', 'can-ho', NULL, 2);
 
 -- --------------------------------------------------------
@@ -111,10 +106,15 @@ CREATE TABLE `direction` (
 --
 
 INSERT INTO `direction` (`Id`, `Name`, `Sort_Order`) VALUES
-(3, 'Đông', 1),
-(4, 'Tây', 2),
-(5, 'Nam', 3),
-(7, 'Bắc', 4);
+(1, 'Chưa xác định', 1),
+(3, 'Hướng Tây Nam', 2),
+(4, 'Hướng Tây Bắc', 3),
+(5, 'Hướng Đông Nam', 4),
+(7, 'Hướng Đông Bắc', 5),
+(8, 'Hướng Đông', 6),
+(9, 'Hướng Tây', 7),
+(10, 'Hướng Nam', 8),
+(11, 'Hướng Bắc', 9);
 
 -- --------------------------------------------------------
 
@@ -854,9 +854,9 @@ CREATE TABLE `fee` (
   `Id` int(11) NOT NULL,
   `Name` varchar(256) NOT NULL,
   `Sort_Order` int(11) DEFAULT NULL,
-  `Status` tinyint(1) DEFAULT '1',
-  `IsDeleted` tinyint(1) DEFAULT '0',
-  `CreatedDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `Status` tinyint(1) DEFAULT 1,
+  `IsDeleted` tinyint(1) DEFAULT 0,
+  `CreatedDate` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -880,26 +880,26 @@ CREATE TABLE `imagesproducts` (
 
 CREATE TABLE `infoshop` (
   `Id` int(11) NOT NULL,
-  `ShopName` longtext CHARACTER SET utf8mb4,
-  `Logo` longtext,
-  `Phone` longtext,
-  `Zalo` longtext,
+  `ShopName` longtext CHARACTER SET utf8mb4 DEFAULT NULL,
+  `Logo` longtext DEFAULT NULL,
+  `Phone` longtext DEFAULT NULL,
+  `Zalo` longtext DEFAULT NULL,
   `Email` varchar(256) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `Address` longtext CHARACTER SET utf8mb4,
-  `Website` longtext CHARACTER SET utf8mb4,
-  `Fanpage` longtext CHARACTER SET utf8mb4,
-  `Google_Map` longtext CHARACTER SET utf8mb4,
-  `GoogleAnalytics` longtext,
-  `TruSo` longtext CHARACTER SET utf8mb4,
-  `NhaMaySanXuat` longtext CHARACTER SET utf8mb4,
-  `KhoUCa` longtext CHARACTER SET utf8mb4,
-  `VanPhongDaiDien` longtext CHARACTER SET utf8mb4,
-  `NhaPhanPhoiMienBac` longtext CHARACTER SET utf8mb4,
-  `Google_MapTruSoChinh` longtext CHARACTER SET utf8mb4,
-  `Google_MapVanPhongDaiDien` longtext CHARACTER SET utf8mb4,
-  `Fax` longtext CHARACTER SET utf8mb4,
-  `Twitter` longtext CHARACTER SET utf8mb4,
-  `Google` longtext CHARACTER SET utf8mb4
+  `Address` longtext CHARACTER SET utf8mb4 DEFAULT NULL,
+  `Website` longtext CHARACTER SET utf8mb4 DEFAULT NULL,
+  `Fanpage` longtext CHARACTER SET utf8mb4 DEFAULT NULL,
+  `Google_Map` longtext CHARACTER SET utf8mb4 DEFAULT NULL,
+  `GoogleAnalytics` longtext DEFAULT NULL,
+  `TruSo` longtext CHARACTER SET utf8mb4 DEFAULT NULL,
+  `NhaMaySanXuat` longtext CHARACTER SET utf8mb4 DEFAULT NULL,
+  `KhoUCa` longtext CHARACTER SET utf8mb4 DEFAULT NULL,
+  `VanPhongDaiDien` longtext CHARACTER SET utf8mb4 DEFAULT NULL,
+  `NhaPhanPhoiMienBac` longtext CHARACTER SET utf8mb4 DEFAULT NULL,
+  `Google_MapTruSoChinh` longtext CHARACTER SET utf8mb4 DEFAULT NULL,
+  `Google_MapVanPhongDaiDien` longtext CHARACTER SET utf8mb4 DEFAULT NULL,
+  `Fax` longtext CHARACTER SET utf8mb4 DEFAULT NULL,
+  `Twitter` longtext CHARACTER SET utf8mb4 DEFAULT NULL,
+  `Google` longtext CHARACTER SET utf8mb4 DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -917,8 +917,8 @@ INSERT INTO `infoshop` (`Id`, `ShopName`, `Logo`, `Phone`, `Zalo`, `Email`, `Add
 
 CREATE TABLE `language` (
   `Id` varchar(128) CHARACTER SET utf8mb4 NOT NULL,
-  `Name` longtext CHARACTER SET utf8mb4,
-  `Use` longtext CHARACTER SET utf8mb4,
+  `Name` longtext CHARACTER SET utf8mb4 DEFAULT NULL,
+  `Use` longtext CHARACTER SET utf8mb4 DEFAULT NULL,
   `SortOrder` tinyint(3) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -963,24 +963,17 @@ CREATE TABLE `product` (
   `District` int(11) DEFAULT NULL,
   `Ward` int(11) DEFAULT NULL,
   `Street` int(11) DEFAULT NULL,
-  `GeneralInformation` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `Location` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `Structure` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `ServiceCharge` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `Advantages` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-<<<<<<< HEAD
+  `GeneralInformation` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Location` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Structure` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ServiceCharge` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Advantages` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `Price` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `Image` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `Alias` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `Status` tinyint(1) DEFAULT NULL,
-=======
-  `Price` varchar(500) DEFAULT NULL,
-  `Image` varchar(300) DEFAULT NULL,
-  `Alias` varchar(300) DEFAULT NULL,
-  `Status` bit(1) DEFAULT NULL,
->>>>>>> c7bdd75669e9f6ed0b8491f53a3fc605cdff7f8c
   `UserCreated` varchar(256) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `DateCreated` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
+  `DateCreated` datetime(6) NOT NULL DEFAULT current_timestamp(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -988,12 +981,12 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`Id`, `Name`, `CategoryId`, `Area`, `Direction`, `Rank`, `Address`, `Province`, `District`, `Ward`, `Street`, `GeneralInformation`, `Location`, `Structure`, `ServiceCharge`, `Advantages`, `Price`, `Image`, `Alias`, `Status`, `UserCreated`, `DateCreated`) VALUES
-<<<<<<< HEAD
-(2, 'Tòa Nhà Artex SaiGon Building - Văn Phòng Cho Thuê Quận 1', 2, '80, 108, 116, 224 m2', 3, 'C', '', 1, 10, 136, 3114, '<h3><strong>GIỚI THIỆU T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; ARTEX SAIGON BUILDING</strong></h3>\r\n\r\n<h3><strong>Văn ph&ograve;ng cho thu&ecirc; quận 1</strong>&nbsp;tại&nbsp;<strong>t&ograve;a nh&agrave; Artex SaiGon Building</strong>&nbsp;nằm tr&ecirc;n mặt tiền đường B&ugrave;i Thị Xu&acirc;n, phường Bến Th&agrave;nh, quận 1. Nằm ngay khu t&agrave;i ch&iacute;nh ng&acirc;n h&agrave;ng ở trung t&acirc;m th&agrave;nh phố với chung quanh l&agrave; những&nbsp; trung t&acirc;m thương mại, kh&aacute;ch sạn ăn uống, c&aacute;c trung t&acirc;m t&agrave;i ch&iacute;nh ng&acirc;n h&agrave;ng lớn nhất khu vực.</h3>\r\n\r\n<p>Tọa lạc tr&ecirc;n vị tr&iacute; thuận lợi c&oacute; nhiều trung t&acirc;m thương mại, t&agrave;i ch&iacute;nh, cũng l&agrave; cửa ng&otilde; đầu v&agrave;o của Th&agrave;nh phố Hồ Ch&iacute; Minh. T&ograve;a nh&agrave; HDTC Building l&agrave; nơi c&oacute;&nbsp;<strong>văn ph&ograve;ng cho thu&ecirc; tại phường Nguyễn Th&aacute;i B&igrave;nh quận 1&nbsp;</strong>chắc chắn sẽ l&agrave; trụ sở l&agrave;m việc ho&agrave;n hảo v&agrave; tạo được ấn tượng tốt cho đối t&aacute;c của bạn. C&ugrave;ng bạn đi những bước đầu ti&ecirc;n tr&ecirc;n con đường sự nghiệp của c&ocirc;ng ty bạn một c&aacute;ch hiệu quả v&agrave; chuy&ecirc;n nghiệp nhất. Mạng lại cho nh&acirc;n vi&ecirc;n của bạn nguồn cảm hứng s&aacute;ng tạo trong mọi lĩnh vực. T&ograve;a nh&agrave; của ch&uacute;ng t&ocirc;i c&ograve;n c&oacute; hệ thống đường d&acirc;y internet cap quang điện thoại cực mạnh, lực lượng bảo vệ 24/24, đội ngũ quản l&yacute; chuy&ecirc;n nghiệp,...</p>\r\n\r\n<p>Artex SaiGon Building được chọn l&agrave;&nbsp;<strong>văn ph&ograve;ng hạng C quận 1</strong>&nbsp;của chuỗi văn ph&ograve;ng ở th&agrave;nh phố HCM. Được thiết kế v&ocirc; c&ugrave;ng t&acirc;n tiến với mặt bằng đắc địa với những tiện &iacute;ch vượt trội sẽ c&ugrave;ng bạn tr&ecirc;n bước đường thăng hoa v&agrave; th&agrave;nh c&ocirc;ng trong sự nghiệp của qu&yacute; c&ocirc;ng ty.</p>\r\n', '<h3><strong>VỊ TR&Iacute; T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; ARTEX SAIGON BUILDING</strong></h3>\r\n\r\n<ul>\r\n	<li>C&aacute;ch v&ograve;ng xoay Qu&aacute;ch Thị Trang 8 ph&uacute;t đi xe</li>\r\n	<li>C&aacute;ch chợ Bến Th&agrave;nh 9 ph&uacute;t đi xe</li>\r\n	<li>c&aacute;ch bến xe bus 1 ph&uacute;t đi xe</li>\r\n	<li>c&aacute;ch cầu Calmette 2 ph&uacute;t đi xe</li>\r\n	<li>C&aacute;c cầu kh&aacute;nh hội 5 ph&uacute;t di xe</li>\r\n	<li>c&aacute;ch Cầu &Ocirc;ng L&atilde;nh 5 ph&uacute;t đi xe</li>\r\n</ul>\r\n\r\n<p>Những tiện &iacute;ch chung quanh t&ograve;a nh&agrave;:</p>\r\n\r\n<p>T&ograve;a nh&agrave; Artex SaiGon Building nằm ở trung t&acirc;m th&agrave;nh phố với c&aacute;c khu vực tiện &iacute;ch như bệnh viện, kh&aacute;ch sạn, trung t&acirc;m thương mại, ăn uống, mua sắm bậc nhất như:</p>\r\n\r\n<ul>\r\n	<li>C&aacute;ch Dasis tea and Coffee 57m</li>\r\n	<li>C&aacute;ch The Coffee House 400m</li>\r\n	<li>C&aacute;ch ph&ograve;ng kh&aacute;m đa khoa quốc tế S&agrave;i G&ograve;n 900m</li>\r\n	<li>C&aacute;ch kh&aacute;ch sạn Boss 69m</li>\r\n	<li>C&aacute;ch BHD Cinema 700m</li>\r\n</ul>\r\n\r\n<p>T&ograve;a nh&agrave; Artex SaiGon Building c&ograve;n c&oacute; vị tr&iacute; gần c&aacute;c c&ocirc;ng ty ở những văn ph&ograve;ng cho thu&ecirc; cao cấp kh&aacute;c ở quận 1 như:</p>\r\n\r\n<ul>\r\n	<li>C&aacute;ch văn ph&ograve;ng hạng B Maritime Bank Tower 140m</li>\r\n	<li>C&aacute;ch văn ph&ograve;ng hạng C t&ograve;a nh&agrave; P&amp;T Building 110m</li>\r\n</ul>\r\n\r\n<p>Ngo&agrave;i ra, vấn đề giao dịch t&agrave;i ch&iacute;nh tại t&ograve;a nh&agrave; HDTC Building cũng dễ d&agrave;ng v&agrave; nhanh ch&oacute;ng khi c&oacute; những ng&acirc;n h&agrave;ng lớn gần b&ecirc;n cạnh:</p>\r\n\r\n<ul>\r\n	<li>C&aacute;ch Agribank 56m</li>\r\n	<li>C&aacute;ch S&agrave;i G&ograve;n Bank 60m</li>\r\n	<li>C&aacute;ch Vietinbank 24m</li>\r\n	<li>C&aacute;ch Maritime bank 120m</li>\r\n</ul>\r\n\r\n<p>Với t&ograve;a nh&agrave; Artex SaiGon Building bạn c&oacute; thể dễ d&agrave;ng di chuyển sang c&aacute;c quận kh&aacute;c như: quận 3, quận 4, quận 5, quận B&igrave;nh Thạnh,&hellip; bởi giao th&ocirc;ng rất thuận tiện.</p>\r\n', '<h3><strong>KẾT CẤU T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; ARTEX SAIGON BUILDING</strong></h3>\r\n\r\n<ul>\r\n	<li>\r\n	<h3>Số tầng gồm: 10 tầng</h3>\r\n	</li>\r\n	<li>Số tầng hầm: 1 tầng hầm</li>\r\n	<li>Diện t&iacute;ch s&agrave;n: 224m2</li>\r\n	<li>Tổng diện t&iacute;ch sử dụng: &gt;2000m2</li>\r\n	<li>Thang m&aacute;y: 1 c&aacute;i</li>\r\n	<li>Toilet: mỗi tầng đều c&oacute; 1 hệ thống toilet Nam v&agrave; Nữ ri&ecirc;ng</li>\r\n</ul>\r\n', '<h3><strong>PH&Iacute; DỊCH VỤ BAO GỒM</strong></h3>\r\n\r\n<ul>\r\n	<li>\r\n	<h3>Lương cho nh&acirc;n vi&ecirc;n v&agrave; quản l&yacute; t&ograve;a nh&agrave;</h3>\r\n	</li>\r\n	<li>Ph&iacute; l&agrave;m vệ sinh v&agrave; dọn dẹp cảnh quan ở khu c&ocirc;ng cộng</li>\r\n	<li>Ph&iacute; thu dọn r&aacute;c sinh hoạt ở mỗi văn ph&ograve;ng trong t&ograve;a nh&agrave;</li>\r\n	<li>Dịch vụ dọn dẹp nh&agrave; vệ sinh nam v&agrave; nữ ở mỗi tầng</li>\r\n	<li>Phun thuốc diệt c&ocirc;n tr&ugrave;ng định kỳ</li>\r\n	<li>Ph&iacute; bảo vệ an ninh t&ograve;a nh&agrave; 24h/7</li>\r\n	<li>Ph&iacute; chạy m&aacute;y điện dự ph&ograve;ng tr&aacute;nh t&igrave;nh trạng mất điện đột ngột</li>\r\n	<li>Dịch vụ di chuyển thang m&aacute;y</li>\r\n	<li>Chi ph&iacute; bảo tr&igrave; c&aacute;c m&aacute;y m&oacute;c hay thiết bị trong hệ thống chung của t&ograve;a nh&agrave;</li>\r\n	<li>Chi ph&iacute; thắp s&aacute;ng ở b&atilde;i đổ xe v&agrave; c&aacute;c khu vực c&ocirc;ng cộng</li>\r\n	<li>Nước sử dụng sinh hoạt hằng ng&agrave;y</li>\r\n	<li>Ph&iacute; xử l&yacute; nước thải v&agrave; r&aacute;c sinh hoạt</li>\r\n	<li>Ph&iacute; tổng vệ sinh mặt ngo&agrave;i t&ograve;a nh&agrave; để của k&iacute;nh lu&ocirc;n sạch sẽ</li>\r\n</ul>\r\n', 'Đang cập nhật', '15$/m2', 'toa-nha-artex-saigon-building-van-phong-cho-thue-quan-11.5747039392268E+16.jpg', 'toa-nha-artex-saigon-building-van-phong-cho-thue-quan-1', 1, 'admin', '2019-11-25 22:56:14.790774'),
-(3, 'Tòa Nhà River View Building - Văn Phòng Cho Thuê Quận 1', 2, ' 30, 70, 100, 120 m2', 4, 'C', '', 1, 10, 129, 3170, '<h4><strong>GIỚI THIỆU T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; RIVER VIEW BUILDING</strong></h4>\r\n\r\n<p><strong>Văn ph&ograve;ng cho thu&ecirc; quận 1</strong>&nbsp;tại t&ograve;a nh&agrave; River View Building nằm tr&ecirc;n con đường Th&aacute;i Văn Lung, nằm gần c&aacute;c con đường huyết mạch của quận 1 như T&ocirc;n Đức Thắng, l&ecirc; Th&aacute;nh T&ocirc;n, Thi S&aacute;ch&hellip; nằm gần nhiều trung t&acirc;m thương mại mua sắm, khu d&acirc;n cư đ&ocirc;ng đ&uacute;c, c&oacute; thể di chuyển nhanh ch&oacute;ng sang c&aacute;c quận kh&aacute;c như Quận B&igrave;nh Thạnh, Quận 3, Quận 4 v&agrave; nhiều quận l&acirc;n cận kh&aacute;c. B&ecirc;n cạnh vị tr&iacute; địa l&iacute; thuận lợi về mặt giao th&ocirc;ng, t&ograve;a nh&agrave; c&ograve;n c&oacute; vị tr&iacute; đắc địa khi nằm cạnh b&ecirc;n nhiều khu vực quản l&iacute; h&agrave;nh ch&iacute;nh của th&agrave;nh phố v&agrave; nhiều ng&acirc;n h&agrave;ng, nh&agrave; h&agrave;ng kh&aacute;ch sạn, trung t&acirc;m mua sắm thương mại v&agrave; c&aacute;c doanh nghiệp c&oacute; tiếng ở cả trong v&agrave; ngo&agrave;i nước.</p>\r\n\r\n<p><strong>Văn ph&ograve;ng cho thu&ecirc; tại phường Bến Ngh&eacute; quận 1</strong>&nbsp;tại t&ograve;a nh&agrave; River View Building được x&acirc;y dựng gồm c&oacute; 9 tầng, 1 tầng hầm. T&ograve;a nh&agrave; kh&ocirc;ng những c&oacute; thiết kế độc đ&aacute;o với đầy đủ c&aacute;c tiện &iacute;ch, tiện nghi hiện đại m&agrave; c&ograve;n được thi c&ocirc;ng sao cho đ&aacute;p ứng đủ c&aacute;c ti&ecirc;u chuẩn của văn ph&ograve;ng cho thu&ecirc; với c&aacute;c thiết bị m&aacute;y m&oacute;c ti&ecirc;n tiến, bảo đảm an ninh, chuy&ecirc;n nghiệp v&agrave; yếu tố phong thủy sao cho ph&ugrave; hợp với mọi c&ocirc;ng ty, doanh nghiệp khi thu&ecirc; văn ph&ograve;ng tại đ&acirc;y. Với những ưu điểm tr&ecirc;n, t&ograve;a nh&agrave; chắc chắn sẽ mang lại cảm gi&aacute;c sang trọng v&agrave; tiện lợi cho c&ocirc;ng ty cũng như văn ph&ograve;ng của bạn.</p>\r\n\r\n<p>Những văn ph&ograve;ng cho thu&ecirc; được đảm bảo đầy đủ &aacute;nh s&aacute;ng nhờ v&agrave;o sự chuy&ecirc;n nghiệp trong việc thiết kế hệ thống chiếu s&aacute;ng theo hệ thống b&oacute;ng tối, đảm bảo sự tĩnh lặng v&agrave; ri&ecirc;ng biệt cho mỗi một c&ocirc;ng ty, doanh nghiệp trong t&ograve;a nh&agrave; nhờ v&agrave;o c&aacute;c v&aacute;ch tường c&aacute;ch &acirc;m tốt v&agrave; kh&ocirc;ng gian tho&aacute;ng đ&atilde;ng của mỗi c&ocirc;ng ty, doanh nghiệp nhờ thiết kế độ cao trần nh&agrave; c&oacute; k&iacute;ch thước đạt ti&ecirc;u chuẩn. Hơn nữa, t&ograve;a nh&agrave; c&ograve;n sử dụng loại gạch men cao cấp c&oacute; m&agrave;u sắc trang nh&atilde; để l&aacute;t s&agrave;n tạo sự tương phản &aacute;nh s&aacute;ng tốt nhất cho mỗi một văn ph&ograve;ng trong t&ograve;a nh&agrave;.</p>\r\n\r\n<p>T&ograve;a nh&agrave; River View Building&nbsp;<strong>cho thu&ecirc; văn ph&ograve;ng đường Th&aacute;i Văn Lung quận 1</strong>&nbsp;được lắp đặt hệ thống thang m&aacute;y tốc độ cao, hiện đại, rộng r&atilde;i, c&oacute; sẵn đường truyền internet tốc độ cao, camera quan s&aacute;t 24/24, hệ thống b&aacute;o ch&aacute;y v&agrave; chữa ch&aacute;y tự động, c&oacute; sẵn m&aacute;y ph&aacute;t điện đảm bảo cung cấp điện năng cho c&aacute;c văn ph&ograve;ng trong trường hợp bị c&uacute;p điện. Mọi thứ được sắp xếp sao cho ph&ugrave; hợp với yếu tố phong thủy cho mọi c&ocirc;ng ty khi thu&ecirc; văn ph&ograve;ng tại t&ograve;a nh&agrave;&hellip;c&ugrave;ng với nhiều ưu điểm kh&aacute;c, chắc chắc&nbsp;<strong>t&ograve;a nh&agrave; River View</strong>&nbsp;<strong>B</strong><strong>uilding</strong>&nbsp;l&agrave; địa điểm ho&agrave;n hảo để qu&iacute; c&ocirc;ng ty, doanh nghiệp chọn lựa l&agrave;m nơi đặt trụ sở l&agrave;m việc.</p>\r\n\r\n<p><strong>Văn ph&ograve;ng hạng C quận 1</strong>&nbsp;tại t&ograve;a nh&agrave; River View Building được thiết kế đạt chuẩn của một t&ograve;a nh&agrave; tốt gồm c&oacute; 9 tầng, 1 tầng hầm với diện t&iacute;ch s&agrave;n l&agrave; 160m2. T&ograve;a nh&agrave; c&oacute; trang bị hệ thống thang m&aacute;y an to&agrave;n, tốc độ cao, hệ thống b&aacute;o ch&aacute;y v&agrave; chữa ch&aacute;y tự động đ&aacute;p ứng đầy đủ ti&ecirc;u chuẩn an to&agrave;n. Mỗi tầng c&oacute; hệ thống nh&agrave; vệ sinh nam, nữ ri&ecirc;ng biệt. M&aacute;y ph&aacute;t điện 1000 KW được d&ugrave;ng khi mật điện. Ngo&agrave;i ra, t&ograve;a nh&agrave; c&ograve;n c&oacute; lực lượng quản l&iacute; đầy chuy&ecirc;n nghiệp v&agrave; nh&acirc;n vi&ecirc;n bảo vệ t&uacute;c trực 24/24.</p>\r\n', '<h4><strong>VỊ TR&Iacute; T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; RIVER VIEW BUILDING</strong></h4>\r\n\r\n<ul>\r\n	<li>Mất 8 ph&uacute;t đi xe đến Thảo Cầm vi&ecirc;n S&agrave;i G&ograve;n.</li>\r\n	<li>Mất 3 ph&uacute;t đi xe đến cảng du lịch Bạch Đằng.</li>\r\n	<li>Mất 11 ph&uacute;t đi bộ tới phố đi bộ Nguyễn Huệ.</li>\r\n	<li>Mất 4 ph&uacute;t đi xe đến nh&agrave; h&aacute;t Th&agrave;nh Phố Hồ Ch&iacute; Minh.</li>\r\n	<li>Mất 7 ph&uacute;t đi xe đến svđ Hoa Lư.</li>\r\n	<li>Mất 4 ph&uacute;t đi xe đến bảo t&agrave;ng lịch sử Việt Nam.</li>\r\n	<li>Mất 3 ph&uacute;t đi xe để di chuyển sang quận 2.</li>\r\n</ul>\r\n\r\n<p>Những tiện lợi chung quanh t&ograve;a nh&agrave; River View Building:<br />\r\nT&ograve;a nh&agrave; River View Building nằm gần với c&aacute;c khu vực tiện &iacute;ch như bệnh viện, kh&aacute;ch sạn, trung t&acirc;m thương mại, nh&agrave; h&agrave;ng ăn uống, cụ thể l&agrave;:</p>\r\n\r\n<ul>\r\n	<li>C&aacute;ch rạp chiếu phim CGV cinema khoảng 550m.</li>\r\n	<li>C&aacute;ch B&acirc;ng Khu&acirc;ng Coffee khoảng 6m.</li>\r\n	<li>C&aacute;ch bệnh viện Nhi đồng 2 khoảng 300m.</li>\r\n	<li>C&aacute;ch nh&agrave; h&agrave;ng The Sushi Bar khoảng 500m, nh&agrave; h&agrave;ng ZEN Saigon khoảng 350m.</li>\r\n	<li>C&aacute;ch kh&aacute;ch sạn Paragon Saigon Hotel khoảng 170m.</li>\r\n	<li>C&aacute;ch nh&agrave; h&agrave;ng RIO Brazilian Steakhouse khoảng 170m.</li>\r\n	<li>C&aacute;ch shopping mall Vincom Center khoảng 550m.</li>\r\n</ul>\r\n', '<h4><strong>KẾT CẤU T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; RIVER VIEW BUILDING</strong></h4>\r\n\r\n<ul>\r\n	<li>T&ograve;a nh&agrave; c&oacute; 9 tầng.</li>\r\n	<li>Diện t&iacute;ch s&agrave;n 160m2.</li>\r\n	<li>Tổng diện t&iacute;ch sử dụng 1440m2.</li>\r\n	<li>T&ograve;a nh&agrave; c&oacute; 1 tầng hầm.</li>\r\n	<li>T&ograve;a nh&agrave; c&oacute; 2 thang m&aacute;y.</li>\r\n	<li>Mỗi tầng c&oacute; 1 hệ thống toilet nam v&agrave; nữ ri&ecirc;ng.</li>\r\n</ul>\r\n', '<h4><strong>PH&Iacute; DỊCH VỤ BAO GỒM</strong></h4>\r\n\r\n<ul>\r\n	<li>Lương cho quản l&yacute;, nh&acirc;n vi&ecirc;n tại t&ograve;a nh&agrave; cho thu&ecirc;</li>\r\n	<li>Thu dọn r&aacute;c</li>\r\n	<li>Vệ sinh t&ograve;a nh&agrave;, khu vực c&ocirc;ng cộng.</li>\r\n	<li>Dọn vệ sinh khu vực tolet nam, nữ ở mỗi tầng</li>\r\n	<li>Bảo vệ an ninh 24/7</li>\r\n	<li>Diệt mầm m&oacute;ng, c&ocirc;n tr&ugrave;ng g&acirc;y bệnh theo định k&igrave;.</li>\r\n	<li>Dịch vụ ri&ecirc;ng d&agrave;nh cho thang m&aacute;y.</li>\r\n	<li>Điện dự ph&ograve;ng của hệ thống m&aacute;y ph&aacute;t điện v&agrave; to&agrave;n bộ mạch điện tự động.</li>\r\n	<li>Cung cấp &aacute;nh s&aacute;ng nơi c&ocirc;ng cộng v&agrave; b&atilde;i đậu xe.</li>\r\n	<li>Nước sinh hoạt</li>\r\n	<li>Tổng dọn vệ sinh to&agrave;n bề mặt của t&ograve;a nh&agrave; cho thu&ecirc;.</li>\r\n	<li>Xử l&yacute; r&aacute;c thải, nước sinh hoạt.</li>\r\n	<li>Bảo dưỡng, bảo tr&igrave; c&aacute;c trang thiết bị m&aacute;y m&oacute;c thuộc hệ thống chung của to&agrave;n t&ograve;a nh&agrave;.</li>\r\n</ul>\r\n', 'Đang cập nhật', '16$/m2', 'toa-nha-river-view-building-van-phong-cho-thue-quan-1.jpg', 'toa-nha-river-view-building-van-phong-cho-thue-quan-1', 1, 'admin', '2019-11-25 23:07:20.963067');
-=======
-(0, 'test 123', 1, '450', 5, 'C', '25/2 ???ng Tô Ký khu ph? 5 ph??ng Tân Chánh Hi?p, Qu?n 12', 1, 23, 310, 6572, 'awdasdsad', 'bsdfsfd', 'dasdased', 'aeerrdg', 'jyygjhyhfgth', '150.000', 'abc.jpg', 'test-123', b'1', 'admin', '2019-11-24 13:38:56.661052');
->>>>>>> c7bdd75669e9f6ed0b8491f53a3fc605cdff7f8c
+(2, 'Tòa Nhà Artex SaiGon Building', 2, '80, 108, 116, 224 m2', 3, 'C', '', 1, 10, 136, 3114, '<h3><strong>GIỚI THIỆU T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; ARTEX SAIGON BUILDING</strong></h3>\r\n\r\n<h3><strong>Văn ph&ograve;ng cho thu&ecirc; quận 1</strong>&nbsp;tại&nbsp;<strong>t&ograve;a nh&agrave; Artex SaiGon Building</strong>&nbsp;nằm tr&ecirc;n mặt tiền đường B&ugrave;i Thị Xu&acirc;n, phường Bến Th&agrave;nh, quận 1. Nằm ngay khu t&agrave;i ch&iacute;nh ng&acirc;n h&agrave;ng ở trung t&acirc;m th&agrave;nh phố với chung quanh l&agrave; những&nbsp; trung t&acirc;m thương mại, kh&aacute;ch sạn ăn uống, c&aacute;c trung t&acirc;m t&agrave;i ch&iacute;nh ng&acirc;n h&agrave;ng lớn nhất khu vực.</h3>\r\n\r\n<p>Tọa lạc tr&ecirc;n vị tr&iacute; thuận lợi c&oacute; nhiều trung t&acirc;m thương mại, t&agrave;i ch&iacute;nh, cũng l&agrave; cửa ng&otilde; đầu v&agrave;o của Th&agrave;nh phố Hồ Ch&iacute; Minh. T&ograve;a nh&agrave; HDTC Building l&agrave; nơi c&oacute;&nbsp;<strong>văn ph&ograve;ng cho thu&ecirc; tại phường Nguyễn Th&aacute;i B&igrave;nh quận 1&nbsp;</strong>chắc chắn sẽ l&agrave; trụ sở l&agrave;m việc ho&agrave;n hảo v&agrave; tạo được ấn tượng tốt cho đối t&aacute;c của bạn. C&ugrave;ng bạn đi những bước đầu ti&ecirc;n tr&ecirc;n con đường sự nghiệp của c&ocirc;ng ty bạn một c&aacute;ch hiệu quả v&agrave; chuy&ecirc;n nghiệp nhất. Mạng lại cho nh&acirc;n vi&ecirc;n của bạn nguồn cảm hứng s&aacute;ng tạo trong mọi lĩnh vực. T&ograve;a nh&agrave; của ch&uacute;ng t&ocirc;i c&ograve;n c&oacute; hệ thống đường d&acirc;y internet cap quang điện thoại cực mạnh, lực lượng bảo vệ 24/24, đội ngũ quản l&yacute; chuy&ecirc;n nghiệp,...</p>\r\n\r\n<p>Artex SaiGon Building được chọn l&agrave;&nbsp;<strong>văn ph&ograve;ng hạng C quận 1</strong>&nbsp;của chuỗi văn ph&ograve;ng ở th&agrave;nh phố HCM. Được thiết kế v&ocirc; c&ugrave;ng t&acirc;n tiến với mặt bằng đắc địa với những tiện &iacute;ch vượt trội sẽ c&ugrave;ng bạn tr&ecirc;n bước đường thăng hoa v&agrave; th&agrave;nh c&ocirc;ng trong sự nghiệp của qu&yacute; c&ocirc;ng ty.</p>\r\n', '<h3><strong>VỊ TR&Iacute; T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; ARTEX SAIGON BUILDING</strong></h3>\r\n\r\n<ul>\r\n	<li>C&aacute;ch v&ograve;ng xoay Qu&aacute;ch Thị Trang 8 ph&uacute;t đi xe</li>\r\n	<li>C&aacute;ch chợ Bến Th&agrave;nh 9 ph&uacute;t đi xe</li>\r\n	<li>c&aacute;ch bến xe bus 1 ph&uacute;t đi xe</li>\r\n	<li>c&aacute;ch cầu Calmette 2 ph&uacute;t đi xe</li>\r\n	<li>C&aacute;c cầu kh&aacute;nh hội 5 ph&uacute;t di xe</li>\r\n	<li>c&aacute;ch Cầu &Ocirc;ng L&atilde;nh 5 ph&uacute;t đi xe</li>\r\n</ul>\r\n\r\n<p>Những tiện &iacute;ch chung quanh t&ograve;a nh&agrave;:</p>\r\n\r\n<p>T&ograve;a nh&agrave; Artex SaiGon Building nằm ở trung t&acirc;m th&agrave;nh phố với c&aacute;c khu vực tiện &iacute;ch như bệnh viện, kh&aacute;ch sạn, trung t&acirc;m thương mại, ăn uống, mua sắm bậc nhất như:</p>\r\n\r\n<ul>\r\n	<li>C&aacute;ch Dasis tea and Coffee 57m</li>\r\n	<li>C&aacute;ch The Coffee House 400m</li>\r\n	<li>C&aacute;ch ph&ograve;ng kh&aacute;m đa khoa quốc tế S&agrave;i G&ograve;n 900m</li>\r\n	<li>C&aacute;ch kh&aacute;ch sạn Boss 69m</li>\r\n	<li>C&aacute;ch BHD Cinema 700m</li>\r\n</ul>\r\n\r\n<p>T&ograve;a nh&agrave; Artex SaiGon Building c&ograve;n c&oacute; vị tr&iacute; gần c&aacute;c c&ocirc;ng ty ở những văn ph&ograve;ng cho thu&ecirc; cao cấp kh&aacute;c ở quận 1 như:</p>\r\n\r\n<ul>\r\n	<li>C&aacute;ch văn ph&ograve;ng hạng B Maritime Bank Tower 140m</li>\r\n	<li>C&aacute;ch văn ph&ograve;ng hạng C t&ograve;a nh&agrave; P&amp;T Building 110m</li>\r\n</ul>\r\n\r\n<p>Ngo&agrave;i ra, vấn đề giao dịch t&agrave;i ch&iacute;nh tại t&ograve;a nh&agrave; HDTC Building cũng dễ d&agrave;ng v&agrave; nhanh ch&oacute;ng khi c&oacute; những ng&acirc;n h&agrave;ng lớn gần b&ecirc;n cạnh:</p>\r\n\r\n<ul>\r\n	<li>C&aacute;ch Agribank 56m</li>\r\n	<li>C&aacute;ch S&agrave;i G&ograve;n Bank 60m</li>\r\n	<li>C&aacute;ch Vietinbank 24m</li>\r\n	<li>C&aacute;ch Maritime bank 120m</li>\r\n</ul>\r\n\r\n<p>Với t&ograve;a nh&agrave; Artex SaiGon Building bạn c&oacute; thể dễ d&agrave;ng di chuyển sang c&aacute;c quận kh&aacute;c như: quận 3, quận 4, quận 5, quận B&igrave;nh Thạnh,&hellip; bởi giao th&ocirc;ng rất thuận tiện.</p>\r\n', '<h3><strong>KẾT CẤU T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; ARTEX SAIGON BUILDING</strong></h3>\r\n\r\n<ul>\r\n	<li>\r\n	<h3>Số tầng gồm: 10 tầng</h3>\r\n	</li>\r\n	<li>Số tầng hầm: 1 tầng hầm</li>\r\n	<li>Diện t&iacute;ch s&agrave;n: 224m2</li>\r\n	<li>Tổng diện t&iacute;ch sử dụng: &gt;2000m2</li>\r\n	<li>Thang m&aacute;y: 1 c&aacute;i</li>\r\n	<li>Toilet: mỗi tầng đều c&oacute; 1 hệ thống toilet Nam v&agrave; Nữ ri&ecirc;ng</li>\r\n</ul>\r\n', '<h3><strong>PH&Iacute; DỊCH VỤ BAO GỒM</strong></h3>\r\n\r\n<ul>\r\n	<li>\r\n	<h3>Lương cho nh&acirc;n vi&ecirc;n v&agrave; quản l&yacute; t&ograve;a nh&agrave;</h3>\r\n	</li>\r\n	<li>Ph&iacute; l&agrave;m vệ sinh v&agrave; dọn dẹp cảnh quan ở khu c&ocirc;ng cộng</li>\r\n	<li>Ph&iacute; thu dọn r&aacute;c sinh hoạt ở mỗi văn ph&ograve;ng trong t&ograve;a nh&agrave;</li>\r\n	<li>Dịch vụ dọn dẹp nh&agrave; vệ sinh nam v&agrave; nữ ở mỗi tầng</li>\r\n	<li>Phun thuốc diệt c&ocirc;n tr&ugrave;ng định kỳ</li>\r\n	<li>Ph&iacute; bảo vệ an ninh t&ograve;a nh&agrave; 24h/7</li>\r\n	<li>Ph&iacute; chạy m&aacute;y điện dự ph&ograve;ng tr&aacute;nh t&igrave;nh trạng mất điện đột ngột</li>\r\n	<li>Dịch vụ di chuyển thang m&aacute;y</li>\r\n	<li>Chi ph&iacute; bảo tr&igrave; c&aacute;c m&aacute;y m&oacute;c hay thiết bị trong hệ thống chung của t&ograve;a nh&agrave;</li>\r\n	<li>Chi ph&iacute; thắp s&aacute;ng ở b&atilde;i đổ xe v&agrave; c&aacute;c khu vực c&ocirc;ng cộng</li>\r\n	<li>Nước sử dụng sinh hoạt hằng ng&agrave;y</li>\r\n	<li>Ph&iacute; xử l&yacute; nước thải v&agrave; r&aacute;c sinh hoạt</li>\r\n	<li>Ph&iacute; tổng vệ sinh mặt ngo&agrave;i t&ograve;a nh&agrave; để của k&iacute;nh lu&ocirc;n sạch sẽ</li>\r\n</ul>\r\n', 'Đang cập nhật', '15$/m2', 'toa-nha-artex-saigon-building-van-phong-cho-thue-quan-11.5747039392268E+16.jpg', 'toa-nha-artex-saigon-building', 1, 'admin', '2019-11-25 22:56:14.790774'),
+(3, 'Tòa Nhà River View Building', 2, ' 30, 70, 100, 120 m2', 4, 'C', '', 1, 10, 129, 3170, '<h4><strong>GIỚI THIỆU T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; RIVER VIEW BUILDING</strong></h4>\r\n\r\n<p><strong>Văn ph&ograve;ng cho thu&ecirc; quận 1</strong>&nbsp;tại t&ograve;a nh&agrave; River View Building nằm tr&ecirc;n con đường Th&aacute;i Văn Lung, nằm gần c&aacute;c con đường huyết mạch của quận 1 như T&ocirc;n Đức Thắng, l&ecirc; Th&aacute;nh T&ocirc;n, Thi S&aacute;ch&hellip; nằm gần nhiều trung t&acirc;m thương mại mua sắm, khu d&acirc;n cư đ&ocirc;ng đ&uacute;c, c&oacute; thể di chuyển nhanh ch&oacute;ng sang c&aacute;c quận kh&aacute;c như Quận B&igrave;nh Thạnh, Quận 3, Quận 4 v&agrave; nhiều quận l&acirc;n cận kh&aacute;c. B&ecirc;n cạnh vị tr&iacute; địa l&iacute; thuận lợi về mặt giao th&ocirc;ng, t&ograve;a nh&agrave; c&ograve;n c&oacute; vị tr&iacute; đắc địa khi nằm cạnh b&ecirc;n nhiều khu vực quản l&iacute; h&agrave;nh ch&iacute;nh của th&agrave;nh phố v&agrave; nhiều ng&acirc;n h&agrave;ng, nh&agrave; h&agrave;ng kh&aacute;ch sạn, trung t&acirc;m mua sắm thương mại v&agrave; c&aacute;c doanh nghiệp c&oacute; tiếng ở cả trong v&agrave; ngo&agrave;i nước.</p>\r\n\r\n<p><strong>Văn ph&ograve;ng cho thu&ecirc; tại phường Bến Ngh&eacute; quận 1</strong>&nbsp;tại t&ograve;a nh&agrave; River View Building được x&acirc;y dựng gồm c&oacute; 9 tầng, 1 tầng hầm. T&ograve;a nh&agrave; kh&ocirc;ng những c&oacute; thiết kế độc đ&aacute;o với đầy đủ c&aacute;c tiện &iacute;ch, tiện nghi hiện đại m&agrave; c&ograve;n được thi c&ocirc;ng sao cho đ&aacute;p ứng đủ c&aacute;c ti&ecirc;u chuẩn của văn ph&ograve;ng cho thu&ecirc; với c&aacute;c thiết bị m&aacute;y m&oacute;c ti&ecirc;n tiến, bảo đảm an ninh, chuy&ecirc;n nghiệp v&agrave; yếu tố phong thủy sao cho ph&ugrave; hợp với mọi c&ocirc;ng ty, doanh nghiệp khi thu&ecirc; văn ph&ograve;ng tại đ&acirc;y. Với những ưu điểm tr&ecirc;n, t&ograve;a nh&agrave; chắc chắn sẽ mang lại cảm gi&aacute;c sang trọng v&agrave; tiện lợi cho c&ocirc;ng ty cũng như văn ph&ograve;ng của bạn.</p>\r\n\r\n<p>Những văn ph&ograve;ng cho thu&ecirc; được đảm bảo đầy đủ &aacute;nh s&aacute;ng nhờ v&agrave;o sự chuy&ecirc;n nghiệp trong việc thiết kế hệ thống chiếu s&aacute;ng theo hệ thống b&oacute;ng tối, đảm bảo sự tĩnh lặng v&agrave; ri&ecirc;ng biệt cho mỗi một c&ocirc;ng ty, doanh nghiệp trong t&ograve;a nh&agrave; nhờ v&agrave;o c&aacute;c v&aacute;ch tường c&aacute;ch &acirc;m tốt v&agrave; kh&ocirc;ng gian tho&aacute;ng đ&atilde;ng của mỗi c&ocirc;ng ty, doanh nghiệp nhờ thiết kế độ cao trần nh&agrave; c&oacute; k&iacute;ch thước đạt ti&ecirc;u chuẩn. Hơn nữa, t&ograve;a nh&agrave; c&ograve;n sử dụng loại gạch men cao cấp c&oacute; m&agrave;u sắc trang nh&atilde; để l&aacute;t s&agrave;n tạo sự tương phản &aacute;nh s&aacute;ng tốt nhất cho mỗi một văn ph&ograve;ng trong t&ograve;a nh&agrave;.</p>\r\n\r\n<p>T&ograve;a nh&agrave; River View Building&nbsp;<strong>cho thu&ecirc; văn ph&ograve;ng đường Th&aacute;i Văn Lung quận 1</strong>&nbsp;được lắp đặt hệ thống thang m&aacute;y tốc độ cao, hiện đại, rộng r&atilde;i, c&oacute; sẵn đường truyền internet tốc độ cao, camera quan s&aacute;t 24/24, hệ thống b&aacute;o ch&aacute;y v&agrave; chữa ch&aacute;y tự động, c&oacute; sẵn m&aacute;y ph&aacute;t điện đảm bảo cung cấp điện năng cho c&aacute;c văn ph&ograve;ng trong trường hợp bị c&uacute;p điện. Mọi thứ được sắp xếp sao cho ph&ugrave; hợp với yếu tố phong thủy cho mọi c&ocirc;ng ty khi thu&ecirc; văn ph&ograve;ng tại t&ograve;a nh&agrave;&hellip;c&ugrave;ng với nhiều ưu điểm kh&aacute;c, chắc chắc&nbsp;<strong>t&ograve;a nh&agrave; River View</strong>&nbsp;<strong>B</strong><strong>uilding</strong>&nbsp;l&agrave; địa điểm ho&agrave;n hảo để qu&iacute; c&ocirc;ng ty, doanh nghiệp chọn lựa l&agrave;m nơi đặt trụ sở l&agrave;m việc.</p>\r\n\r\n<p><strong>Văn ph&ograve;ng hạng C quận 1</strong>&nbsp;tại t&ograve;a nh&agrave; River View Building được thiết kế đạt chuẩn của một t&ograve;a nh&agrave; tốt gồm c&oacute; 9 tầng, 1 tầng hầm với diện t&iacute;ch s&agrave;n l&agrave; 160m2. T&ograve;a nh&agrave; c&oacute; trang bị hệ thống thang m&aacute;y an to&agrave;n, tốc độ cao, hệ thống b&aacute;o ch&aacute;y v&agrave; chữa ch&aacute;y tự động đ&aacute;p ứng đầy đủ ti&ecirc;u chuẩn an to&agrave;n. Mỗi tầng c&oacute; hệ thống nh&agrave; vệ sinh nam, nữ ri&ecirc;ng biệt. M&aacute;y ph&aacute;t điện 1000 KW được d&ugrave;ng khi mật điện. Ngo&agrave;i ra, t&ograve;a nh&agrave; c&ograve;n c&oacute; lực lượng quản l&iacute; đầy chuy&ecirc;n nghiệp v&agrave; nh&acirc;n vi&ecirc;n bảo vệ t&uacute;c trực 24/24.</p>\r\n', '<h4><strong>VỊ TR&Iacute; T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; RIVER VIEW BUILDING</strong></h4>\r\n\r\n<ul>\r\n	<li>Mất 8 ph&uacute;t đi xe đến Thảo Cầm vi&ecirc;n S&agrave;i G&ograve;n.</li>\r\n	<li>Mất 3 ph&uacute;t đi xe đến cảng du lịch Bạch Đằng.</li>\r\n	<li>Mất 11 ph&uacute;t đi bộ tới phố đi bộ Nguyễn Huệ.</li>\r\n	<li>Mất 4 ph&uacute;t đi xe đến nh&agrave; h&aacute;t Th&agrave;nh Phố Hồ Ch&iacute; Minh.</li>\r\n	<li>Mất 7 ph&uacute;t đi xe đến svđ Hoa Lư.</li>\r\n	<li>Mất 4 ph&uacute;t đi xe đến bảo t&agrave;ng lịch sử Việt Nam.</li>\r\n	<li>Mất 3 ph&uacute;t đi xe để di chuyển sang quận 2.</li>\r\n</ul>\r\n\r\n<p>Những tiện lợi chung quanh t&ograve;a nh&agrave; River View Building:<br />\r\nT&ograve;a nh&agrave; River View Building nằm gần với c&aacute;c khu vực tiện &iacute;ch như bệnh viện, kh&aacute;ch sạn, trung t&acirc;m thương mại, nh&agrave; h&agrave;ng ăn uống, cụ thể l&agrave;:</p>\r\n\r\n<ul>\r\n	<li>C&aacute;ch rạp chiếu phim CGV cinema khoảng 550m.</li>\r\n	<li>C&aacute;ch B&acirc;ng Khu&acirc;ng Coffee khoảng 6m.</li>\r\n	<li>C&aacute;ch bệnh viện Nhi đồng 2 khoảng 300m.</li>\r\n	<li>C&aacute;ch nh&agrave; h&agrave;ng The Sushi Bar khoảng 500m, nh&agrave; h&agrave;ng ZEN Saigon khoảng 350m.</li>\r\n	<li>C&aacute;ch kh&aacute;ch sạn Paragon Saigon Hotel khoảng 170m.</li>\r\n	<li>C&aacute;ch nh&agrave; h&agrave;ng RIO Brazilian Steakhouse khoảng 170m.</li>\r\n	<li>C&aacute;ch shopping mall Vincom Center khoảng 550m.</li>\r\n</ul>\r\n', '<h4><strong>KẾT CẤU T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; RIVER VIEW BUILDING</strong></h4>\r\n\r\n<ul>\r\n	<li>T&ograve;a nh&agrave; c&oacute; 9 tầng.</li>\r\n	<li>Diện t&iacute;ch s&agrave;n 160m2.</li>\r\n	<li>Tổng diện t&iacute;ch sử dụng 1440m2.</li>\r\n	<li>T&ograve;a nh&agrave; c&oacute; 1 tầng hầm.</li>\r\n	<li>T&ograve;a nh&agrave; c&oacute; 2 thang m&aacute;y.</li>\r\n	<li>Mỗi tầng c&oacute; 1 hệ thống toilet nam v&agrave; nữ ri&ecirc;ng.</li>\r\n</ul>\r\n', '<h4><strong>PH&Iacute; DỊCH VỤ BAO GỒM</strong></h4>\r\n\r\n<ul>\r\n	<li>Lương cho quản l&yacute;, nh&acirc;n vi&ecirc;n tại t&ograve;a nh&agrave; cho thu&ecirc;</li>\r\n	<li>Thu dọn r&aacute;c</li>\r\n	<li>Vệ sinh t&ograve;a nh&agrave;, khu vực c&ocirc;ng cộng.</li>\r\n	<li>Dọn vệ sinh khu vực tolet nam, nữ ở mỗi tầng</li>\r\n	<li>Bảo vệ an ninh 24/7</li>\r\n	<li>Diệt mầm m&oacute;ng, c&ocirc;n tr&ugrave;ng g&acirc;y bệnh theo định k&igrave;.</li>\r\n	<li>Dịch vụ ri&ecirc;ng d&agrave;nh cho thang m&aacute;y.</li>\r\n	<li>Điện dự ph&ograve;ng của hệ thống m&aacute;y ph&aacute;t điện v&agrave; to&agrave;n bộ mạch điện tự động.</li>\r\n	<li>Cung cấp &aacute;nh s&aacute;ng nơi c&ocirc;ng cộng v&agrave; b&atilde;i đậu xe.</li>\r\n	<li>Nước sinh hoạt</li>\r\n	<li>Tổng dọn vệ sinh to&agrave;n bề mặt của t&ograve;a nh&agrave; cho thu&ecirc;.</li>\r\n	<li>Xử l&yacute; r&aacute;c thải, nước sinh hoạt.</li>\r\n	<li>Bảo dưỡng, bảo tr&igrave; c&aacute;c trang thiết bị m&aacute;y m&oacute;c thuộc hệ thống chung của to&agrave;n t&ograve;a nh&agrave;.</li>\r\n</ul>\r\n', 'Đang cập nhật', '16$/m2', 'toa-nha-river-view-building-van-phong-cho-thue-quan-1.jpg', 'toa-nha-river-view-building', 1, 'admin', '2019-11-25 23:07:20.963067'),
+(4, 'Tòa Nhà DQD Building', 2, '130, 260, 339 m2', 1, 'C', '', 1, 23, 309, 6715, '<h4>GIỚI THIỆU T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; DQD BUILDING</h4>\r\n\r\n<p>Ấn tượng đầu ti&ecirc;n của bất k&igrave; ai khi nh&igrave;n v&agrave;o t&ograve;a nh&agrave;&nbsp;<strong><a href=\"https://cyberreal.vn/van-phong-cho-thue/toa-nha-dqd-building.html\">DQD Building</a></strong>&nbsp;(t&ecirc;n gọi kh&aacute;c: t&ograve;a nh&agrave; DQD, DQD Building L&ecirc; Trọng Tấn) đều cảm nhận được sự vững chắc của n&oacute;. T&ograve;a cao ốc được xếp hạng C v&agrave; sở hữu thiết kế mang đậm phong c&aacute;ch hiện đại v&agrave; chưa bao giờ l&agrave; lỗi thời khi so với những t&ograve;a nh&agrave; văn ph&ograve;ng cho thu&ecirc; được x&acirc;y dựng nhiều trong thời gian n&agrave;y.</p>\r\n\r\n<p>Xếp hạng C l&agrave; một mức xếp hạng kh&aacute; cao v&agrave; bạn c&oacute; thể an t&acirc;m sử dụng t&ograve;a nh&agrave;&nbsp;<strong><a href=\"https://cyberreal.vn/van-phong-cho-thue/quan-tan-phu\">văn ph&ograve;ng gi&aacute; rẻ quận T&acirc;n Ph&uacute;</a></strong>&nbsp;m&agrave; kh&ocirc;ng gặp phải bất k&igrave; sự cản trở n&agrave;o. V&agrave; tr&ecirc;n hết, vị tr&iacute; của t&ograve;a nh&agrave; v&ocirc; c&ugrave;ng l&iacute; tưởng cho việc di chuyển từ nơi l&agrave;m việc về nơi ở của bạn khi được tọa lạc tại đường L&ecirc; Trọng Tấn, Phường Sơn Kỳ, Quận T&acirc;n Ph&uacute; - một tuyến đường trọng yếu trong khu vực n&agrave;y.</p>\r\n\r\n<p>Ch&uacute;ng ta h&atilde;y c&ugrave;ng xem x&eacute;t chi tiết những yếu tố tuyệt vời của DQD Building dưới đ&acirc;y n&agrave;o!</p>\r\n', '<h4>VỊ TR&Iacute; T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; DQD BUILDING</h4>\r\n\r\n<p>Đường L&ecirc; Trọng Tấn l&agrave; đường 2 chiều, giao th&ocirc;ng v&ocirc; c&ugrave;ng thuận lợi. Tuyến đường n&agrave;y tiếp gi&aacute;p với nhiều trục đường ch&iacute;nh quan trọng như T&acirc;n Kỳ T&acirc;n Qu&yacute;, Phạm Đăng Giảng v&agrave; cả Xa lộ Đại H&agrave;n. Từ đ&acirc;y c&oacute; thể di chuyển thuận lợi sang quận B&igrave;nh T&acirc;n v&agrave; T&acirc;n B&igrave;nh. Đặc biệt, con đường n&agrave;y c&oacute; 4 l&agrave;n xe với diện t&iacute;ch mặt đường rộng r&atilde;i, th&ecirc;m yếu tố mật độ lưu th&ocirc;ng kh&ocirc;ng hề nhiều n&ecirc;n DQD Building rất hiếm khi gặp phải t&igrave;nh trạng kẹt xe phiền to&aacute;i.</p>\r\n\r\n<ul>\r\n	<li>Khoảng c&aacute;ch đến Pandora l&agrave; 4</li>\r\n	<li>C&aacute;ch trường Đại học C&ocirc;ng nghiệp Thực Phẩm TP.HCM l&agrave; 450m.</li>\r\n	<li>C&aacute;ch E.Town chỉ 950m.</li>\r\n	<li>Gần chợ Sơn Kỳ, khoảng c&aacute;ch l&agrave; 1.3 km.</li>\r\n</ul>\r\n\r\n<p>Ngo&agrave;i ra, khu vực n&agrave;y cũng được c&aacute;c ng&acirc;n h&agrave;ng ưu &aacute;i khi c&oacute; v&ocirc; số trụ sở giao dịch được đặt tại nơi đ&acirc;y như Vietcombank, OCB, BIDV,... K&egrave;m theo đ&oacute;, những tiện &iacute;ch d&agrave;nh cho giới văn ph&ograve;ng cũng c&oacute; mặt đầy đủ nhằm đem đến cho những nh&acirc;n vi&ecirc;n ở khu vực n&agrave;y trải nghiệm tốt nhất.</p>\r\n', '<h4>KẾT CẤU T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; DQD BUILDING</h4>\r\n\r\n<p>Với mức đ&aacute;nh gi&aacute; xếp hạng l&agrave; C, t&ograve;a nh&agrave; c&oacute; kết cấu thuận lợi đối với những ai cần một kh&ocirc;ng gian chuy&ecirc;n nghiệp để c&oacute; thể an t&acirc;m l&agrave;m việc. Chi tiết kết cấu của t&ograve;a nh&agrave; như sau:</p>\r\n\r\n<ul>\r\n	<li>Một tầng hầm cực k&igrave; rộng d&ugrave;ng l&agrave;m b&atilde;i đỗ xe m&aacute;y cho to&agrave;n d&acirc;n khối văn ph&ograve;ng m&agrave; kh&ocirc;ng sợ t&igrave;nh trạng nghẹt cứng.</li>\r\n	<li>Một tầng trệt được sử dụng như sảnh lễ t&acirc;n.</li>\r\n	<li>6 tầng cao d&ugrave;ng để cho thu&ecirc; văn ph&ograve;ng l&agrave;m việc, người sử dụng c&oacute; thể thoải m&aacute;i di chuyển m&agrave; kh&ocirc;ng cần phải qu&aacute; mệt nhọc như những khu cao tầng kh&aacute;c.</li>\r\n	<li>C&oacute; 2 thang m&aacute;y v&agrave; 1 thang bộ.</li>\r\n	<li>Nh&agrave; vệ sinh đều được bố tr&iacute; ở mỗi tầng nam v&agrave; nữ ri&ecirc;ng biệt v&ocirc; c&ugrave;ng tiện lợi.</li>\r\n</ul>\r\n', '<h4>PH&Iacute; DỊCH VỤ BAO GỒM</h4>\r\n\r\n<ul>\r\n	<li>Hệ thống điều h&ograve;a, m&aacute;y th&ocirc;ng gi&oacute; được sử dụng để phục vụ ở những khu vực chung v&agrave;o c&aacute;c khung giờ l&agrave;m việc trong ng&agrave;y (trừ ng&agrave;y Chủ Nhật).</li>\r\n	<li>C&aacute;c khoản lương cho quản l&yacute; v&agrave; những nh&acirc;n vi&ecirc;n trong t&ograve;a nh&agrave;.</li>\r\n	<li>Ph&iacute; vệ sinh t&ograve;a nh&agrave; v&agrave; những khu vực c&ocirc;ng cộng, dọn vệ sinh cho nh&agrave; vệ sinh nam v&agrave; nữ ở mỗi tầng ri&ecirc;ng biệt.</li>\r\n	<li>Ph&iacute; cho nh&acirc;n vi&ecirc;n thu dọn r&aacute;c.</li>\r\n	<li>Duy tr&igrave; hoạt động của bảo vệ 24/7</li>\r\n	<li>Xịt thuốc diệt c&aacute;c loại mầm mống, g&acirc;y hại v&agrave; bệnh tật đến sức khỏe con người theo định k&igrave;.</li>\r\n	<li>C&aacute;c dịch vụ ri&ecirc;ng cho thang m&aacute;y.</li>\r\n	<li>Điện dự ph&ograve;ng d&agrave;nh cho hệ thống m&aacute;y ph&aacute;t điện c&ugrave;ng to&agrave;n bộ hệ thống điện tự động.</li>\r\n	<li>Duy tr&igrave; nguồn s&aacute;ng ở những nơi c&ocirc;ng cộng v&agrave; nơi để xe.</li>\r\n	<li>Cung cấp nước sinh hoạt cho hoạt động trong t&ograve;a nh&agrave;.</li>\r\n	<li>Vệ sinh, bảo dưỡng bề mặt b&ecirc;n ngo&agrave;i của t&ograve;a nh&agrave; cho thu&ecirc;.</li>\r\n	<li>Ph&iacute; xử l&yacute; c&aacute;c loại r&aacute;c thải hằng ng&agrave;y cũng như nước sau qu&aacute; tr&igrave;nh sinh hoạt.</li>\r\n	<li>Ph&iacute; duy tr&igrave; c&aacute;c hoạt động bảo dưỡng, bảo tr&igrave; những trang thiết bị, m&aacute;y m&oacute;c chung được trang bị trong t&ograve;a nh&agrave;.</li>\r\n</ul>\r\n', '<h4>ƯU ĐIỂM T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; DQD BUILDING</h4>\r\n\r\n<p>Gi&aacute; thu&ecirc; mặt bằng của PTH Building l&agrave; v&ocirc; c&ugrave;ng cạnh tranh khi so s&aacute;nh với những t&ograve;a nh&agrave; kh&aacute;c c&oacute; c&ugrave;ng trang thiết bị hiện đại như vậy trong khu vực. Ch&iacute;nh v&igrave; vậy, bạn sẽ kh&ocirc;ng cần phải qu&aacute; lo lắng về gi&aacute; thu&ecirc; văn ph&ograve;ng tại đ&acirc;y đ&acirc;u nh&eacute;!</p>\r\n\r\n<p>Ngo&agrave;i mức gi&aacute; hợp l&yacute;, cao ốc c&ograve;n sở hữu v&ocirc; số ưu điểm kh&aacute;c như vị tr&iacute; gần chợ, bệnh viện v&agrave; trường học - những nơi thiết yếu đối với cuộc sống của mỗi con người. V&agrave; trong thời đại c&ocirc;ng nghệ số đang dần bao phủ khắp x&atilde; hội, việc trang bị mạng lưới internet phủ s&oacute;ng khắp t&ograve;a nh&agrave; ch&iacute;nh l&agrave; điều kh&ocirc;ng thể thiếu v&agrave; DQD Building cũng kh&ocirc;ng ngoại lệ. V&agrave; tất cả chi phi từ lắp đặt internet cho đến sử dụng đều ho&agrave;n to&agrave;n miễn ph&iacute;.</p>\r\n\r\n<p>Hơn nữa, điện thoại b&agrave;n lu&ocirc;n được giữ kết nối sẽ đảm bảo được li&ecirc;n lạc th&ocirc;ng suốt d&ugrave; bạn đang ở bất k&igrave; nơi đ&acirc;u trong t&ograve;a nh&agrave; đi chăng nữa. Hệ thống b&aacute;o ch&aacute;y, b&aacute;o kh&oacute;i tự động c&ugrave;ng bảo vệ v&agrave; hệ thống camera hoạt động li&ecirc;n tục sẽ gi&uacute;p giữ an to&agrave;n cho bạn một c&aacute;ch tuyệt đối.</p>\r\n\r\n<p>Với qu&aacute; nhiều ưu điểm như vậy, thật đ&aacute;ng tiếc nếu bạn bỏ lỡ qua DQD Building đ&uacute;ng kh&ocirc;ng n&agrave;o? H&atilde;y li&ecirc;n lạc ngay với ch&uacute;ng t&ocirc;i để c&oacute; được cho m&igrave;nh một văn ph&ograve;ng l&agrave;m việc c&oacute; mức gi&aacute; hợp l&yacute;, vị tr&iacute; thuận lợi v&agrave; kh&ocirc;ng gian l&yacute; tưởng, tr&agrave;n đầy cảm hứng nh&eacute;!</p>\r\n', '11$/m2', 'toa-nha-dqd-building.jpg', 'toa-nha-dqd-building', 1, 'admin', '2019-11-27 23:33:41.898109'),
+(5, 'Chung Cư Idic', 2, '50, 150, 300, 450, 615 m2', 1, 'C', '', 1, 23, 305, 6727, '<h4>GIỚI THIỆU T&Ograve;A NH&Agrave; CHUNG CƯ IDICO</h4>\r\n\r\n<p>Chung cư&nbsp;<strong><a href=\"https://cyberreal.vn/van-phong-cho-thue/chung-cu-idico.html\">Idico</a></strong>&nbsp;T&acirc;n Ph&uacute; hay c&ograve;n được gọi l&agrave; Cao ốc Idico Lũy B&aacute;n B&iacute;ch, Idico Building, l&agrave; t&ograve;a cao ốc thuộc chuỗi cao ốc cho thu&ecirc; văn ph&ograve;ng nằm tr&ecirc;n đường Lũy B&aacute;n B&iacute;ch.</p>\r\n\r\n<p>Được xếp hạng C, Chung cư Idico T&acirc;n Ph&uacute;&nbsp;<strong><a href=\"https://cyberreal.vn/van-phong-cho-thue/quan-tan-phu\">thu&ecirc; văn ph&ograve;ng quận T&acirc;n Ph&uacute;</a></strong>&nbsp;chắc chắn sẽ mang đến cho người sử dụng những kh&ocirc;ng gian l&agrave;m việc tuyệt vời khi so s&aacute;nh với mặt bằng chung những t&ograve;a nh&agrave; kh&aacute;c hiện nay tr&ecirc;n địa b&agrave;n. Hơn nữa, với ưu điểm đến từ vị tr&iacute; của t&ograve;a nh&agrave; khi tọa lạc tại đường Lũy B&aacute;n B&iacute;ch, Phường H&ograve;a Thạnh, Quận T&acirc;n Ph&uacute;, người sử dụng cũng sẽ c&oacute; được sự thuận lợi tuyệt đối khi di chuyển đến văn ph&ograve;ng l&agrave;m việc.</p>\r\n', '<h4>VỊ TR&Iacute; T&Ograve;A NH&Agrave; CHUNG CƯ IDICO</h4>\r\n\r\n<p>Chung cư Idico T&acirc;n Ph&uacute; tọa lạc tại mặt tiền đường Lũy B&aacute;n B&iacute;ch. Đường Lũy B&aacute;n B&iacute;ch vốn l&agrave; tuyến đường quan trọng Quận T&acirc;n Ph&uacute;, từ con đường n&agrave;y đến c&aacute;c khu vực kh&aacute;c v&ocirc; c&ugrave;ng thuận tiện cho việc di chuyển. Tuyến đường tiếp gi&aacute;p với những con đường quan trọng kh&aacute;c như T&acirc;n H&oacute;a v&agrave; &Acirc;u Cơ. Từ vị tr&iacute; n&agrave;y, bạn c&oacute; thể di chuyển nhanh ch&oacute;ng qua 2 quận l&agrave; B&igrave;nh T&acirc;n v&agrave; T&acirc;n B&igrave;nh. Hơn thế nữa, mật độ lưu th&ocirc;ng tại tuyến đường n&agrave;y cũng kh&ocirc;ng cao, đường kh&aacute; y&ecirc;n tĩnh n&ecirc;n t&igrave;nh trạng &ugrave;n tắc kh&oacute; m&agrave; xảy ra được tại đ&acirc;y.</p>\r\n\r\n<ul>\r\n	<li>Chỉ c&aacute;ch Vietcombank T&acirc;n B&igrave;nh 300m.</li>\r\n	<li>C&aacute;ch trạm y tế Phường Hiệp T&acirc;n 350m.</li>\r\n	<li>Gần C&ocirc;ng vi&ecirc;n Văn h&oacute;a Đầm Sen, chỉ c&aacute;ch 600m.</li>\r\n	<li>C&aacute;ch UBND Phường H&ograve;a Thạnh chỉ 1.3 km.</li>\r\n	<li>Trong khu vực c&oacute; rất nhiều trụ sở giao dịch của những ng&acirc;n h&agrave;ng lớn như Vietcombank, Techcombank, BIDV,&hellip;</li>\r\n	<li>C&oacute; đầy đủ c&aacute;c tiện &iacute;ch phục vụ đối tượng d&acirc;n văn ph&ograve;ng xung quanh cao ốc.</li>\r\n</ul>\r\n', '<h4>KẾT CẤU T&Ograve;A NH&Agrave; CHUNG CƯ IDICO</h4>\r\n\r\n<p>Với xếp hạng C, Chung cư Idico T&acirc;n Ph&uacute; c&oacute; kết cấu hiện đại v&agrave; bố cục ph&ugrave; hợp tạo n&ecirc;n kh&ocirc;ng gian tho&aacute;ng đ&atilde;ng, l&yacute; tưởng gi&uacute;p mọi người c&oacute; được một m&ocirc;i trường tốt nhất để l&agrave;m việc.</p>\r\n\r\n<ul>\r\n	<li>Nh&acirc;n vi&ecirc;n sẽ c&oacute; được 2 tầng hầm sử dụng l&agrave;m b&atilde;i đỗ xe cho cả xe m&aacute;y v&agrave; xe &ocirc; t&ocirc; rộng r&atilde;i.</li>\r\n	<li>Tầng trệt được sử dụng nhằm mục đ&iacute;ch cho thu&ecirc; văn ph&ograve;ng.</li>\r\n	<li>20 tầng cao được sử dụng l&agrave;m căn hộ.</li>\r\n	<li>Gồm c&oacute; 4 thang m&aacute;y phục vụ nhu cầu di chuyển v&agrave; k&egrave;m theo 2 thang bộ.</li>\r\n	<li>Mỗi tầng c&oacute; 2 nh&agrave; vệ sinh nam v&agrave; nh&agrave; vệ sinh nữ ri&ecirc;ng biệt.</li>\r\n</ul>\r\n', '<h4>PH&Iacute; DỊCH VỤ BAO GỒM</h4>\r\n\r\n<ul>\r\n	<li>Hệ thống điều h&ograve;a, m&aacute;y th&ocirc;ng gi&oacute; được sử dụng để phục vụ ở những khu vực chung v&agrave;o c&aacute;c khung giờ l&agrave;m việc trong ng&agrave;y (trừ ng&agrave;y Chủ Nhật).</li>\r\n	<li>C&aacute;c khoản lương cho quản l&yacute; v&agrave; những nh&acirc;n vi&ecirc;n trong t&ograve;a nh&agrave;.</li>\r\n	<li>Ph&iacute; vệ sinh t&ograve;a nh&agrave; v&agrave; những khu vực c&ocirc;ng cộng, dọn vệ sinh cho nh&agrave; vệ sinh nam v&agrave; nữ ở mỗi tầng ri&ecirc;ng biệt.</li>\r\n	<li>Ph&iacute; cho nh&acirc;n vi&ecirc;n thu dọn r&aacute;c.</li>\r\n	<li>Duy tr&igrave; hoạt động của bảo vệ 24/7</li>\r\n	<li>Xịt thuốc diệt c&aacute;c loại mầm mống, g&acirc;y hại v&agrave; bệnh tật đến sức khỏe con người theo định k&igrave;.</li>\r\n	<li>C&aacute;c dịch vụ ri&ecirc;ng cho thang m&aacute;y.</li>\r\n	<li>Điện dự ph&ograve;ng d&agrave;nh cho hệ thống m&aacute;y ph&aacute;t điện c&ugrave;ng to&agrave;n bộ hệ thống điện tự động.</li>\r\n	<li>Duy tr&igrave; nguồn s&aacute;ng ở những nơi c&ocirc;ng cộng v&agrave; nơi để xe.</li>\r\n	<li>Cung cấp nước sinh hoạt cho hoạt động trong t&ograve;a nh&agrave;.</li>\r\n	<li>Vệ sinh, bảo dưỡng bề mặt b&ecirc;n ngo&agrave;i của t&ograve;a nh&agrave; cho thu&ecirc;.</li>\r\n	<li>Ph&iacute; xử l&yacute; c&aacute;c loại r&aacute;c thải hằng ng&agrave;y cũng như nước sau qu&aacute; tr&igrave;nh sinh hoạt.</li>\r\n	<li>Ph&iacute; duy tr&igrave; c&aacute;c hoạt động bảo dưỡng, bảo tr&igrave; những trang thiết bị, m&aacute;y m&oacute;c chung được trang bị trong t&ograve;a nh&agrave;.</li>\r\n</ul>\r\n', '<h4>ƯU ĐIỂM T&Ograve;A NH&Agrave; CHUNG CƯ IDICO</h4>\r\n\r\n<p>Với t&igrave;nh trạng x&atilde; hội phức tạp như hiện nay, điều đầu ti&ecirc;n người thu&ecirc; văn ph&ograve;ng ch&uacute; &yacute; ch&iacute;nh l&agrave; những yếu tố li&ecirc;n quan đến việc đảm bảo an ninh tại t&ograve;a nh&agrave;. Hiểu được tầm quan trọng của điều n&agrave;y, Chung cư Idico T&acirc;n Ph&uacute; đ&atilde; bố tr&iacute; bảo vệ lu&ocirc;n t&uacute;c trực 24/7 v&agrave; hệ thống camera gi&aacute;m s&aacute;t cả ng&agrave;y lẫn đ&ecirc;m. Hơn nữa, hệ thống PCCC tự động như b&aacute;o ch&aacute;y, b&aacute;o kh&oacute;i tự động đạt mức ti&ecirc;u chuẩn k&egrave;m thang tho&aacute;t hiểm c&oacute; tại mỗi tầng sẽ đem đến cho bạn sự an t&acirc;m khi gửi gắm niềm tin.</p>\r\n\r\n<p>Mặt kh&aacute;c, để c&oacute; thể hỗ trợ mọi người l&agrave;m việc hết năng suất, kh&ocirc;ng gặp phải bất cứ cản trở n&agrave;o, Chung cư Idico T&acirc;n Ph&uacute; đ&atilde; lắp đặt mạng lưới internet phủ s&oacute;ng khắp t&ograve;a nh&agrave; ho&agrave;n to&agrave;n miễn ph&iacute;, k&egrave;m theo đ&oacute; l&agrave; m&aacute;y ph&aacute;t điện dự ph&ograve;ng c&ocirc;ng suất lớn nhằm đề ph&ograve;ng những trường hợp xấu c&oacute; thể xảy ra.</p>\r\n\r\n<p>Ngo&agrave;i ra, hầm đậu xe rộng r&atilde;i l&agrave; một điểm cộng lớn, đ&aacute;p ứng được hầu hết mọi nhu cầu của nh&acirc;n vi&ecirc;n văn ph&ograve;ng. Vị tr&iacute; gần chợ, bệnh viện cũng như trường học cũng l&agrave; một ưu điểm khiến bạn kh&ocirc;ng thể bỏ qua Chung cư Idico T&acirc;n Ph&uacute;.</p>\r\n', ' 7$/m2', 'chung-cu-idic.jpg', 'chung-cu-idic', 1, 'admin', '2019-11-27 23:55:27.703788'),
+(6, 'Tòa Nhà CBL Building', 2, '130, 260, 339 m2', 1, 'C', '', 1, 23, 312, 6727, '<h4>GIỚI THIỆU T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; CBL BUILDING</h4>\r\n\r\n<p><strong><a href=\"https://cyberreal.vn/van-phong-cho-thue/toa-nha-cbl-building.html\">CBL Building</a></strong>&nbsp;l&agrave; văn ph&ograve;ng cho thu&ecirc; c&oacute; mặt trước được thiết kế từ kiếng, t&ograve;a nh&agrave; tạo cho người nh&igrave;n một cảm gi&aacute;c v&ocirc; c&ugrave;ng hiện đại v&agrave; m&aacute;t mẻ. Cao ốc n&agrave;y c&ograve;n c&oacute; những t&ecirc;n gọi kh&aacute;c như T&ograve;a nh&agrave; CBL, Lũy B&aacute;n B&iacute;ch Building.</p>\r\n\r\n<p>Vị tr&iacute; xếp hạng l&ecirc;n đến loại C+, CBL Building với mức&nbsp;<strong><a href=\"https://cyberreal.vn/van-phong-cho-thue/quan-tan-phu\">gi&aacute; thu&ecirc; văn ph&ograve;ng quận T&acirc;n Ph&uacute;</a></strong>&nbsp;gi&aacute; rẻ chắc chắn sẽ cung cấp một m&ocirc;i trường l&agrave;m việc thoải m&aacute;i cho c&aacute;c doanh nghiệp từ trong nước cho đến ngo&agrave;i nước. Hơn nữa, một ưu điểm kh&aacute;c của cao ốc n&agrave;y l&agrave; việc tọa lạc mặt tiền đường Lũy B&aacute;n B&iacute;ch vốn l&agrave; đường 2 chiều, l&agrave; 1 trong những tuyến đường trọng yếu của khu vực.</p>\r\n', '<h4>VỊ TR&Iacute; T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; CBL BUILDING</h4>\r\n\r\n<p>Đường Lũy B&aacute;n B&iacute;ch vốn l&agrave; tuyến đường quan trọng Quận T&acirc;n Ph&uacute;, từ con đường n&agrave;y đến c&aacute;c khu vực kh&aacute;c v&ocirc; c&ugrave;ng thuận tiện cho việc di chuyển. Tuyến đường tiếp gi&aacute;p với những con đường quan trọng kh&aacute;c như T&acirc;n H&oacute;a v&agrave; &Acirc;u Cơ. Từ vị tr&iacute; n&agrave;y, bạn c&oacute; thể di chuyển nhanh ch&oacute;ng qua 2 quận l&agrave; B&igrave;nh T&acirc;n v&agrave; T&acirc;n B&igrave;nh. Hơn thế nữa, mật độ lưu th&ocirc;ng tại tuyến đường n&agrave;y cũng kh&ocirc;ng cao, đường kh&aacute; y&ecirc;n tĩnh n&ecirc;n bạn cũng kh&ocirc;ng cần lo lắng vấn đề kẹt xe đ&acirc;u nh&eacute;!</p>\r\n\r\n<p>Chi tiết vị tr&iacute; của CBL Building như sau:</p>\r\n\r\n<ul>\r\n	<li>Chỉ c&aacute;ch C&acirc;y xăng Lũy B&aacute;n B&iacute;ch 220m.</li>\r\n	<li>Khoảng c&aacute;ch đến Chợ T&acirc;n Ph&uacute; chỉ 350</li>\r\n	<li>C&aacute;ch UBND Phường T&acirc;n Th&agrave;nh 600m.</li>\r\n	<li>Khoảng c&aacute;ch đến C&ocirc;ng an Phường T&acirc;n Th&agrave;nh l&agrave; 850m.</li>\r\n	<li>C&aacute;ch Chi cục thuế Quận T&acirc;n Ph&uacute; 900m.</li>\r\n	<li>Xung quanh c&oacute; rất nhiều qu&aacute;n nước cũng như qu&aacute;n ăn đ&aacute;p ứng cho d&acirc;n văn ph&ograve;ng nghỉ ngơi sau khi l&agrave;m việc.</li>\r\n</ul>\r\n', '<h4>KẾT CẤU T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; CBL BUILDING</h4>\r\n\r\n<p>Được xếp hạng kh&aacute; cao l&agrave; C+, CBL Building chắc chắn sẽ đem đến cho bạn những kh&ocirc;ng gian l&agrave;m việc tho&aacute;ng đ&atilde;ng.</p>\r\n\r\n<ul>\r\n	<li>C&oacute; 1 tầng hầm rộng r&atilde;i phục vụ nhu cầu đỗ xe m&aacute;y lẫn xe &ocirc; t&ocirc; cho nh&acirc;n vi&ecirc;n l&agrave;m việc.</li>\r\n	<li>Sảnh lễ t&acirc;n được đặt tại tầng trệt.</li>\r\n	<li>C&oacute; đến tận 6 tầng d&ugrave;ng để cho thu&ecirc; văn ph&ograve;ng.</li>\r\n	<li>T&ograve;a nh&agrave; được trang bị 1 thang m&aacute;y nhằm đ&aacute;p ứng nhu cầu đi lại v&agrave; k&egrave;m theo 1 thang bộ.</li>\r\n	<li>Mỗi tầng đều c&oacute; nh&agrave; vệ sinh nam v&agrave; nữ ri&ecirc;ng biệt.</li>\r\n</ul>\r\n', '<h4>PH&Iacute; DỊCH VỤ BAO GỒM</h4>\r\n\r\n<ul>\r\n	<li>Hệ thống điều h&ograve;a, m&aacute;y th&ocirc;ng gi&oacute; được sử dụng để phục vụ ở những khu vực chung v&agrave;o c&aacute;c khung giờ l&agrave;m việc trong ng&agrave;y (trừ ng&agrave;y Chủ Nhật).</li>\r\n	<li>C&aacute;c khoản lương cho quản l&yacute; v&agrave; những nh&acirc;n vi&ecirc;n trong t&ograve;a nh&agrave;.</li>\r\n	<li>Ph&iacute; vệ sinh t&ograve;a nh&agrave; v&agrave; những khu vực c&ocirc;ng cộng, dọn vệ sinh cho nh&agrave; vệ sinh nam v&agrave; nữ ở mỗi tầng ri&ecirc;ng biệt.</li>\r\n	<li>Ph&iacute; cho nh&acirc;n vi&ecirc;n thu dọn r&aacute;c.</li>\r\n	<li>Duy tr&igrave; hoạt động của bảo vệ 24/7</li>\r\n	<li>Xịt thuốc diệt c&aacute;c loại mầm mống, g&acirc;y hại v&agrave; bệnh tật đến sức khỏe con người theo định k&igrave;.</li>\r\n	<li>C&aacute;c dịch vụ ri&ecirc;ng cho thang m&aacute;y.</li>\r\n	<li>Điện dự ph&ograve;ng d&agrave;nh cho hệ thống m&aacute;y ph&aacute;t điện c&ugrave;ng to&agrave;n bộ hệ thống điện tự động.</li>\r\n	<li>Duy tr&igrave; nguồn s&aacute;ng ở những nơi c&ocirc;ng cộng v&agrave; nơi để xe.</li>\r\n	<li>Cung cấp nước sinh hoạt cho hoạt động trong t&ograve;a nh&agrave;.</li>\r\n	<li>Vệ sinh, bảo dưỡng bề mặt b&ecirc;n ngo&agrave;i của t&ograve;a nh&agrave; cho thu&ecirc;.</li>\r\n	<li>Ph&iacute; xử l&yacute; c&aacute;c loại r&aacute;c thải hằng ng&agrave;y cũng như nước sau qu&aacute; tr&igrave;nh sinh hoạt.</li>\r\n	<li>Ph&iacute; duy tr&igrave; c&aacute;c hoạt động bảo dưỡng, bảo tr&igrave; những trang thiết bị, m&aacute;y m&oacute;c chung được trang bị trong t&ograve;a nh&agrave;.</li>\r\n</ul>\r\n', '<h4>ƯU ĐIỂM T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; CBL BUILDING</h4>\r\n\r\n<p>B&ecirc;n cạnh những ưu điểm về vị tr&iacute; v&agrave; kết cấu th&igrave; CBL Building cũng c&oacute; những tiện &iacute;ch kh&aacute;c k&egrave;m theo.</p>\r\n\r\n<ul>\r\n	<li>Địa điểm gần chợ, bệnh viện v&agrave; trường học, thuận tiện cho những nh&acirc;n vi&ecirc;n c&oacute; con nhỏ.</li>\r\n	<li>Hầm đậu xe rộng r&atilde;i, lu&ocirc;n c&oacute; người tr&ocirc;ng coi.</li>\r\n	<li>Internetmiễn ph&iacute; lu&ocirc;n phủ s&oacute;ng khắp t&ograve;a, d&ugrave; bạn c&oacute; l&agrave;m việc tại tầng n&agrave;o th&igrave; tốc độ vẫn lu&ocirc;n được tối ưu nhất. T&igrave;nh trạng chờ đợi l&atilde;ng ph&iacute; thời gian v&igrave; mạng chậm sẽ kh&ocirc;ng diễn ra tại nơi n&agrave;y.</li>\r\n	<li>Điện thoại b&agrave;n lu&ocirc;n được kết nối thuận lợi.</li>\r\n	<li>Lễ t&acirc;n tại tầng trệt, đ&oacute;n kh&aacute;ch thuận tiện.</li>\r\n	<li>Bảo vệ lu&ocirc;n hoạt động 24/7, hệ thống camera tối t&acirc;n nhằm giữ an ninh t&ograve;a nh&agrave; an to&agrave;n.</li>\r\n	<li>Để ngăn ngừa những bất tiện khi mất điện đột ngột, t&ograve;a nh&agrave; trang bị m&aacute;y ph&aacute;t điện dự ph&ograve;ng..</li>\r\n	<li>Đối với những t&ograve;a nh&agrave; cao tầng th&igrave; hệ thống PCCC phải được ưu ti&ecirc;n ho&agrave;n thiện một c&aacute;ch tốt nhất v&agrave; CBL Building cũng kh&ocirc;ng ngoại lệ. Đặc biệt, t&ograve;a nh&agrave; c&ograve;n trang bị cả hệ thống b&aacute;o ch&aacute;y v&agrave; b&aacute;o kh&oacute;i tự động.</li>\r\n</ul>\r\n\r\n<p>C&ograve;n đợi chờ g&igrave; m&agrave; bạn kh&ocirc;ng li&ecirc;n lạc ngay với ch&uacute;ng t&ocirc;i để c&oacute; được văn ph&ograve;ng ngay tại t&ograve;a nh&agrave; CBL Building l&yacute; tưởng n&agrave;y nhỉ? Ch&uacute;ng t&ocirc;i đảm bảo rằng mọi tư vấn v&agrave; dịch vụ kh&aacute;c đều sẽ được miễn ph&iacute;, kh&ocirc;ng ph&aacute;t sinh th&ecirc;m bất cứ khoản tiền n&agrave;o.</p>\r\n', '10$/m2', 'toa-nha-cbl-building.jpg', 'toa-nha-cbl-building', 1, 'admin', '2019-11-27 23:57:19.477799'),
+(7, 'Tòa Nhà Casanova Building', 2, '15, 30, 45, 60, 75 m2', 1, 'C', '', 1, 23, 306, 6765, '<h4>GIỚI THIỆU T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; CASANOVA BUILDING</h4>\r\n\r\n<p>Khi nh&igrave;n v&agrave;o&nbsp;<strong><a href=\"https://cyberreal.vn/van-phong-cho-thue/toa-nha-casanova-building.html\">Casanova Building</a></strong>&nbsp;(hay c&ograve;n gọi l&agrave; Thuận Anh Officetel, t&ograve;a nh&agrave; Casanova), điều đầu ti&ecirc;n l&agrave;m kh&aacute;ch h&agrave;ng ấn tượng nhất ch&iacute;nh l&agrave; vẻ ngo&agrave;i cực k&igrave; tao nh&atilde; của t&ograve;a nh&agrave; n&agrave;y. Chọn gam m&agrave;u chủ đạo ch&iacute;nh l&agrave; m&agrave;u trắng v&agrave; n&acirc;u, t&ograve;a nh&agrave; tạo cho người nh&igrave;n một cảm gi&aacute;c v&ocirc; c&ugrave;ng an to&agrave;n, vững chắc nhưng cũng kh&ocirc;ng k&eacute;m phần hiện đại, sang trọng.</p>\r\n\r\n<p>Nằm tại vị tr&iacute; đắc địa mặt tiền đường Nguyễn Sơn, Phường Ph&uacute; Thạnh, Quận T&acirc;n Ph&uacute; - một trong những trục giao th&ocirc;ng ch&iacute;nh trong khu vực, Casanova Building&nbsp;<strong><a href=\"https://cyberreal.vn/van-phong-cho-thue/quan-tan-phu\">văn ph&ograve;ng gi&aacute; rẻ quận T&acirc;n Ph&uacute;</a></strong>&nbsp;ch&iacute;nh l&agrave; lựa chọn l&yacute; tưởng cho những ai c&oacute; nhu cầu.</p>\r\n\r\n<p>Ngo&agrave;i ra, diện t&iacute;ch cho thu&ecirc; cũng v&ocirc; c&ugrave;ng đa dạng, dao động từ 15 đến 75 m2, rất th&iacute;ch hợp cho những doanh nghiệp vừa v&agrave; nhỏ.</p>\r\n', '<h4>VỊ TR&Iacute; T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; CASANOVA BUILDING</h4>\r\n\r\n<p>Đường Nguyễn Sơn ch&iacute;nh l&agrave; con đường cực k&igrave; quan trọng tại Quận T&acirc;n Ph&uacute;. Con đường n&agrave;y tiếp gi&aacute;p với những tuyến đường quan trọng kh&aacute;c như Thoại Ngọc Hầu v&agrave; B&igrave;nh Long. Từ đ&acirc;y, bạn c&oacute; thể dễ d&agrave;ng đi đến những địa điểm kh&aacute;c ở c&aacute;c quận B&igrave;nh T&acirc;n v&agrave; T&acirc;n B&igrave;nh.</p>\r\n\r\n<p>Casanova Building tọa lạc tại đường Nguyễn Sơn n&ecirc;n t&igrave;nh trạng kẹt xe hầu như kh&ocirc;ng xảy ra d&ugrave; trong thời gian cao điểm đi chăng nữa. V&igrave; đ&acirc;y l&agrave; tuyến đường c&oacute; mật độ lưu th&ocirc;ng kh&ocirc;ng nhiều, kh&aacute; y&ecirc;n tĩnh. Người l&agrave;m việc tại t&ograve;a nh&agrave; n&agrave;y sẽ kh&ocirc;ng phải lo lắng qu&aacute; nhiều về t&igrave;nh trạng giao th&ocirc;ng mỗi khi đi l&agrave;m hoặc l&agrave;m về. Do đ&oacute;, đ&acirc;y ch&iacute;nh l&agrave; ưu điểm cực k&igrave; lớn của Casanova Building.</p>\r\n\r\n<p>Hơn nữa, cao ốc c&ograve;n gần rất nhiều địa điểm kh&aacute;c thuận tiện cho việc di chuyển.</p>\r\n\r\n<ul>\r\n	<li>Khoảng c&aacute;ch đến Trường Mầm Non Việt Mỹ chỉ vỏn vẹn 42</li>\r\n	<li>Khoảng c&aacute;ch đến Si&ecirc;u thi BigC l&agrave; 1</li>\r\n	<li>Chỉ c&aacute;ch Trạm y tế Phường Ph&uacute; Thạnh 3</li>\r\n	<li>C&aacute;ch Văn ph&ograve;ng c&ocirc;ng chứng T&acirc;n Ph&uacute; 750m.</li>\r\n	<li>Khu vực l&acirc;n cận xung quanh c&oacute; rất nhiều qu&aacute;n ăn, qu&aacute;n nước giải kh&aacute;t cho giới văn ph&ograve;ng l&agrave;m việc gần đ&oacute;.</li>\r\n</ul>\r\n', '<h4>KẾT CẤU T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; CASANOVA BUILDING</h4>\r\n\r\n<p>Được xếp hạng C, Ng&ocirc; Han Building hứa hẹn sẽ cung cấp cho bạn một kh&ocirc;ng gian v&ocirc; c&ugrave;ng l&yacute; tưởng với kết cấu ph&ugrave; hợp với m&ocirc;i trường c&ocirc;ng sở chuy&ecirc;n nghiệp.</p>\r\n\r\n<ul>\r\n	<li>Sảnh lễ t&acirc;n được đặt ngay tại tầng trệt, thuận tiện cho việc tiếp kh&aacute;ch.</li>\r\n	<li>1 tầng lửng tho&aacute;ng đ&atilde;ng.</li>\r\n	<li>C&oacute; 5 tầng cao được sử dụng với mục đ&iacute;ch ch&iacute;nh cho thu&ecirc; văn ph&ograve;ng.</li>\r\n	<li>S&acirc;n thượng của t&ograve;a nh&agrave; d&ugrave;ng l&agrave;m qu&aacute;n Caf&eacute; văn ph&ograve;ng, nh&acirc;n vi&ecirc;n l&agrave;m việc tại đ&acirc;y sẽ c&oacute; được một nơi giải tr&iacute; m&agrave; kh&ocirc;ng cần phải đi qu&aacute; xa.</li>\r\n	<li>C&oacute; 1 thang m&aacute;y v&agrave; k&egrave;m cả 1 thang bộ, đảm bảo nhu cầu đi lại cho tất cả mọi người.</li>\r\n	<li>Tại mỗi tầng đều c&oacute; 2 nh&agrave; vệ sinh nam v&agrave; nữ ri&ecirc;ng biệt.</li>\r\n</ul>\r\n', '<h4>PH&Iacute; DỊCH VỤ BAO GỒM</h4>\r\n\r\n<ul>\r\n	<li>Hệ thống điều h&ograve;a, m&aacute;y th&ocirc;ng gi&oacute; được sử dụng để phục vụ ở những khu vực chung v&agrave;o c&aacute;c khung giờ l&agrave;m việc trong ng&agrave;y (trừ ng&agrave;y Chủ Nhật).</li>\r\n	<li>C&aacute;c khoản lương cho quản l&yacute; v&agrave; những nh&acirc;n vi&ecirc;n trong t&ograve;a nh&agrave;.</li>\r\n	<li>Ph&iacute; vệ sinh t&ograve;a nh&agrave; v&agrave; những khu vực c&ocirc;ng cộng, dọn vệ sinh cho nh&agrave; vệ sinh nam v&agrave; nữ ở mỗi tầng ri&ecirc;ng biệt.</li>\r\n	<li>Ph&iacute; cho nh&acirc;n vi&ecirc;n thu dọn r&aacute;c.</li>\r\n	<li>Duy tr&igrave; hoạt động của bảo vệ 24/7</li>\r\n	<li>Xịt thuốc diệt c&aacute;c loại mầm mống, g&acirc;y hại v&agrave; bệnh tật đến sức khỏe con người theo định k&igrave;.</li>\r\n	<li>C&aacute;c dịch vụ ri&ecirc;ng cho thang m&aacute;y.</li>\r\n	<li>Điện dự ph&ograve;ng d&agrave;nh cho hệ thống m&aacute;y ph&aacute;t điện c&ugrave;ng to&agrave;n bộ hệ thống điện tự động.</li>\r\n	<li>Duy tr&igrave; nguồn s&aacute;ng ở những nơi c&ocirc;ng cộng v&agrave; nơi để xe.</li>\r\n	<li>Cung cấp nước sinh hoạt cho hoạt động trong t&ograve;a nh&agrave;.</li>\r\n	<li>Vệ sinh, bảo dưỡng bề mặt b&ecirc;n ngo&agrave;i của t&ograve;a nh&agrave; cho thu&ecirc;.</li>\r\n	<li>Ph&iacute; xử l&yacute; c&aacute;c loại r&aacute;c thải hằng ng&agrave;y cũng như nước sau qu&aacute; tr&igrave;nh sinh hoạt.</li>\r\n	<li>Ph&iacute; duy tr&igrave; c&aacute;c hoạt động bảo dưỡng, bảo tr&igrave; những trang thiết bị, m&aacute;y m&oacute;c chung được trang bị trong t&ograve;a nh&agrave;.</li>\r\n</ul>\r\n', '<h4>ƯU ĐIỂM T&Ograve;A NH&Agrave; T&Ograve;A NH&Agrave; CASANOVA BUILDING</h4>\r\n\r\n<p>Với thực trạng nhiều t&ograve;a nh&agrave; cho thu&ecirc; văn ph&ograve;ng mọc l&ecirc;n như hiện nay, t&igrave;m được một t&ograve;a nh&agrave; chất lượng v&agrave; c&oacute; đầy đủ c&aacute;c tiện &iacute;ch vốn l&agrave; vấn đề kh&ocirc;ng hề đơn giản một ch&uacute;t n&agrave;o. Tuy nhi&ecirc;n, Casanova Building đ&atilde; xuất hiện v&agrave; đ&aacute;p ứng tất cả nhu cầu của bạn một c&aacute;ch tuyệt vời nhất.</p>\r\n\r\n<ul>\r\n	<li>Gần chợ, gần bệnh viện v&agrave; cả trường học, thuận tiện cho việc đưa đ&oacute;n con nhỏ sau những giờ l&agrave;m việc.</li>\r\n	<li>T&ograve;a nh&agrave; lu&ocirc;n c&oacute; Internet miễn ph&iacute; phủ s&oacute;ng.</li>\r\n	<li>M&aacute;y ph&aacute;t điện dự ph&ograve;ng nhằm ph&ograve;ng ngừa trường hợp mất điện đột ngột.</li>\r\n	<li>C&oacute; sẵn ph&ograve;ng họp lớn, nhỏ trang bị đầy đủ những thiết bị hiện đại cần thiết trong c&aacute;c cuộc họp.</li>\r\n	<li>Bảo vệ lu&ocirc;n hoạt động 24/7 nhằm giữ an ninh t&ograve;a nh&agrave; một c&aacute;ch tốt nhất.</li>\r\n	<li>Nh&acirc;n vi&ecirc;n vệ sinh c&ocirc;ng cộng lu&ocirc;n l&agrave;m việc 24/7, đảm bảo cho t&ograve;a nh&agrave; lu&ocirc;n được sạch sẽ, tho&aacute;ng m&aacute;t.</li>\r\n	<li>Hệ thống PCCC đạt chuẩn, mang đến cho bạn niềm tin tuyệt đối khi c&oacute; hệ thống b&aacute;o ch&aacute;y, b&aacute;o kh&oacute;i tự động.</li>\r\n	<li>Văn ph&ograve;ng tại đ&acirc;y lu&ocirc;n được trang bị sẵn b&agrave;n ghế để l&agrave;m việc đầy đủ.</li>\r\n	<li>Thang m&aacute;y tốc độ cao, đảm bảo tốc độ di chuyển cho nh&acirc;n vi&ecirc;n.</li>\r\n</ul>\r\n\r\n<p>Những ưu điểm tuyệt vời n&agrave;y cũng như vị tr&iacute; đắc địa, kết cấu ph&ugrave; hợp với m&ocirc;i trường c&ocirc;ng sở ch&iacute;nh l&agrave; điều m&agrave; mọi kh&aacute;ch h&agrave;ng c&oacute; nhu cầu thu&ecirc; văn ph&ograve;ng đều mong muốn sở hữu được. Do đ&oacute;, sẽ thật thiếu s&oacute;t v&agrave; đ&aacute;ng tiếc nếu bạn bỏ qua Casanova Building. H&atilde;y li&ecirc;n lạc ngay với ch&uacute;ng t&ocirc;i để t&igrave;m hiểu th&ecirc;m về cao ốc l&yacute; tưởng n&agrave;y nh&eacute;!</p>\r\n', '12$/m2', 'toa-nha-casanova-building.jpeg', 'toa-nha-casanova-building', 1, 'admin', '2019-11-27 23:59:03.220701');
 
 -- --------------------------------------------------------
 
@@ -7181,8 +7174,8 @@ INSERT INTO `project` (`id`, `_name`, `_province_id`, `_district_id`, `_lat`, `_
 CREATE TABLE `property` (
   `Id` int(11) NOT NULL,
   `Name` varchar(128) CHARACTER SET utf8mb4 NOT NULL,
-  `SortOrder` smallint(6) NOT NULL DEFAULT '0',
-  `NameInput` longtext CHARACTER SET utf8mb4
+  `SortOrder` smallint(6) NOT NULL DEFAULT 0,
+  `NameInput` longtext CHARACTER SET utf8mb4 DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -7208,7 +7201,7 @@ INSERT INTO `property` (`Id`, `Name`, `SortOrder`, `NameInput`) VALUES
 CREATE TABLE `propertyvalue` (
   `Id` int(11) NOT NULL,
   `PropertyId` int(11) NOT NULL,
-  `Value` longtext CHARACTER SET utf8mb4
+  `Value` longtext CHARACTER SET utf8mb4 DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -8138,8 +8131,8 @@ CREATE TABLE `slide` (
   `Order` tinyint(3) UNSIGNED DEFAULT NULL,
   `Title` varchar(256) CHARACTER SET utf8mb4 DEFAULT NULL,
   `Status` tinyint(1) NOT NULL,
-  `Deleted` tinyint(1) NOT NULL DEFAULT '0',
-  `Description` longtext CHARACTER SET utf8mb4
+  `Deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `Description` longtext CHARACTER SET utf8mb4 DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -71521,8 +71514,8 @@ CREATE TABLE `user` (
   `Avatar` varchar(256) CHARACTER SET latin1 DEFAULT NULL,
   `Email` varchar(256) CHARACTER SET latin1 DEFAULT NULL,
   `Phone` varchar(128) CHARACTER SET latin1 DEFAULT NULL,
-  `CreatedDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `IsDeleted` tinyint(1) DEFAULT '0'
+  `CreatedDate` timestamp NULL DEFAULT current_timestamp(),
+  `IsDeleted` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -82892,12 +82885,7 @@ ALTER TABLE `fee`
 -- Indexes for table `imagesproducts`
 --
 ALTER TABLE `imagesproducts`
-<<<<<<< HEAD
   ADD PRIMARY KEY (`Id`);
-=======
-  ADD PRIMARY KEY (`Id`),
-  ADD KEY `IX_ProductId` (`ProductId`);
->>>>>>> c7bdd75669e9f6ed0b8491f53a3fc605cdff7f8c
 
 --
 -- Indexes for table `infoshop`
@@ -82948,172 +82936,26 @@ ALTER TABLE `propertyvalue`
   ADD KEY `IX_PropertyId` (`PropertyId`);
 
 --
--- Indexes for table `propertyvalue_product`
---
-ALTER TABLE `propertyvalue_product`
-  ADD PRIMARY KEY (`ProductId`,`PropertyValueId`),
-<<<<<<< HEAD
-=======
-  ADD KEY `IX_ProductId` (`ProductId`),
->>>>>>> c7bdd75669e9f6ed0b8491f53a3fc605cdff7f8c
-  ADD KEY `IX_PropertyValueId` (`PropertyValueId`);
-
---
--- Indexes for table `role`
---
-ALTER TABLE `role`
-  ADD PRIMARY KEY (`Id`);
-
---
 -- Indexes for table `slide`
 --
 ALTER TABLE `slide`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indexes for table `subscriber`
---
-ALTER TABLE `subscriber`
-  ADD PRIMARY KEY (`Email`(255));
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `userrole`
---
-ALTER TABLE `userrole`
-  ADD PRIMARY KEY (`UserId`,`RoleId`),
-  ADD KEY `IX_UserId` (`UserId`),
-  ADD KEY `IX_RoleId` (`RoleId`),
-  ADD KEY `UserId` (`UserId`),
-  ADD KEY `UserId_2` (`UserId`),
-  ADD KEY `UserId_3` (`UserId`),
-  ADD KEY `RoleId` (`RoleId`),
-  ADD KEY `UserId_4` (`UserId`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `article`
---
-ALTER TABLE `article`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `category`
---
-ALTER TABLE `category`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `direction`
 --
 ALTER TABLE `direction`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
---
--- AUTO_INCREMENT for table `fee`
---
-ALTER TABLE `fee`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `imagesproducts`
---
-ALTER TABLE `imagesproducts`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `mailbox`
---
-ALTER TABLE `mailbox`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
-
-<<<<<<< HEAD
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
-=======
->>>>>>> c7bdd75669e9f6ed0b8491f53a3fc605cdff7f8c
---
--- AUTO_INCREMENT for table `property`
---
-ALTER TABLE `property`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT for table `slide`
---
-ALTER TABLE `slide`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `category`
---
-ALTER TABLE `category`
-  ADD CONSTRAINT `FK_dbo.Category_dbo.Category_ParentId` FOREIGN KEY (`ParentId`) REFERENCES `category` (`Id`) ON DELETE SET NULL ON UPDATE CASCADE;
-<<<<<<< HEAD
-=======
-
---
--- Constraints for table `imagesproducts`
---
-ALTER TABLE `imagesproducts`
-  ADD CONSTRAINT `FK_dbo.ImagesProducts_dbo.Product_ProductId` FOREIGN KEY (`ProductId`) REFERENCES `product` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION;
->>>>>>> c7bdd75669e9f6ed0b8491f53a3fc605cdff7f8c
-
---
--- Constraints for table `product`
---
-ALTER TABLE `product`
-  ADD CONSTRAINT `FK_dbo.Product_dbo.Category_CategoryId` FOREIGN KEY (`CategoryId`) REFERENCES `category` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_product_direction_direction` FOREIGN KEY (`Direction`) REFERENCES `direction` (`Id`) ON DELETE NO ACTION;
-<<<<<<< HEAD
-=======
-
---
--- Constraints for table `product_fee`
---
-ALTER TABLE `product_fee`
-  ADD CONSTRAINT `FK_product_fee_fee_feeId` FOREIGN KEY (`feeId`) REFERENCES `fee` (`Id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_product_fee_product_productId` FOREIGN KEY (`productId`) REFERENCES `product` (`Id`) ON DELETE CASCADE;
->>>>>>> c7bdd75669e9f6ed0b8491f53a3fc605cdff7f8c
-
---
--- Constraints for table `propertyvalue`
---
-ALTER TABLE `propertyvalue`
-  ADD CONSTRAINT `K_dbo.PropertyValue_dbo.Property_PropertyId` FOREIGN KEY (`PropertyId`) REFERENCES `property` (`Id`) ON DELETE CASCADE;
-
---
--- Constraints for table `propertyvalue_product`
---
-ALTER TABLE `propertyvalue_product`
-<<<<<<< HEAD
-=======
-  ADD CONSTRAINT `FK_dbo.PropertyValue_Product_dbo.Product_ProductId` FOREIGN KEY (`ProductId`) REFERENCES `product` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION,
->>>>>>> c7bdd75669e9f6ed0b8491f53a3fc605cdff7f8c
-  ADD CONSTRAINT `FK_dbo.PropertyValue_Product_dbo.PropertyValue_PropertyValueId` FOREIGN KEY (`PropertyValueId`) REFERENCES `propertyvalue` (`Id`) ON DELETE CASCADE;
-
---
--- Constraints for table `userrole`
---
-ALTER TABLE `userrole`
-  ADD CONSTRAINT `FK_dbo.UserRoles_dbo.Roles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_dbo.UserRoles_dbo.Users_UserId` FOREIGN KEY (`UserId`) REFERENCES `user` (`Id`) ON DELETE CASCADE;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

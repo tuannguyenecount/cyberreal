@@ -46,16 +46,6 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="col-md-2">Thuộc chuyên mục</td>
-                                        <td>
-                                            <select required="" class="form-control" name="cat_id">
-                                            <?php foreach($view_data['categories'] as $category) { ?>
-                                                <option <?= isset($cat_id) && $cat_id == $category['id'] ? "selected='selected'" : "" ?> value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
-                                            <?php } ?>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
                                         <td class="col-md-2">Giá bán</td>
                                         <td>
                                             <input type="text" value="<?= isset($_POST['Price']) ? $_POST['Price'] : $view_data['model']['Price']   ?>"  name="Price" class="form-control" />

@@ -1,7 +1,9 @@
 <?php 
     include_once 'model/class.slideManager.php';
-    
-    $slide = new SlideManager();
+    include_once 'model/class.productManager.php';
+
+    $slideManager = new SlideManager();
+    $productManager = new ProductManager();
     switch($action)
     {
 
@@ -11,6 +13,7 @@
             $view_data['view_name'] = "home/index.php";	
 			$view_data['section_styles'] = "home/styles.php";
 			$view_data['section_scripts'] = "home/scripts.php";
+            $view_data['products'] = $productManager->GetList(1);
             break;
         }
         case "contact":

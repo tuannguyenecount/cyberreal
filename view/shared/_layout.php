@@ -8,11 +8,13 @@
         <title><?= $view_data['title'] ?></title>
         <meta name="description" content="Văn phòng cho thuê quận Gò Vấp với gần 5 năm kinh nghiệm : ✅ Giá Rẻ nhất ✅ Báo Giá Nhanh ✅ Nhiều Diện Tích. Cyber Real - Chuyên văn phòng Quận Gò Vấp">
         <link href="<?= base_url ?>/css/style.css?v=1" rel="stylesheet">
+        <link href="<?= base_url ?>/css/custom.css?v=1" rel="stylesheet">
         <link href="<?= base_url ?>/assets/22c734a/css/select2.min.css" rel="stylesheet">
         <link href="<?= base_url ?>/assets/22c734a/css/select2-addl.min.css" rel="stylesheet">
         <link href="<?= base_url ?>/assets/22c734a/css/select2-krajee-bs4.min.css" rel="stylesheet">
         <link href="<?= base_url ?>/assets/fc340a4a/css/kv-widgets.min.css" rel="stylesheet">
         <link href="<?= base_url ?>/assets/a1ef791c/css/dependent-dropdown.min.css" rel="stylesheet">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
         <?php
         if (isset($view_data['section_styles'])) {
             include 'view/' . $view_data['section_styles'];
@@ -108,7 +110,7 @@
                         <ul class="navbar-nav navbar-right">
                             <li class="nav-item">
                                 <a class="nav-link" href="/ki-gui">
-                                    <span class="btn btn-warning btn-sm btn-with-ico text-white font-weight-bold"><i class="icon-star"></i> Kí gửi</span>
+                                    <span class="btn btn-warning btn-sm btn-with-ico text-white font-weight-bold"><i class="fa fa-star"></i> Kí gửi</span>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -131,7 +133,7 @@
                     <div class="row">
                         <div class="col text-center">
                             <div class="btn-frame">
-                                <a data-scroll href="#top" class="btn btn-primary btn-ico btn-lg btn-rounded"><i class="icon-arrow-up2 fs-22"></i></a>
+                                <a data-scroll href="#top" class="btn btn-success btn-ico btn-lg btn-rounded"><i class="icon-arrow-up2 fs-22"></i></a>
                             </div>
                         </div>
                     </div>
@@ -272,10 +274,65 @@
         <script src="<?= base_url ?>/assets/eaef8c08/js/depdrop.min.js"></script>
       
         </body>
-    <?php
-    if (isset($view_data['section_scripts'])) {
-        include 'view/' . $view_data['section_scripts'];
-    }
-    ?>
+        <script>
+            $(function () {
+
+                if($("#search") != undefined)
+                {
+                    $.ajax({
+                        url : "<?= base_url ?>/shared/_searchPartial",
+                        method: "Get",
+                        success: function(result){
+                            $("#search").html(result);
+                        }
+                    });
+                }
+
+                $(document).on("change","#Province", function(e){
+                    e.preventDefault();
+                    $.ajax({
+                        cache: true,
+                        url: "<?= base_url ?>/location/GetDistrictsByProvince",
+                        method: "Post",
+                        data: { Province : $(this).val(), dataSelected : $("#District").attr("data-selected"), showValueAll: 1 },
+                        success: function(result){
+                            $("#District").html(result);
+                            $("#District").change().bind();
+                        }
+                    })
+                });
+
+                $(document).on("change","#District", function(e){
+                    e.preventDefault();
+                    $.ajax({
+                        cache: true,
+                        url: "<?= base_url ?>/location/GetWardsByDistrict",
+                        method: "Post",
+                        data: { District : $(this).val(), dataSelected : $("#Ward").attr("data-selected"), showValueAll: 1 },
+                        success: function(result){
+                            $("#Ward").html(result);
+                            $("#Ward").change().bind();
+                        }
+                    });
+
+                    $.ajax({
+                        cache: true,
+                        url: "<?= base_url ?>/location/GetStreetsByDistrict",
+                        method: "Post",
+                        data: { District : $(this).val(), dataSelected : $("#Street").attr("data-selected"), showValueAll: 1 },
+                        success: function(result){
+                            $("#Street").html(result);
+                        }
+                    });
+                });
+
+            });
+        </script> 
+
+        <?php
+        if (isset($view_data['section_scripts'])) {
+            include 'view/' . $view_data['section_scripts'];
+        }
+        ?>
 </html>
 

@@ -1,0 +1,1 @@
+Call to undefined method DirectionManager::GetListt() in C:\xampp\htdocs\cyberreal\controller\sharedcontroller.php on line 14 called from C:\xampp\htdocs\cyberreal\index.php on line 31

@@ -6,8 +6,8 @@
   include_once 'model/nocsrf.php'; 
   include_once 'model/functions.php'; 
   require_once 'model/htmlpurifier-4.10.0/library/HTMLPurifier.auto.php';
-  try 
-  {
+  // try 
+  // {
     $controller = isset($_GET['controller']) ? $_GET['controller'] : "home";
     $action = isset($_GET['action']) ? $_GET['action'] : "index";
 
@@ -33,13 +33,13 @@
     {	
         include_once 'view/'.$view_data['layout'];
     }
-  }
-  catch(Error  $e) {
-     $trace = $e->getTrace();
-    $errorMessage =  $e->getMessage().' in '.$e->getFile().' on line '.$e->getLine().' called from '.$trace[0]['file'].' on line '.$trace[0]['line'];
-    $myfile = fopen(SITE_PATH."/log/errors.txt", "w") or die("Unable to open file!");
-    fwrite($myfile, $errorMessage."\n");
-    fclose($myfile); 
-  }
+  // }
+  // catch(Error  $e) {
+  //   $trace = $e->getTrace();
+  //   $errorMessage =  $e->getMessage().' in '.$e->getFile().' on line '.$e->getLine().' called from '.$trace[0]['file'].' on line '.$trace[0]['line'];
+  //   $myfile = fopen(SITE_PATH."/log/errors.txt", "w") or die("Unable to open file!");
+  //   fwrite($myfile, $errorMessage."\n");
+  //   fclose($myfile); 
+  // }
 
 
