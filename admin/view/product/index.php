@@ -56,7 +56,7 @@
                            </td>
                            <td><?= $item['DistrictName'] ?></td>
                            <td><?= $item['WardName'] ?></td>
-                           <td><?= $item['StreetName'] ?></td>
+                           <td><?= $item['Street'] ?></td>
                            <td class="text-center">
                               <?php if ($item['Status']) { ?>
                               

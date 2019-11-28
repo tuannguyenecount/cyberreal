@@ -6,23 +6,21 @@ class ProductManager
         $params = array();
         if($status == null)
         {
-            $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, CONCAT(C._prefix,' ', C._name) AS DistrictName, CONCAT(D._prefix ,' ',D._name) AS WardName, CONCAT(E._prefix,' ',E._name) AS StreetName, F.Name As DirectionName
+            $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, CONCAT(C._prefix,' ', C._name) AS DistrictName, CONCAT(D._prefix ,' ',D._name) AS WardName, F.Name As DirectionName
                     FROM product A INNER JOIN category B  
                     ON A.CategoryId = B.Id
                     LEFT JOIN District C ON A.District = C.id AND C._province_id = 1
                     LEFT JOIN Ward D ON A.Ward = D.id AND D._district_id = C.id
-                    LEFT JOIN Street E ON A.Street = E.id AND E._district_id = C.id
                     LEFT JOIN Direction F ON A.Direction = F.Id 
                     ORDER BY A.Id desc";  
         }
         else 
         {
-             $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, CONCAT(C._prefix,' ', C._name) AS DistrictName, CONCAT(D._prefix ,' ',D._name) AS WardName, CONCAT(E._prefix,' ',E._name) AS StreetName, F.Name As DirectionName
+             $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, CONCAT(C._prefix,' ', C._name) AS DistrictName, CONCAT(D._prefix ,' ',D._name) AS WardName, F.Name As DirectionName
                     FROM product A INNER JOIN category B  
                     ON A.CategoryId = B.Id
                     LEFT JOIN District C ON A.District = C.id AND C._province_id = 1
                     LEFT JOIN Ward D ON A.Ward = D.id AND D._district_id = C.id
-                    LEFT JOIN Street E ON A.Street = E.id AND E._district_id = C.id
                     LEFT JOIN Direction F ON A.Direction = F.Id 
                     WHERE A.Status = ?
                     ORDER BY A.Id desc"; 

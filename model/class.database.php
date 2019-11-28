@@ -26,6 +26,30 @@ class Database
             exit();
         }
     }
+    public function GetListArray($tsql, $params = array(), $fetchMode)
+    {
+        global $db; 
+        try 
+        {
+            /* Execute the query. */  
+            $stmt = $db->prepare($tsql);
+            foreach ($params as $key => &$val) {
+                $stmt->bindParam((int)$key + 1, $val);
+            }
+            $stmt->execute();
+            $arr = $stmt->fetchAll($fetchMode);
+            return $arr;
+        }
+        catch(PDOException $ex){
+            echo $ex->getMessage();
+            exit();
+        }
+        catch (Exception $ex)
+        {
+            echo $ex->getMessage();
+            exit();
+        }
+    }
     public function Execute($tsql, $params = array())
     {
         global $db; 

@@ -4,10 +4,12 @@
   include '../model/class.locationManager.php';
   include '../model/class.directionManager.php';
   include '../model/nocsrf.php';
+
   $categoryManager = new CategoryManager();
   $productManager = new ProductManager();
   $locationManager = new LocationManager();
   $directionManager = new DirectionManager();
+
   switch($action)
   {
   	case "index":
@@ -29,7 +31,10 @@
       if(isset($_POST['Name']))
       {
         try 
-        {       
+        {  
+          if($locationManager->CheckExistStreetName($_POST['Street']) == false){
+             $view_data['errors'][] = "Tên đường này không tồn tại. Vui lòng kiểm tra và nhập lại cho đúng.";
+          }     
           $_POST['Image'] = null;
           if(isset($_FILES["file"]) && !empty($_FILES['file']['tmp_name'])) {
               $check = getimagesize($_FILES["file"]["tmp_name"]);
@@ -45,6 +50,7 @@
                 }
               }
           }
+
           $_POST['UserCreated'] = $_SESSION['UserLogged']['UserName'];
           $_POST['Status'] = isset($_POST['Status']) ? 1 : 0;
           $view_data['errors'] = $productManager->GetErrorsMessage($_POST, true, true);
@@ -86,6 +92,11 @@
       {
         try 
         {  
+          echo $_POST['Street'];
+          exit();
+          if($locationManager->CheckExistStreetName($_POST['Street']) == false){
+             $view_data['errors'][] = "Tên đường này không tồn tại. Vui lòng kiểm tra và nhập lại cho đúng.";
+          }
           if(isset($_FILES["file"]) && !empty($_FILES['file']['tmp_name'])) {
               $check = getimagesize($_FILES["file"]["tmp_name"]);
               if($check !== false)
@@ -101,7 +112,7 @@
               }
           }
           $view_data['errors'] = $productManager->GetErrorsMessage($_POST, $_POST['Name_Old'] != $_POST['Name'], $_POST['Alias_Old'] != $_POST['Alias'] );
-           if(count($view_data['errors']) == 0)
+          if(count($view_data['errors']) == 0)
           {
             $result = $productManager->Edit($_POST);
             if($result)

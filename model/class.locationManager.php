@@ -35,5 +35,24 @@ class LocationManager {
         return $database_Model->GetList($tsql, $params);
     }
 
+    public function GetListStreetNameByDistrict($district){
+         $tsql = "SELECT DISTINCT _name FROM `street` 
+                    WHERE  `_district_id` = ? ";
+
+        $params = array($district);
+        $database_Model = new Database();
+        return $database_Model->GetListArray($tsql, $params,PDO::FETCH_COLUMN);
+    }
+
+    public function CheckExistStreetName($streetName){
+        $tsql = "SELECT COUNT(*) AS CNT FROM `street` 
+                    WHERE  `_name` = ? ";
+
+        $params = array($streetName);
+        $database_Model = new Database();
+        $result = (int)$database_Model->ExecuteScalar($tsql, $params);
+        return $result > 0;
+    }
+
 }
 

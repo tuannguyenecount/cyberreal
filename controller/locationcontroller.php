@@ -31,5 +31,11 @@
             include 'partial/loadlocation.php'; 
             exit();
         }
+        case "GetListStreetNameByDistrict":
+        {
+            $model = $locationManager->GetListStreetNameByDistrict($_POST['District']);
+            echo json_encode($model);
+            exit();
+        }
     }
 

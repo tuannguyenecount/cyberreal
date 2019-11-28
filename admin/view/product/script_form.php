@@ -11,6 +11,8 @@
 </script>
 <script>
     $(function(){
+        var streets = [];
+
         $('#Name').keyup(function() {
             $('#Alias').val(generateSlug($(this).val()));
         });
@@ -49,6 +51,24 @@
         			$("#Street").html(result);
         		}
         	});
+
+            $.ajax({
+                cache: true,
+                url: "<?= base_url ?>/location/GetListStreetNameByDistrict",
+                method: "Post",
+                data: { District : $(this).val()},
+                success: function(result){
+                    streets = JSON.parse(result);
+                    $( "#Street" ).autocomplete({
+                          source: streets
+                    });
+                }
+            });
+
+            $( "#Street" ).autocomplete({
+                  source: streets
+            });
+
         });
         $("#Province").change().bind();
     });

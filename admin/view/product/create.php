@@ -110,9 +110,10 @@
                                     <tr>
                                         <td class="col-md-2">Đường</td>
                                         <td>
-                                           <select id="Street" data-selected="<?= isset($_POST['Street']) ? $_POST['Street'] : "" ?>" name="Street" class="form-control"> 
+                                           <!-- <select id="Street" data-selected="<?= isset($_POST['Street']) ? $_POST['Street'] : "" ?>" name="Street" class="form-control"> 
                                                
-                                           </select>
+                                           </select> -->
+                                           <input id="Street" class="form-control" name="Street" value="<?= isset($_POST['Street']) ? $_POST['Street'] : "" ?>" />
                                         </td>
                                     </tr>
                                     <tr>
