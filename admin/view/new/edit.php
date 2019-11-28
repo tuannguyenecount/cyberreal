@@ -14,10 +14,9 @@
             <form method="post">
                 <div class="box">
                     <div class="box-body">
-                        <?php 
-                          $token = NoCSRF::generate( 'csrf_token' );
-                        ?>
-                        <input type="hidden" name="csrf_token" value="<?= $token ?>"> 
+                        <input type="hidden" name="Id" value="<?= $view_data['model']['Id'] ?>" />
+                        <input type="hidden" name="Title_Old" value="<?= $view_data['model']['Title']?>"> 
+                        <input type="hidden" name="Alias_Old" value="<?= $view_data['model']['Alias'] ?>"> 
                         <?php include_once 'view/shared/_errors.php'; ?>
                         <div class="col-md-12">
                             <table class="table table-border-none table-middle">
@@ -25,37 +24,31 @@
                                     <tr>
                                         <td class="col-md-2">Tiêu đề</td>
                                         <td>
-                                            <input type="text" value="<?= isset($title) ? $title : "" ?>"  name="title" id="title" class="form-control" />
+                                            <input type="text" value="<?= isset($_POST['Title']) ? $_POST['Title'] : $view_data['model']['Title'] ?>"  name="Title" id="Title" class="form-control" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="col-md-2">Bí danh</td>
                                         <td>
-                                            <input type="text" value="<?= isset($alias) ? $alias : "" ?>"  name="alias" id="alias" class="form-control" />
+                                            <input type="text" value="<?= isset($_POST['Alias']) ? $_POST['Alias'] : $view_data['model']['Alias'] ?>"   name="Alias" id="Alias" class="form-control" />
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="col-md-2">Thuộc chuyên mục</td>
+                                        <td class="col-md-2">Mô tả</td>
                                         <td>
-                                            <select class="form-control" name="cat_id">
-                                            <?php foreach($view_data['categories'] as $category) { ?>
-                                                <option <?= isset($cat_id) && $cat_id == $category['id'] ? "selected='selected'" : "" ?> value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
-                                            <?php } ?>
-                                            </select>
+                                            <textarea id="Description" class="form-control" cols="30" name="Description"><?= isset($_POST['Description']) ? $_POST['Description'] : $view_data['model']['Description'] ?> </textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="col-md-2">Nội dung</td>
                                         <td>
-                                            <textarea id="content" name="content">
-                                                <?= isset($content) ? $content : "" ?>
-                                            </textarea>
+                                            <textarea id="Content" name="Content"><?= isset($_POST['Content']) ? $_POST['Content'] : $view_data['model']['Content'] ?></textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="col-md-2">Trạng thái</td>
                                         <td>
-                                            <input <?= isset($status) && $status == 1 ? "checked='checked'" : "" ?> type="checkbox" name="status" value="1" />
+                                            <input <?= isset($_POST['Status']) && $_POST['Status'] == 1 ? "checked='checked'" : ($view_data['model']['Status'] == 1 && !isset($_POST['Status']) ? "checked" : "") ?> type="checkbox" name="Status" value="1" />
                                         </td>
                                     </tr>
                                 </tbody>
@@ -64,7 +57,7 @@
                                         <td class="col-md-2"></td>
                                         <td>
                                              <button type="submit" class="btn bg-green btn-sm"><i class="fa fa-save"></i> Lưu</button>
-                                            <a href="<?= base_url_admin ?>/article" class = "btn btn-default btn-sm">Về danh sách</a>
+                                            <a href="<?= base_url_admin ?>/new" class = "btn btn-default btn-sm">Về danh sách</a>
                                         </td>
                                     </tr>
                                 </tfoot>
@@ -79,10 +72,3 @@
     </div>
     <!-- /.row -->
 </section>
-<script>
-    $(function(){
-        $('#title').keyup(function() {
-            $('#alias').val(generateSlug($(this).val()));
-        });
-    });
-</script>

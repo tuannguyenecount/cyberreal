@@ -2,6 +2,9 @@
 <script src="<?= base_url?>/js/functions.js"></script>
 <script>
 	$(function() {
-		CKEDITOR.replace("content");
+		CKEDITOR.replace("Content");
+		 $('#Title').keyup(function() {
+            $('#Alias').val(generateSlug($(this).val()));
+        });
 	});
 </script>

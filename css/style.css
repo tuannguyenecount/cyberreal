@@ -22687,7 +22687,7 @@ a.badge-900:focus {
 }
 
 .owl-carousel .owl-nav .owl-prev::before {
-    content: "?"
+    content: ""
 }
 
 .owl-carousel .owl-nav .owl-prev[class*=disabled] {
@@ -22707,7 +22707,7 @@ a.badge-900:focus {
 }
 
 .owl-carousel .owl-nav .owl-next::before {
-    content: "?"
+    content: "";
 }
 
 .owl-carousel .owl-nav .owl-next[class*=disabled] {

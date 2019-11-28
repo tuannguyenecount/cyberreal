@@ -32,9 +32,12 @@
       {
         try 
         {  
+          $view_data['errors'] = $productManager->GetErrorsMessage($_POST, true, true);
+
           if($locationManager->CheckExistStreetName($_POST['Street']) == false){
              $view_data['errors'][] = "Tên đường này không tồn tại. Vui lòng kiểm tra và nhập lại cho đúng.";
           }     
+
           $_POST['Image'] = null;
           if(isset($_FILES["file"]) && !empty($_FILES['file']['tmp_name'])) {
               $check = getimagesize($_FILES["file"]["tmp_name"]);
@@ -53,7 +56,7 @@
 
           $_POST['UserCreated'] = $_SESSION['UserLogged']['UserName'];
           $_POST['Status'] = isset($_POST['Status']) ? 1 : 0;
-          $view_data['errors'] = $productManager->GetErrorsMessage($_POST, true, true);
+
           if(count($view_data['errors']) == 0)
           {
             $result = $productManager->Add($_POST);
@@ -64,9 +67,7 @@
                exit();
             }
             else 
-            {
-                $view_data['errors'][] = "Đã có lỗi xảy ra";
-            }
+              $view_data['errors'][] = "Đã có lỗi xảy ra";
           }
         }
         catch(Exception $ex)
@@ -88,16 +89,19 @@
       }
       $view_data['directions'] = $directionManager->GetList();
       $view_data['categories'] = $categoryManager->GetList();
+      
       if(isset($_POST['Name']))
       {
         try 
         {  
-          echo $_POST['Street'];
-          exit();
+          $view_data['errors'] = $productManager->GetErrorsMessage($_POST, $_POST['Name_Old'] != $_POST['Name'], $_POST['Alias_Old'] != $_POST['Alias'] );
+
           if($locationManager->CheckExistStreetName($_POST['Street']) == false){
              $view_data['errors'][] = "Tên đường này không tồn tại. Vui lòng kiểm tra và nhập lại cho đúng.";
           }
-          if(isset($_FILES["file"]) && !empty($_FILES['file']['tmp_name'])) {
+
+          if(isset($_FILES["file"]) && !empty($_FILES['file']['tmp_name']))
+          {
               $check = getimagesize($_FILES["file"]["tmp_name"]);
               if($check !== false)
               {
@@ -105,24 +109,20 @@
                 $ext = end((explode(".", $name))); # extra () to prevent notice
                 $_POST['Image'] = $_POST['Alias']. (microtime(true) * 10000000).".".$ext;
                 $result = UploadImageFile(SITE_PATH."/images/products/".$_POST['Image']);
+                
                 if($result != 1)
-                {
-                  $view_data['errors'][] = $result;
-                }
+                  $view_data['errors'][] = $result; 
               }
           }
-          $view_data['errors'] = $productManager->GetErrorsMessage($_POST, $_POST['Name_Old'] != $_POST['Name'], $_POST['Alias_Old'] != $_POST['Alias'] );
+
           if(count($view_data['errors']) == 0)
           {
             $result = $productManager->Edit($_POST);
             if($result)
-            {
-               header("Location: ".base_url_admin."/product"); 
-            }
+              header("Location: ".base_url_admin."/product"); 
             else 
-            {
-                $view_data['errors'][] = "Đã có lỗi xảy ra";
-            }
+              $view_data['errors'][] = "Đã có lỗi xảy ra";
+            
           }
         }
         catch(Exception $ex)

@@ -14,12 +14,6 @@
             <form method="post">
                 <div class="box">
                     <div class="box-body">
-                        <?php 
-                          $token = NoCSRF::generate( 'csrf_token' );
-                        ?>
-                        <input type="hidden" name="csrf_token" value="<?= $token ?>"> 
-                        <input type="hidden" name="title_old" value="<?= $title ?>"> 
-                        <input type="hidden" name="alias_old" value="<?= $alias ?>"> 
                         <?php include_once 'view/shared/_errors.php'; ?>
                         <div class="col-md-12">
                             <table class="table table-border-none table-middle">
@@ -27,37 +21,31 @@
                                     <tr>
                                         <td class="col-md-2">Tiêu đề</td>
                                         <td>
-                                            <input type="text" required="" value="<?= isset($title) ? $title : "" ?>"  id="title" name="title" class="form-control" />
+                                            <input type="text" value="<?= isset($_POST['Title']) ? $_POST['Title'] : "" ?>"  name="Title" id="Title" class="form-control" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="col-md-2">Bí danh</td>
                                         <td>
-                                            <input required="" type="text" value="<?= isset($alias) ? $alias : "" ?>" id="alias" name="alias" class="form-control" />
+                                            <input type="text" value="<?= isset($_POST['Alias']) ? $_POST['Alias'] : "" ?>"   name="Alias" id="Alias" class="form-control" />
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="col-md-2">Thuộc chuyên mục</td>
+                                        <td class="col-md-2">Mô tả</td>
                                         <td>
-                                            <select required="" class="form-control" name="cat_id">
-                                            <?php foreach($view_data['categories'] as $category) { ?>
-                                                <option <?= isset($cat_id) && $cat_id == $category['id'] ? "selected='selected'" : "" ?> value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
-                                            <?php } ?>
-                                            </select>
+                                            <textarea id="Description" class="form-control" cols="30" name="Description"><?= isset($_POST['Description']) ? $_POST['Description'] : "" ?> </textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="col-md-2">Nội dung</td>
                                         <td>
-                                            <textarea id="content" name="content">
-                                                <?= isset($content) ? $content : "" ?>
-                                            </textarea>
+                                            <textarea class="form-control" cols="30" name="Content"><?= isset($_POST['Content']) ? $_POST['Content'] : "" ?></textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="col-md-2">Trạng thái</td>
                                         <td>
-                                            <input <?= isset($status) && $status == 1 ? "checked='checked'" : "" ?> type="checkbox" name="status" value="1" />
+                                            <input <?= isset($_POST['Status']) && $_POST['Status'] == 1 ? "checked='checked'" : "" ?> type="checkbox" name="Status" value="1" />
                                         </td>
                                     </tr>
                                 </tbody>
@@ -66,7 +54,7 @@
                                         <td class="col-md-2"></td>
                                         <td>
                                              <button type="submit" class="btn bg-green btn-sm"><i class="fa fa-save"></i> Lưu</button>
-                                            <a href="<?= base_url_admin ?>/article" class = "btn btn-default btn-sm">Về danh sách</a>
+                                            <a href="<?= base_url_admin ?>/new" class = "btn btn-default btn-sm">Về danh sách</a>
                                         </td>
                                     </tr>
                                 </tfoot>
@@ -81,3 +69,10 @@
     </div>
     <!-- /.row -->
 </section>
+<script>
+    $(function(){
+        $('#Title').keyup(function() {
+            $('#Alias').val(generateSlug($(this).val()));
+        });
+    });
+</script>

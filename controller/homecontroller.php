@@ -1,9 +1,12 @@
 <?php 
     include_once 'model/class.slideManager.php';
     include_once 'model/class.productManager.php';
+    include_once 'model/class.newManager.php';
 
     $slideManager = new SlideManager();
     $productManager = new ProductManager();
+    $newManager = new NewManager();
+
     switch($action)
     {
 
@@ -14,6 +17,7 @@
 			$view_data['section_styles'] = "home/styles.php";
 			$view_data['section_scripts'] = "home/scripts.php";
             $view_data['products'] = $productManager->GetList(1);
+            $view_data['news'] = $newManager->GetTop10New();
             break;
         }
         case "contact":

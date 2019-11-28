@@ -1,3 +1,6 @@
+<?php 
+   $stt = 1;
+?>
 <section class="content-header">
    <h1>
       <?= $view_data['title'] ?>
@@ -14,7 +17,7 @@
             <div class="box-body">
                <?php include_once 'view/shared/_errors.php'; ?>
                <p>
-                  <a class="btn btn-success btn-xs" href="<?=base_url_admin?>/banner/create">Thêm Mới</a>
+                  <a class="btn btn-success btn-xs" href="<?=base_url_admin?>/slide/create">Thêm Mới</a>
                </p>
                <table id="tblData" class="table table-bordered table-middle" method="post">
                   <thead>
@@ -30,14 +33,14 @@
                      <?php foreach($view_data['model'] as $item) { ?>
                      <tr>
                         <td class="text-center">
-                           <?= $item['sort_order'] ?>
+                           <?= $stt++ ?>
                         </td>
                         <td class="text-center">
-                           <img src="<?= $item['image'] ?>" width="250" height="auto" />
+                           <img src="<?=base_url?>/images/slide/<?= $item['Image'] ?>" width="250" height="auto" />
                         </td>
-                        <td><?= $item['title'] ?></td>
+                        <td><?= $item['Title'] ?></td>
                         <td class="text-center">
-                           <?php if ($item['status'] == 1) { ?>
+                           <?php if ($item['Status'] == 1) { ?>
                            <label class="label label-success">Hiển thị</label>
                            <?php } else { ?>
                            <label class="label label-danger">Ẩn</label>
@@ -46,12 +49,12 @@
                        
                         <td class="text-center">
                           
-                           <a class="btn bg-blue btn-xs" href="<?= base_url_admin ?>/banner/edit/<?= $item['id'] ?>"><i class="fa fa-edit"></i> Sửa</a>
+                           <a class="btn bg-blue btn-xs" href="<?= base_url_admin ?>/slide/edit/<?= $item['Id'] ?>"><i class="fa fa-edit"></i> Sửa</a>
                           
-                           <form class="hidden" id="frmDelete_<?= $item['id'] ?>" action="<?= base_url_admin ?>/banner/delete" method="post">
-                              <input type="hidden" name="id" value="<?= $item['id'] ?>" />
+                           <form class="hidden" id="frmDelete_<?= $item['Id'] ?>" action="<?= base_url_admin ?>/slide/delete" method="post">
+                              <input type="hidden" name="id" value="<?= $item['Id'] ?>" />
                            </form>
-                           <button class="btn bg-red btn-xs" onclick="if(confirm('Xác nhận xóa banner này ?')) { document.getElementById('frmDelete_<?= $item['id'] ?>').submit();  }"><i class="fa fa-remove"></i> Xóa</button>
+                           <button class="btn bg-red btn-xs" onclick="if(confirm('Xác nhận xóa slide hình này ?')) { document.getElementById('frmDelete_<?= $item['Id'] ?>').submit();  }"><i class="fa fa-remove"></i> Xóa</button>
                         </td>
                      </tr>
                      <?php } ?>

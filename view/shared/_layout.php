@@ -73,28 +73,28 @@
                         </button>
                         <div id="main-menu">
                             <ul id="w0" class="navbar-nav mr-auto nav"><li class="nav-item"><a class="nav-link" href="<?= base_url ?>"><i class="fas fa-home"></i></a></li>
-                                <li class="dropdown nav-item"><a class="dropdown-toggle nav-link" href="/van-phong-cho-thue" data-toggle="dropdown">Văn phòng theo quận<span class="fas fa-angle-down"></span></a><div id="w1" class="dropdown-menu"><a class="dropdown-item" href="/van-phong-cho-thue/quan-1">Quận 1</a>
-                                        <a class="dropdown-item" href="/van-phong-cho-thue/quan-2">Quận 2</a>
-                                        <a class="dropdown-item" href="/van-phong-cho-thue/quan-3">Quận 3</a>
-                                        <a class="dropdown-item" href="/van-phong-cho-thue/quan-4">Quận 4</a>
-                                        <a class="dropdown-item" href="/van-phong-cho-thue/quan-5">Quận 5</a>
-                                        <a class="dropdown-item" href="/van-phong-cho-thue/quan-6">Quận 6</a>
-                                        <a class="dropdown-item" href="/van-phong-cho-thue/quan-7">Quận 7</a>
-                                        <a class="dropdown-item" href="/van-phong-cho-thue/quan-8">Quận 8</a>
-                                        <a class="dropdown-item" href="/van-phong-cho-thue/quan-9">Quận 9</a>
-                                        <a class="dropdown-item" href="/van-phong-cho-thue/quan-10">Quận 10</a>
-                                        <a class="dropdown-item" href="/van-phong-cho-thue/quan-11">Quận 11</a>
-                                        <a class="dropdown-item" href="/van-phong-cho-thue/quan-12">Quận 12</a>
-                                        <a class="dropdown-item" href="/van-phong-cho-thue/quan-binh-thanh">Quận Bình Thạnh</a>
-                                        <a class="dropdown-item" href="/van-phong-cho-thue/quan-phu-nhuan">Quận Phú Nhuận</a>
-                                        <a class="dropdown-item" href="/van-phong-cho-thue/quan-tan-binh">Quận Tân Bình</a>
-                                        <a class="dropdown-item" href="/van-phong-cho-thue/quan-go-vap">Quận Gò Vấp</a>
-                                        <a class="dropdown-item" href="/van-phong-cho-thue/quan-thu-duc">Quận Thủ Đức</a>
-                                        <a class="dropdown-item" href="/van-phong-cho-thue/quan-binh-tan">Quận Bình Tân</a>
-                                        <a class="dropdown-item" href="/van-phong-cho-thue/quan-tan-phu">Quận Tân Phú</a>
-                                        <a class="dropdown-item" href="/van-phong-cho-thue/huyen-cu-chi">Huyện Củ Chi</a>
-                                        <a class="dropdown-item" href="/van-phong-cho-thue/huyen-can-gio">Huyện Cần Giờ</a>
-                                        <a class="dropdown-item" href="/van-phong-cho-thue/huyen-nha-be">Huyện Nhà Bè</a></div></li>
+                                <li class="dropdown nav-item"><a class="dropdown-toggle nav-link" href="/van-phong-cho-thue" data-toggle="dropdown">Văn phòng theo quận<span class="fas fa-angle-down"></span></a><div id="w1" class="dropdown-menu"><a class="dropdown-item" href="/can-ho/quan-1">Quận 1</a>
+                                        <a class="dropdown-item" href="/can-ho/quan-2">Quận 2</a>
+                                        <a class="dropdown-item" href="/can-ho/quan-3">Quận 3</a>
+                                        <a class="dropdown-item" href="/can-ho/quan-4">Quận 4</a>
+                                        <a class="dropdown-item" href="/can-ho/quan-5">Quận 5</a>
+                                        <a class="dropdown-item" href="/can-ho/quan-6">Quận 6</a>
+                                        <a class="dropdown-item" href="/can-ho/quan-7">Quận 7</a>
+                                        <a class="dropdown-item" href="/can-ho/quan-8">Quận 8</a>
+                                        <a class="dropdown-item" href="/can-ho/quan-9">Quận 9</a>
+                                        <a class="dropdown-item" href="/can-ho/quan-10">Quận 10</a>
+                                        <a class="dropdown-item" href="/can-ho/quan-11">Quận 11</a>
+                                        <a class="dropdown-item" href="/can-ho/quan-12">Quận 12</a>
+                                        <a class="dropdown-item" href="/can-ho/quan-binh-thanh">Quận Bình Thạnh</a>
+                                        <a class="dropdown-item" href="/can-ho/quan-phu-nhuan">Quận Phú Nhuận</a>
+                                        <a class="dropdown-item" href="/can-ho/quan-tan-binh">Quận Tân Bình</a>
+                                        <a class="dropdown-item" href="/can-ho/quan-go-vap">Quận Gò Vấp</a>
+                                        <a class="dropdown-item" href="/can-ho/quan-thu-duc">Quận Thủ Đức</a>
+                                        <a class="dropdown-item" href="/can-ho/quan-binh-tan">Quận Bình Tân</a>
+                                        <a class="dropdown-item" href="/can-ho/quan-tan-phu">Quận Tân Phú</a>
+                                        <a class="dropdown-item" href="/can-ho/huyen-cu-chi">Huyện Củ Chi</a>
+                                        <a class="dropdown-item" href="/can-ho/huyen-can-gio">Huyện Cần Giờ</a>
+                                        <a class="dropdown-item" href="/can-ho/huyen-nha-be">Huyện Nhà Bè</a></div></li>
                                 <li class="dropdown nav-item"><a class="dropdown-toggle nav-link" href="/van-phong-tron-goi" data-toggle="dropdown">Văn Phòng Trọn Gói<span class="fas fa-angle-down"></span></a><div id="w2" class="dropdown-menu"><a class="dropdown-item" href="/van-phong-tron-goi/quan-1-1">Văn Phòng Trọn Gói Quận 1</a>
                                         <a class="dropdown-item" href="/van-phong-tron-goi/quan-2-1">Văn Phòng Trọn Gói Quận 2</a>
                                         <a class="dropdown-item" href="/van-phong-tron-goi/quan-3-1">Văn Phòng Trọn Gói Quận 3</a>
@@ -133,7 +133,7 @@
                     <div class="row">
                         <div class="col text-center">
                             <div class="btn-frame">
-                                <a data-scroll href="#top" class="btn btn-success btn-ico btn-lg btn-rounded"><i class="icon-arrow-up2 fs-22"></i></a>
+                                <a data-scroll href="#top" class="btn btn-success btn-ico btn-lg btn-rounded"><i class="fa fa-arrow-up"></i></a>
                             </div>
                         </div>
                     </div>
@@ -146,48 +146,48 @@
                         <div class="col-md districts">
                             <div class="card border-0 bordered">
                                 <div class="card-body p-0">
-                                    <h3 class="title text-light">Văn Phòng Cho Thuê Theo Quận</h3>
+                                    <h3 class="title text-light">Căn Hộ Cho Thuê Theo Quận</h3>
                                     <div class="text-widget pt-1">
                                         <ul>
-                                            <li><a href="/van-phong-cho-thue/quan-1">Quận 1</a></li>
-                                            <li><a href="/van-phong-cho-thue/quan-2">Quận 2</a></li>
-                                            <li><a href="/van-phong-cho-thue/quan-3">Quận 3</a></li>
-                                            <li><a href="/van-phong-cho-thue/quan-4">Quận 4</a></li>
-                                            <li><a href="/van-phong-cho-thue/quan-5">Quận 5</a></li>
-                                            <li><a href="/van-phong-cho-thue/quan-6">Quận 6</a></li>
-                                            <li><a href="/van-phong-cho-thue/quan-7">Quận 7</a></li>
-                                            <li><a href="/van-phong-cho-thue/quan-8">Quận 8</a></li>
-                                            <li><a href="/van-phong-cho-thue/quan-9">Quận 9</a></li>
-                                            <li><a href="/van-phong-cho-thue/quan-10">Quận 10</a></li>
-                                            <li><a href="/van-phong-cho-thue/quan-11">Quận 11</a></li>
-                                            <li><a href="/van-phong-cho-thue/quan-12">Quận 12</a></li>
-                                            <li><a href="/van-phong-cho-thue/quan-tan-binh">Quận T&acirc;n B&igrave;nh</a></li>
-                                            <li><a href="/van-phong-cho-thue/quan-binh-thanh">Quận B&igrave;nh Thạnh</a></li>
-                                            <li><a href="/van-phong-cho-thue/quan-phu-nhuan">Quận Ph&uacute; Nhuận</a></li>
-                                            <li><a href="/van-phong-cho-thue/quan-go-vap">Quận G&ograve; Vấp</a></li>
-                                            <li><a href="/van-phong-cho-thue/quan-thu-duc">Quận Thủ Đức</a></li>
-                                            <li><a href="/van-phong-cho-thue/quan-tan-phu">Quận T&acirc;n Ph&uacute;</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-1">Quận 1</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-2">Quận 2</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-3">Quận 3</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-4">Quận 4</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-5">Quận 5</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-6">Quận 6</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-7">Quận 7</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-8">Quận 8</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-9">Quận 9</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-10">Quận 10</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-11">Quận 11</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-12">Quận 12</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-tan-binh">Quận T&acirc;n B&igrave;nh</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-binh-thanh">Quận B&igrave;nh Thạnh</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-phu-nhuan">Quận Ph&uacute; Nhuận</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-go-vap">Quận G&ograve; Vấp</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-thu-duc">Quận Thủ Đức</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-tan-phu">Quận T&acirc;n Ph&uacute;</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md col-md-3">
+                       <!--  <div class="col-md col-md-3">
                             <div class="card border-0 bordered">
                                 <div class="card-body p-0">
                                     <h3 class="title text-light">Loại Văn Phòng</h3>
                                     <div class="text-widget pt-1">
                                         <ul>
-                                            <li><a href="/van-phong-cho-thue/van-phong-hang-a">Văn Ph&ograve;ng Hạng A</a></li>
-                                            <li><a href="/van-phong-cho-thue/van-phong-hang-b">Văn Ph&ograve;ng Hạng B</a></li>
-                                            <li><a href="/van-phong-cho-thue/van-phong-hang-c">Văn Ph&ograve;ng Hạng C</a></li>
-                                            <li><a href="/van-phong-cho-thue/van-phong-gia-re">Văn Ph&ograve;ng Gi&aacute; Rẻ</a></li>
+                                            <li><a href="/can-ho/van-phong-hang-a">Văn Ph&ograve;ng Hạng A</a></li>
+                                            <li><a href="/can-ho/van-phong-hang-b">Văn Ph&ograve;ng Hạng B</a></li>
+                                            <li><a href="/can-ho/van-phong-hang-c">Văn Ph&ograve;ng Hạng C</a></li>
+                                            <li><a href="/can-ho/van-phong-gia-re">Văn Ph&ograve;ng Gi&aacute; Rẻ</a></li>
                                             <li>Văn Ph&ograve;ng Trọn G&oacute;i</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <hr>
                 </div>      

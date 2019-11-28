@@ -49,6 +49,15 @@
             </a>
         </li>-->
 
+        <li >
+            <a href="<?= base_url_admin ?>/new/create">
+                <i class="fa fa-plus"></i> <span>Viết Bài Mới</span>
+                <span class="pull-right-container">
+                    <small class="label pull-right bg-orange">new</small>
+                </span>
+            </a>
+        </li>
+
         <li id="news">
             <a href="<?= base_url_admin ?>/new">
                 <i class="fa fa-newspaper-o"></i> <span>Tin Tức</span>
@@ -57,13 +66,13 @@
 
         <li id="slides">
             <a href="<?= base_url_admin ?>/slide">
-                <i class="fa fa-picture-o"></i> <span>Slide </span>
+                <i class="fa fa-picture-o"></i> <span>Slide Hình</span>
             </a>
         </li>
         
         <li id="mailbox">
             <a href="<?= base_url_admin ?>/mailbox">
-                <i class="fa fa-envelope"></i> <span>Hộp Thư Liên Hệ </span>
+                <i class="fa fa-envelope"></i> <span>Hộp Thư Liên Hệ</span>
             </a>
         </li>
         
@@ -75,7 +84,7 @@
         
         <li id="information">
             <a href="<?= base_url_admin ?>/information">
-                <i class="fa fa-info"></i> <span>Thông Tin Web </span>
+                <i class="fa fa-info"></i> <span>Thông Tin Web</span>
             </a>
         </li>
     
