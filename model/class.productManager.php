@@ -7,7 +7,7 @@ class ProductManager
         if($status == null)
         {
             $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, CONCAT(C._prefix,' ', C._name) AS DistrictName, CONCAT(D._prefix ,' ',D._name) AS WardName, F.Name As DirectionName
-                    FROM product A INNER JOIN category B  
+                    FROM product A LEFT JOIN category B  
                     ON A.CategoryId = B.Id
                     LEFT JOIN District C ON A.District = C.id AND C._province_id = 1
                     LEFT JOIN Ward D ON A.Ward = D.id AND D._district_id = C.id
@@ -17,7 +17,7 @@ class ProductManager
         else 
         {
              $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, CONCAT(C._prefix,' ', C._name) AS DistrictName, CONCAT(D._prefix ,' ',D._name) AS WardName, F.Name As DirectionName
-                    FROM product A INNER JOIN category B  
+                    FROM product A LEFT JOIN category B  
                     ON A.CategoryId = B.Id
                     LEFT JOIN District C ON A.District = C.id AND C._province_id = 1
                     LEFT JOIN Ward D ON A.Ward = D.id AND D._district_id = C.id
@@ -49,9 +49,14 @@ class ProductManager
 	}
 	public function GetById($id)
 	{
-        $tsql = "SELECT *
-                FROM product
-                WHERE Id = ?  ";  
+        $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, CONCAT(C._prefix,' ', C._name) AS DistrictName, CONCAT(D._prefix ,' ',D._name) AS WardName, F.Name As DirectionName
+                    FROM product A INNER JOIN category B  
+                    ON A.CategoryId = B.Id
+                    LEFT JOIN District C ON A.District = C.id AND C._province_id = 1
+                    LEFT JOIN Ward D ON A.Ward = D.id AND D._district_id = C.id
+                    LEFT JOIN Direction F ON A.Direction = F.Id 
+                    WHERE A.Id = ?
+                    ORDER BY A.Id desc";  
         $params = array($id);
         $database_Model = new Database();
 	    $rows = $database_Model->GetList($tsql, $params);
@@ -60,14 +65,35 @@ class ProductManager
 
 	public function GetByAlias($alias)
 	{
-        $tsql = "SELECT *
-                FROM product
-                WHERE Alias = ? and Status = 1";   
+        $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, CONCAT(C._prefix,' ', C._name) AS DistrictName, CONCAT(D._prefix ,' ',D._name) AS WardName, F.Name As DirectionName
+                    FROM product A INNER JOIN category B  
+                    ON A.CategoryId = B.Id
+                    LEFT JOIN District C ON A.District = C.id AND C._province_id = 1
+                    LEFT JOIN Ward D ON A.Ward = D.id AND D._district_id = C.id
+                    LEFT JOIN Direction F ON A.Direction = F.Id 
+                    WHERE A.Alias = ?
+                    ORDER BY A.Id desc";   
         $params = array($alias);
         $database_Model = new Database();
         $rows = $database_Model->GetList($tsql, $params);
 	    return count($rows) == 1 ? $rows[0] : null;
 	}
+
+    public function GetProductShowByAlias($alias)
+    {
+        $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, CONCAT(C._prefix,' ', C._name) AS DistrictName, CONCAT(D._prefix ,' ',D._name) AS WardName, F.Name As DirectionName
+                    FROM product A LEFT JOIN category B  
+                    ON A.CategoryId = B.Id
+                    LEFT JOIN District C ON A.District = C.id AND C._province_id = 1
+                    LEFT JOIN Ward D ON A.Ward = D.id AND D._district_id = C.id
+                    LEFT JOIN Direction F ON A.Direction = F.Id 
+                    WHERE A.Alias = ? AND A.Status = 1 
+                    ORDER BY A.Id desc";   
+        $params = array($alias);
+        $database_Model = new Database();
+        $rows = $database_Model->GetList($tsql, $params);
+        return count($rows) == 1 ? $rows[0] : null;
+    }
 
 	public function CheckExistsName($name)
 	{

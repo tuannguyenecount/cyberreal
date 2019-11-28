@@ -35,6 +35,21 @@ class LocationManager {
         return $database_Model->GetList($tsql, $params);
     }
 
+    public function GetStreetsOnProductByDistrict($district) {
+        
+        $tsql = "SELECT DISTINCT `street`.* 
+                 FROM `street` 
+                 INNER JOIN `product`
+                 ON `street`.`_name` = `product`.`Street`
+                 INNER JOIN `district` 
+                 ON `street`.`_district_id` = `district`.`id` AND `district`.`id` = ? 
+                 
+                 ";
+        $params = array($district);
+        $database_Model = new Database();
+        return $database_Model->GetList($tsql, $params);
+    }
+
     public function GetListStreetNameByDistrict($district){
          $tsql = "SELECT DISTINCT _name FROM `street` 
                     WHERE  `_district_id` = ? ";

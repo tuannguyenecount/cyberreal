@@ -9,6 +9,7 @@
         <meta name="description" content="Văn phòng cho thuê quận Gò Vấp với gần 5 năm kinh nghiệm : ✅ Giá Rẻ nhất ✅ Báo Giá Nhanh ✅ Nhiều Diện Tích. Cyber Real - Chuyên văn phòng Quận Gò Vấp">
         <link href="<?= base_url ?>/css/style.css?v=1" rel="stylesheet">
         <link href="<?= base_url ?>/css/custom.css?v=1" rel="stylesheet">
+        <link href="<?= base_url ?>/css/icon.css?v=1" rel="stylesheet">
         <link href="<?= base_url ?>/assets/22c734a/css/select2.min.css" rel="stylesheet">
         <link href="<?= base_url ?>/assets/22c734a/css/select2-addl.min.css" rel="stylesheet">
         <link href="<?= base_url ?>/assets/22c734a/css/select2-krajee-bs4.min.css" rel="stylesheet">

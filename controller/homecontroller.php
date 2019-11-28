@@ -6,7 +6,8 @@
     $slideManager = new SlideManager();
     $productManager = new ProductManager();
     $newManager = new NewManager();
-
+    $productManager = new ProductManager();
+    
     switch($action)
     {
 

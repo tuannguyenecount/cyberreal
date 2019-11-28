@@ -18338,7 +18338,7 @@ pre[class*=language-],
     -moz-transition-delay: 0s;
     transition-delay: 0s;
     position: absolute;
-    content: "?";
+    content: "";
     top: 50%;
     left: 50%;
     font-family: "icomoon" !important;
@@ -25175,7 +25175,7 @@ screen and (max-height: 300px) {
 }
 
 .fa-business-time:before {
-    content: "?"
+    content: ""
 }
 
 .fa-buysellads:before {
@@ -30331,8 +30331,8 @@ section.banner-w-search {
     vertical-align: -0.125em;
     font-family: "Font Awesome 5 Free", sans-serif;
     font-weight: 900;
-    content: "?";
-    color: #3162ad;
+    content: "";
+    color: #28a745;
     margin-right: .5rem
 }
 
@@ -30684,18 +30684,18 @@ footer .socials ul li {
 
 .detail-tabs .nav-pills {
     padding: .5rem;
-    background-color: #3162ad;
+    background-color: #28a745;
     flex-wrap: nowrap;
-    overflow-x: auto
+    overflow-x: auto;
 }
 
 .detail-tabs .nav-pills .nav-link {
     color: #fff;
-    white-space: nowrap
+    white-space: nowrap;
 }
 
 .detail-tabs .nav-pills .nav-link.active {
-    color: #3162ad;
+    color: #28a745;
     background-color: #fff
 }
 

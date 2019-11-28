@@ -22,6 +22,10 @@ RewriteRule ^area/adminarea/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([0-9]+)&(.*)$ adm
 
 RewriteRule ^$ index.php?controller=home&action=index
 
+RewriteRule ^tin-tuc.html$ index.php?controller=new&action=index
+RewriteRule ^tin-tuc/([a-zA-Z0-9_-]+).html$ index.php?controller=new&action=details&alias=$1
+RewriteRule ^can-ho/([a-zA-Z0-9_-]+).html$ index.php?controller=product&action=details&alias=$1
+
 RewriteRule ^([a-zA-Z0-9_-]+).html$ index.php?controller=project&action=index&alias=$1
 RewriteRule ^([a-zA-Z0-9_-]+).html&(.*)$ index.php?controller=project&action=index&alias=$1&$2
 
