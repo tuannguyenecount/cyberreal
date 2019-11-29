@@ -159,11 +159,9 @@
 		$uploadOk = 1;
 		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 		// Check if image file is a actual image or fake image
-		if(isset($_POST["file"])) {
+		if(isset($_FILES["file"]["tmp_name"])) {
 		    $check = getimagesize($_FILES["file"]["tmp_name"]);
-		    if($check !== false) {
-		        return "File is an image - " . $check["mime"] . ".";
-		    } else {
+		    if($check == false) {
 		        return "File is not an image.";
 		    }
 		}
@@ -182,6 +180,41 @@
 		// if everything is ok, try to upload file
 		} else {
 		    if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+		        $uploadOk = 1;
+		    } else {
+		        return "Sorry, there was an error uploading your file.";
+		    }
+		}
+		return $uploadOk;
+	}
+
+	function UploadImageFileMultiple($target_dir, $inputName, $index)
+	{
+		$target_file = $target_dir;
+		$uploadOk = 1;
+		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+		// Check if image file is a actual image or fake image
+		if(isset($_FILES[$inputName]["tmp_name"][$index])) {
+		    $check = getimagesize($_FILES[$inputName]["tmp_name"][$index]);
+		    if($check == false) {
+		        return "File is not an image.";
+		    }
+		}
+		// Check file size
+		if ($_FILES[$inputName]["size"][$index] > 500000) {
+		    return "Sorry, your file is too large.";
+		}
+		// Allow certain file formats
+		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+		&& $imageFileType != "gif" ) {
+		    return "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+		}
+		// Check if $uploadOk is set to 0 by an error
+		if ($uploadOk == 0) {
+		    return "Sorry, your file was not uploaded.";
+		// if everything is ok, try to upload file
+		} else {
+		    if (move_uploaded_file($_FILES[$inputName]["tmp_name"][$index], $target_file)) {
 		        $uploadOk = 1;
 		    } else {
 		        return "Sorry, there was an error uploading your file.";

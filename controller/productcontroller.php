@@ -25,10 +25,11 @@
                 header("HTTP/1.0 404 Not Found");
                 header("Location: ".base_url."/pages/404.html");
             }
-             $view_data['streets'] = $locationManager->GetStreetsOnProductByDistrict($view_data['model']['District']);
+            $view_data['imagesProduct'] = $productManager->GetImagesFromProduct($view_data['model']['Id']);
+            $view_data['streets'] = $locationManager->GetStreetsOnProductByDistrict($view_data['model']['District']);
             $view_data['directions'] = $directionManager->GetList();
-    //        $view_data['section_scripts'] = "project/scripts.php"; 
-    //        $view_data['section_styles'] = "project/styles_detail.php"; 
+            $view_data['section_scripts'] = "product/scripts.php"; 
+            $view_data['section_styles'] = "product/styles.php"; 
             break;
         }
     }

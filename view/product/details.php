@@ -32,15 +32,19 @@
             <div class="col-lg-6">
                <div class="gallery mb-sm-2">
                   <div class="slider slider-for">
-                     <figure class="photo">
-                        <a href="https://data.cyberreal.vn/office/win-home-nguyen-kiem/van-phong-cho-thue-win-home-nguyen-kiem-go-vap.jpg">
-                        <img src="https://data.cyberreal.vn/office/win-home-nguyen-kiem/van-phong-cho-thue-win-home-nguyen-kiem-go-vap.jpg" alt="">                                            </a>
-                     </figure>
+                    <?php foreach($view_data['imagesProduct'] as $item) { ?>
+                      <figure class="photo">
+                        <a href="<?= base_url ?>/images/products/slides/<?= $item['Image'] ?>">
+                          <img src="<?= base_url ?>/images/products/slides/<?= $item['Image'] ?>" alt=""> </a>
+                      </figure>
+                    <?php } ?>
                   </div>
                   <div class="slider slider-nav">
-                     <div class="slide-thumbnail">
-                        <img src="https://data.cyberreal.vn/office/win-home-nguyen-kiem/van-phong-cho-thue-win-home-nguyen-kiem-go-vap.jpg" alt="">										                                    
-                     </div>
+                    <?php foreach($view_data['imagesProduct'] as $item) { ?>
+                      <div class="slide-thumbnail">
+                          <img src="<?= base_url ?>/images/products/slides/<?= $item['Image'] ?>" alt="">
+                      </div>
+                    <?php } ?>
                   </div>
                </div>
             </div>

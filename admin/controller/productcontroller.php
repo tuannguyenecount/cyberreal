@@ -34,7 +34,7 @@
         {  
           $view_data['errors'] = $productManager->GetErrorsMessage($_POST, true, true);
 
-          if($locationManager->CheckExistStreetName($_POST['Street']) == false){
+          if(!empty($_POST['Street']) && $locationManager->CheckExistStreetName($_POST['Street']) == false){
              $view_data['errors'][] = "Tên đường này không tồn tại. Vui lòng kiểm tra và nhập lại cho đúng.";
           }     
 
@@ -48,9 +48,7 @@
                 $_POST['Image'] = $_POST['Alias'].".".$ext;
                 $result = UploadImageFile(SITE_PATH."/images/products/".$_POST['Image']);
                 if($result != 1)
-                {
                   $view_data['errors'][] = $result;
-                }
               }
           }
 
@@ -60,11 +58,45 @@
           if(count($view_data['errors']) == 0)
           {
             $result = $productManager->Add($_POST);
-            
+
             if($result)
             {
-               header("Location: ".base_url_admin."/product"); 
-               exit();
+
+              if(count($_FILES["files"]['name']) > 0 && !empty($_FILES['files']['tmp_name'][0])) 
+              {
+                for($i = 0; $i < count($_FILES["files"]['name']); $i++)
+                {
+                  $check = getimagesize($_FILES["files"]["tmp_name"][$i]);
+                  if($check !== false)
+                  {
+                    $name = $_FILES["files"]["name"][$i];
+                    $ext = end((explode(".", $name))); # extra () to prevent notice
+                    $fileName = $_POST['Alias']."-".($i + 1).".".$ext;
+                    $result = UploadImageFileMultiple(SITE_PATH."/images/products/slides/".$fileName, "files", $i);
+                    if($result != 1)
+                    {
+                      $view_data['errors'][] = $result;
+                      break;
+                    } 
+                    else 
+                    {
+                      $productNew = $productManager->GetByAlias($_POST['Alias']);
+                      $imageProduct = array();
+                      $imageProduct['ProductId'] = $productNew['Id'];
+                      $imageProduct['Image'] =  $fileName;
+                      $imageProduct['OrderNum'] = $i + 1;
+                      $result = $productManager->AddImage($imageProduct);
+                      if($result == false)
+                      {
+                        $view_data['errors'][] = "Xảy ra lỗi khi lưu hình số ". ($i + 1);
+                        break;
+                      }
+                    }
+                  }
+                }
+              }
+              header("Location: ".base_url_admin."/product"); 
+              exit();
             }
             else 
               $view_data['errors'][] = "Đã có lỗi xảy ra";
@@ -96,7 +128,7 @@
         {  
           $view_data['errors'] = $productManager->GetErrorsMessage($_POST, $_POST['Name_Old'] != $_POST['Name'], $_POST['Alias_Old'] != $_POST['Alias'] );
 
-          if($locationManager->CheckExistStreetName($_POST['Street']) == false){
+          if(!empty($_POST['Street']) && $locationManager->CheckExistStreetName($_POST['Street']) == false){
              $view_data['errors'][] = "Tên đường này không tồn tại. Vui lòng kiểm tra và nhập lại cho đúng.";
           }
 
@@ -107,8 +139,8 @@
               {
                 $name = $_FILES["file"]["name"];
                 $ext = end((explode(".", $name))); # extra () to prevent notice
-                $_POST['Image'] = $_POST['Alias']. (microtime(true) * 10000000).".".$ext;
-                $result = UploadImageFile(SITE_PATH."/images/products/".$_POST['Image']);
+                $fileName = $_POST['Alias']. (microtime(true) * 10000000).".".$ext;
+                $result = UploadImageFile(SITE_PATH."/images/products/slides/".$_POST['Image']);
                 
                 if($result != 1)
                   $view_data['errors'][] = $result; 
@@ -157,6 +189,36 @@
       $view_data['model'] = $productManager->GetList();
   		break;
   	}
+    case "listcountimages":
+    {
+      $view_data['title'] = "Hình Ảnh Toàn Bộ Dự Án";
+      $view_data['model'] = $productManager->GetListCountImagesFromAllProduct();
+      $view_data['view_name'] = "product/listcountimages.php";
+      $view_data['section_styles'] = "product/style_index.php";
+      $view_data['section_scripts'] = "product/script_index.php";
+      break;
+    }
+
+    case "images":
+    {
+      $id = (int)$_GET['id'];
+      $product = $productManager->GetById($id);
+      if($product == null)
+      {
+        header("Location: ".base_url."/pages/404.html");
+      }
+      $view_data['title'] = "Hình Ảnh Của Dự Án ". $product['Name'];
+      $view_data['model'] = $productManager->GetImagesProductByProductId($id);
+      $view_data['view_name'] = "product/images.php";
+      $view_data['section_styles'] = "product/style_index.php";
+      break;
+    }
+    case "deleteimage":
+    {
+      $productManager->DeleteImage((int)$_POST['Id']);
+      header("Location: ".base_url_admin."/product/images/".$_POST['ProductId']);
+      exit();
+    }
     
   }
 

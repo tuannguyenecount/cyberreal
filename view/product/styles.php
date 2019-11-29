@@ -1,0 +1,1 @@
+<link href="<?= base_url ?>/js/slick/slick.css" rel="stylesheet">

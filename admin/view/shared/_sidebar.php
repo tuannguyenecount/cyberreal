@@ -30,6 +30,12 @@
             </a>
         </li>
 
+         <li>
+            <a href="<?=base_url_admin?>/product/listcountimages">
+                <i class="fa fa-picture-o"></i> <span>Hình Dự Án</span>
+            </a>
+        </li>
+
        <!--  <li>
             <a href="<?=base_url_admin?>/user">
                 <i class="fa fa-user-circle-o"></i> <span>Thành Viên</span>
@@ -48,15 +54,6 @@
                 <span>Chuyên Mục Bài Viét</span>
             </a>
         </li>-->
-
-        <li >
-            <a href="<?= base_url_admin ?>/new/create">
-                <i class="fa fa-plus"></i> <span>Viết Bài Mới</span>
-                <span class="pull-right-container">
-                    <small class="label pull-right bg-orange">new</small>
-                </span>
-            </a>
-        </li>
 
         <li id="news">
             <a href="<?= base_url_admin ?>/new">

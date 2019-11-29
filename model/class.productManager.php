@@ -146,6 +146,43 @@ class ProductManager
 	    return $database_Model->Execute($tsql, $params);
 	}
 
+    public function GetImagesProductByProductId($productId)
+    {
+        $tsql = "SELECT * FROM `imagesproducts` Where `ProductId` = ? Order by OrderNum ";  
+        $database_Model = new Database();
+        $params = array($productId);
+        return $database_Model->GetList($tsql, $params);
+    }
+
+    public function GetListCountImagesFromAllProduct()
+    {
+        $tsql = "SELECT A.Id, A.Name, A.Alias, C.Alias CategoryAlias, Count(B.Id) AS CNT
+                    FROM `product` A
+                    LEFT JOIN  `imagesproducts` B
+                    ON A.`Id` = B.`ProductId`
+                    LEFT JOIN `category` C
+                    ON A.`CategoryId` = C.`Id`
+                    GROUP BY A.Id, A.Name, A.Alias, C.`Alias`";  
+        $database_Model = new Database();
+        return $database_Model->GetList($tsql);
+    }
+
+    public function AddImage($model)
+    {
+        $tsql ="INSERT INTO imagesproducts(ProductId,Image,OrderNum) VALUES(?,?,?) ";   
+        $params = array($model['ProductId'], $model['Image'], $model['OrderNum']);
+        $database_Model = new Database();
+        return $database_Model->Execute($tsql, $params);
+    }
+
+    public function DeleteImage($id)
+    {
+        $tsql ="DELETE FROM imagesproducts Where Id = ? ";   
+        $params = array($id);
+        $database_Model = new Database();
+        return $database_Model->Execute($tsql, $params);
+    }
+
     public function GetListArea($take)
     {
         $tsql = "SELECT DISTINCT Area FROM product Order by Area limit 0, $take ";  

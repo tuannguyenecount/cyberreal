@@ -12,7 +12,9 @@
       <div class="col-xs-12">
          <div class="box">
             <div class="box-body">
-                
+               <div>
+                  <a class="btn btn-primary btn-xs" href="<?= base_url_admin ?>/new/create">Viết bài mới</a>
+               </div>
                <?php include_once 'view/shared/_errors.php'; ?>
                <div class="table-responsive">
                   <table id="tblData" class="table table-bordered" method="post">

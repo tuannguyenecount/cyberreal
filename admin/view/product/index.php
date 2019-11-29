@@ -16,6 +16,7 @@
                <?php 
                   $token = NoCSRF::generate( 'csrf_token' );
                ?>
+               
                <div class="table-responsive">
                   <table id="tblData" class="table table-bordered table-middle" method="post">
                      <thead>

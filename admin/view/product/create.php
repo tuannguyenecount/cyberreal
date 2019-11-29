@@ -50,9 +50,15 @@
                                         </td>
                                     </tr> 
                                     <tr>
-                                        <td class="col-md-2">Hình ảnh</td>
+                                        <td class="col-md-2">Hình đại diện</td>
                                         <td>
                                             <input type="file" name="file" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-2">Hình bổ sung</td>
+                                        <td>
+                                            <input type="file" name="files[]" multiple="" />
                                         </td>
                                     </tr>
                                     <tr>
