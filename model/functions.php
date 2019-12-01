@@ -166,7 +166,7 @@
 		    }
 		}
 		// Check file size
-		if ($_FILES["file"]["size"] > 500000) {
+		if ($_FILES["file"]["size"] > 2000000) {
 		    return "Sorry, your file is too large.";
 		}
 		// Allow certain file formats

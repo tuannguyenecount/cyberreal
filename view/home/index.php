@@ -14,7 +14,6 @@
 <section id="search" class="overlay pb-0">
     
 </section>
-<?php //include 'partial/search.php'; ?>
 <main>
    <div class="top-offices py-5 bg-home">
       <div class="container">
@@ -27,12 +26,12 @@
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
-                        <a class="figure-img img-fluid" href="<?= base_url ?>/can-ho/<?= $item['Alias'] ?>.html"><img class="rounded-top" src="<?= base_url ?>/images/products/<?= $item['Image'] ?>" alt="<?= $item['Name'] ?>"></a>            
+                        <a class="figure-img img-fluid" href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html"><img class="rounded-top" src="<?= base_url ?>/images/products/<?= $item['Image'] ?>" alt="<?= $item['Name'] ?>"></a>            
                         <figcaption class="figure-caption"><?= $item['Price'] ?></figcaption>
                      </figure>
                   </div>
                   <div class="card-body p-1 pt-3">
-                     <h5 class="card-title mb-0"><a href="<?= base_url ?>/can-ho/<?= $item['Alias'] ?>.html"><?= $item['Name'] ?></a></h5>
+                     <h5 class="card-title mb-0"><a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html"><?= $item['Name'] ?></a></h5>
                      <p class="address text-muted small"><?= $item['Street'] ?>, <?= $item['WardName'] ?>, <?= $item['DistrictName'] ?></p>
                      <ul class="list-group list-group-minimal fs-14">
                         <li class="list-group-item d-flex align-items-center">
@@ -46,7 +45,7 @@
                   </div>
                   <div class="card-footer p-1">
                      
-                     <a href="#" data-toggle="modal" data-target="#global"><i class="fa fa-check"></i> Chọn đi xem</a></a>    
+                     <a href="<?= base_url ?>/product/select/<?= $item['Id'] ?>" data-toggle="modal" data-target="#global"><i class="fa fa-check"></i> Chọn đi xem</a></a>    
                   </div>
                </div>
             </div>
@@ -65,12 +64,12 @@
                <div class="card stacked">
                   <div class="card-header p-0 lift">
                      <figure class="figure mb-0">
-                        <a class="figure-img img-fluid" href="<?= base_url ?>/can-ho/<?= $item['Alias'] ?>.html"><img class="rounded-top" src="<?= base_url ?>/images/products/<?= $item['Image'] ?>" alt="<?= $item['Name'] ?>"></a>            
+                        <a class="figure-img img-fluid" href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html"><img class="rounded-top" src="<?= base_url ?>/images/products/<?= $item['Image'] ?>" alt="<?= $item['Name'] ?>"></a>            
                         <figcaption class="figure-caption"><?= $item['Price'] ?></figcaption>
                      </figure>
                   </div>
                   <div class="card-body p-1 pt-3">
-                     <h5 class="card-title mb-0"><a href="<?= base_url ?>/can-ho/<?= $item['Alias'] ?>.html"><?= $item['Name'] ?></a></h5>
+                     <h5 class="card-title mb-0"><a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html"><?= $item['Name'] ?></a></h5>
                      <p class="address text-muted small"><?= $item['Street'] ?>, <?= $item['WardName'] ?>, <?= $item['DistrictName'] ?></p>
                      <ul class="list-group list-group-minimal fs-14">
                         <li class="list-group-item d-flex align-items-center">
@@ -84,7 +83,7 @@
                   </div>
                   <div class="card-footer p-1">
                      
-                     <a href="#" data-toggle="modal" data-target="#global"><i class="fa fa-check"></i> Chọn đi xem</a></a>    
+                     <a href="<?= base_url ?>/product/select/<?= $item['Id'] ?>" data-toggle="modal" data-target="#global"><i class="fa fa-check"></i> Chọn đi xem</a></a>    
                   </div>
                </div>
             </div>

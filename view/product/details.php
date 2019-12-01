@@ -18,7 +18,7 @@
         <a class="breadcrumb-back" href="/"></a>					
         <ol class="breadcrumb">
             <li class='breadcrumb-item'><a href="/">Trang chủ</a></li>
-            <li class='breadcrumb-item'><a href="/can-ho">Căn hộ cho thuê</a></li>
+            <li class='breadcrumb-item'><a href="#">Căn hộ cho thuê</a></li>
             <li class='breadcrumb-item active'><?= $view_data['model']['Name'] ?></li>
         </ol>                
     </div>
@@ -70,23 +70,29 @@
                   </li> -->
                </ul>
                <hr>
-               <div class="fee">
+               <?php $hasFee = false; foreach($view_data['fees'] as $item) {
+                      if($item['Value'] != "")
+                        {
+                            $hasFee = true;
+                            break;
+                        }
+                    }
+                ?>
+              <?php if($hasFee == true) { ?>
+                <div class="fee">
                   <h5 class="title text-uppercase font-weight-bold">Các loại phí</h5>
                   <div class="fees">
                      <ul>
-                        <li>Ph&iacute; quản l&yacute;: 0 USD/m2/th&aacute;ng</li>
-                        <li>Ph&iacute; xe m&aacute;y: 7 USD/th&aacute;ng</li>
-                        <li>Ph&iacute; &ocirc; t&ocirc;: 45 USD/th&aacute;ng</li>
-                        <li>Ph&iacute; ngo&agrave;i giờ: Miễn ph&iacute;</li>
-                     </ul>
-                     <ul>
-                        <li>Tiền điện: 3.700 VNĐ/kwh</li>
-                        <li>Tiền điện lạnh: Đ&atilde; bao gồm</li>
-                        <li>Tiền đặt cọc: 3 th&aacute;ng</li>
-                        <li>Thanh to&aacute;n: Th&aacute;ng/Qu&yacute;</li>
+                      <?php foreach($view_data['fees'] as $item) {
+                        if($item['Value'] == "")
+                          continue;
+                      ?>
+                        <li><?= $item['Name'] ?>: <?= $item['Value'] ?></li>
+                      <?php } ?>
                      </ul>
                   </div>
-               </div>
+                </div>
+              <?php } ?>
                <div class="controls my-3">
                   <a class="btn btn-success btn-lg d-block d-lg-inline-block" href="<?= base_url ?>/product/select/<?= $view_data['model']['Id'] ?>" data-toggle="modal" data-target="#global"><i class="fas fa-business-time"></i> Chọn đi xem</a></a>                        
                </div>
@@ -141,7 +147,9 @@
                   <i class="icon-star-half-o icon-background text-blue"></i>
                   <h4 class="title text-uppercase">Khách hàng đánh giá</h4>
                   <div class="comments">
-                     <div class="fb-comments" data-href="<?= base_url ?>/can-ho/<?= $view_data['model']['Alias'] ?>.html" data-numposts="10" data-width="100%"></div>
+                    <div id="fb-root"></div>
+                      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v5.0&appId=1444659255736273&autoLogAppEvents=1"></script>
+                     <div class="fb-comments" data-href="<?= base_url ?>/<?= $view_data['model']['CategoryAlias'] ?>/<?= $view_data['model']['Alias'] ?>.html" data-numposts="10" data-width="100%"></div>
                   </div>
                </section>
             </div>

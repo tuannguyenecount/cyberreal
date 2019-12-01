@@ -92,7 +92,8 @@
         $view_data['model'] = $categoryModel->GetById($id);
         if($view_data['model'] == null)
         {
-          header("Location: ".base_url."pages/404.html");
+          header("HTTP/1.0 404 Not Found");
+          header("Location: ".base_url."/pages/404/index.html");
         }
         $name = $view_data['model'][1];
         $status = $view_data['model'][3];

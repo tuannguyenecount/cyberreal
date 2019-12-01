@@ -14,9 +14,6 @@
             <form method="post" enctype="multipart/form-data">
                 <div class="box">
                     <div class="box-body">
-                        <?php 
-                          $token = NoCSRF::generate( 'csrf_token' );
-                        ?>
                         <?php include_once 'view/shared/_errors.php'; ?>
                         <div class="col-md-12">
                             <table class="table table-border-none table-middle">
@@ -82,6 +79,21 @@
                                         <td class="col-md-2">Xếp Hạng</td>
                                         <td>
                                            <input type="text" class="form-control" name="Rank" value="<?= isset($_POST['Rank']) ? $_POST['Rank'] : "" ?>" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-2">Nhập loại phí</td>
+                                        <td>
+                                            <table class="table">
+                                                <?php foreach($view_data['fees'] as $item) { ?>
+                                                    <tr>
+                                                        <td><?= $item['Name'] ?></td>
+                                                        <td>
+                                                            <input type="text" class="form-control" name="Fee<?= $item['Id']?>"  />
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
+                                            </table>
                                         </td>
                                     </tr>
                                     <tr>
@@ -174,9 +186,11 @@
                     </div>
                     <!-- /.box-body -->
                 </div>
+                <!-- /.modal -->
             </form>
         </div>
         <!-- /.col -->
     </div>
     <!-- /.row -->
 </section>
+

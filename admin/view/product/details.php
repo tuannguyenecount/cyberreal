@@ -11,101 +11,163 @@
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
-            <form method="post">
-                <div class="box">
-                    <div class="box-body">
-                        <?php 
-                          $token = NoCSRF::generate( 'csrf_token' );
-                        ?>
-                        <input type="hidden" name="csrf_token" value="<?= $token ?>"> 
-                        <input type="hidden" name="title_old" value="<?= $title ?>"> 
-                        <input type="hidden" name="alias_old" value="<?= $alias ?>"> 
-                        <?php include_once 'view/shared/_errors.php'; ?>
-                        <div class="col-md-12">
-                            <table class="table table-border-none table-middle">
-                                <tbody>
-                                    <tr>
-                                        <td class="col-md-2">Tiêu đề</td>
-                                        <td>
-                                            <input type="text" readonly="" value="<?= isset($title) ? $title : "" ?>"  name="title" class="form-control" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="col-md-2">Thuộc chuyên mục</td>
-                                        <td>
-                                            <select  class="form-control" name="cat_id">
+            <div class="box">
+                <div class="box-body">
+                    <div class="col-md-12">
+                        <table class="table table-border-none table-middle">
+                            <tbody>
+                                <tr>
+                                    <td class="col-md-2">Tên Dự Án</td>
+                                    <td>
+                                        <input id="Name" readonly="" type="text" value="<?= $view_data['model']['Name'] ?>" name="Name"  class="form-control" />
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">Bí danh</td>
+                                    <td>
+                                        <input type="text" readonly="" value="<?= $view_data['model']['Alias'] ?>"  name="Alias" id="Alias" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">Loại Dự Án</td>
+                                    <td>
+                                        <select disabled="" class="form-control" name="CategoryId">
                                             <?php foreach($view_data['categories'] as $category) { ?>
-                                                <option <?= isset($cat_id) && $cat_id == $category['id'] ? "selected='selected'" : "" ?> value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                                                <option <?= $view_data['model']['CategoryId'] == $category['Id'] ? "selected" : ""  ?>   ><?= $category['Name'] ?></option>
                                             <?php } ?>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="col-md-2">Nội dung</td>
-                                        <td>
-                                            <textarea id="content" readonly="" name="content">
-                                                <?= isset($content) ? $content : "" ?>
-                                            </textarea>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="col-md-2">Bí danh</td>
-                                        <td>
-                                            <input readonly="" type="text" value="<?= isset($alias) ? $alias : "" ?>"  name="alias" class="form-control" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="col-md-2">Lượt xem</td>
-                                        <td>
-                                            <input readonly="" type="number" value="<?= isset($view_count) ? $view_count : "" ?>" min="0" step="1"  name="view_count" class="form-control" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="col-md-2">Trạng thái</td>
-                                        <td>
-                                            <input readonly="" <?= isset($status) && $status == 1 ? "checked='checked'" : "" ?> type="checkbox" name="status" value="1" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="col-md-2">Ngày tạo</td>
-                                        <td>
-                                            <input readonly="" type="text" value="<?= isset($created_date) ? $created_date : "" ?>" class="form-control" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="col-md-2">Tạo bởi</td>
-                                        <td>
-                                            <input readonly="" type="text" value="<?= isset($created_by) ? $created_by : "" ?>" class="form-control" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="col-md-2">Ngày sửa</td>
-                                        <td>
-                                            <input readonly="" type="text" value="<?= isset($modified_date) ? $modified_date : "" ?>" class="form-control" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="col-md-2">Sửa bởi</td>
-                                        <td>
-                                            <input readonly="" type="text" value="<?= isset($modified_by) ? $modified_by : "" ?>" class="form-control" />
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td class="col-md-2"></td>
-                                        <td>
-                                             <button type="submit" class="btn bg-green btn-sm"><i class="fa fa-save"></i> Lưu</button>
-                                            <a href="article" class = "btn btn-default btn-sm">Về danh sách</a>
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">Giá bán</td>
+                                    <td>
+                                        <input type="text" readonly="" value="<?= $view_data['model']['Price'] ?>"  name="Price" class="form-control" />
+                                    </td>
+                                </tr>    
+                                <tr>
+                                    <td class="col-md-2">Diện Tích (m2)</td>
+                                    <td>
+                                        <input type="text" readonly="" class="form-control" 
+                                        value="<?= $view_data['model']['Area'] ?>" name="Area" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">Hướng</td>
+                                    <td>
+                                        <select disabled="" class="form-control" name="Direction">
+                                        <?php foreach($view_data['directions'] as $direction) { ?>
+                                            <option <?= $view_data['model']['Direction'] == $direction['Id'] ? "selected" : "" ?>  value="<?= $direction['Id'] ?>"><?= $direction['Name']?>
+                                            </option>
+                                        <?php } ?>    
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">Xếp Hạng</td>
+                                    <td>
+                                       <input type="text" readonly="" class="form-control" name="Rank" value="<?= $view_data['model']['Rank'] ?>" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">Các loại phí</td>
+                                    <td>
+                                        <table class="table">
+                                            <?php foreach($view_data['fees'] as $item) { ?>
+                                                <tr>
+                                                    <td><?= $item['Name'] ?></td>
+                                                    <td>
+                                                        <input readonly="" type="text" class="form-control" name="Fee<?= $item['Id']?>"  value="<?= $item['Value']  ?>" />
+                                                    </td>
+                                                </tr>
+                                            <?php } ?>
+                                         </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">Địa Chỉ</td>
+                                    <td>
+                                       <input type="text" readonly="" class="form-control" name="Address" value="<?= $view_data['model']['Address'] ?>" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">Tỉnh/Thành</td>
+                                    <td>
+                                       <select id="Province" readonly="" class="form-control" name="Province"  > 
+                                           <option selected="" value="1">TP. Hồ Chí Minh</option>
+                                       </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">Quận/Huyện</td>
+                                    <td>
+                                       <select id="District" readonly="" data-selected="<?= isset($_POST['District']) ? $_POST['District'] : $view_data['model']['District'] ?>"  class="form-control" name="District"> 
+                                            
+                                       </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">Phường/Xã</td>
+                                    <td>
+                                       <select id="Ward" readonly="" data-selected="<?= isset($_POST['Ward']) ? $_POST['Ward'] : $view_data['model']['Ward'] ?>" class="form-control" name="Ward"> 
+                                            
+                                       </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">Đường</td>
+                                    <td>
+                                      <input id="Street" readonly="" class="form-control" name="Street" value="<?= $view_data['model']['Street'] ?>" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">Thông tin chung</td>
+                                    <td>
+                                        <textarea id="GeneralInformation" readonly="" name="GeneralInformation"><?= $view_data['model']['GeneralInformation']   ?></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">Vị trí</td>
+                                    <td>
+                                        <textarea id="Location" readonly="" name="Location"><?= $view_data['model']['Location']   ?></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">Kết cấu</td>
+                                    <td>
+                                        <textarea id="Structure" readonly="" name="Structure"><?=  $view_data['model']['Structure']  ?></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">Phí dịch vụ</td>
+                                    <td>
+                                        <textarea id="ServiceCharge" readonly="" name="ServiceCharge"><?= $view_data['model']['ServiceCharge']   ?></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">Ưu điểm</td>
+                                    <td>
+                                        <textarea id="Advantages" readonly="" name="Advantages"><?= $view_data['model']['Advantages']   ?></textarea>
+                                    </td>
+                                </tr>
+                                                            
+                                <tr>
+                                    <td class="col-md-2">Trạng thái</td>
+                                    <td>
+                                        <input readonly="" <?= $view_data['model']['Status'] == true ? "checked" : "" ?> type="checkbox" name="Status" value="1" />
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td class="col-md-2"></td>
+                                    <td>
+                                        <a href="<?= base_url_admin ?>/product/edit/<?= $view_data['model']['Id'] ?>" class = "btn btn-primary btn-sm"><i class="fa fa-edit"></i> Sửa</a>
+                                        <a href="<?= base_url_admin ?>/product" class = "btn btn-default btn-sm">Về danh sách</a>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
                     </div>
-                    <!-- /.box-body -->
                 </div>
-            </form>
+                <!-- /.box-body -->
+            </div>
         </div>
         <!-- /.col -->
     </div>

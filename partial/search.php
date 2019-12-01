@@ -1,5 +1,4 @@
 
-
 <div class="container">
         <div class="overlay-item-top overflow-hidden">
             <div class="card">
@@ -9,7 +8,7 @@
                         <div class="row">
                             <div class="col-md">
                                 <input type="text" class="form-control" name="s" placeholder="Nhập tên tòa nhà, ví dụ: Vincom, Vietcombank, International Plaza...">  
-                                <div class="advance-search mt-2">
+                                <div class="advance-search mt-2" >
                                     <div class="row">
                                         <div class="col-md mb-2">
                                             <select class="form-control" id="District" name="District" data-selected="">
@@ -63,7 +62,6 @@
                             </div>
                             <div class="col-md-4 col-lg-2 text-center pb-1">
                                 <button type="submit" class="btn btn-block btn-success text-uppercase">Tìm kiếm</button>
-                                <a class="form-text text-muted small d-block" href="#search-advance">Tìm kiếm nâng cao</a>
                             </div>
                         </div>
                     </form>                
@@ -80,3 +78,9 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $('#Street').select2({
+                    theme: "flat",
+                });
+    </script> 

@@ -83,6 +83,22 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td class="col-md-2">Các loại phí</td>
+                                        <td>
+                                            <table class="table table-bordered table-middle">
+                                                <?php foreach($view_data['fees'] as $item) { ?>
+                                                    <tr>
+                                                        <td><?= $item['Name'] ?></td>
+                                                        <td>
+                                                            <input type="text" class="form-control" name="Fee<?= $item['Id']?>"  value="<?= isset($_POST['Fee'.$item['Id']]) ? $_POST['Fee'.$item['Id']] : $item['Value']  ?>" />
+                                                        </td>
+
+                                                    </tr>
+                                                <?php } ?>
+                                             </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td class="col-md-2">Địa Chỉ</td>
                                         <td>
                                            <input type="text" class="form-control" name="Address" value="<?= isset($_POST['Address']) ? $_POST['Address'] : $view_data['model']['Address'] ?>" />
@@ -169,6 +185,7 @@
                     </div>
                     <!-- /.box-body -->
                 </div>
+                 
             </form>
         </div>
         <!-- /.col -->

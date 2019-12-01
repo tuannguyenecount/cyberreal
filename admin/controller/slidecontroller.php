@@ -9,12 +9,12 @@
   {
   	case "index":
   	{
-            $view_data['title'] = "Banner";
-            $view_data['view_name'] = "banner/index.php";	
-            $view_data['section_styles'] = "banner/style_index.php";
-            $view_data['section_scripts'] = "banner/script_index.php";
-            $view_data['model'] = $bannerModel->GetList();
-            break;
+      $view_data['title'] = "Banner";
+      $view_data['view_name'] = "banner/index.php";	
+      $view_data['section_styles'] = "banner/style_index.php";
+      $view_data['section_scripts'] = "banner/script_index.php";
+      $view_data['model'] = $bannerModel->GetList();
+      break;
   	}
     case "create":
     {
@@ -62,7 +62,8 @@
       $sort_order = $view_data['model']['sort_order'];
       if($view_data['model'] == null)
       {
-        header("Location: ".base_url."pages/404.html");
+        header("HTTP/1.0 404 Not Found");
+        header("Location: ".base_url."/pages/404/index.html");
       }
       if(count($_POST) > 0)
       {

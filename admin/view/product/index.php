@@ -67,6 +67,8 @@
                               <?php } ?>
                            </td>
                            <td class="text-center">
+                              <a class="btn bg-blue btn-xs" href="<?= base_url_admin ?>/product/details/<?= $item['Id'] ?>"><i class="fa fa-eyes"></i> Xem</a>
+
                               <a class="btn bg-blue btn-xs" href="<?= base_url_admin ?>/product/edit/<?= $item['Id'] ?>"><i class="fa fa-edit"></i> Sửa</a>
                              
                               <form class="hidden" id="frmDelete_<?= $item['Id'] ?>" action="<?= base_url_admin ?>/product/delete" method="post">

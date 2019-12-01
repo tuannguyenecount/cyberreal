@@ -30,9 +30,15 @@
             </a>
         </li>
 
-         <li>
+        <li>
             <a href="<?=base_url_admin?>/product/listcountimages">
                 <i class="fa fa-picture-o"></i> <span>Hình Dự Án</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="<?=base_url_admin?>/fee">
+                <i class="fa fa-tag"></i> <span>Các Loại Phí</span>
             </a>
         </li>
 

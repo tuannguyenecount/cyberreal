@@ -10,17 +10,24 @@
         <link href="<?= base_url ?>/css/style.css?v=1" rel="stylesheet">
         <link href="<?= base_url ?>/css/custom.css?v=1" rel="stylesheet">
         <link href="<?= base_url ?>/css/icon.css?v=1" rel="stylesheet">
-        <link href="<?= base_url ?>/assets/22c734a/css/select2.min.css" rel="stylesheet">
-        <link href="<?= base_url ?>/assets/22c734a/css/select2-addl.min.css" rel="stylesheet">
-        <link href="<?= base_url ?>/assets/22c734a/css/select2-krajee-bs4.min.css" rel="stylesheet">
+<!--         <link href="<?= base_url ?>/assets/22c734a/css/select2.min.css" rel="stylesheet">
+ -->        
+        <!-- <link href="<?= base_url ?>/assets/22c734a/css/select2-addl.min.css" rel="stylesheet"> -->
+        <!-- <link href="<?= base_url ?>/assets/22c734a/css/select2-krajee-bs4.min.css" rel="stylesheet"> -->
         <link href="<?= base_url ?>/assets/fc340a4a/css/kv-widgets.min.css" rel="stylesheet">
         <link href="<?= base_url ?>/assets/a1ef791c/css/dependent-dropdown.min.css" rel="stylesheet">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="<?= base_url ?>/css/select2.css?v=1" rel="stylesheet">
+
         <?php
         if (isset($view_data['section_styles'])) {
             include 'view/' . $view_data['section_styles'];
         }
         ?>
+        <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
     </head>
     <body>
         <main id="panel">
@@ -250,7 +257,6 @@
         <div id="global" class="fade modal" role="dialog" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog ">
                 <div class="modal-content">
-
                     <div class="modal-body">
 
 
@@ -259,25 +265,24 @@
                 </div>
             </div>
         </div>
-        <script
-          src="https://code.jquery.com/jquery-3.4.1.min.js"
-          integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-          crossorigin="anonymous"></script>
+        
         <script src="<?= base_url ?>/js/vendor.min.js"></script>
         <script src="<?= base_url ?>/assets/a98fcf71/yii.js"></script>
         <script src="<?= base_url ?>/js/slideout.min.js"></script>
         <script src="<?= base_url ?>/js/app.min.js"></script>
-        <script src="<?= base_url ?>/assets/22c734a/js/select2.full.min.js"></script>
-        <script src="<?= base_url ?>/assets/22c734a/js/select2-krajee.min.js"></script>
-        <script src="<?= base_url ?>/assets/22c734a/js/i18n/vi.js"></script>
+<!--         <script src="<?= base_url ?>/assets/22c734a/js/select2.full.min.js"></script>
+        <script src="<?= base_url ?>/assets/22c734a/js/select2-krajee.min.js"></script> -->
+        <!-- <script src="<?= base_url ?>/assets/22c734a/js/i18n/vi.js"></script> -->
         <script src="<?= base_url ?>/assets/fc340a4a/js/kv-widgets.min.js"></script>
         <script src="<?= base_url ?>/assets/a1ef791c/js/dependent-dropdown.min.js"></script>
         <script src="<?= base_url ?>/assets/eaef8c08/js/depdrop.min.js"></script>
-      
+        <script src="<?= base_url ?>/js/common.js"></script>
         </body>
         <script>
             $(function () {
-
+                $('#Street').select2({
+                    theme: "flat",
+                });
                 if($("#search") != undefined)
                 {
                     $.ajax({

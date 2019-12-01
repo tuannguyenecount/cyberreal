@@ -183,6 +183,14 @@ class ProductManager
         return $database_Model->Execute($tsql, $params);
     }
 
+    public function UpdateOrderNumImage($Id, $OrderNum)
+    {
+        $tsql ="UPDATE imagesproducts SET OrderNum = ? Where Id = ? ";   
+        $params = array($OrderNum, $Id);
+        $database_Model = new Database();
+        return $database_Model->Execute($tsql, $params);
+    }
+
     public function GetListArea($take)
     {
         $tsql = "SELECT DISTINCT Area FROM product Order by Area limit 0, $take ";  

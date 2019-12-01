@@ -15,8 +15,10 @@ if(!isset($_SESSION["_UserLogged"]))
     exit();
 }
 $view_data['model'] = $account_InfoModel->GetByCAccName($_SESSION['_UserLogged']['cAccName']);
- if($view_data['model']== null){
-    header("Location".base_url."/pages/404");
+if($view_data['model']== null)
+{
+    header("HTTP/1.0 404 Not Found");
+    header("Location: ".base_url."/pages/404/index.html");
 }
 
 switch($action)

@@ -1,26 +1,25 @@
 <?php 
 class NewManager
 {
-	public function GetList($status = null)
+	public function GetList()
 	{
-        $params = array();
-        if($status == null)
-        {
-            $tsql = "SELECT *
+        $tsql = "SELECT *
                     FROM new 
                     ORDER BY Id desc";  
-        }
-        else 
-        {
-             $tsql = "SELECT *
-                    FROM new 
-                    WHERE Status = ?
-                    ORDER BY Id desc"; 
-             $params = array($status);
-        }
         $database_Model = new Database();
-	    return $database_Model->GetList($tsql, $params);
+	    return $database_Model->GetList($tsql);
 	}
+
+    public function GetListArticleShow($skip, $take)
+    {
+        $params = array();
+        $tsql = "SELECT *
+                    FROM new 
+                    WHERE Status = 1
+                    ORDER BY Id desc LIMIT $skip, $take"; 
+        $database_Model = new Database();
+        return $database_Model->GetList($tsql);
+    }
     public function GetTop10New()
     {
         $params = array();
@@ -67,6 +66,17 @@ class NewManager
         $rows = $database_Model->GetList($tsql, $params);
 	    return count($rows) == 1 ? $rows[0] : null;
 	}
+
+    public function GetArticleShowByAlias($alias)
+    {
+        $tsql = "SELECT *
+                FROM new
+                WHERE Alias = ? And Status = 1";   
+        $params = array($alias);
+        $database_Model = new Database();
+        $rows = $database_Model->GetList($tsql, $params);
+        return count($rows) == 1 ? $rows[0] : null;
+    }
 
 	public function CheckExistsTitle($title)
 	{

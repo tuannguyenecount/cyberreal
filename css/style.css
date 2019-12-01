@@ -1773,7 +1773,7 @@ pre code {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #999;
+    color: #333;
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #e5e5e5;
@@ -12031,7 +12031,7 @@ a:hover {
     position: absolute;
     right: .5em;
     top: 50%;
-    content: "?";
+    content: "";
     display: block;
     font-family: "icomoon" !important;
     font-size: 1em;
@@ -25207,7 +25207,7 @@ screen and (max-height: 300px) {
 }
 
 .fa-calendar-plus:before {
-    content: "?"
+    content: ""
 }
 
 .fa-calendar-times:before {
@@ -25967,7 +25967,7 @@ screen and (max-height: 300px) {
 }
 
 .fa-dollar-sign:before {
-    content: "?"
+    content: ""
 }
 
 .fa-dolly:before {
@@ -30191,7 +30191,7 @@ section.banner-w-search {
 }
 
 .slider-for .slick-arrow.slick-prev:before {
-    content: "?"
+    content: ""
 }
 
 .slider-for .slick-arrow.slick-next {
@@ -30199,7 +30199,7 @@ section.banner-w-search {
 }
 
 .slider-for .slick-arrow.slick-next:before {
-    content: "?"
+    content: ""
 }
 
 .slider-nav {
@@ -30279,7 +30279,7 @@ section.banner-w-search {
 }
 
 .slider-nav .slick-arrow.slick-prev:before {
-    content: "?"
+    content: ""
 }
 
 .slider-nav .slick-arrow.slick-next {
@@ -30287,7 +30287,7 @@ section.banner-w-search {
 }
 
 .slider-nav .slick-arrow.slick-next:before {
-    content: "?"
+    content: "";
 }
 
 .single-office .description .icon-boxed {
@@ -30463,11 +30463,11 @@ section.banner-w-search {
 }
 
 .datetimepicker .glyphicon.glyphicon-arrow-right:before {
-    content: "?"
+    content: ""
 }
 
 .datetimepicker .glyphicon.glyphicon-arrow-left:before {
-    content: "?"
+    content: ""
 }
 
 .datetimepicker .prev:hover,

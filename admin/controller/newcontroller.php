@@ -78,7 +78,10 @@
         $id = (int)$_GET['id'];
         $view_data['model'] = $newManager->GetById($id);
         if($view_data['model'] == null)
-          header("Location: ".base_url."/pages/404");
+        {
+          header("HTTP/1.0 404 Not Found");
+          header("Location: ".base_url."/pages/404/index.html");
+        }
       }
       break;
     }

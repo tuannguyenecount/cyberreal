@@ -22,9 +22,11 @@ RewriteRule ^area/adminarea/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([0-9]+)&(.*)$ adm
 
 RewriteRule ^$ index.php?controller=home&action=index
 
+RewriteRule ^hen-di-xem.html$ index.php?controller=product&action=viewProductsSaved
 RewriteRule ^tin-tuc.html$ index.php?controller=new&action=index
 RewriteRule ^tin-tuc/([a-zA-Z0-9_-]+).html$ index.php?controller=new&action=details&alias=$1
-RewriteRule ^can-ho/([a-zA-Z0-9_-]+).html$ index.php?controller=product&action=details&alias=$1
+
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+).html$ index.php?controller=product&action=details&aliasCategory=$1&aliasProduct=$2
 
 RewriteRule ^([a-zA-Z0-9_-]+).html$ index.php?controller=project&action=index&alias=$1
 RewriteRule ^([a-zA-Z0-9_-]+).html&(.*)$ index.php?controller=project&action=index&alias=$1&$2
@@ -33,16 +35,16 @@ RewriteRule ^([a-zA-Z0-9_]+)$ index.php?controller=$1&action=index
 RewriteRule ^([a-zA-Z0-9_]+)&(.*)$ index.php?controller=$1&action=index&$2
 
 RewriteRule ^([a-zA-Z0-9_]+)/([a-zA-Z0-9_]+)$ index.php?controller=$1&action=$2
+RewriteRule ^([a-zA-Z0-9_]+)/([a-zA-Z0-9_]+)/([0-9]+)$ index.php?controller=$1&action=$2&id=$3
 RewriteRule ^([a-zA-Z0-9_]+)/([a-zA-Z0-9_]+)&(.*)$ index.php?controller=$1&action=$2&$3
 
-RewriteRule ^([a-zA-Z0-9_]+)/([0-9])$ index.php?controller=$1&action=index&id=$2
-RewriteRule ^([a-zA-Z0-9_]+)/([0-9])&(.*)$ index.php?controller=$1&action=index&id=$2&$3
+RewriteRule ^([a-zA-Z0-9_]+)/([0-9]+)$ index.php?controller=$1&action=index&id=$2
+RewriteRule ^([a-zA-Z0-9_]+)/([0-9]+)&(.*)$ index.php?controller=$1&action=index&id=$2&$3
 
-RewriteRule ^([a-zA-Z0-9_]+)/([a-zA-Z0-9_]+)/([0-9])$ index.php?controller=$1&action=$2&id=$3
-RewriteRule ^([a-zA-Z0-9_]+)/([a-zA-Z0-9_]+)/([0-9])&(.*)$ index.php?controller=$1&action=$2&id=$3&$4
+RewriteRule ^([a-zA-Z0-9_]+)/([a-zA-Z0-9_]+)/([0-9]+)&(.*)$ index.php?controller=$1&action=$2&id=$3&$4
 
-ErrorDocument 404 /cyberreal/pages/404.html
-ErrorDocument 500 /cyberreal/pages/500.html
+ErrorDocument 404 /cyberreal/pages/404/index.html
+ErrorDocument 500 /cyberreal/pages/500/index.html
 
 # BEGIN cPanel-generated php ini directives, do not edit
 # Manual editing of this file may result in unexpected behavior.
