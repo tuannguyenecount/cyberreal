@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2019 at 10:12 AM
+-- Generation Time: Dec 02, 2019 at 08:33 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -19,6 +19,53 @@ SET time_zone = "+00:00";
 --
 -- Database: `cyberreal`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking`
+--
+
+CREATE TABLE IF NOT EXISTS `booking` (
+`Id` int(11) NOT NULL,
+  `BookingCode` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Name` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Email` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Phone` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Note` text COLLATE utf8mb4_unicode_ci,
+  `IsConfirm` tinyint(1) DEFAULT '0',
+  `UserConfirm` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `CreatedDate` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`Id`, `BookingCode`, `Name`, `Email`, `Phone`, `Note`, `IsConfirm`, `UserConfirm`, `CreatedDate`) VALUES
+(1, '5D0F0ADB-B370-432F-A462-A0841A46317A', 'Nguyễn Ái Tuấn', 'nguyenaituan@yahoo.com', '0164 831 5269', 'test 123', 0, NULL, '2019-12-02 11:50:08'),
+(3, '88E5E569-5814-4171-997B-6F3974FE10B3', 'Nguyễn Ái Tuấn2 ', 'teenboylaanh@gmail.com', '0164 831 5269', '', 0, NULL, '2019-12-02 11:53:24'),
+(4, 'B92BA5C4-1DA7-413D-A774-BEE5B9CBF86C', 'test 2', 'nguyenaituan@yahoo.com', '0164 831 5269', '', 0, NULL, '2019-12-02 13:05:54'),
+(5, '2C2DE74E-C562-4B22-AF4B-E0ED87FFB5E0', 'test 2', 'nguyenaituan@yahoo.com', '0164 831 5269', '', 0, NULL, '2019-12-02 13:13:16'),
+(6, '4F1532E5-7356-46F5-9312-EE5857ACB926', 'test 2', 'nguyenaituan@yahoo.com', '0164 831 5269', '', 0, NULL, '2019-12-02 13:13:48'),
+(7, 'BFA9FDC5-99A3-4795-9C08-8567DCF26280', 'test 2', 'nguyenaituan@yahoo.com', '0164 831 5269', '', 0, NULL, '2019-12-02 13:14:50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bookingdetails`
+--
+
+CREATE TABLE IF NOT EXISTS `bookingdetails` (
+  `BookingId` int(11) NOT NULL,
+  `ProductId` int(11) NOT NULL DEFAULT '0',
+  `ProductImage` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ProductName` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ProductAddress` varchar(512) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ProductLink` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ProductPrice` int(11) DEFAULT NULL,
+  `DayToSee` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -834,13 +881,25 @@ INSERT INTO `district` (`id`, `_name`, `_prefix`, `_province_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `fee` (
-  `Id` int(11) NOT NULL,
-  `Name` varchar(256) NOT NULL,
-  `Sort_Order` int(11) DEFAULT NULL,
-  `Status` tinyint(1) DEFAULT '1',
-  `IsDeleted` tinyint(1) DEFAULT '0',
+`Id` int(11) NOT NULL,
+  `Name` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `SortOrder` int(11) DEFAULT NULL,
   `CreatedDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `fee`
+--
+
+INSERT INTO `fee` (`Id`, `Name`, `SortOrder`, `CreatedDate`) VALUES
+(1, 'Phí quản lý', 1, '2019-12-02 03:00:23'),
+(2, 'Phí xe máy', 2, '2019-12-02 03:01:01'),
+(3, 'Phí ô tô', 3, '2019-12-02 03:01:07'),
+(4, 'Phí ngoài giờ', 4, '2019-12-02 03:01:12'),
+(5, 'Tiền điện', 5, '2019-12-02 03:01:18'),
+(6, 'Tiền điện lạnh', 6, '2019-12-02 03:01:25'),
+(7, 'Tiền đặt cọc', 7, '2019-12-02 03:01:31'),
+(8, 'Thanh toán', 8, '2019-12-02 03:01:38');
 
 -- --------------------------------------------------------
 
@@ -853,7 +912,7 @@ CREATE TABLE IF NOT EXISTS `imagesproducts` (
   `ProductId` int(11) NOT NULL,
   `Image` varchar(310) CHARACTER SET utf8mb4 DEFAULT NULL,
   `OrderNum` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `imagesproducts`
@@ -862,7 +921,12 @@ CREATE TABLE IF NOT EXISTS `imagesproducts` (
 INSERT INTO `imagesproducts` (`Id`, `ProductId`, `Image`, `OrderNum`) VALUES
 (1, 13, 'toa-nha-viet-phone-1-building-1.jpg', 1),
 (2, 13, 'toa-nha-viet-phone-1-building-2.jpg', 2),
-(3, 13, 'toa-nha-viet-phone-1-building-3.jpg', 3);
+(3, 13, 'toa-nha-viet-phone-1-building-3.jpg', 3),
+(4, 2, 'toa-nha-artex-saigon-building15752558722238.jpg', 2),
+(5, 2, 'toa-nha-artex-saigon-building15752558722270.jpg', 3),
+(6, 2, 'toa-nha-artex-saigon-building15752558722293.jpg', 4),
+(7, 2, 'toa-nha-artex-saigon-building15752558722322.jpg', 5),
+(8, 2, 'toa-nha-artex-saigon-building15752558722344.jpg', 6);
 
 -- --------------------------------------------------------
 
@@ -942,7 +1006,7 @@ CREATE TABLE IF NOT EXISTS `new` (
   `CreatedDate` datetime DEFAULT CURRENT_TIMESTAMP,
   `Status` tinyint(1) DEFAULT '0',
   `Alias` varchar(256) CHARACTER SET utf8mb4 NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `new`
@@ -976,7 +1040,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `ServiceCharge` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
   `Advantages` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
   `Price` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Image` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Image` varchar(256) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `Alias` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `Status` tinyint(1) DEFAULT '0',
   `UserCreated` varchar(256) CHARACTER SET utf8mb4 DEFAULT NULL,
@@ -1007,8 +1071,22 @@ INSERT INTO `product` (`Id`, `Name`, `CategoryId`, `Area`, `Direction`, `Rank`, 
 CREATE TABLE IF NOT EXISTS `product_fee` (
   `productId` int(11) NOT NULL,
   `feeId` int(11) NOT NULL,
-  `value` varchar(256) NOT NULL
+  `value` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `product_fee`
+--
+
+INSERT INTO `product_fee` (`productId`, `feeId`, `value`) VALUES
+(13, 1, '1.000.000 VND/tháng'),
+(13, 2, '6 USD/tháng'),
+(13, 3, '70 USD/tháng'),
+(13, 4, 'Thỏa thuận'),
+(13, 5, 'Theo giá nhà nước'),
+(13, 6, 'Đã bao gồm'),
+(13, 7, '3 tháng'),
+(13, 8, 'Tháng/Quý');
 
 -- --------------------------------------------------------
 
@@ -82871,6 +82949,18 @@ INSERT INTO `ward` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VA
 --
 
 --
+-- Indexes for table `booking`
+--
+ALTER TABLE `booking`
+ ADD PRIMARY KEY (`Id`), ADD UNIQUE KEY `BookingCode` (`BookingCode`);
+
+--
+-- Indexes for table `bookingdetails`
+--
+ALTER TABLE `bookingdetails`
+ ADD PRIMARY KEY (`BookingId`,`ProductId`), ADD KEY `BookingId` (`BookingId`), ADD KEY `ProductId` (`ProductId`);
+
+--
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -82959,6 +83049,11 @@ ALTER TABLE `slide`
 --
 
 --
+-- AUTO_INCREMENT for table `booking`
+--
+ALTER TABLE `booking`
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
@@ -82969,15 +83064,20 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 ALTER TABLE `direction`
 MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
+-- AUTO_INCREMENT for table `fee`
+--
+ALTER TABLE `fee`
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
 -- AUTO_INCREMENT for table `imagesproducts`
 --
 ALTER TABLE `imagesproducts`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `new`
 --
 ALTER TABLE `new`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `product`
 --
@@ -82986,6 +83086,13 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `bookingdetails`
+--
+ALTER TABLE `bookingdetails`
+ADD CONSTRAINT `FK_bookingdetails_booking_BookingId` FOREIGN KEY (`BookingId`) REFERENCES `booking` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `FK_bookingdetails_product_ProductId` FOREIGN KEY (`ProductId`) REFERENCES `product` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `category`

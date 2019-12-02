@@ -22,7 +22,8 @@ RewriteRule ^area/adminarea/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([0-9]+)&(.*)$ adm
 
 RewriteRule ^$ index.php?controller=home&action=index
 
-RewriteRule ^hen-di-xem.html$ index.php?controller=product&action=viewProductsSaved
+RewriteRule ^hen-di-xem.html$ index.php?controller=booking&action=viewProductsSaved
+RewriteRule ^cam-on.html$ index.php?controller=booking&action=thankyou
 RewriteRule ^tin-tuc.html$ index.php?controller=new&action=index
 RewriteRule ^tin-tuc/([a-zA-Z0-9_-]+).html$ index.php?controller=new&action=details&alias=$1
 

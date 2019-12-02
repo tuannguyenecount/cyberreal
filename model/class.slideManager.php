@@ -24,7 +24,10 @@ class SlideManager {
                 WHERE Id = ?";
         $params = array($id);
         $database_Model = new Database();
-        return $database_Model->GetList($tsql, $params)[0];
+        $arr = $database_Model->GetList($tsql, $params);
+        if(count($arr) > 0)
+            return $arr[0];
+        return null;
     }
 
     public function Add($Title, $Description, $Image, $Status, $Order) {

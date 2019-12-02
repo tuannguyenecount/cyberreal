@@ -1,5 +1,13 @@
 <?php 
+	function NEWGUID()
+	{
+	    if (function_exists('com_create_guid') === true)
+	    {
+	        return trim(com_create_guid(), '{}');
+	    }
 
+	    return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
+	}
 	function RequestSendOTP($user)
 	{
 		global $account_InfoModel;
@@ -230,7 +238,7 @@
 	        $response = $_POST["g-recaptcha-response"];
 	        $url = 'https://www.google.com/recaptcha/api/siteverify';
 	        $data = array(
-	            'secret' => '6LffNIMUAAAAAAtpmsXkOb-9CYsCe6mh5djnnBxr',
+	            'secret' => '6LeVicUUAAAAACqPWOWwOWfgj2jHl2TQ-rj3WexW',
 	            'response' => $_POST["g-recaptcha-response"]
 	        );
 	        $query = http_build_query($data);
