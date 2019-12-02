@@ -45,8 +45,7 @@ class BookingManager {
     }
 
      public function AddDetail($model) {
-        $tsql = "INSERT INTO bookingdetails
-                (BookingId, ProductId, ProductImage, ProductName, Address, Link, ProductPrice, DayToSee)
+        $tsql = "INSERT INTO `bookingdetails`(`BookingId`, `ProductId`, `ProductImage`, `ProductName`, `ProductAddress`, `ProductLink`, `ProductPrice`, `DayToSee`)
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?) ";
         $params = array($model['BookingId'], $model['ProductId'], $model['ProductImage'], $model['ProductName'], $model['ProductAddress'], $model['ProductLink'], $model['ProductPrice'], $model['DayToSee']);
         $database_Model = new Database();

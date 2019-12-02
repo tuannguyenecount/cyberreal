@@ -12,7 +12,9 @@
             $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
             $take = 10;
             $skip = 10 * ($page - 1);
-            $view_data['model'] = $newManager->GetListArticleShow($skip, $take); 
+            $view_data['model'] = $newManager->GetListArticleShow($skip, $take);
+            $view_data['totalPage'] = $newManager->GetTotalPage(10);
+            $view_data['urlCurrent'] = base_url."/tin-tuc.html";
             break;
         }
         case "details":

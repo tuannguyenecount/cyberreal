@@ -38,7 +38,7 @@
                     <div class="container">
                         <div class="row no-gutters">
                             <div class="col-lg-3">
-                                <a class="logo" href="<?= base_url ?>"><img src="<?= base_url ?>/images/logo.png" alt=""></a>                    </div>
+                                <a class="logo" href="<?= base_url ?>"><img src="<?= base_url ?>/images/logonew.png" alt=""></a>                    </div>
                             <div class="col-lg-auto ml-lg-auto information d-none d-md-flex mt-md-2 mt-lg-0">
                                 <div class="row">
                                     <div class="col-md">
@@ -74,59 +74,9 @@
                     </div>
                 </div>
 
-                <nav class="navbar navbar-expand-lg">
-                    <div class="container">
-                        <button class="navbar-toggler" type="button" aria-label="Toggle navigation" id="mobile-menu-icon">
-                            <i class="fas fa-bars"></i> MENU
-                        </button>
-                        <div id="main-menu">
-                            <ul id="w0" class="navbar-nav mr-auto nav"><li class="nav-item"><a class="nav-link" href="<?= base_url ?>"><i class="fas fa-home"></i></a></li>
-                                <li class="dropdown nav-item"><a class="dropdown-toggle nav-link" href="/van-phong-cho-thue" data-toggle="dropdown">Văn phòng theo quận<span class="fas fa-angle-down"></span></a><div id="w1" class="dropdown-menu"><a class="dropdown-item" href="/can-ho/quan-1">Quận 1</a>
-                                        <a class="dropdown-item" href="/can-ho/quan-2">Quận 2</a>
-                                        <a class="dropdown-item" href="/can-ho/quan-3">Quận 3</a>
-                                        <a class="dropdown-item" href="/can-ho/quan-4">Quận 4</a>
-                                        <a class="dropdown-item" href="/can-ho/quan-5">Quận 5</a>
-                                        <a class="dropdown-item" href="/can-ho/quan-6">Quận 6</a>
-                                        <a class="dropdown-item" href="/can-ho/quan-7">Quận 7</a>
-                                        <a class="dropdown-item" href="/can-ho/quan-8">Quận 8</a>
-                                        <a class="dropdown-item" href="/can-ho/quan-9">Quận 9</a>
-                                        <a class="dropdown-item" href="/can-ho/quan-10">Quận 10</a>
-                                        <a class="dropdown-item" href="/can-ho/quan-11">Quận 11</a>
-                                        <a class="dropdown-item" href="/can-ho/quan-12">Quận 12</a>
-                                        <a class="dropdown-item" href="/can-ho/quan-binh-thanh">Quận Bình Thạnh</a>
-                                        <a class="dropdown-item" href="/can-ho/quan-phu-nhuan">Quận Phú Nhuận</a>
-                                        <a class="dropdown-item" href="/can-ho/quan-tan-binh">Quận Tân Bình</a>
-                                        <a class="dropdown-item" href="/can-ho/quan-go-vap">Quận Gò Vấp</a>
-                                        <a class="dropdown-item" href="/can-ho/quan-thu-duc">Quận Thủ Đức</a>
-                                        <a class="dropdown-item" href="/can-ho/quan-binh-tan">Quận Bình Tân</a>
-                                        <a class="dropdown-item" href="/can-ho/quan-tan-phu">Quận Tân Phú</a>
-                                        <a class="dropdown-item" href="/can-ho/huyen-cu-chi">Huyện Củ Chi</a>
-                                        <a class="dropdown-item" href="/can-ho/huyen-can-gio">Huyện Cần Giờ</a>
-                                        <a class="dropdown-item" href="/can-ho/huyen-nha-be">Huyện Nhà Bè</a></div></li>
-                                <li class="dropdown nav-item"><a class="dropdown-toggle nav-link" href="/van-phong-tron-goi" data-toggle="dropdown">Văn Phòng Trọn Gói<span class="fas fa-angle-down"></span></a><div id="w2" class="dropdown-menu"><a class="dropdown-item" href="/van-phong-tron-goi/quan-1-1">Văn Phòng Trọn Gói Quận 1</a>
-                                        <a class="dropdown-item" href="/van-phong-tron-goi/quan-2-1">Văn Phòng Trọn Gói Quận 2</a>
-                                        <a class="dropdown-item" href="/van-phong-tron-goi/quan-3-1">Văn Phòng Trọn Gói Quận 3</a>
-                                        <a class="dropdown-item" href="/van-phong-tron-goi/quan-4-1">Văn Phòng Trọn Gói Quận 4</a>
-                                        <a class="dropdown-item" href="/van-phong-tron-goi/quan-10-1">Văn Phòng Trọn Gói Quận 10</a>
-                                        <a class="dropdown-item" href="/van-phong-tron-goi/phu-nhuan">Văn Phòng Trọn Gói Phú Nhuận</a>
-                                        <a class="dropdown-item" href="/van-phong-tron-goi/binh-thanh">Văn Phòng Trọn Gói Bình Thạnh</a>
-                                        <a class="dropdown-item" href="/van-phong-tron-goi/tan-binh">Văn Phòng Trọn Gói Tân Bình</a></div></li>
-                                <li class="nav-item"><a class="nav-link" href="/tin-tuc">Tin tức</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/video">Video</a></li>
-                            </ul>                
-                        </div>
-                        <ul class="navbar-nav navbar-right">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/ki-gui">
-                                    <span class="btn btn-warning btn-sm btn-with-ico text-white font-weight-bold"><i class="fa fa-star"></i> Kí gửi</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/lien-he">Liên hệ</a>                    
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+                <div id="nav-container">
+                    
+                </div>
             </header>
             <!-- / header -->
 
@@ -287,12 +237,36 @@
                 {
                     $.ajax({
                         url : "<?= base_url ?>/shared/_searchPartial",
-                        method: "Get",
+                        method: "Post",
                         success: function(result){
                             $("#search").html(result);
                         }
                     });
                 }
+
+                $.ajax({
+                    url : "<?= base_url ?>/shared/navbar",
+                    method: "Post",
+                    success: function(result){
+                        $("#nav-container").html(result);
+                    }
+                });
+
+                if($("#filter-container") != undefined)
+                {
+                    $.ajax({
+                        url : "<?= base_url ?>/shared/filters",
+                        method: "Post",
+                        success: function(result){
+                            $("#filter-container").html(result);
+                        }
+                    });
+                }
+
+                $("#global").on("show.bs.modal", function(e) {
+                    var link = $(e.relatedTarget);
+                    $(this).find(".modal-body").load(link.attr("href"));
+                });
 
                 $(document).on("change","#Province", function(e){
                     e.preventDefault();

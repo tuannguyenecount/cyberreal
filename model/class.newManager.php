@@ -20,6 +20,17 @@ class NewManager
         $database_Model = new Database();
         return $database_Model->GetList($tsql);
     }
+
+    public function GetTotalPage($take)
+    {
+        $params = array();
+        $tsql = "SELECT CEIL(COUNT(*) / $take) AS CNT
+                    FROM new 
+                    WHERE Status = 1"; 
+        $database_Model = new Database();
+        return (int)$database_Model->ExecuteScalar($tsql);
+    }
+
     public function GetTop10New()
     {
         $params = array();

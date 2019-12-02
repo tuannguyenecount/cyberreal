@@ -15,10 +15,10 @@
 
 <nav aria-label="breadcrumb" class="pt-2">
     <div class="container">
-        <a class="breadcrumb-back" href="/"></a>					
+        <a class="breadcrumb-back" href="<?= base_url ?>"></a>					
         <ol class="breadcrumb">
-            <li class='breadcrumb-item'><a href="/">Trang chủ</a></li>
-            <li class='breadcrumb-item'><a href="#">Căn hộ cho thuê</a></li>
+            <li class='breadcrumb-item'><a href="<?= base_url ?>">Trang chủ</a></li>
+            <li class='breadcrumb-item'><a href="<?= base_url ?>/<?= $view_data['category']['Alias'] ?>.html"><?= $view_data['category']['Name'] ?></a></li>
             <li class='breadcrumb-item active'><?= $view_data['model']['Name'] ?></li>
         </ol>                
     </div>
@@ -32,6 +32,8 @@
             <div class="col-lg-6">
                <div class="gallery mb-sm-2">
                   <div class="slider slider-for">
+                     <a href="<?= base_url ?>/images/products/<?= $view_data['model']['Image'] ?>">
+                          <img src="<?= base_url ?>/images/products/<?= $view_data['model']['Image'] ?>" alt="" /> </a>
                     <?php foreach($view_data['imagesProduct'] as $item) { ?>
                       <figure class="photo">
                         <a href="<?= base_url ?>/images/products/slides/<?= $item['Image'] ?>">
@@ -40,6 +42,9 @@
                     <?php } ?>
                   </div>
                   <div class="slider slider-nav">
+                     <div class="slide-thumbnail">
+                          <img src="<?= base_url ?>/images/products/<?= $view_data['model']['Image'] ?>" alt="">
+                      </div>
                     <?php foreach($view_data['imagesProduct'] as $item) { ?>
                       <div class="slide-thumbnail">
                           <img src="<?= base_url ?>/images/products/slides/<?= $item['Image'] ?>" alt="">
@@ -153,55 +158,8 @@
                   </div>
                </section>
             </div>
-            <div class="col-lg-3">
-               <aside id="filters">
-                  <div class="bordered stacked mb-3 p-0">
-                     <h3 class="title m-0">Căn hộ theo Quận</h3>
-                     <div class="list-group">
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/quan-1">Quận 1</a>               
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/quan-2">Quận 2</a>              
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/quan-3">Quận 3</a>              
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/quan-4">Quận 4</a>              
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/quan-5">Quận 5</a>              
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/quan-6">Quận 6</a>              
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/quan-7">Quận 7</a>              
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/quan-8">Quận 8</a>             
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/quan-9">Quận 9</a>              
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/quan-10">Quận 10</a>               
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/quan-11">Quận 11</a>               
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/quan-12">Quận 12</a>               
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/quan-binh-thanh">Quận Bình Thạnh</a>              
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/quan-phu-nhuan">Quận Phú Nhuận</a>             
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/quan-tan-binh">Quận Tân Bình</a>               
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/quan-tan-phu">Quận Tân Phú</a>              
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/quan-go-vap">Quận Gò Vấp</a>             
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/quan-thu-duc">Quận Thủ Đức</a>              
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/quan-binh-tan">Quận Bình Tân</a>               
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/huyen-cu-chi">Huyện Củ Chi</a>              
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/huyen-can-gio">Huyện Cần Giờ</a>               
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/huyen-hoc-mon">Huyện Hóc Môn</a>               
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/huyen-nha-be">Huyện Nhà Bè</a>              
-                       <a class="list-group-item list-group-item-action" href="/van-phong-cho-thue/huyen-binh-chanh">Huyện Bình Chánh</a>    
-                     </div>
-                  </div>
-                  <div class="bordered stacked mb-3 p-0">
-                     <h3 class="title m-0">Căn hộ theo Đường</h3>
-                     <div class="list-group">
-                      <?php foreach($view_data['streets'] as $item) { ?>
-                        <a class="list-group-item list-group-item-action" href="<?= base_url ?>/can-ho-theo-duong/<?= strtolower(vn_to_str($item['_name'])) ?>">Đường <?= $item['_name']?></a>			
-                      <?php } ?>
-                         
-                     </div>
-                  </div>
-                  <div class="bordered stacked mb-3 p-0">
-                     <h3 class="title m-0">Căn hộ theo Hướng</h3>
-                     <div class="list-group">
-                        <?php foreach($view_data['directions'] as $item) { ?>
-                        <a class="list-group-item list-group-item-action" href="<?= base_url ?>/can-ho-theo-huong/<?= $item['Alias'] ?>"><?= $item['Name'] ?></a>	
-                        <?php } ?>				
-                     </div>
-                  </div>
-               </aside>
+            <div class="col-lg-3" id="filter-container">
+               
             </div>
          </div>
       </div>

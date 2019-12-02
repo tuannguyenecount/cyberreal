@@ -1,0 +1,14 @@
+http://172.96.191.5/cpanel
+Domain: canho247.com.vn
+Username: canhocom
+Password: T:F66e6UuWq1k:
+
+Domain demo:
+http://goldrezin.com
+
+DB Info:
+172.96.191.139
+canhocom_cyberreal
+canhocom_user
+nU.VMtD0K?;%
+

@@ -4789,7 +4789,7 @@ input[type=button].btn-block {
 }
 
 .pagination {
-    display: flex;
+    display: block;
     padding-left: 0;
     list-style: none;
     border-radius: .25rem
@@ -19281,8 +19281,12 @@ a.card {
     opacity: .25
 }
 
-.pagination .page-item+.page-item {
-    margin-left: .5rem
+.pagination .page-item {
+    float:left;
+}
+
+.pagination .page-item {
+    margin: .5rem;
 }
 
 .pagination .page-link {
@@ -25099,7 +25103,7 @@ screen and (max-height: 300px) {
 }
 
 .fa-box:before {
-    content: "?"
+    content: ""
 }
 
 .fa-box-open:before {
@@ -30757,7 +30761,7 @@ footer .socials ul li {
     vertical-align: -0.125em;
     font-family: "Font Awesome 5 Free", sans-serif;
     font-weight: 900;
-    content: "?"
+    content: ""
 }
 
 .show-less {

@@ -53,12 +53,12 @@
                      </td>
                      <td class="align-middle text-center">
                         <div class="form-group mb-0 required">
-                           <input type="text" class="form-control calendar" name="DayToSee<?= $item['Id'] ?>" readonly="">
+                           <input type="text" class="form-control calendar" required="" name="DayToSee<?= $item['Id'] ?>" readonly="">
                            <div class="help-block"></div>
                         </div>
                      </td>
                      <td class="align-middle text-center">
-                        <a class="btn btn-outline-danger btn-ico btn-rounded btn-sm" href="<?= base_url?>/product/removeSaved/<?= $item['Id'] ?>"><i class="fas fa-times"></i></a>                                
+                        <a class="btn btn-outline-danger btn-ico btn-rounded btn-sm" href="<?= base_url?>/booking/removeSaved/<?= $item['Id'] ?>"><i class="fas fa-times"></i></a>                                
                      </td>
                   </tr>
                <?php } ?>

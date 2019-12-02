@@ -26,7 +26,7 @@
                             <table class="table table-border-none table-middle">
                                 <tbody>
                                     <tr>
-                                        <td class="col-md-2">Tên Dự Án</td>
+                                        <td class="col-md-2">Tên dự án</td>
                                         <td>
                                             <input id="Name" type="text" value="<?= isset($_POST['Name']) ? $_POST['Name'] : $view_data['model']['Name'] ?>" name="Name"  class="form-control" />
                                     </tr>
@@ -37,7 +37,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="col-md-2">Loại Dự Án</td>
+                                        <td class="col-md-2">Loại dự án</td>
                                         <td>
                                             <select class="form-control" name="CategoryId">
                                                 <?php foreach($view_data['categories'] as $category) { ?>
@@ -46,7 +46,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="col-md-2">Giá bán</td>
+                                        <td class="col-md-2">Đơn giá</td>
                                         <td>
                                             <input type="text" value="<?= isset($_POST['Price']) ? $_POST['Price'] : $view_data['model']['Price']   ?>"  name="Price" class="form-control" />
                                         </td>
@@ -58,7 +58,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="col-md-2">Diện Tích (m2)</td>
+                                        <td class="col-md-2">Diện tích (m2)</td>
                                         <td>
                                             <input type="text" class="form-control" 
                                             value="<?= isset($_POST['Area']) ? $_POST['Area'] : $view_data['model']['Area'] ?>" name="Area" />
@@ -77,7 +77,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="col-md-2">Xếp Hạng</td>
+                                        <td class="col-md-2">Xếp hạng</td>
                                         <td>
                                            <input type="text" class="form-control" name="Rank" value="<?= isset($_POST['Rank']) ? $_POST['Rank'] : $view_data['model']['Rank'] ?>" />
                                         </td>
@@ -99,7 +99,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="col-md-2">Địa Chỉ</td>
+                                        <td class="col-md-2">Địa chỉ</td>
                                         <td>
                                            <input type="text" class="form-control" name="Address" value="<?= isset($_POST['Address']) ? $_POST['Address'] : $view_data['model']['Address'] ?>" />
                                         </td>

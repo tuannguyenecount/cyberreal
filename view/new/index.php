@@ -43,19 +43,14 @@
          <?php } ?>
            
             <ul class="pagination">
-               <?php if($pageCurrent > 1) { ?>
+              <!--  <?php if($pageCurrent > 1) { ?>
                <li class="page-item"><a class="page-link" href="/tin-tuc?page=6" data-page="5">&laquo;</a></li>
-               <?php } ?>
-               <li class="page-item"><a class="page-link" href="/tin-tuc?page=1" data-page="0">1</a></li>
-               <li class="page-item"><a class="page-link" href="/tin-tuc?page=2" data-page="1">2</a></li>
-               <li class="page-item"><a class="page-link" href="/tin-tuc?page=3" data-page="2">3</a></li>
-               <li class="page-item"><a class="page-link" href="/tin-tuc?page=4" data-page="3">4</a></li>
-               <li class="page-item"><a class="page-link" href="/tin-tuc?page=5" data-page="4">5</a></li>
-               <li class="page-item"><a class="page-link" href="/tin-tuc?page=6" data-page="5">6</a></li>
-               <li class="page-item active"><a class="page-link" href="/tin-tuc?page=7" data-page="6">7</a></li>
-               <li class="page-item"><a class="page-link" href="/tin-tuc?page=8" data-page="7">8</a></li>
-               <li class="page-item"><a class="page-link" href="/tin-tuc?page=9" data-page="8">9</a></li>
-               <li class="page-item"><a class="page-link" href="/tin-tuc?page=8" data-page="7">&raquo;</a></li>
+               <?php } ?> -->
+
+                  <?php for($i = 1; $i <= $view_data['totalPage']; $i++) { ?>
+                     <li class="page-item <?= $i == $pageCurrent ? "active" : "" ?>"><a class="page-link" href="<?= $view_data['urlCurrent'] ?>&page=<?= $i ?>"><?= $i ?></a>
+                     </li>
+                  <?php } ?>       
             </ul>
          </div>
          <div class="col-md-3">

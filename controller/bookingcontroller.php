@@ -12,18 +12,19 @@
             $view_data['title'] = "Danh sách căn hộ đã lưu";
             $view_data['view_name'] = "booking/viewProductsSaved.php";
             $view_data['section_scripts'] = "booking/viewProductsSavedScripts.php";
-            $view_data['model'] = $_SESSION['productSaved'];
+            $view_data['model'] = isset($_SESSION['productSaved']) ? $_SESSION['productSaved'] : array();
             if(!isset($_SESSION['productSaved']) || count($_SESSION['productSaved']) == 0)
             {
                header("Location: ".base_url);
             }
             else if(isset($_POST['Name']))
             {
+
                 $view_data['errors'] = $bookingManager->GetErrorsMessage($_POST);
-                // if(CheckRecaptchav2() == false)
-                // {
-                //     $view_data['errors'][] = "Mã xác nhận không đúng!";
-                // }
+                if(CheckRecaptchav2() == false)
+                {
+                    $view_data['errors'][] = "Mã xác nhận không đúng!";
+                }
                 $_POST['BookingCode'] = NEWGUID();
                 if(count($view_data['errors']) == 0)
                 {
@@ -44,6 +45,7 @@
                             $bookingDetailObject['DayToSee'] = $_POST['DayToSee'.$item['Id']];
                             $result = $bookingManager->AddDetail($bookingDetailObject);
                         }
+                        $_SESSION['productSaved'] = array();
                         header("Location: ".base_url."/cam-on.html");
                     }
                     else 
