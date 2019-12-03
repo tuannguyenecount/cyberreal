@@ -4,6 +4,7 @@
     $uid = 'root';   
     $pwd = '';  
     $databaseName = "cyberreal"; 
+    
     $dsn= "mysql:host=$serverName;dbname=$databaseName";
 
     try

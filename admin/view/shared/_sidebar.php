@@ -80,7 +80,7 @@
         </li>
         
          <li id="menus">
-            <a href="<?= base_url_admin ?>/menu/config">
+            <a href="<?= base_url_admin ?>/menu">
                 <i class="fa fa-cog"></i> <span>Cấu Hình Menu</span>
             </a>
         </li>

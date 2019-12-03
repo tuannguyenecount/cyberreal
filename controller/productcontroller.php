@@ -39,6 +39,14 @@
             $view_data['view_name'] = "product/getByStreet.php";
             break;
         }
+        case "getByDirection":
+        {
+            $view_data['direction'] = $locationManager->GetDirectionByAlias('huong-'.$_GET['alias']);
+            $view_data['title'] = "Căn hộ ".$view_data['direction']['Name'];
+            $view_data['model'] = $productManager->GetProductsShowByDirection($view_data['direction']['Id']);
+            $view_data['view_name'] = "product/getByDirection.php";
+            break;
+        }
         case "details":
         {
             $view_data['view_name'] = "product/details.php";

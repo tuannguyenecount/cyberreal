@@ -25,6 +25,7 @@ RewriteRule ^$ index.php?controller=home&action=index
 RewriteRule ^hen-di-xem.html$ index.php?controller=booking&action=viewProductsSaved
 RewriteRule ^cam-on.html$ index.php?controller=booking&action=thankyou
 RewriteRule ^can-ho/duong-([a-zA-Z0-9_-]+)$ index.php?controller=product&action=getByStreet&alias=$1
+RewriteRule ^can-ho/huong-([a-zA-Z0-9_-]+)$ index.php?controller=product&action=getByDirection&alias=$1
 RewriteRule ^can-ho/([a-zA-Z0-9_-]+)$ index.php?controller=product&action=getByDistrict&alias=$1
 
 RewriteRule ^tin-tuc.html$ index.php?controller=new&action=index

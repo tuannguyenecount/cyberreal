@@ -32,6 +32,16 @@ class LocationManager {
         return $result;
     }
 
+    public function GetDirectionByAlias($alias) { 
+        $tsql = "SELECT * 
+                 FROM `direction` 
+                 WHERE `Alias` = ? ";
+        $params = array($alias);
+        $database_Model = new Database();
+        $rows = $database_Model->GetList($tsql, $params);
+        return count($rows) > 0 ? $rows[0] : null;
+    }
+
     public function GetDistrictsByProvince($province) {
         
         $tsql = "SELECT DISTINCT `district`.* 

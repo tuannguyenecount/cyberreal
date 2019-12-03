@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2019 at 07:48 PM
+-- Generation Time: Dec 03, 2019 at 06:39 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.39
 
@@ -148,15 +148,15 @@ CREATE TABLE `direction` (
 --
 
 INSERT INTO `direction` (`Id`, `Name`, `Sort_Order`, `Alias`) VALUES
-(1, 'Chưa xác định', 1, 'chua-xac-dinh'),
+(1, 'Chưa xác định', 1, 'huong-chua-xac-dinh'),
 (3, 'Hướng Tây Nam', 2, 'huong-tay-nam'),
-(4, 'Hướng Tây Bắc', 3, NULL),
-(5, 'Hướng Đông Nam', 4, NULL),
-(7, 'Hướng Đông Bắc', 5, NULL),
-(8, 'Hướng Đông', 6, NULL),
-(9, 'Hướng Tây', 7, NULL),
-(10, 'Hướng Nam', 8, NULL),
-(11, 'Hướng Bắc', 9, NULL);
+(4, 'Hướng Tây Bắc', 3, 'huong-tay-bac'),
+(5, 'Hướng Đông Nam', 4, 'huong-dong-nam'),
+(7, 'Hướng Đông Bắc', 5, 'huong-dong-bac'),
+(8, 'Hướng Đông', 6, 'huong-dong'),
+(9, 'Hướng Tây', 7, 'huong-tay'),
+(10, 'Hướng Nam', 8, 'huong-nam'),
+(11, 'Hướng Bắc', 9, 'huong-bac');
 
 -- --------------------------------------------------------
 
@@ -1002,6 +1002,21 @@ CREATE TABLE `mailbox` (
   `Content` longtext CHARACTER SET utf8mb4 NOT NULL,
   `DateSend` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu`
+--
+
+CREATE TABLE `menu` (
+  `Id` int(11) NOT NULL,
+  `Name` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `URL` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `SortOrder` int(11) DEFAULT NULL,
+  `IsShow` tinyint(1) DEFAULT '1',
+  `MenuParentId` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -83042,6 +83057,13 @@ ALTER TABLE `mailbox`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Indexes for table `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`Id`),
+  ADD KEY `FK_menu_ParentId_Id` (`MenuParentId`);
+
+--
 -- Indexes for table `new`
 --
 ALTER TABLE `new`
@@ -83118,6 +83140,12 @@ ALTER TABLE `imagesproducts`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `new`
 --
 ALTER TABLE `new`
@@ -83139,6 +83167,12 @@ ALTER TABLE `product`
 ALTER TABLE `bookingdetails`
   ADD CONSTRAINT `FK_bookingdetails_booking_BookingId` FOREIGN KEY (`BookingId`) REFERENCES `booking` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_bookingdetails_product_ProductId` FOREIGN KEY (`ProductId`) REFERENCES `product` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `menu`
+--
+ALTER TABLE `menu`
+  ADD CONSTRAINT `FK_menu_ParentId_Id` FOREIGN KEY (`MenuParentId`) REFERENCES `menu` (`Id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

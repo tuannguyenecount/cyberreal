@@ -57,6 +57,20 @@ class ProductManager
         $database_Model = new Database();
         return $database_Model->GetList($tsql, $params);
     }
+    public function GetProductsShowByDirection($direction)
+    {
+        $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, CONCAT(C._prefix,' ', C._name) AS DistrictName, CONCAT(D._prefix ,' ',D._name) AS WardName, F.Name As DirectionName
+                    FROM product A LEFT JOIN category B  
+                    ON A.CategoryId = B.Id
+                    LEFT JOIN district C ON A.District = C.id AND C._province_id = 1
+                    LEFT JOIN ward D ON A.Ward = D.id AND D._district_id = C.id
+                    LEFT JOIN direction F ON A.Direction = F.Id 
+                    WHERE A.Status = 1 AND A.Direction = ?
+                    ORDER BY A.Id desc"; 
+        $params = array($direction);
+        $database_Model = new Database();
+        return $database_Model->GetList($tsql, $params);
+    }
 	public function CountAll($status = null)
 	{
         $params = array();
