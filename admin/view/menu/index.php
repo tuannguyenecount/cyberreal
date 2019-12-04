@@ -14,9 +14,9 @@
             <div class="box-body">
                <?php include_once 'view/shared/_errors.php'; ?>
                <p>
-                  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalAddMenu">Thêm Menu</button>
+                  <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modalAddMenu"><i class="fa fa-plus"></i> Thêm Menu</button>
                </p>
-               <div id="tree"></div>
+               <div id="tree" class="col-md-8"></div>
             </div>
             <!-- /.box-body -->
          </div>
@@ -37,7 +37,7 @@
             </div>
             <div class="modal-body">
                 <div class="box-body">
-                  <form class="form-horizontal" action="<?= base_url_admin ?>/menu/create">
+                  <form class="form-horizontal" method="Post" action="<?= base_url_admin ?>/menu/create">
                       <div class="form-group">
                         <label class="control-label col-sm-3" for="Name">Tên menu</label>
                         <div class="col-sm-9">
@@ -47,10 +47,11 @@
                       <div class="form-group">
                         <label class="control-label col-sm-3" for="Name">Menu cha</label>
                         <div class="col-sm-9">
-                          <select name="ParentMenuId" class="form-control">
-                             <option>Menu 1</option>
-                             <option>Menu 2</option>
-                             <option>Menu 3</option>
+                          <select name="MenuParentId" class="form-control">
+                           <option value="" >Không có</option>
+                           <?php foreach($view_data['model'] as $item) { ?>
+                             <option value="<?= $item['Id'] ?>"><?= $item['Name'] ?></option>
+                           <?php } ?>
                           </select>
                         </div>
                       </div>
@@ -82,6 +83,18 @@
                  </form>
                 </div>
             </div>
+      </div>
+        <!-- /.modal-content -->
+   </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<a href="<?= base_url_admin ?>/menu/getEditForm" id="btnModalEditMenu" class="hidden" data-toggle="modal" data-target="#modalEditMenu">Edit</a>
+
+<div class="modal fade modal-ajax" id="modalEditMenu">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         
       </div>
         <!-- /.modal-content -->
    </div>

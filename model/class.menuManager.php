@@ -1,7 +1,15 @@
 <?php 
 class MenuManager
 {
-	public function GetList($MenuParentId = null)
+    public function GetList()
+    {
+        $tsql = "SELECT * FROM menu ";  
+        $params = array();
+        $database_Model = new Database();
+        return $database_Model->GetList($tsql);
+    }
+
+	public function GetListByParentId($MenuParentId = null)
 	{
         $tsql = "SELECT *
                     FROM menu 
@@ -12,11 +20,20 @@ class MenuManager
 	    return $database_Model->GetList($tsql, $params);
 	}
 
-    public function GetListMenuShow($MenuParentId = null)
+    public function GetListMenuShow()
     {
         $tsql = "SELECT *
                     FROM menu 
-                    Where Status = 1 AND MenuParentId = ?
+                    Where IsShow = 1 ";  
+        $database_Model = new Database();
+        return $database_Model->GetList($tsql);
+    }
+
+    public function GetListMenuShowByParentId($MenuParentId = null)
+    {
+        $tsql = "SELECT *
+                    FROM menu 
+                    Where IsShow = 1 AND MenuParentId = ?
                     ORDER BY SortOrder";  
         $params = array($MenuParentId);
         $database_Model = new Database();
@@ -38,7 +55,7 @@ class MenuManager
 	{
         $tsql = "SELECT *
                 FROM menu
-                WHERE Status = 1 AND Alias = ?";   
+                WHERE IsShow = 1 AND Alias = ?";   
         $params = array($alias);
         $database_Model = new Database();
         $rows = $database_Model->GetList($tsql, $params);
@@ -49,7 +66,7 @@ class MenuManager
 	{
         $tsql ="INSERT INTO menu(Name, URL, SortOrder, IsShow, MenuParentId)
                 VALUES(?, ?, ?, ?, ?) ";   
-        $params = array($model['Name'], $model['URL'], $model['Content'], $model['SortOrder'], $model['IsShow'], $model['MenuParentId']);
+        $params = array($model['Name'], $model['URL'], $model['SortOrder'], $model['IsShow'], $model['MenuParentId']);
         $database_Model = new Database();
 	    return $database_Model->Execute($tsql, $params);
 	}

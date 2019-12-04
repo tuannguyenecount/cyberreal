@@ -3,11 +3,13 @@
     include_once 'model/class.directionManager.php';
     include_once 'model/class.productManager.php';
     include_once 'model/class.categoryManager.php';
+    include_once 'model/class.menuManager.php';
 
     $locationManager = new LocationManager();
     $directionManager = new DirectionManager();
     $productManager = new ProductManager();
     $categoryManager = new CategoryManager();
+    $menuManager = new menuManager();
 
     switch($action)
     {
@@ -23,6 +25,7 @@
         case "navbar":
         {
             $view_data['districts'] = $locationManager->GetDistrictsByProvince(1);
+            $view_data['menus'] = $menuManager->GetList();
             include 'partial/navbar.php';
             exit();
         }

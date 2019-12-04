@@ -12,87 +12,79 @@
     });
 </script> -->
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-</script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script> -->
 <script src="<?= base_url ?>/js/simTree.js"></script>
-    <script>
-        var list = [
-        {
-            "id": '1',
-            "pid": '',
-            "name": "JavaScript",
+<script>
+    var list = [
+    <?php foreach($view_data['model'] as $item) { ?>
+    {
+        "id": '<?= $item['Id'] ?>',
+        "pid": '<?= $item['MenuParentId'] ?>',
+        "name": "<?= $item['Name'] ?>",
+    },
+    <?php } ?>
+    ];
+    var tree = simTree({
+        el: '#tree',
+        data: list,
+        check: true,
+        linkParent: true,
+        //check: true,
+        onClick: function (item) {
+            console.log(item)
         },
+        onChange: function (item) {
+            console.log(item)
+        }
+    });
+</script>
+<script type="text/javascript">
+    function ShowModalEdit(element)
+    {
+        var id = element.parentNode.getAttribute("data-id");
+        $("#btnModalEditMenu").attr("href","<?= base_url_admin ?>/menu/getEditForm/" + id);
+        $("#btnModalEditMenu").click().bind();
+    }
+    function DeleteMenu(element)
+    {
+        var id = element.parentNode.getAttribute("data-id");
+        if(confirm('Bạn xác nhận xóa menu này?'))
         {
-            "id": '11',
-            "pid": '1', // parent ID
-            "name": "Angular"
-        },
-        {
-            "id": '12',
-            "pid": '1',
-            "name": "React"
-        },{
-            "id": '13',
-            "pid": '1',
-            "name": "Vuejs"
-        },{
-            "id": '14',
-            "pid": '1',
-            "name": "jQueryScript.Net"
-        },
-        {
-            "id": '2',
-            "pid": '',
-            "name": "HTML5"
-        },
-        {
-            "id": '3',
-            "pid": '',
-            "name": "CSS3",
-            "disabled": true
-        },
-        {
-            "id": '4',
-            "pid": '',
-            "name": "Server Language",
-            "disabled": false
-        },
-        {
-            "id": '5',
-            "pid": '4',
-            "name": "C#",
-            "disabled": false
-        },
-        {
-            "id": '6',
-            "pid": '4',
-            "name": "Java",
-            "disabled": false
-        },
-        {
-            "id": '7',
-            "pid": '4',
-            "name": "PHP",
-            "disabled": false
-        },
-        {
-            "id": '8',
-            "pid": '7',
-            "name": "Laravel Framework",
-            "disabled": false
-        },
-        ];
-        var tree = simTree({
-            el: '#tree',
-            data: list,
-            check: true,
-            linkParent: true,
-            //check: true,
-            onClick: function (item) {
-                console.log(item)
-            },
-            onChange: function (item) {
-                console.log(item)
-            }
+            $.ajax({
+                url: "<?= base_url_admin ?>/menu/delete/" + id,
+                method: "Post",
+                success: function(result){
+                    if(result.trim() == "1")
+                        window.location.reload();
+                    else 
+                    {
+                        ShowPopUpError(result);
+                    }
+                }
+            });
+        };
+    }
+    $(function(){
+        $(document).on("submit",".modal-content form", function(e){
+            e.preventDefault();
+            $.ajax({
+                url: $(this).attr("action"),
+                method: "Post",
+                data: $(this).serialize(),
+                success: function(result){
+                    if(result.trim() == "1")
+                        window.location.reload();
+                    else 
+                    {
+                        ShowPopUpError(result);
+                    }
+                }
+            })
         });
-    </script>
+        $(document).on("click","button[name=btnEditMenu]", function(){
+            var id = $(this).parent().attr("data-id");
+            console.log(id);
+        });
+    });
+</script> 

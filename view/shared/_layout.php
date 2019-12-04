@@ -10,10 +10,6 @@
         <link href="<?= base_url ?>/css/style.css?v=1" rel="stylesheet">
         <link href="<?= base_url ?>/css/custom.css?v=1" rel="stylesheet">
         <link href="<?= base_url ?>/css/icon.css?v=1" rel="stylesheet">
-<!--         <link href="<?= base_url ?>/assets/22c734a/css/select2.min.css" rel="stylesheet">
- -->        
-        <!-- <link href="<?= base_url ?>/assets/22c734a/css/select2-addl.min.css" rel="stylesheet"> -->
-        <!-- <link href="<?= base_url ?>/assets/22c734a/css/select2-krajee-bs4.min.css" rel="stylesheet"> -->
         <link href="<?= base_url ?>/assets/fc340a4a/css/kv-widgets.min.css" rel="stylesheet">
         <link href="<?= base_url ?>/assets/a1ef791c/css/dependent-dropdown.min.css" rel="stylesheet">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
