@@ -53,9 +53,9 @@
                   <?php } ?>       
             </ul>
          </div>
-         <div class="col-md-3">
-            <?php include 'partial/filters.php'; ?>
-         </div>
+         <div class="col-lg-3" id="filter-container">
+               
+          </div>
       </div>
    </section>
 </div>

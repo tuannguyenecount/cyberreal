@@ -18,9 +18,7 @@
       	</div>
    	</div>
 	</section>
-	<form id="w0" method="post" >
-      <?php 	$token = NoCSRF::generate( 'csrf_token' ); ?>
-      <input type="hidden" name="csrf_token" value="<?= $token ?>">        
+	<form id="w0" method="post" >     
       <section class="office-saved">
          <div class="table-responsive">
             <table class="table table-striped boxed">

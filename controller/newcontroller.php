@@ -1,7 +1,9 @@
 <?php 
     include_once 'model/class.newManager.php';
+    include_once 'model/class.locationManager.php';
 
     $newManager = new NewManager();
+    $locationManager = new LocationManager();
 
     switch($action)
     {
@@ -9,6 +11,8 @@
         {
             $view_data['title'] = "Tin tức";
             $view_data['view_name'] = "new/index.php";
+            $view_data['districtsOnProduct'] = $locationManager->GetDistrictsOnProduct();
+            $view_data['streetsOnProduct'] = $locationManager->GetStreetsOnProduct();
             $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
             $take = 10;
             $skip = 10 * ($page - 1);
@@ -20,6 +24,9 @@
         case "details":
         {
             $view_data['model'] = $newManager->GetArticleShowByAlias($_GET['alias']);
+            $view_data['districtsOnProduct'] = $locationManager->GetDistrictsOnProduct();
+            $view_data['streetsOnProduct'] = $locationManager->GetStreetsOnProduct();
+            $view_data['section_meta'] = "new/metadetail.php";
             if($view_data['model'] == null)
             {
                 header("HTTP/1.0 404 Not Found");

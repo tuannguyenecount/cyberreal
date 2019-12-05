@@ -56,7 +56,7 @@
                 method: "Post",
                 success: function(result){
                     if(result.trim() == "1")
-                        window.location.reload();
+                        window.location.href = "<?=base_url_admin?>/menu"
                     else 
                     {
                         ShowPopUpError(result);

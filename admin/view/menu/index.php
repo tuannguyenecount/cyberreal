@@ -70,7 +70,7 @@
                       <div class="form-group"> 
                         <div class="col-sm-9 col-sm-offset-3">
                            <div class="checkbox">
-                              <label><input type="checkbox" name="IsShow" /> Hiển thị</label> 
+                              <label><input type="checkbox" checked name="IsShow" /> Hiển thị</label> 
                            </div>
                         </div>
                       </div>

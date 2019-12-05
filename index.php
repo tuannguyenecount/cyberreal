@@ -5,7 +5,9 @@
   require_once 'model/class.database.php';
   include_once 'model/nocsrf.php'; 
   include_once 'model/functions.php'; 
+  include_once 'model/class.infoWebManager.php';
   require_once 'model/htmlpurifier-4.10.0/library/HTMLPurifier.auto.php';
+
   // try 
   // {
     $controller = isset($_GET['controller']) ? $_GET['controller'] : "home";
@@ -17,6 +19,13 @@
 
     $config = HTMLPurifier_Config::createDefault();
     $purifier = new HTMLPurifier($config);
+
+    if(!isset($_SESSION['InfoWeb']))
+    {
+      $infoWebManager = new InfoWebManager();
+      $_SESSION['InfoWeb'] = $infoWebManager->Get();
+    }
+
     if(count($_POST) > 0)
     {
       foreach($_POST as $key => $value)

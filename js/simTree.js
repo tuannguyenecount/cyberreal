@@ -134,7 +134,7 @@
                             p = l.id,
                             m = l.name,
                             s = s || 1,
-                            g = '<i data-type="{{asy}}" class="sim-tree-spread {{spreadIcon}}"></i><a href="javascript:;" style="width:200px">{{text}}</a> &nbsp;<button onclick="DeleteMenu(this)" type="button" class="btn btn-link pull-right"><i class="fa fa-trash"></i></button> <button type="button" class="btn btn-link pull-right" onclick="ShowModalEdit(this)" ><i class="fa fa-edit"></i></button>',
+                            g = '<i data-type="{{asy}}" class="sim-tree-spread {{spreadIcon}}"></i><a href="javascript:;" style="width:400px">{{text}}</a> &nbsp;<button type="button" class="btn btn-link" onclick="ShowModalEdit(this)" ><i class="fa fa-edit"></i></button><button onclick="DeleteMenu(this)" type="button" class="btn btn-link"><i class="fa fa-trash"></i></button>',
                             v = e === this.$el,
                             k = $(i.createElement("ul")),
                             b = c.childNodeAsy ? "asy" : "";

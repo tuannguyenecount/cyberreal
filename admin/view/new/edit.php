@@ -51,6 +51,24 @@
                                             <input <?= isset($_POST['Status']) && $_POST['Status'] == 1 ? "checked='checked'" : ($view_data['model']['Status'] == 1 && !isset($_POST['Status']) ? "checked" : "") ?> type="checkbox" name="Status" value="1" />
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td class="col-md-2">Seo Title</td>
+                                        <td>
+                                            <input type="text" value="<?= isset($_POST['SeoTitle']) ? $_POST['SeoTitle'] : $view_data['model']['SeoTitle'] ?>"   name="SeoTitle" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-2">Seo Description</td>
+                                        <td>
+                                            <input type="text" value="<?= isset($_POST['SeoDescription']) ? $_POST['SeoDescription'] : $view_data['model']['SeoDescription'] ?>"   name="SeoDescription" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-2">Seo Keyword</td>
+                                        <td>
+                                            <input type="text" value="<?= isset($_POST['SeoKeyword']) ? $_POST['SeoKeyword'] : $view_data['model']['SeoKeyword'] ?>"   name="SeoKeyword" class="form-control" />
+                                        </td>
+                                    </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>

@@ -82,8 +82,8 @@
                </div>
             </div> -->
          </div>
-         <div class="col-md-3">
-             <?php include 'partial/filters.php'; ?>
+         <div class="col-lg-3" id="filter-container">
+               
          </div>
       </div>
    </section>

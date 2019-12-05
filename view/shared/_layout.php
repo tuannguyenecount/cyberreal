@@ -6,7 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="<?= base_url ?>/favicon.png" type="image/png"/>
         <title><?= $view_data['title'] ?></title>
-        <meta name="description" content="Văn phòng cho thuê quận Gò Vấp với gần 5 năm kinh nghiệm : ✅ Giá Rẻ nhất ✅ Báo Giá Nhanh ✅ Nhiều Diện Tích. Cyber Real - Chuyên văn phòng Quận Gò Vấp">
+        <?php if(isset($view_data['section_meta'])) { 
+            include 'view/' . $view_data['section_meta'];
+        } ?>
         <link href="<?= base_url ?>/css/style.css?v=1" rel="stylesheet">
         <link href="<?= base_url ?>/css/custom.css?v=1" rel="stylesheet">
         <link href="<?= base_url ?>/css/icon.css?v=1" rel="stylesheet">
@@ -51,7 +53,7 @@
                                             <i class="fs-24 icon-phone bg-secondary text-white icon-boxed mr-2"></i>
                                             <div class="media-body">
                                                 <span class="title text-nowrap">Hotline</span>
-                                                <h6 class="my-0 text-nowrap">0932.020.099</h6>
+                                                <h6 class="my-0 text-nowrap"><?= $_SESSION['InfoWeb']['Phone'] ?></h6>
                                             </div>
                                         </div>
                                     </div>
@@ -60,7 +62,7 @@
                                             <i class="fs-24 icon-envelope bg-secondary text-white icon-boxed mr-2"></i>
                                             <div class="media-body">
                                                 <span class="title text-nowrap">Email tư vấn</span>
-                                                <h6 class="my-0 text-nowrap"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5f363139301f3c263d3a2d2d3a3e33712931">[email&#160;protected]</a></h6>
+                                                <h6 class="my-0 text-nowrap"><a href="mailto:<?= $_SESSION['InfoWeb']['Email'] ?>"><?= $_SESSION['InfoWeb']['Email'] ?></a></h6>
                                             </div>
                                         </div>
                                     </div>
@@ -150,13 +152,13 @@
                         <div class="col-12 col-md-6 ">
                             <div class="card border-0 bordered">
                                 <div class="card-body p-0">
-                                    <h3 class="title text-light">Công Ty Cổ Phần Bất Động Sản Cyber Real</h3>
+                                    <h3 class="title text-light"><?= $_SESSION['InfoWeb']['WebName'] ?></h3>
                                     <div class="text-widget pt-1">
-                                        <p>M&atilde; Số Thuế :&nbsp;0315314835<br />
-                                            Địa chỉ: L18-11-13, Tầng 18, Vincom&nbsp;Center Đồng Khởi, 72 L&ecirc;, Phường Bến Ngh&eacute;, Quận 1, Tp HCM<br />
-                                            Điện thoại: 0932020099<br />
-                                            Email:&nbsp;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bad3d4dcd5fad9c3d8dfc8c8dfdbd694ccd4">[email&#160;protected]</a><br />
-                                            Website:&nbsp;https://cyberreal.vn</p>
+                                        <p> 
+                                            Địa chỉ: <?= $_SESSION['InfoWeb']['Address'] ?><br />
+                                            Điện thoại: <?= $_SESSION['InfoWeb']['Phone'] ?><br />
+                                            Email:&nbsp;<a href="mailto:<?= $_SESSION['InfoWeb']['Email'] ?>" ><?= $_SESSION['InfoWeb']['Email'] ?></a><br />
+                                            Website:&nbsp;<?= base_url ?></p>
 
                                         <p>&nbsp;</p>
                                     </div>
@@ -169,11 +171,11 @@
                                     <h3 class="title text-light">Kết nối với chúng tôi</h3>
                                     <div class="text-widget pt-1">
                                         <ul>
-                                            <li><a href="https://www.facebook.com/Vanphongchothue.cyberreal/"><i class="fab fa-2x fa-facebook-square"></i></a></li>
-                                            <li><a href="https://twitter.com/cyberreal_vn"><i class="fab fa-2x fa-twitter-square"></i></a></li>
-                                            <li><a href="https://www.linkedin.com/company/cyberreal/"><i class="fab fa-2x fa-linkedin"></i></a></li>
-                                            <li><a href="https://www.instagram.com/vanphongchothuecyberreal/"><i class="fab fa-2x fa-instagram"></i></a></li>
-                                            <li><a href="https://www.youtube.com/channel/UCAJppTy3MdsO3fL9Ar1mHdw"><i class="fab fa-2x fa-youtube-square"></i></a></li>
+                                            <li><a href="<?= $_SESSION['InfoWeb']['Fanpage'] ?>"><i class="fab fa-2x fa-facebook-square"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-2x fa-twitter-square"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-2x fa-linkedin"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-2x fa-instagram"></i></a></li>
+            
                                         </ul>
                                     </div>
                                 </div>
@@ -181,8 +183,9 @@
                         </div>
                     </div>
                     <hr>
-                </div>        <div class="copyright container">
-                    <p class="m-0">&copy 2019 - Cyber Real - Đơn Vị Cho Thuê Văn Phòng Hàng Đầu Tp HCM</p>
+                </div>        
+                <div class="copyright container">
+                    <p class="m-0"><?= $_SESSION['InfoWeb']['CopyRight'] ?></p>
                 </div>
             </footer>
             <!-- / footer -->
@@ -192,7 +195,7 @@
                     <div class="media align-items-center">
                         <i class="fs-20 icon-phone bg-primary text-white icon-boxed mr-2"></i>
                         <div class="media-body">
-                            <h6 class="my-0 text-nowrap text-white">0932.020.099</h6>
+                            <h6 class="my-0 text-nowrap text-white"><?= $_SESSION['InfoWeb']['Phone'] ?></h6>
                         </div>
                     </div>
                 </a>
@@ -216,9 +219,6 @@
         <script src="<?= base_url ?>/assets/a98fcf71/yii.js"></script>
         <script src="<?= base_url ?>/js/slideout.min.js"></script>
         <script src="<?= base_url ?>/js/app.min.js"></script>
-<!--         <script src="<?= base_url ?>/assets/22c734a/js/select2.full.min.js"></script>
-        <script src="<?= base_url ?>/assets/22c734a/js/select2-krajee.min.js"></script> -->
-        <!-- <script src="<?= base_url ?>/assets/22c734a/js/i18n/vi.js"></script> -->
         <script src="<?= base_url ?>/assets/fc340a4a/js/kv-widgets.min.js"></script>
         <script src="<?= base_url ?>/assets/a1ef791c/js/dependent-dropdown.min.js"></script>
         <script src="<?= base_url ?>/assets/eaef8c08/js/depdrop.min.js"></script>

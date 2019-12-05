@@ -153,6 +153,26 @@
                                     <td>
                                         <input readonly="" <?= $view_data['model']['Status'] == true ? "checked" : "" ?> type="checkbox" name="Status" value="1" />
                                 </tr>
+
+                                <tr>
+                                        <td class="col-md-2">Seo Title</td>
+                                        <td>
+                                            <input class="form-control" readonly="" name="SeoTitle" value="<?=  $view_data['model']['SeoTitle']  ?>" />
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-2">Seo Description</td>
+                                        <td>
+                                            <textarea rows="5" cols="50" readonly="" class="form-control" name="SeoDescription"><?= $view_data['model']['SeoDescription'] ?></textarea>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-2">Seo Keyword</td>
+                                        <td>
+                                            <input class="form-control" readonly="" name="SeoKeyword" value="<?=  $view_data['model']['SeoKeyword']  ?>" />
+                                    </tr>
+
                             </tbody>
                             <tfoot>
                                 <tr>

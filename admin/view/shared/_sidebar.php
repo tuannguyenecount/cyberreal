@@ -86,7 +86,7 @@
         </li>
         
         <li id="information">
-            <a href="<?= base_url_admin ?>/information">
+            <a href="<?= base_url_admin ?>/infoweb/edit">
                 <i class="fa fa-info"></i> <span>Thông Tin Web</span>
             </a>
         </li>

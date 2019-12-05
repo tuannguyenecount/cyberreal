@@ -63,6 +63,7 @@
             $view_data['fees'] = $feeManager->GetListByProductId($view_data['model']['Id']);
             $view_data['section_scripts'] = "product/scripts.php"; 
             $view_data['section_styles'] = "product/styles.php"; 
+            $view_data['section_meta'] = "product/metadetail.php"; 
             break;
         }
         case "select":

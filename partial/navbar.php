@@ -5,7 +5,22 @@
         </button>
         <div id="main-menu">
             <ul id="w0" class="navbar-nav mr-auto nav"><li class="nav-item"><a class="nav-link" href="<?= base_url ?>"><i class="fas fa-home"></i></a></li>
-                <li class="dropdown nav-item">
+                <?php foreach($view_data['menuParentHead'] as $menuParent) { ?>
+                    <?php $listMenuChild = $menuManager->GetListMenuShowByParentId($menuParent['Id']); ?>
+                    <?php if(count($listMenuChild) > 0) { ?>
+                    <li class="dropdown nav-item">
+                        <a class="dropdown-toggle nav-link" href="<?= $menuParent['URL'] ?>" data-toggle="dropdown"><?= $menuParent['Name'] ?><span class="fas fa-angle-down"></span></a>
+                        <div id="w1" class="dropdown-menu">
+                            <?php foreach($listMenuChild as $item) { ?>
+                            <a class="dropdown-item" href="<?= $item['URL'] ?>"><?= $item['Name'] ?></a>
+                            <?php } ?>
+                        </div>
+                    <?php } else { ?>
+                        <li class="nav-item"><a class="nav-link" href="<?= $menuParent['URL'] ?>"><?= $menuParent['Name'] ?></a></li>
+                    <?php } ?>
+                </li>
+                <?php } ?>
+                <!-- <li class="dropdown nav-item">
                     <a class="dropdown-toggle nav-link" href="/van-phong-cho-thue" data-toggle="dropdown">Căn hộ theo quận<span class="fas fa-angle-down"></span></a>
                     <div id="w1" class="dropdown-menu">
                         <?php foreach($view_data['districts'] as $item) { ?>
@@ -20,7 +35,7 @@
                         <a class="dropdown-item" href="<?= base_url?>/can-ho/<?= strtolower(vn_to_str($item['_name'])) ?>"><?= $item['_name'] ?></a>
                         <?php } ?>
                     </div>
-                </li>
+                </li> -->
                <!--  <li class="dropdown nav-item"><a class="dropdown-toggle nav-link" href="/van-phong-tron-goi" data-toggle="dropdown">Căn Hộ Trọn Gói<span class="fas fa-angle-down"></span></a><div id="w2" class="dropdown-menu"><a class="dropdown-item" href="/van-phong-tron-goi/quan-1-1">Căn Hộ Trọn Gói Quận 1</a>
                         <a class="dropdown-item" href="/van-phong-tron-goi/quan-2-1">Căn Hộ Trọn Gói Quận 2</a>
                         <a class="dropdown-item" href="/van-phong-tron-goi/quan-3-1">Căn Hộ Trọn Gói Quận 3</a>
@@ -29,7 +44,7 @@
                         <a class="dropdown-item" href="/van-phong-tron-goi/phu-nhuan">Văn Phòng Trọn Gói Phú Nhuận</a>
                         <a class="dropdown-item" href="/van-phong-tron-goi/binh-thanh">Văn Phòng Trọn Gói Bình Thạnh</a>
                         <a class="dropdown-item" href="/van-phong-tron-goi/tan-binh">Văn Phòng Trọn Gói Tân Bình</a></div></li> -->
-                <li class="nav-item"><a class="nav-link" href="<?= base_url ?>/tin-tuc.html">Tin tức</a></li>
+               <!--  <li class="nav-item"><a class="nav-link" href="<?= base_url ?>/tin-tuc.html">Tin tức</a></li> -->
             </ul>                
         </div>
         <ul class="navbar-nav navbar-right">

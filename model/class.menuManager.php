@@ -3,7 +3,7 @@ class MenuManager
 {
     public function GetList()
     {
-        $tsql = "SELECT * FROM menu ";  
+        $tsql = "SELECT * FROM menu ORDER BY SortOrder";  
         $params = array();
         $database_Model = new Database();
         return $database_Model->GetList($tsql);
@@ -29,7 +29,17 @@ class MenuManager
         return $database_Model->GetList($tsql);
     }
 
-    public function GetListMenuShowByParentId($MenuParentId = null)
+    public function GetListMenuShowByParentIsNull()
+    {
+        $tsql = "SELECT *
+                    FROM menu 
+                    Where IsShow = 1 AND MenuParentId is null
+                    ORDER BY SortOrder";  
+        $database_Model = new Database();
+        return $database_Model->GetList($tsql);
+    }
+
+    public function GetListMenuShowByParentId($MenuParentId)
     {
         $tsql = "SELECT *
                     FROM menu 

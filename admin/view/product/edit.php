@@ -14,9 +14,7 @@
             <form method="post" method="Post" enctype="multipart/form-data">
                 <div class="box">
                     <div class="box-body">
-                        <?php 
-                          $token = NoCSRF::generate( 'csrf_token' );
-                        ?>
+                        
                         <input type="hidden" name="Id" value="<?= $view_data['model']['Id'] ?>" />
                         <input type="hidden" name="Name_Old" value="<?= $view_data['model']['Name'] ?>"> 
                         <input type="hidden" name="Alias_Old" value="<?= $view_data['model']['Alias'] ?>"> 
@@ -170,6 +168,27 @@
                                         <td>
                                             <input  <?= isset($_POST['Status']) ? "checked" : ($view_data['model']['Status'] == true ? "checked" : "") ?> type="checkbox" name="Status" value="1" />
                                     </tr>
+
+                                    <tr>
+                                        <td class="col-md-2">Seo Title</td>
+                                        <td>
+                                            <input class="form-control" name="SeoTitle" value="<?= isset($_POST['SeoTitle']) ? $_POST['SeoTitle'] : $view_data['model']['SeoTitle']  ?>" />
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-2">Seo Description</td>
+                                        <td>
+                                            <textarea rows="5" cols="50" class="form-control" name="SeoDescription"><?= isset($_POST['SeoDescription']) ? $_POST['SeoDescription'] : $view_data['model']['SeoDescription'] ?></textarea>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-2">Seo Keyword</td>
+                                        <td>
+                                            <input class="form-control" name="SeoKeyword" value="<?= isset($_POST['SeoKeyword']) ? $_POST['SeoKeyword'] : $view_data['model']['SeoKeyword']  ?>" />
+                                    </tr>
+        
+
                                 </tbody>
                                 <tfoot>
                                     <tr>

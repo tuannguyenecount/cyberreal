@@ -25,7 +25,8 @@
         case "navbar":
         {
             $view_data['districts'] = $locationManager->GetDistrictsByProvince(1);
-            $view_data['menus'] = $menuManager->GetList();
+            $view_data['menuParentHead'] = $menuManager->GetListMenuShowByParentIsNull();
+            $view_data['menu'] = $menuManager->GetList(null);
             include 'partial/navbar.php';
             exit();
         }

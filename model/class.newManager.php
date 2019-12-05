@@ -111,9 +111,9 @@ class NewManager
 
 	public function Add($model)
 	{
-        $tsql ="INSERT INTO new(Title, Description, Content, UserCreated, Status, Alias)
-                VALUES(?, ?, ?, ?, ?, ?) ";   
-        $params = array($model['Title'], $model['Description'], $model['Content'], $model['UserCreated'], $model['Status'], $model['Alias']);
+        $tsql ="INSERT INTO new(Title, Description, Content, UserCreated, Status, Alias, SeoTitle, SeoDescription, SeoKeyword)
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?) ";   
+        $params = array($model['Title'], $model['Description'], $model['Content'], $model['UserCreated'], $model['Status'], $model['Alias'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword']);
         $database_Model = new Database();
 	    return $database_Model->Execute($tsql, $params);
 	}
@@ -122,9 +122,9 @@ class NewManager
 	{
         $tsql ="UPDATE new
                 SET	Title = ?, Description = ?, Content = ?, 
-                    Status = ?, Alias = ?
+                    Status = ?, Alias = ?, SeoTitle = ?, SeoDescription = ?, SeoKeyword = ?
                 WHERE Id = ? ";   
-        $params = array($model['Title'], $model['Description'], $model['Content'], $model['Status'], $model['Alias'], $model['Id']);
+        $params = array($model['Title'], $model['Description'], $model['Content'], $model['Status'], $model['Alias'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword'], $model['Id']);
         $database_Model = new Database();
 	    return $database_Model->Execute($tsql, $params);
 	}

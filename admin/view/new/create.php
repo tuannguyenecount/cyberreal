@@ -48,6 +48,24 @@
                                             <input <?= isset($_POST['Status']) && $_POST['Status'] == 1 ? "checked='checked'" : "" ?> type="checkbox" name="Status" value="1" />
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td class="col-md-2">Seo Title</td>
+                                        <td>
+                                            <input type="text" value="<?= isset($_POST['SeoTitle']) ? $_POST['SeoTitle'] : "" ?>"   name="SeoTitle" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-2">Seo Description</td>
+                                        <td>
+                                            <input type="text" value="<?= isset($_POST['SeoDescription']) ? $_POST['SeoDescription'] : "" ?>"   name="SeoDescription" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-2">Seo Keyword</td>
+                                        <td>
+                                            <input type="text" value="<?= isset($_POST['SeoKeyword']) ? $_POST['SeoKeyword'] : "" ?>"   name="SeoKeyword" class="form-control" />
+                                        </td>
+                                    </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>

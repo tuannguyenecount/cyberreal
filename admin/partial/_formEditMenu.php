@@ -18,10 +18,10 @@
           <label class="control-label col-sm-3" for="Name">Menu cha</label>
           <div class="col-sm-9">
             <select name="MenuParentId" class="form-control">
-              <option value="" <?php $view_data['model']['MenuParentId'] == null ? "checked" : "" ?>  >Không có</option>
+              <option value="" <?= $view_data['model']['MenuParentId'] == null ? "selected" : "" ?>  >Không có</option>
              <?php foreach($view_data['menus'] as $item) { if($view_data['model']['Id'] == $item['Id']) continue; ?>
 
-               <option <?php $view_data['model']['MenuParentId'] == $item['Id'] ? "checked" : "" ?> value="<?= $item['Id'] ?>" ><?= $item['Name'] ?></option>
+               <option <?= $view_data['model']['MenuParentId'] == $item['Id'] ? "selected" : "" ?> value="<?= $item['Id'] ?>" ><?= $item['Name'] ?></option>
              <?php } ?> 
             </select>
           </div>
@@ -41,7 +41,7 @@
         <div class="form-group"> 
           <div class="col-sm-9 col-sm-offset-3">
              <div class="checkbox">
-                <label><input type="checkbox" name="IsShow" <?= $view_data['model']['IsShow'] ? "checked" : "" ?> /> Hiển thị</label> 
+                <label><input type="checkbox" name="IsShow" <?= $view_data['model']['IsShow'] == true ? "checked=''" : "" ?> /> Hiển thị</label> 
              </div>
           </div>
         </div>

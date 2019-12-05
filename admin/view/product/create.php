@@ -170,7 +170,28 @@
                                         <td>
                                             <input  <?= isset($_POST['Status']) ? "checked" : "" ?> type="checkbox" name="Status" value="1" />
                                         </td>
-                                    </tr>                              
+                                    </tr>    
+
+                                    <tr>
+                                        <td class="col-md-2">Seo Title</td>
+                                        <td>
+                                            <input class="form-control" name="SeoTitle" value="<?= isset($_POST['SeoTitle']) ? $_POST['SeoTitle'] : "" ?>" />
+                                        </td>
+                                    </tr>  
+
+                                    <tr>
+                                        <td class="col-md-2">Seo Description</td>
+                                        <td>
+                                            <textarea rows="5" cols="50" class="form-control" name="SeoDescription"><?= isset($_POST['SeoDescription']) ? $_POST['SeoDescription'] : "" ?></textarea>
+                                        </td>
+                                    </tr>  
+
+                                    <tr>
+                                        <td class="col-md-2">Seo Keyword</td>
+                                        <td>
+                                            <input class="form-control" name="SeoKeyword" value="<?= isset($_POST['SeoKeyword']) ? $_POST['SeoKeyword'] : "" ?>" />
+                                        </td>
+                                    </tr>                                
                                 </tbody>
                                 <tfoot>
                                     <tr>
