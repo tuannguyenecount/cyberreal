@@ -169,8 +169,8 @@
               {
                 $name = $_FILES["file"]["name"];
                 $ext = end((explode(".", $name))); # extra () to prevent notice
-                $fileName = $_POST['Alias']. (microtime(true) * 10000000).".".$ext;
-                $result = UploadImageFile(SITE_PATH."/images/products/slides/".$_POST['Image']);
+                $_POST['Image'] = $_POST['Alias']. (microtime(true) * 10000000).".".$ext;
+                $result = UploadImageFile(SITE_PATH."/images/products/".$_POST['Image']);
                 
                 if($result != 1)
                   $view_data['errors'][] = $result; 

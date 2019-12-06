@@ -4,10 +4,10 @@
             <div class="card">
                 <i class="icon-search icon-background text-blue"></i>
                 <div class="card-body pt-2 pb-0">
-                    <form action="<?= base_url ?>/tim-kiem-nang-cao" method="GET">                    
+                    <form action="<?= base_url ?>/tim-kiem.html" method="POST">                    
                         <div class="row">
                             <div class="col-md">
-                                <input type="text" class="form-control" name="s" placeholder="Nhập tên tòa nhà, ví dụ: Vincom, Vietcombank, International Plaza...">  
+                                <input type="text" class="form-control" name="Name" placeholder="Nhập tên tòa nhà, ví dụ: Vincom, Vietcombank, International Plaza...">  
                                 <div class="advance-search mt-2" >
                                     <div class="row">
                                         <div class="col-md mb-2">
@@ -30,7 +30,7 @@
                                         </div>
                                         <div class="w-100"></div>
                                         <div class="col-md mb-2">
-                                            <select  class="form-control" name="square">
+                                            <select  class="form-control" name="Area">
                                                 <option value="">Tất cả diện tích</option>
                                                 <?php foreach($view_data['areas'] as $item) { ?>
                                                     <option value="<?= $item['Area'] ?>">
@@ -40,17 +40,16 @@
                                             </select>                                    
                                         </div>
                                         <div class="col-md mb-2">
-                                            <select class="form-control" name="price">
+                                            <select class="form-control" name="Price">
                                                 <option value="">Tất cả giá</option>
-                                                <option>Dưới 1 tỷ VNĐ</option>
-                                                <option>Từ 1 tỷ đến dưới 2 tỷ VNĐ</option>
-                                                <option>Từ 2 tỷ đến dưới 3 tỷ VNĐ</option>
-                                                <option>Từ 3 tỷ đến dưới 5 tỷ VNĐ</option>
-                                                <option>Từ 5 tỷ VNĐ trở lên</option>
+                                            <?php foreach($view_data['prices'] as $item) { ?>                                                
+                                                <option value="<?= $item['Price'] ?>"><?= $item['Price'] ?></option>
+                                            <?php } ?>
+                                                
                                             </select>                                    
                                         </div>
                                         <div class="col-md mb-2">
-                                            <select class="form-control" name="direction">
+                                            <select class="form-control" name="Direction">
                                                 <option value="">Tất cả hướng</option>
                                                 <?php foreach($view_data['directions'] as $item) { ?>
                                                     <option value="<?= $item['Id'] ?>"><?= $item['Name'] ?></option>

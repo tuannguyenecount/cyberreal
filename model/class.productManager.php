@@ -29,6 +29,57 @@ class ProductManager
         $database_Model = new Database();
 	    return $database_Model->GetList($tsql, $params);
 	}
+    public function Search($Name, $District, $Ward, $Street, $Area, $Price, $Direction)
+    {
+        $whereQuery = "WHERE A.Status = 1 ";
+        $params = array();
+        if(!empty($Name))
+        {
+            $whereQuery .= " AND A.Name LIKE ? ";
+            $params[] = "%".$Name."%";
+        }
+        if(!empty($District))
+        {
+            $whereQuery .= " AND A.District = ? ";
+            $params[] = $District;
+        }
+        if(!empty($Ward))
+        {
+            $whereQuery .= " AND A.Ward = ? ";
+            $params[] = $Ward;
+        }
+        if(!empty($Street))
+        {
+            $whereQuery .= " AND G.id = ? ";
+            $params[] = $Street;
+        }
+        if(!empty($Area))
+        {
+            $whereQuery .= " AND A.Area = ? ";
+            $params[] = $Area;
+        }
+        else if(!empty($Price))
+        {
+            $whereQuery .= " AND A.Price = ? ";
+            $params[] = $Price;
+        }
+         else if(!empty($Direction))
+        {
+            $whereQuery .= " AND A.Direction = ? ";
+            $params[] = $Direction;
+        }
+        $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, CONCAT(C._prefix,' ', C._name) AS DistrictName, CONCAT(D._prefix ,' ',D._name) AS WardName, F.Name As DirectionName
+                    FROM product A LEFT JOIN category B  
+                    ON A.CategoryId = B.Id
+                    LEFT JOIN district C ON A.District = C.id AND C._province_id = 1
+                    LEFT JOIN ward D ON A.Ward = D.id AND D._district_id = C.id
+                    LEFT JOIN direction F ON A.Direction = F.Id 
+                    LEFT JOIN street G ON G._name = A.Street
+                    $whereQuery
+                    ORDER BY A.Id desc"; 
+        $database_Model = new Database();
+        return $database_Model->GetList($tsql, $params);
+    }
     public function GetProductsShowByDistrict($districtId)
     {
         $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, CONCAT(C._prefix,' ', C._name) AS DistrictName, CONCAT(D._prefix ,' ',D._name) AS WardName, F.Name As DirectionName
@@ -235,7 +286,14 @@ class ProductManager
 
     public function GetListArea($take)
     {
-        $tsql = "SELECT DISTINCT Area FROM product Order by Area limit 0, $take ";  
+        $tsql = "SELECT DISTINCT Area FROM product  WHERE Area <> '' Order by Area limit 0, $take ";  
+        $database_Model = new Database();
+        return $database_Model->GetList($tsql);
+    }
+
+    public function GetListPrice($take)
+    {
+        $tsql = "SELECT DISTINCT Price FROM product  WHERE Price <> '' limit 0, $take ";  
         $database_Model = new Database();
         return $database_Model->GetList($tsql);
     }

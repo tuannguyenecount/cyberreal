@@ -23,13 +23,13 @@
                            <th>Số điện thoại</th>
                            <th>Lời nhắn</th>
                            <th>Ngày gửi</th>
-                           <th class="text-center">Đã xem</th>
+                           <th class="text-center">Trạng thái</th>
                            <th class="text-center">Chọn</th>
                         </tr>
                      </thead>
                      <tbody>
                         <?php foreach($view_data['model'] as $item) { ?>
-                        <tr>
+                        <tr class="<?= $item['IsConfirm'] == 0 ? "danger" : "" ?>">
                            <td class="hidden"><?= $item['Id'] ?></td>
                            <td>
                               <?= $item['Name'] ?>
@@ -43,10 +43,11 @@
                            <td><?= $item['Content'] ?></td>
                            <td><?= $item['DateSend'] ?></td>
                            <td class="text-center">
-                              <?php if ($item['IsConfirm']) { ?>
+                              <?php if ($item['IsConfirm'] != 0) { ?>
                                  <img src="<?= base_url ?>/images/check.png" width="20" height="20" />
                               <?php } else { ?>
-                              <img src="<?= base_url ?>/images/stop.png" width="20" height="20" />
+                                 <a title="Xác nhận ngay" href="<?= base_url_admin ?>/mailbox/confirm/<?= $item['Id'] ?>">
+                                    <img src="<?= base_url ?>/images/stop.png" width="20" height="20" /></a>
                               <?php } ?>
                            </td>
                            <td class="text-center">

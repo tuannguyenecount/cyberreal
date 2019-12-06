@@ -23,7 +23,7 @@
                         <th>Tiêu đề</th>
                         <th>Mô tả</th>
                         <th class="text-center">Trạng thái</th>
-                        <th>Thành viên tạo</th>
+                        <th>Thành viên</th>
                         <th class="text-center col-sm-2">Thao tác</th>
                      </tr>
                   </thead>

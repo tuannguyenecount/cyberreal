@@ -2,13 +2,15 @@
 
 class MailBoxManager {
 
-    public function GetList() {        
-        $tsql = "SELECT * 
-                FROM mailbox 
-                ORDER BY Id Desc";
-        
+    public function GetList($UserName) {        
+        $tsql = "SELECT A.*, IFNULL(B.MailBoxId, 0) AS IsConfirm   
+                FROM mailbox A
+                LEFT JOIN confirmmailbox B 
+                ON A.Id = B.MailBoxId AND B.UserName = ?
+                ORDER BY IFNULL(B.MailBoxId, 0) ASC, A.Id Desc";
+        $params = array($UserName);
         $database_Model = new Database();
-        return $database_Model->GetList($tsql);
+        return $database_Model->GetList($tsql, $params);
     }
 
 
@@ -28,6 +30,16 @@ class MailBoxManager {
                 WHERE Id = ? ";
 
         $params = array($model['Name'], $model['Email'], $model['Phone'], $model['Content'], $model['Id']);
+        $database_Model = new Database();
+        return $database_Model->Execute($tsql, $params);
+    }
+
+    public function Confirm($UserName, $MailBoxId)
+    {
+        $tsql = "INSERT INTO confirmmailbox(UserName, MailBoxId)
+                VALUES(?, ?)";
+
+        $params = array($UserName,$MailBoxId);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);
     }

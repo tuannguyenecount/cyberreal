@@ -15,6 +15,23 @@
 
     switch($action)
     {
+        case "search":
+        {
+
+            $view_data['title'] = "Kết quả tìm kiếm";
+            $view_data['view_name'] = "product/search.php";
+            $Name = isset($_POST['Name']) ? $_POST['Name'] : "";
+            $District = isset($_POST['District']) ? $_POST['District'] : "";
+            $Ward = isset($_POST['Ward']) ? $_POST['Ward'] : "";
+            $Street = isset($_POST['Street']) ? $_POST['Street'] : "";
+            $Area = isset($_POST['Area']) ? $_POST['Area'] : "";
+            $Price = isset($_POST['Price']) ? $_POST['Price'] : "";
+            $Direction = isset($_POST['Direction']) ? $_POST['Direction'] : "";
+            $view_data['model'] = $productManager->Search($Name, $District, $Ward, $Street, $Area, $Price, $Direction);
+            $view_data['districtsOnProduct'] = $locationManager->GetDistrictsOnProduct();
+            $view_data['streetsOnProduct'] = $locationManager->GetStreetsOnProduct();
+            break;
+        }
         case "index":
         {
             $view_data['title'] = "Index";

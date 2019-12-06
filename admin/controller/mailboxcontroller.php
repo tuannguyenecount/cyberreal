@@ -12,7 +12,7 @@
       $view_data['view_name'] = "mailbox/index.php";	
       $view_data['section_styles'] = "mailbox/style_index.php";
       $view_data['section_scripts'] = "mailbox/script_index.php";
-      $view_data['model'] = $mailBoxManager->GetList();
+      $view_data['model'] = $mailBoxManager->GetList($_SESSION['UserLogged']['UserName']);
       break;
   	}
   	case "delete":
@@ -40,6 +40,12 @@
   		$view_data['model'] = $bannerModel->GetList();
   		break;
   	}
+    case "confirm":
+    {
+      $mailBoxManager->Confirm($_SESSION['UserLogged']['UserName'], (int)$_GET['id']);
+      header("Location: ".base_url_admin."/mailbox");
+      break;
+    }
     
   }
 

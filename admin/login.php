@@ -18,7 +18,7 @@
                 if($check) 
                 {  
                     $_SESSION['UserLogged'] = $userManager->GetByUserName($_POST["userlogin"]);
-                    header('Location:'.base_url_admin);
+                    header('Location:'.base_url_admin."/product");
                     exit();
                 }
                 else 

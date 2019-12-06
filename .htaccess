@@ -21,7 +21,7 @@ RewriteRule ^area/adminarea/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([0-9]+)&(.*)$ adm
 
 
 RewriteRule ^$ index.php?controller=home&action=index
-
+RewriteRule ^tim-kiem.html$ index.php?controller=product&action=search
 RewriteRule ^hen-di-xem.html$ index.php?controller=booking&action=viewProductsSaved
 RewriteRule ^cam-on.html$ index.php?controller=booking&action=thankyou
 RewriteRule ^lien-he-thanh-cong.html$ index.php?controller=home&action=contactsuccess

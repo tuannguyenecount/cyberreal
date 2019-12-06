@@ -19,6 +19,7 @@
             $view_data['districts'] = $locationManager->GetDistrictsByProvince(1);
             $view_data['directions'] = $directionManager->GetList();
             $view_data['areas'] = $productManager->GetListArea(10);
+            $view_data['prices']  = $productManager->GetListPrice(10);
             include 'partial/search.php';
             exit();
         }

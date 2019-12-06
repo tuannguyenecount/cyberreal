@@ -15,7 +15,7 @@
     <div class="container">
         <a class="breadcrumb-back" href="<?= base_url ?>"></a>                    
         <ol class="breadcrumb"><li class='breadcrumb-item'><a href="<?= base_url ?>">Trang chủ</a></li>
-            <li class='breadcrumb-item active'>Quận Gò Vấp</li>
+            <li class='breadcrumb-item active'><?= $view_data['title'] ?></li>
         </ol>                
     </div>
 </nav>

@@ -9,17 +9,18 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
         <li class="header">TRANG QUẢN TRỊ</li>
-        <li id="home">
+        <!-- <li id="home">
             <a href="<?= base_url_admin ?>/dashboard">
                 <i class="fa fa-dashboard"></i> <span>Bảng điều khiển</span>
             </a>
         </li>
-        
+         -->
+
         <li>
             <a href="<?=base_url_admin?>/product/create">
                 <i class="fa fa-plus"></i> <span>Thêm Dự Án</span>
                 <span class="pull-right-container">
-                    <small class="label pull-right bg-red">new</small>
+                    <small class="label pull-right bg-green">new</small>
                 </span>
             </a>    
         </li>
@@ -37,10 +38,20 @@
         </li>
 
         <li>
+            <a href="<?=base_url_admin?>/booking">
+                <i class="fa fa-calendar"></i> <span>Lịch Hẹn Xem</span>
+                <span class="pull-right-container">
+                    <small class="label pull-right bg-red">hot</small>
+                </span>
+            </a>    
+        </li>
+
+        <li>
             <a href="<?=base_url_admin?>/fee">
                 <i class="fa fa-tag"></i> <span>Các Loại Phí</span>
             </a>
         </li>
+
 
        <!--  <li>
             <a href="<?=base_url_admin?>/user">
