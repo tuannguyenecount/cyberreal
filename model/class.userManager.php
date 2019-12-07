@@ -40,50 +40,41 @@ class UserManager {
         return null;
     }
    
-    public function Add($UserName, $PasswordHash, $FullName, $Email, $Phone) {
+    public function Add($model) {
         $tsql = "INSERT INTO user
-                (UserName, PasswordHash, FullName, Email, Phone)
-                VALUES(?, ?, ?, ?, ?) ";
-        $params = array($UserName, $PasswordHash, $FullName, $Email, $Phone);
+                (UserName, PasswordHash, FullName, Email, Phone, Role)
+                VALUES(?, ?, ?, ?, ?, ?) ";
+        $params = array($model['UserName'], $model['PasswordHash'], $model['FullName'], $model['Email'], $model['Phone'], $model['Role']);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);
     }
     
-    public function IsInRole($UserName, $RoleId)
+    public function IsInRole($UserName, $Role)
     {
         $tsql = "SELECT *
-                FROM userrole
-                WHERE UserName = ? And RoleId = ? ";
-        $params = array($UserName, $RoleId);
+                FROM user
+                WHERE UserName = ? And Role = ? ";
+        $params = array($UserName, $Role);
         $database_Model = new Database();
         $cnt =  count($database_Model->GetList($tsql, $params));
         return $cnt > 0;
     }
-    
-    public function AddToRole($UserName, $RoleId)
-    {
-        $tsql = "INSERT INTO userrole
-                (UserName, RoleId)
-                VALUES(?, ?) ";
-        $params = array($UserName, $RoleId);
-        $database_Model = new Database();
-        return $database_Model->Execute($tsql, $params);
-    }
-    
-    public function DeleteFromRole($UserName, $RoleId)
-    {
-        $tsql = "DELETE userrole
-                 WHERE UserName = ? And RoleId = ? ";
-        $params = array($UserName, $RoleId);
+
+
+    public function EditInformation($model) {
+        $tsql = "UPDATE user
+                SET FullName = ?,  Email = ?, Phone = ?, Role = ?
+                WHERE UserName = ? ";
+        $params = array($model['FullName'], $model['Email'], $model['Phone'], $model['Role'], $model['UserName']);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);
     }
 
-    public function EditInformation($model) {
+    public function ChangePassword($UserName, $NewPassword) {
         $tsql = "UPDATE user
-                SET FullName = ?,  Email = ?, Phone = ? 
+                SET PasswordHash = ?
                 WHERE UserName = ? ";
-        $params = array($model['FullName'], $model['Email'], $model['Phone'], $model['UserName']);
+        $params = array($NewPassword, $UserName);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);
     }
@@ -95,12 +86,12 @@ class UserManager {
         return $database_Model->Execute($tsql, $params);
     }
 
-    public function GetErrorsMessage($UserName, $PasswordHash) {
+    public function GetErrorsMessage($UserName, $Password) {
         $errors = array();
         if (empty($UserName)) {
             $errors[] = "Bạn chưa nhập tài khoản!";
         }
-        if (empty($PasswordHash)) {
+        if (empty($Password)) {
             $errors[] = "Bạn chưa nhập mật khẩu!";
         }
         return $errors;

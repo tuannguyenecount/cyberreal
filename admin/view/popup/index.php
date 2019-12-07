@@ -12,33 +12,28 @@
       <div class="col-xs-12">
          <div class="box">
             <div class="box-body">
-                <form method="post">
-                    <?php 
-                      $token = NoCSRF::generate( 'csrf_token' );
-                    ?>
-                    <input type="hidden" name="csrf_token" value="<?= $token ?>" /> 
-                    
+                <form method="post">             
                     <div class="form-horizontal">
                         <?php include_once 'view/shared/_errors.php'; ?>
                       
                         <div class="form-group">
                             <label class="control-label col-md-1">Nội Dung</label>
                             <div class="col-md-10">
-                                <textarea class="form-control" name="Content" id="Content"><?=$view_data['model']['Content']?></textarea>
+                                <textarea class="form-control" name="Content" id="Content"><?= $view_data['model']['Content'] ?></textarea>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label col-md-1">Hiển Thị</label>
                             <div class="col-md-3">
-                                <input type="checkbox" name="Display" <?= $view_data['model']['Display'] == true ? "checked=''" : "" ?>  />
+                                <input type="checkbox" name="IsShow" <?= $view_data['model']['IsShow'] == true ? "checked=''" : "" ?>  />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label col-md-1">Timeout</label>
                             <div class="col-md-3">
-                                <input class="form-control" required="" min="0" name="Timeout" step="1" type="number" value="<?= (int)$view_data['model']['Timeout'] / 1000 ?>">
+                                <input class="form-control" required="" min="0" name="Timeout" step="1" type="number" value="<?= (int)$view_data['model']['Timeout'] ?>">
                             </div>
                             <div class="col-md-1">
                                 <label>giây</label>

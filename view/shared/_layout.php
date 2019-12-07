@@ -16,7 +16,7 @@
         <link href="<?= base_url ?>/assets/a1ef791c/css/dependent-dropdown.min.css" rel="stylesheet">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
         <link href="<?= base_url ?>/css/select2.css?v=1" rel="stylesheet">
-
+        <link href="<?=base_url?>/assets/css/jquery.niftymodals.css" rel="stylesheet" />
         <?php
         if (isset($view_data['section_styles'])) {
             include 'view/' . $view_data['section_styles'];
@@ -214,7 +214,8 @@
                 </div>
             </div>
         </div>
-        
+        <div id="bangtin"></div> 
+
         <script src="<?= base_url ?>/js/vendor.min.js"></script>
         <script src="<?= base_url ?>/assets/a98fcf71/yii.js"></script>
         <script src="<?= base_url ?>/js/slideout.min.js"></script>
@@ -304,7 +305,16 @@
 
             });
         </script> 
-
+        <script>
+            $(document).ready(function () {
+                if (sessionStorage.getItem('ShowPopUp') === null) {
+                    sessionStorage.setItem('ShowPopUp', "yes");
+                }
+                if (sessionStorage.getItem('ShowPopUp') == "yes") {
+                    $.post('<?=base_url?>/home/showpopup', function (result) { $("#bangtin").html(result); });
+                } 
+            });
+        </script>
         <?php
         if (isset($view_data['section_scripts'])) {
             include 'view/' . $view_data['section_scripts'];

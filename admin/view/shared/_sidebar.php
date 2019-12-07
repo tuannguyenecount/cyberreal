@@ -53,24 +53,12 @@
         </li>
 
 
-       <!--  <li>
-            <a href="<?=base_url_admin?>/user">
-                <i class="fa fa-user-circle-o"></i> <span>Thành Viên</span>
-            </a>
-        </li> -->
-
         <li>
             <a href="<?=base_url_admin?>/popup">
                 <i class="fa fa-bullhorn"></i> <span>Bảng Tin</span>
             </a>
         </li>
 
-<!--        <li id="categories">
-            <a href="<?= base_url_admin ?>/category">
-                <i class="fa fa-book"></i>
-                <span>Chuyên Mục Bài Viét</span>
-            </a>
-        </li>-->
 
         <li id="news">
             <a href="<?= base_url_admin ?>/new">
@@ -89,8 +77,14 @@
                 <i class="fa fa-envelope"></i> <span>Hộp Thư Liên Hệ</span>
             </a>
         </li>
+
+        <li>
+            <a href="<?=base_url_admin?>/user">
+                <i class="fa fa-users"></i> <span>Người Dùng</span>
+            </a>
+        </li>
         
-         <li id="menus">
+        <li id="menus">
             <a href="<?= base_url_admin ?>/menu">
                 <i class="fa fa-cog"></i> <span>Cấu Hình Menu</span>
             </a>

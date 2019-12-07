@@ -12,6 +12,7 @@
     <div class="row">
         <div class="col-xs-12">
             <form method="post">
+                <input type="hidden" name="UserName" value="<?= $view_data['model']['UserName'] ?>" />
                 <div class="box">
                     <div class="box-body">
                         <?php include_once 'view/shared/_errors.php'; ?>
@@ -19,48 +20,27 @@
                             <table class="table table-border-none table-middle">
                                 <tbody>
                                     <tr>
-                                        <td class="col-md-4 text-right">Tài khoản</td>
-                                        <td>
-                                            <input type="text" value="<?= isset($_POST['UserName']) ? $_POST['UserName'] : "" ?>"   name="UserName" class="form-control" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="col-md-4 text-right">Mật khẩu</td>
-                                        <td>
-                                            <input type="password"  name="Password" class="form-control" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="col-md-4 text-right">Nhập lại mật khẩu</td>
-                                        <td>
-                                            <input type="password" name="ConfirmPassword" class="form-control" />
-                                        </td>
-                                    </tr>
-                                    <tr>
                                         <td class="col-md-4 text-right">Họ tên</td>
                                         <td>
-                                            <input type="text" name="FullName" value="<?= isset($_POST['FullName']) ? $_POST['FullName'] : "" ?>" class="form-control" />
+                                            <?= $view_data['model']['FullName'] ?>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="col-md-4 text-right">Email</td>
                                         <td>
-                                            <input type="email" name="Email" value="<?= isset($_POST['Email']) ? $_POST['Email'] : "" ?>" class="form-control" />
+                                            <?= $view_data['model']['Email'] ?>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="col-md-4 text-right">Số điện thoại</td>
                                         <td>
-                                            <input type="text" name="Phone" value="<?= isset($_POST['Phone']) ? $_POST['Phone'] : "" ?>" class="form-control" />
+                                            <?= $view_data['model']['Phone'] ?>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="col-md-4 text-right">Quyền</td>
                                         <td>
-                                            <select class="form-control" name="Role">
-                                            	<option value="1" selected="">Biên tập viên</option>
-                                            	<option value="2">Quản trị viên</option>
-                                            </select>
+                                            <?= $view_data['model']['Role'] ?>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -68,8 +48,7 @@
                                     <tr>
                                         <td class="col-md-4 text-right"></td>
                                         <td>
-                                             <button type="submit" class="btn bg-green btn-sm"><i class="fa fa-save"></i> Lưu</button>
-                                            <a href="<?=base_url_admin?>/user" class = "btn btn-default btn-sm">Về danh sách</a>
+                                            <a href="<?=base_url_admin?>/user/edit&userName=<?= $_SESSION['UserLogged']['UserName'] ?>" class = "btn btn-primary btn-xs">Đổi thông tin</a>
                                         </td>
                                     </tr>
                                 </tfoot>

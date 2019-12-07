@@ -5,12 +5,14 @@
     include_once 'model/class.mailBoxManager.php';
     include_once 'model/class.slideManager.php';
     include_once 'phpMailer/class.phpmailer.php';
+    include_once 'model/class.popupManager.php';
 
     $slideManager = new SlideManager();
     $productManager = new ProductManager();
     $newManager = new NewManager();
     $productManager = new ProductManager();
     $mailBoxManager = new MailBoxManager();
+    $popupManager = new PopupManager();
     
     switch($action)
     {
@@ -93,6 +95,17 @@
             $view_data['title'] = "Liên hệ";
             $view_data['view_name'] = "home/contactsuccess.php";
             break;
+        }
+        case "showpopup":
+        {
+            $view_data['model'] = $popupManager->Get();
+            if($view_data['model'] == null || $view_data['model']['IsShow'] == false )
+            {
+                echo "";
+                exit();
+            }
+            include 'partial/_popup.php';
+            exit();
         }
     }
 
