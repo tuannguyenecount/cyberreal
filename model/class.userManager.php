@@ -6,7 +6,7 @@ class UserManager {
     {
         $tsql = "SELECT *
                 FROM user
-                WHERE IsDeleted = 0 AND UserName = ? And PasswordHash = ? ";
+                WHERE UserName = ? And PasswordHash = ? ";
         $params = array($userName, $passwordHash);
         $database_Model = new Database();
         $cnt =  count($database_Model->GetList($tsql, $params));
@@ -21,101 +21,87 @@ class UserManager {
     public function GetList() {
         $tsql = "SELECT *
                 FROM user
-                WHERE IsDeleted = 0
                 ORDER BY CreatedDate desc";
+                
         $database_Model = new Database();
         return $database_Model->GetList($tsql);
-    }
-
-    public function GetById($id) {
-        $tsql = "SELECT *
-                FROM user
-                WHERE IsDeleted = 0 AND Id = ?";
-        $params = array($id);
-        $database_Model = new Database();
-        $arr = $database_Model->GetList($tsql, $params);
-        if(count($arr) > 0)
-            return $arr[0];
-        return null;
     }
     
     public function GetByUserName($UserName) {
         $tsql = "SELECT *
                 FROM user
-                WHERE IsDeleted = 0 AND UserName = ?";
-        $params = array($UserName);
+                WHERE UserName = ?";
+
         $database_Model = new Database();
+        $params = array($UserName);
         $arr = $database_Model->GetList($tsql, $params);
         if(count($arr) > 0)
             return $arr[0];
         return null;
     }
    
-    public function Add($Id, $UserName, $PasswordHash, $FullName, $Avatar, $Email, $Phone) {
+    public function Add($UserName, $PasswordHash, $FullName, $Email, $Phone) {
         $tsql = "INSERT INTO user
-                (Id, UserName, PasswordHash, FullName, Avatar, Email, Phone, CreatedDate)
-                VALUES(?, ?, ?, ?, ?, ?, ?, NOW()) ";
-        $params = array($Id, $UserName, $PasswordHash, $FullName, $Avatar, $Email, $Phone);
+                (UserName, PasswordHash, FullName, Email, Phone)
+                VALUES(?, ?, ?, ?, ?) ";
+        $params = array($UserName, $PasswordHash, $FullName, $Email, $Phone);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);
     }
     
-    public function IsInRole($userId, $roleId)
+    public function IsInRole($UserName, $RoleId)
     {
         $tsql = "SELECT *
                 FROM userrole
-                WHERE IsDeleted = 0 AND UserId = ? And RoleId = ? ";
-        $params = array($userId, $roleId);
+                WHERE UserName = ? And RoleId = ? ";
+        $params = array($UserName, $RoleId);
         $database_Model = new Database();
         $cnt =  count($database_Model->GetList($tsql, $params));
         return $cnt > 0;
     }
     
-    public function AddToRole($userId, $roleId)
+    public function AddToRole($UserName, $RoleId)
     {
         $tsql = "INSERT INTO userrole
-                (UserId, RoleId)
+                (UserName, RoleId)
                 VALUES(?, ?) ";
-        $params = array($userId, $roleId);
+        $params = array($UserName, $RoleId);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);
     }
     
-    public function DeleteFromRole($userId, $roleId)
+    public function DeleteFromRole($UserName, $RoleId)
     {
         $tsql = "DELETE userrole
-                 WHERE UserId = ? And RoleId = ? ";
-        $params = array($userId, $roleId);
+                 WHERE UserName = ? And RoleId = ? ";
+        $params = array($UserName, $RoleId);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);
     }
 
-    public function EditInformation($Id, $FullName, $Avatar, $Email, $Phone) {
+    public function EditInformation($model) {
         $tsql = "UPDATE user
-                SET FullName = ?, Avatar = ?, Email = ?, Phone = ? 
-                WHERE IsDeleted = 0 And Id = ? ";
-        $params = array($FullName, $Avatar, $Email, $Phone, $Id);
+                SET FullName = ?,  Email = ?, Phone = ? 
+                WHERE UserName = ? ";
+        $params = array($model['FullName'], $model['Email'], $model['Phone'], $model['UserName']);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);
     }
 
-    public function Delete($Id) {
-        $tsql = "UPDATE user Set IsDeleted = 1 WHERE Id = ? ";
-        $params = array($Id);
+    public function Delete($UserName) {
+        $tsql = "DELETE FROM user WHERE UserName = ? ";
+        $params = array($UserName);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);
     }
 
-    public function GetErrorsMessage($UserName, $PasswordHash, $FullName) {
+    public function GetErrorsMessage($UserName, $PasswordHash) {
         $errors = array();
         if (empty($UserName)) {
             $errors[] = "Bạn chưa nhập tài khoản!";
         }
         if (empty($PasswordHash)) {
             $errors[] = "Bạn chưa nhập mật khẩu!";
-        }
-        if (empty($FullName)) {
-            $errors[] = "Bạn chưa nhập họ tên!";
         }
         return $errors;
     }

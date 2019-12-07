@@ -45,9 +45,8 @@ class MailBoxManager {
     }
 
     public function Delete($Id) {
-        $tsql = "DELETE mailbox WHERE Id = ? ";
-
-        $params = array($Id);
+        $tsql = "DELETE FROM confirmmailbox WHERE MailBoxId = ? ; DELETE FROM mailbox WHERE Id = ? ";
+        $params = array($Id, $Id);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);
     }

@@ -2,13 +2,27 @@
 
 class BookingManager {
 
-    public function GetList() {
+    public function GetList($UserName) {
         
-        $tsql = "SELECT *
-                        FROM booking 
-                        ORDER BY `Id` desc";
+        $tsql = "SELECT A.*, IFNULL(B.BookingId, 0) AS IsConfirm   
+                FROM booking A
+                LEFT JOIN confirmbooking B 
+                ON A.Id = B.BookingId AND B.UserName = ?
+                ORDER BY IFNULL(B.BookingId, 0) ASC, A.Id Desc";
+        $params = array($UserName);
         $database_Model = new Database();
-        return $database_Model->GetList($tsql);
+        return $database_Model->GetList($tsql, $params);
+    }
+
+    public function GetListDetail($BookingId)
+    {
+        $tsql = "SELECT A.*   
+                FROM bookingdetails A
+                Where BookingId = ?
+                ORDER BY DayToSee";
+        $params = array($BookingId);
+        $database_Model = new Database();
+        return $database_Model->GetList($tsql, $params);
     }
 
     public function GetById($Id) {
@@ -61,27 +75,18 @@ class BookingManager {
         return $database_Model->Execute($tsql, $params);
     }
 
-    public function UnConfirm($Id) {
-        $tsql = "UPDATE booking
-                SET IsConfirm = 0, UserConfirm = null
-                WHERE Id = ? ";
-        $params = array($Id);
-        $database_Model = new Database();
-        return $database_Model->Execute($tsql, $params);
-    }
 
-    public function Confirm($Id, $UserConfirm) {
-        $tsql = "UPDATE booking
-                SET IsConfirm = 1, UserConfirm = ?
-                WHERE Id = ? ";
-        $params = array($UserConfirm, $Id);
+    public function Confirm($BookingId, $UserName) {
+        $tsql = "INSERT INTO confirmbooking(BookingId, UserName)
+                 VALUES(?, ?)";
+        $params = array($BookingId, $UserName);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);
     }
 
     public function Delete($Id) {
-        $tsql = "DELETE FROM booking WHERE Id = ? ";
-        $params = array($Id);
+        $tsql = " DELETE FROM booking WHERE Id = ? ";
+        $params = array($Id, $Id);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);
     }

@@ -13,51 +13,69 @@
          <div class="box">
             <div class="box-body">
                <?php include_once 'view/shared/_errors.php'; ?>
-               <div class="table-responsive">
-                  <table id="tblData" class="table table-bordered table-striped" method="post">
-                     <thead>
-                        <tr>
-                           <th class="hidden">Mã số</th>
-                           <th>Họ tên</th>
-                           <th>Email</th>
-                           <th>Số điện thoại</th>
-                           <th>Lời nhắn</th>
-                           <th>Ngày gửi</th>
-                           <th class="text-center">Trạng thái</th>
-                           <th class="text-center">Chọn</th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        <?php foreach($view_data['model'] as $item) { ?>
-                        <tr class="<?= $item['IsConfirm'] == 0 ? "danger" : "" ?>">
-                           <td class="hidden"><?= $item['Id'] ?></td>
-                           <td>
-                              <?= $item['Name'] ?>
-                           </td>
-                           <td>
-                              <?= $item['Email'] ?> 
-                           </td>
-                           <td>
-                              <?= $item['Phone'] ?>
-                           </td>
-                           <td><?= $item['Content'] ?></td>
-                           <td><?= $item['DateSend'] ?></td>
-                           <td class="text-center">
-                              <?php if ($item['IsConfirm'] != 0) { ?>
-                                 <img src="<?= base_url ?>/images/check.png" width="20" height="20" />
-                              <?php } else { ?>
-                                 <a title="Xác nhận ngay" href="<?= base_url_admin ?>/mailbox/confirm/<?= $item['Id'] ?>">
-                                    <img src="<?= base_url ?>/images/stop.png" width="20" height="20" /></a>
-                              <?php } ?>
-                           </td>
-                           <td class="text-center">
-                              <input type="checkbox" name="dsXoa" value="<?= $item['id'] ?>" />
-                           </td>
-                        </tr>
-                        <?php } ?>
-                     </tbody>
-                  </table>
-               </div>
+               <form action="<?= base_url_admin ?>/mailbox/delete" method="post">
+                  <div class="table-responsive">
+                     <table id="tblData" class="table table-bordered table-striped" method="post">
+                        <thead>
+                           <tr>
+                              <th class="hidden">Mã số</th>
+                              <th>Họ tên</th>
+                              <th>Email</th>
+                              <th>Số điện thoại</th>
+                              <th>Lời nhắn</th>
+                              <th>Ngày gửi</th>
+                              <th class="text-center">Trạng thái</th>
+                              <th class="text-center">Chọn</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <?php foreach($view_data['model'] as $item) { ?>
+                           <tr class="<?= $item['IsConfirm'] == 0 ? "danger" : "" ?>">
+                              <td class="hidden">
+                                 <?= $item['Id'] ?>
+                              </td>
+                              <td>
+                                 <?= $item['Name'] ?>
+                              </td>
+                              <td>
+                                 <?= $item['Email'] ?> 
+                              </td>
+                              <td>
+                                 <?= $item['Phone'] ?>
+                              </td>
+                              <td>
+                                 <?= $item['Content'] ?>   
+                              </td>
+                              <td>
+                                 <?= $item['DateSend'] ?>  
+                              </td>
+                              <td class="text-center">
+                                 <?php if ($item['IsConfirm'] != 0) { ?>
+                                    <img src="<?= base_url ?>/images/check.png" width="20" height="20" />
+                                 <?php } else { ?>
+                                    <a title="Xác nhận ngay" href="<?= base_url_admin ?>/mailbox/confirm/<?= $item['Id'] ?>">
+                                       <img src="<?= base_url ?>/images/stop.png" width="20" height="20" /></a>
+                                 <?php } ?>
+                              </td>
+                              <td class="text-center">
+                                 <input type="checkbox" class="dsXoa" name="dsXoa[]" value="<?= $item['Id'] ?>" />
+                              </td>
+                           </tr>
+                           <?php } ?>
+                        </tbody>
+                        <tfoot>
+                           <tr>
+                              <td class="hidden"></td>
+                              <td colspan="6"></td>
+                              <td class="text-center">
+                                 <button type="submit" id="btnXoa" disabled="" onclick="return confirm('Xác nhận xóa các thư được chọn')" class="btn btn-default btn-xs">
+                                    <i class="fa fa-trash"></i> Xóa</button>
+                              </td>
+                           </tr>
+                        </tfoot>
+                     </table>
+                  </div>
+               </form>
             </div>
             <!-- /.box-body -->
          </div>

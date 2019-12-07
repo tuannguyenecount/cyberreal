@@ -2,73 +2,91 @@
 
 class SlideManager {
 
-    public function GetList($status = null) {
-        
-        if ($status == null) {
-            $tsql = "SELECT *
-                            FROM slide
-                            ORDER BY Order";
-        } else {
-            $tsql = "SELECT *
-                            FROM slide
-                            WHERE Status = $status
-                            ORDER BY Order";
-        }
+    public function GetList() 
+    {
+        $tsql = "SELECT *
+                    FROM slide
+                    ORDER BY SortOrder";
+
         $database_Model = new Database();
         return $database_Model->GetList($tsql);
     }
 
-    public function GetById($id) {
+    public function GetListShow() 
+    {  
+        $tsql = "SELECT *
+                    FROM slide
+                    WHERE Status = 1
+                    ORDER BY SortOrder";    
+        $database_Model = new Database();
+        return $database_Model->GetList($tsql);
+    }
+
+    public function GetById($id) 
+    {
         $tsql = "SELECT *
                 FROM slide
                 WHERE Id = ?";
-        $params = array($id);
+        
         $database_Model = new Database();
+        $params = array($id);
         $arr = $database_Model->GetList($tsql, $params);
+        
         if(count($arr) > 0)
             return $arr[0];
         return null;
     }
 
-    public function Add($Title, $Description, $Image, $Status, $Order) {
+    public function Add($model) 
+    {
         $tsql = "INSERT INTO slide
-                (Title, Description, Image, Status, Order)
-                VALUES(?, ?, ?, ?, ?, ?) ";
+                (Image, SortOrder, Status)
+                VALUES(?, ?, ?) ";
 
-        $params = array($Title, $Description, $Image, $Price, $Status, $Order);
+        $params = array($model['Image'], $model['SortOrder'], $model['Status']);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);
     }
 
-    public function Edit($Id, $Title, $Description, $Image, $Status, $Order) {
+    public function Edit($model) 
+    {
         $tsql = "UPDATE slide
-                SET Title = ?, Description = ?, Image = ?, Status = ?, Order = ?	
-                WHERE Id = ? ";
+                    SET Image = ?, Status = ?, SortOrder = ?	
+                    WHERE Id = ? ";
 
-        $params = array($Title, $Description, $Image, $Status, $Order, $Id);
+        $params = array($model['Image'], $model['Status'], $model['SortOrder'], $model['Id']);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);
     }
 
-    public function Delete($Id) {
-        $tsql = "DELETE slide WHERE Id = ? ";
+    public function Confirm($Id) 
+    {
+        $tsql = "UPDATE slide
+                    SET Status = 1   
+                    WHERE Id = ? ";
+
         $params = array($Id);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);
     }
 
-    public function GetErrorsMessage($Title, $Status, $Order) {
-        $errors = array();
-        if (empty($Title)) {
-            $errors[] = "Tên hình không được để trống!";
-        }
-        if (!is_numeric($Order)) {
-            $errors[] = "Thứ tự phải là 1 con số!";
-        }
-        if (!is_numeric($Status) && $Status != 0 && $Status != 1) {
-            $errors[] = "Trạng thái chỉ có giá trị là 0 hoặc 1!";
-        }
-        return $errors;
+    public function UnConfirm($Id) 
+    {
+        $tsql = "UPDATE slide
+                    SET Status = 0   
+                    WHERE Id = ? ";
+
+        $params = array($Id);
+        $database_Model = new Database();
+        return $database_Model->Execute($tsql, $params);
+    }
+
+    public function Delete($Id) 
+    {
+        $tsql = "DELETE FROM slide WHERE Id = ? ";
+        $params = array($Id);
+        $database_Model = new Database();
+        return $database_Model->Execute($tsql, $params);
     }
 
 }

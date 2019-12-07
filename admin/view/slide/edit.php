@@ -12,6 +12,8 @@
     <div class="row">
         <div class="col-xs-12">
             <form method="post" enctype="multipart/form-data">
+                <input type="hidden" name="Id" value="<?= $view_data['model']['Id'] ?>" />
+                <input type="hidden" name="Image" value="<?= $view_data['model']['Image'] ?>" />
                 <div class="box">
                     <div class="box-body">
                         <?php include_once 'view/shared/_errors.php'; ?>
@@ -19,36 +21,28 @@
                             <table class="table table-border-none table-middle">
                                 <tbody>
                                     <tr>
-                                        <td class="col-md-3 text-right">URL Hình</td>
+                                        <td class="col-md-4 text-right">Sửa hình</td>
                                         <td>
-                                            <input type="text" class="form-control" value="<?= isset($image) ? $image : "" ?>" name="image"  />
-                                        </td>
+                                            <input type="file" name="file" class="form-control" />
                                     </tr>
                                     <tr>
-                                        <td class="col-md-3 text-right">Tiêu đề</td>
+                                        <td class="col-md-4 text-right">Thứ tự</td>
                                         <td>
-                                            <input type="text" value="<?= isset($title) ? $title : "" ?>" name="title" class="form-control" />
-                                        </td>
+                                            <input type="number" min="0" value="<?= isset($_POST['SortOrder']) ? $_POST['SortOrder'] : $view_data['model']['SortOrder'] ?>"   step="1" name="SortOrder" class="form-control" />
                                     </tr>
                                     <tr>
-                                        <td class="col-md-3 text-right">Thứ tự</td>
+                                        <td class="col-md-4 text-right">Trạng thái</td>
                                         <td>
-                                            <input type="number" min="0" value="<?= isset($sort_order) ? $sort_order : "" ?>"   step="1" name="sort_order" class="form-control" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="col-md-3 text-right">Trạng thái</td>
-                                        <td>
-                                            <input <?= isset($status) && $status == 1 ? "checked='checked'" : "" ?> type="checkbox" name="status" value="1" />
+                                            <input <?= isset($_POST['Status']) && $_POST['Status'] == 1 ? "checked='checked'" : ($view_data['model']['Status'] ? "checked" : "" ) ?> type="checkbox" name="Status"  />
                                         </td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td class="col-md-3 text-right"></td>
+                                        <td class="col-md-4 text-right"></td>
                                         <td>
-                                             <button type="submit" class="btn bg-green btn-sm"><i class="fa fa-save"></i> Lưu</button>
-                                            <a href="<?=base_url_admin?>/banner" class = "btn btn-default btn-sm">Về danh sách</a>
+                                             <button type="submit" class="btn bg-green btn-sm"><i class="fa fa-save"></i> Cập Nhật</button>
+                                            <a href="<?=base_url_admin?>/slide" class = "btn btn-default btn-sm">Về danh sách</a>
                                         </td>
                                     </tr>
                                 </tfoot>

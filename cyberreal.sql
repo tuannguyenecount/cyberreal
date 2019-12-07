@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2019 at 06:25 PM
+-- Generation Time: Dec 07, 2019 at 05:43 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.39
 
@@ -35,8 +35,6 @@ CREATE TABLE `booking` (
   `Email` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Phone` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Note` text COLLATE utf8mb4_unicode_ci,
-  `IsConfirm` tinyint(1) DEFAULT '0',
-  `UserConfirm` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `CreatedDate` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -44,10 +42,10 @@ CREATE TABLE `booking` (
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`Id`, `BookingCode`, `Name`, `Email`, `Phone`, `Note`, `IsConfirm`, `UserConfirm`, `CreatedDate`) VALUES
-(13, 'B8CC757C-A3F7-459E-BEE9-58FAB966EFD7', 'abcdef', 'teenboylaanh@gmail.com', '1648315269', 'aaaaa', 0, NULL, '2019-12-02 21:34:00'),
-(14, 'E6BC1B7B-F8B0-4154-B69B-D8D9EC821362', 'Tô Hữu Bằng', 'bangbk@gmail.com', '1851566584', '', 0, NULL, '2019-12-02 21:35:16'),
-(15, '07245297-3710-45C3-B1A6-3EC4E9A02D87', 'Bằng Coder', '1311519022@ntt.edu.vn', '1234856468', '', 0, NULL, '2019-12-03 00:49:23');
+INSERT INTO `booking` (`Id`, `BookingCode`, `Name`, `Email`, `Phone`, `Note`, `CreatedDate`) VALUES
+(14, 'E6BC1B7B-F8B0-4154-B69B-D8D9EC821362', 'Tô Hữu Bằng', 'bangbk@gmail.com', '1851566584', '', '2019-12-02 21:35:16'),
+(15, '07245297-3710-45C3-B1A6-3EC4E9A02D87', 'Bằng Coder', '1311519022@ntt.edu.vn', '1234856468', '', '2019-12-03 00:49:23'),
+(16, 'EDEAD2AB-4EB4-40D6-B02A-41F9F97E61BE', 'Nguyen Tuan Tu', 'nguyenaituan95@gmail.com', '8451551', '', '2019-12-07 14:24:43');
 
 -- --------------------------------------------------------
 
@@ -62,7 +60,7 @@ CREATE TABLE `bookingdetails` (
   `ProductName` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ProductAddress` varchar(512) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ProductLink` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ProductPrice` int(11) DEFAULT NULL,
+  `ProductPrice` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `DayToSee` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -71,13 +69,12 @@ CREATE TABLE `bookingdetails` (
 --
 
 INSERT INTO `bookingdetails` (`BookingId`, `ProductId`, `ProductImage`, `ProductName`, `ProductAddress`, `ProductLink`, `ProductPrice`, `DayToSee`) VALUES
-(13, 4, 'toa-nha-dqd-building.jpg', 'Tòa Nhà DQD Building', 'Đường Lê Trọng Tấn, Phường Sơn Kỳ, Quận Tân Phú', 'http://localhost:8080/cyberreal/ban-can-ho-chung-cu/toa-nha-dqd-building.html', 11, '04/12/2019'),
-(13, 5, 'chung-cu-idic.jpg', 'Chung Cư Idic', 'Đường Lũy Bán Bích, Phường Hòa Thạnh, Quận Tân Phú', 'http://localhost:8080/cyberreal/ban-can-ho-chung-cu/chung-cu-idic.html', 7, '03/12/2019'),
-(14, 4, 'toa-nha-dqd-building.jpg', 'Tòa Nhà DQD Building', 'Đường Lê Trọng Tấn, Phường Sơn Kỳ, Quận Tân Phú', 'http://localhost:8080/cyberreal/ban-can-ho-chung-cu/toa-nha-dqd-building.html', 11, '30/12/2019'),
-(14, 5, 'chung-cu-idic.jpg', 'Chung Cư Idic', 'Đường Lũy Bán Bích, Phường Hòa Thạnh, Quận Tân Phú', 'http://localhost:8080/cyberreal/ban-can-ho-chung-cu/chung-cu-idic.html', 7, '29/12/2019'),
-(15, 6, 'toa-nha-cbl-building.jpg', 'Tòa Nhà CBL Building', 'Đường Lũy Bán Bích, Phường Tân Thành, Quận Tân Phú', 'http://localhost:8080/cyberreal/ban-can-ho-chung-cu/toa-nha-cbl-building.html', 10, '19/12/2019'),
-(15, 7, 'toa-nha-casanova-building.jpeg', 'Tòa Nhà Casanova Building', 'Đường Nguyễn Sơn, Phường Phú Thạnh, Quận Tân Phú', 'http://localhost:8080/cyberreal/ban-can-ho-chung-cu/toa-nha-casanova-building.html', 12, '11/12/2019'),
-(15, 13, 'toa-nha-viet-phone-1-building.jpg', 'Tòa Nhà Việt Phone 1 Building', 'Đường Nguyễn Đình Chiểu, Phường Đa Kao,  Quận 1', 'http://localhost:8080/cyberreal/ban-can-ho-chung-cu/toa-nha-viet-phone-1-building.html', 100, '25/12/2019');
+(14, 4, 'toa-nha-dqd-building.jpg', 'Tòa Nhà DQD Building', 'Đường Lê Trọng Tấn, Phường Sơn Kỳ, Quận Tân Phú', 'http://localhost:8080/cyberreal/ban-can-ho-chung-cu/toa-nha-dqd-building.html', '11', '30/12/2019'),
+(14, 5, 'chung-cu-idic.jpg', 'Chung Cư Idic', 'Đường Lũy Bán Bích, Phường Hòa Thạnh, Quận Tân Phú', 'http://localhost:8080/cyberreal/ban-can-ho-chung-cu/chung-cu-idic.html', '7', '29/12/2019'),
+(15, 6, 'toa-nha-cbl-building.jpg', 'Tòa Nhà CBL Building', 'Đường Lũy Bán Bích, Phường Tân Thành, Quận Tân Phú', 'http://localhost:8080/cyberreal/ban-can-ho-chung-cu/toa-nha-cbl-building.html', '10', '19/12/2019'),
+(15, 7, 'toa-nha-casanova-building.jpeg', 'Tòa Nhà Casanova Building', 'Đường Nguyễn Sơn, Phường Phú Thạnh, Quận Tân Phú', 'http://localhost:8080/cyberreal/ban-can-ho-chung-cu/toa-nha-casanova-building.html', '12', '11/12/2019'),
+(15, 13, 'toa-nha-viet-phone-1-building.jpg', 'Tòa Nhà Việt Phone 1 Building', 'Đường Nguyễn Đình Chiểu, Phường Đa Kao,  Quận 1', 'http://localhost:8080/cyberreal/ban-can-ho-chung-cu/toa-nha-viet-phone-1-building.html', '100', '25/12/2019'),
+(16, 13, 'toa-nha-viet-phone-1-building.jpg', 'Tòa Nhà Việt Phone 1 Building', 'Đường Nguyễn Đình Chiểu, Phường Đa Kao,  Quận 1', 'http://localhost:8080/cyberreal/ban-can-ho-chung-cu/toa-nha-viet-phone-1-building.html', '100', '08/12/2019');
 
 -- --------------------------------------------------------
 
@@ -106,6 +103,26 @@ INSERT INTO `category` (`Id`, `Name`, `Alias`, `ParentId`, `Sort_Order`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `confirmbooking`
+--
+
+CREATE TABLE `confirmbooking` (
+  `BookingId` int(11) NOT NULL,
+  `UserName` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `confirmbooking`
+--
+
+INSERT INTO `confirmbooking` (`BookingId`, `UserName`) VALUES
+(13, 'admin'),
+(14, 'admin'),
+(15, 'admin');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `confirmmailbox`
 --
 
@@ -119,8 +136,10 @@ CREATE TABLE `confirmmailbox` (
 --
 
 INSERT INTO `confirmmailbox` (`UserName`, `MailBoxId`) VALUES
-('admin', 1),
-('admin', 2);
+('admin', 3),
+('admin', 4),
+('admin', 5),
+('admin', 6);
 
 -- --------------------------------------------------------
 
@@ -1027,9 +1046,13 @@ CREATE TABLE `mailbox` (
 --
 
 INSERT INTO `mailbox` (`Id`, `Name`, `Email`, `Phone`, `Content`, `DateSend`) VALUES
-(1, 'Nguyễn Ái Tuấn', 'nguyenaituan@yahoo.com', '1648315269', 'test', '2019-12-06 00:36:46'),
-(2, 'Nguyễn Ái Tuấn', 'nguyenaituan@yahoo.com', '0932635602', 'hytjtyjy', '2019-12-06 00:39:32'),
-(3, 'Nguyễn Ái Tuấn qweqweqwe', 'teenboylaanh@gmail.com', '1648315269', 'fsdfsdfsdf', '2019-12-06 20:22:37');
+(3, 'Nguyễn Ái Tuấn qweqweqwe', 'teenboylaanh@gmail.com', '1648315269', 'fsdfsdfsdf', '2019-12-06 20:22:37'),
+(4, 'nguyen van A', 'nguyenvana@gmail.com', '821562154', 'like you', '2019-12-07 14:09:29'),
+(5, 'Nguyễn Văn B', 'nguyenvanb@gmail.com', '123456789', 'test send mail', '2019-12-07 15:02:30'),
+(6, 'Bang coder ', 'bangcoder@gmail.com', '12345678', 'test send mail', '2019-12-07 15:03:25'),
+(7, 'Bang coder ', 'bangcoder@gmail.com', '12345678', 'test send mail', '2019-12-07 15:04:09'),
+(9, 'Bang coder  1', 'bangcoder@gmail.com', '12345678', 'test send mail', '2019-12-07 15:07:14'),
+(10, 'Bang coder  2', 'bangcoder@gmail.com', '12345678', 'test send mail', '2019-12-07 15:09:20');
 
 -- --------------------------------------------------------
 
@@ -1091,7 +1114,8 @@ CREATE TABLE `new` (
 INSERT INTO `new` (`Id`, `Title`, `Description`, `Content`, `Image`, `UserCreated`, `CreatedDate`, `Status`, `Alias`, `SeoTitle`, `SeoDescription`, `SeoKeyword`) VALUES
 (1, 'Một số văn phòng cho thuê nhiều nhất quận Tân Bình', 'Nhu cầu tìm kiếm và chọn thuê văn phòng tại quận Tân Bình đang tăng lên nhanh chóng.      ', '<div class=\"content\">\r\n<p><em>Nhu cầu t&igrave;m kiếm v&agrave; chọn thu&ecirc; văn ph&ograve;ng tại quận T&acirc;n B&igrave;nh đang tăng l&ecirc;n nhanh ch&oacute;ng. Hiểu r&otilde; nhu cầu của bạn đồng thời thấu hiểu kh&oacute; khăn bạn hiện đang gặp phải khi cần thu&ecirc; văn ph&ograve;ng, ch&uacute;ng t&ocirc;i chia sẻ đến bạn </em><strong><em>một số văn ph&ograve;ng cho thu&ecirc; nhiều nhất quận T&acirc;n B&igrave;nh</em></strong><em> hiện được đ&aacute;nh gi&aacute; cao. Bạn c&oacute; thể tham khảo v&agrave; &aacute;p dụng v&agrave;o chọn lựa văn ph&ograve;ng ph&ugrave; hợp nhất cho đơn vị m&igrave;nh.</em></p>\r\n\r\n<h2><strong>TTC Building đa dạng diện t&iacute;ch, gi&aacute; thu&ecirc; cao</strong></h2>\r\n\r\n<p style=\"text-align:center\"><strong><img alt=\"\" src=\"https://data.cyberreal.vn/office/gallery/van-phong-cho-thue-toa-nha-ttc-building-31554042700.jpg\" style=\"height:400px; width:600px\" /></strong></p>\r\n\r\n<p style=\"text-align:center\"><em>Cao ốc cho thu&ecirc; l&agrave;m văn ph&ograve;ng TTC Building được ưa chuộng</em></p>\r\n\r\n<p>TTC Building được cho thu&ecirc; với gi&aacute; l&ecirc;n đến 23USD/m2 tại Ho&agrave;ng Văn Thụ, phường 7 quận T&acirc;n B&igrave;nh. T&ograve;a cao ốc n&agrave;y được chia nhỏ th&agrave;nh c&aacute;c kh&ocirc;ng gian văn ph&ograve;ng với diện t&iacute;ch kh&aacute;c nhau dao động từ 300m2 đến 3000m2. Bạn c&oacute; thể c&acirc;n nhắc v&agrave; chọn thu&ecirc; văn ph&ograve;ng ph&ugrave; hợp với nhu cầu của m&igrave;nh.</p>\r\n\r\n<p>Cao ốc được x&acirc;y dựng trong khu vực ph&aacute;t triển mạnh mẽ. V&igrave; vậy, văn ph&ograve;ng của bạn chắc chắn sẽ hưởng trọn tiện &iacute;ch nội ngoại khu hấp dẫn. Đặc biệt hơn cả ch&iacute;nh l&agrave; sự đồ sộ cao ốc sở hữu khi c&oacute; tới 3 tầng hầm, 1 trệt, 20 tầng v&agrave; 6 th&aacute;ng m&aacute;y kh&aacute;c nhau.</p>\r\n\r\n<h2><strong>Scetpa Building gi&aacute; thu&ecirc; 12USD/m2&nbsp;</strong></h2>\r\n\r\n<p style=\"text-align:center\"><em><img alt=\"\" src=\"https://data.cyberreal.vn/default/file-1568019079/van-phong-cho-thue-toa-nha-scetpa-building-3.jpg\" style=\"height:400px; width:600px\" /></em></p>\r\n\r\n<p style=\"text-align:center\"><em>Scetpa Building l&agrave; địa chỉ được nhiều đơn vị chọn thu&ecirc; l&agrave;m văn ph&ograve;ng</em></p>\r\n\r\n<p>Scetpa Building tọa lạc mặt tiền đường Cộng H&ograve;a c&aacute;ch 200m với Pico Plaza. Nằm trong khu vực tụ hội nhiều cao ốc khiến t&ograve;a nh&agrave; được đ&aacute;nh gi&aacute; cao v&agrave; hưởng những cơ sở vật chất c&oacute; sẵn.</p>\r\n\r\n<p>T&ograve;a nh&agrave; Scetpa Building được xếp hạng B+ c&oacute; kết cấu đồ sộ 1 hầm, 10 tầng, 3 thang m&aacute;y. Diện t&iacute;ch sử dụng 11.000m2 gi&uacute;p đơn vị bạn đ&aacute;p ứng được nhu cầu l&agrave;m việc của h&agrave;ng trăm nh&acirc;n vi&ecirc;n kh&aacute;c nhau. Gi&aacute; thu&ecirc; văn ph&ograve;ng tại cao ốc n&agrave;y được đ&aacute;nh gi&aacute; rẻ so với những tiện cao ốc trong khu vực với gi&aacute; thu&ecirc; chỉ 12USD/m2.&nbsp;</p>\r\n\r\n<h2><strong>Pico plaza gi&aacute; thu&ecirc; cao diện t&iacute;ch lớn</strong></h2>\r\n\r\n<p style=\"text-align:center\"><em><img alt=\"\" src=\"https://data.cyberreal.vn/office/gallery/van-phong-cho-thue-toa-nha-pico-plaza-41553682930.jpg\" style=\"height:400px; width:600px\" /></em></p>\r\n\r\n<p style=\"text-align:center\"><em>Pico plaza c&oacute; quy m&ocirc; đồ sộ mang đến kh&ocirc;ng gian l&agrave;m việc chuy&ecirc;n nghiệp</em></p>\r\n\r\n<p>Pico plaza tại Cộng H&ograve;a, T&acirc;n B&igrave;nh c&oacute; cấu tr&uacute;c đặc biệt. Cao ốc bao gồm 1 trệt, 2 hầm,15 tầng, 4 thang m&aacute;y với diện t&iacute;ch từ 500m2 đến 1000m2. Diện t&iacute;ch lớn n&ecirc;n cao ốc th&iacute;ch hợp đối với những đơn vị đ&ocirc;ng người.</p>\r\n\r\n<p>Gi&aacute; thu&ecirc; Pico plaza cao l&ecirc;n tới 15.5USD/m2. Mức gi&aacute; n&agrave;y được đ&aacute;nh gi&aacute; cao, tuy nhi&ecirc;n nh&acirc;n vi&ecirc;n đơn vị bạn sẽ được l&agrave;m việc trong m&ocirc;i trường hiện đại, chuy&ecirc;n nghiệp nhất hiện nay.</p>\r\n\r\n<h2><strong>Hải &Acirc;u Building gi&aacute; thu&ecirc; 14USD/m2</strong></h2>\r\n\r\n<p style=\"text-align:center\"><em><img alt=\"\" src=\"https://data.cyberreal.vn/office/hai-au/khong-gian-van-phong-chia-se-tai-hai-au-building-1.jpg\" style=\"height:400px; width:600px\" /></em></p>\r\n\r\n<p style=\"text-align:center\"><em>Cao ốc Hải &Acirc;u Building được chọn thu&ecirc; l&agrave;m văn ph&ograve;ng chuy&ecirc;n nghiệp</em></p>\r\n\r\n<p>Hải &Acirc;u Building tọa lạc tr&ecirc;n đường Trường Sơn, T&acirc;n B&igrave;nh với diện t&iacute;ch sử dụng l&ecirc;n tới 12000m2. Kết cấu của dự &aacute;n nổi bật với 2 tầng hầm, 12 tầng c&ugrave;ng nhiều diện t&iacute;ch cho thu&ecirc; kh&aacute;c nhau. Gi&aacute; thu&ecirc; dự &aacute;n kh&aacute; cao khi l&ecirc;n tới 14USD/m2 mỗi th&aacute;ng. Tuy nhi&ecirc;n, bạn sẽ được hưởng trọn những gi&aacute; trị lớn lao nh&igrave;n thấy từ vị tr&iacute; dự &aacute;n. Đồng thời, nh&acirc;n vi&ecirc;n đơn vị sẽ c&oacute; được m&ocirc;i trường l&agrave;m việc tốt nhất</p>\r\n\r\n<h2><strong>Kicotrans Building gi&aacute; thu&ecirc; 13USD/m2</strong></h2>\r\n\r\n<p style=\"text-align:center\"><em><img alt=\"\" src=\"https://data.cyberreal.vn/default/file-1568019079/van-phong-cho-thue-toa-nha-kicotrans-3-building-3.jpg\" style=\"height:400px; width:600px\" /></em></p>\r\n\r\n<p style=\"text-align:center\"><em>Cao ốc cho thu&ecirc; văn ph&ograve;ng c&oacute; kh&ocirc;ng gian rộng lớn</em></p>\r\n\r\n<p>Kicotrans Building tại mặt tiền đường Đống Đa, phường 2, quận T&acirc;n B&igrave;nh. Cao ốc hạng C n&agrave;y mang đến cho nh&acirc;n vi&ecirc;n m&ocirc;i trường l&agrave;m việc th&ocirc;ng tho&aacute;ng chuẩn theo phong c&aacute;ch hiện đại. Thiết kế cao ốc gồm 1 trệt, 8 tầng, 1 hầm gi&uacute;p bạn dễ d&agrave;ng sở hữu được những văn ph&ograve;ng diện t&iacute;ch linh hoạt từ 60m2 đến 120m2. Gi&aacute; thu&ecirc; văn ph&ograve;ng tại cao ốc kh&aacute; hợp l&yacute; 13USD/m2. Bạn v&igrave; vậy c&oacute; thể đơn giản hơn khi cần thu&ecirc; sở hữu.</p>\r\n\r\n<h2><strong>Waseco Building gi&aacute; thu&ecirc; 10USD/m2</strong></h2>\r\n\r\n<p style=\"text-align:center\"><strong><img alt=\"\" src=\"https://data.cyberreal.vn/default/file-1568019079/van-phong-cho-thue-toa-nha-waseco-2-building-1.jpg\" style=\"height:400px; width:600px\" /></strong></p>\r\n\r\n<p style=\"text-align:center\"><em>T&ograve;a cao ốc Waseco Building cho thu&ecirc; l&agrave;m văn ph&ograve;ng</em></p>\r\n\r\n<p>Waseco Building c&oacute; gi&aacute; cho thu&ecirc; rẻ chỉ 10USD/m2. Cao ốc tọa lạc tại đường Phổ Quang, phường 2, quận T&acirc;n B&igrave;nh. Bạn khi c&oacute; nhu cầu thu&ecirc; cao ốc tại đ&acirc;y sẽ đơn giản hơn cho m&igrave;nh trong việc lựa chọn c&aacute;c văn ph&ograve;ng với diện t&iacute;ch đa dạng từ 50m2 đến 220m2.</p>\r\n\r\n<h2><strong>&nbsp;Athena Building gi&aacute; thu&ecirc; 10USD/m2</strong></h2>\r\n\r\n<p>Athena Building cho thu&ecirc; với gi&aacute; 10USD/m2 tại đường Cộng H&ograve;a quận T&acirc;n B&igrave;nh. Mức gi&aacute; cho thu&ecirc; được đ&aacute;nh gi&aacute; rẻ đối với cao ốc hiện đại. Bạn khi chọn thu&ecirc; văn ph&ograve;ng tại Athena Building sẽ c&oacute; th&ecirc;m cho m&igrave;nh đa dạng sự lựa chọn khi diện t&iacute;ch cho thu&ecirc; dao động từ 40m2 đến 100m2. Thiết kế của t&ograve;a nh&agrave; đ&aacute;p ứng sự hiện đại. V&igrave; vậy, Athena Building được xếp v&agrave;o một số văn ph&ograve;ng cho thu&ecirc; nhiều nhất quận T&acirc;n B&igrave;nh hiện nay.</p>\r\n\r\n<h2><strong>Etown Building gi&aacute; thu&ecirc; cao l&ecirc;n tới 14USD/m2</strong></h2>\r\n\r\n<p>Etown Building c&oacute; kết cấu 1 trệt, 12 tầng sừng sững mọc l&ecirc;n tại đường Cộng H&ograve;a. Cao ốc n&agrave;y chia ra c&aacute;c văn ph&ograve;ng cho thu&ecirc; với diện t&iacute;ch từ 50m2 đến 1000m2. Bạn v&igrave; vậy sẽ c&oacute; th&ecirc;m cho m&igrave;nh nhiều sự lựa chọn. Gi&aacute; thu&ecirc; văn ph&ograve;ng tại cao ốc l&ecirc;n tới 14USD/m2. Mức gi&aacute; n&agrave;y được giới bất động sản đ&aacute;nh gi&aacute; cao so với c&aacute;c cao ốc cho thu&ecirc; trong khu vực.</p>\r\n\r\n<h2><strong>Park 9 Tower gi&aacute; thu&ecirc; cao 22USD/m2</strong></h2>\r\n\r\n<p style=\"text-align:center\"><em><img alt=\"\" src=\"https://data.cyberreal.vn/default/file-1568019079/van-phong-cho-thue-toa-nha-park-9-tower.jpg\" style=\"height:400px; width:600px\" /></em></p>\r\n\r\n<p style=\"text-align:center\"><em>Cao ốc được nhiều người chọn lựa</em></p>\r\n\r\n<p>Park 9 Tower tọa lạc tại Phan Đ&igrave;nh Gi&oacute;t, phường 2, quận T&acirc;n B&igrave;nh, th&agrave;nh phố Hồ Ch&iacute; Minh. Cao ốc n&agrave;y hội tụ những ưu điểm nhất định n&acirc;ng tầm gi&aacute; trị cho văn ph&ograve;ng khi thu&ecirc;. Đặc biệt hơn, cao ốc kh&aacute;&nbsp; rộng lớn khi c&oacute; 2 tầng hầm, 1 tầng trệt, 16 tầng với tổng diện t&iacute;ch l&ecirc;n đến 9.086n2. Gi&aacute; thu&ecirc; văn ph&ograve;ng tại t&ograve;a nh&agrave; n&agrave;y rất cao l&ecirc;n đến 22USD/m2.</p>\r\n\r\n<p>Những th&ocirc;ng tin về một số văn ph&ograve;ng cho thu&ecirc; nhiều nhất quận T&acirc;n B&igrave;nh đ&atilde; được ch&uacute;ng t&ocirc;i chia sẻ kể tr&ecirc;n. Bạn n&ecirc;n tham khảo v&agrave; lựa chọn văn ph&ograve;ng đ&uacute;ng theo c&aacute;c ti&ecirc;u ch&iacute; bạn đưa ra.</p>\r\n</div>\r\n', NULL, 'admin', '2019-11-28 16:29:04', 1, 'mot-so-van-phong-cho-thue-nhieu-nhat-quan-tan-binh', NULL, NULL, NULL),
 (2, 'Văn Phòng giá rẻ đáng chú ý cho thuê tại quận 3 năm 2019', 'Quận 3 là một trong những khu vực quận trung tâm của TPHCM. Chính vì thế nơi đây tập trung rất nhiều tòa nhà lớn cho thuê để làm văn phòng  ', '<div class=\"content\">\r\n<p><em>Quận 3 l&agrave; một trong những khu vực quận trung t&acirc;m của TPHCM. Ch&iacute;nh v&igrave; thế nơi đ&acirc;y tập trung rất nhiều t&ograve;a nh&agrave; lớn cho thu&ecirc; để l&agrave;m văn ph&ograve;ng. Tuy nhi&ecirc;n điều khiến nhiều người lo lắng đ&oacute; l&agrave; quận 3 l&agrave; quận trung t&acirc;m n&ecirc;n gi&aacute; thu&ecirc; ở đ&acirc;y cũng đắt hơn so với c&aacute;c quận kh&aacute;c. Dưới đ&acirc;y l&agrave; một v&agrave;i </em><strong><em>văn ph&ograve;ng gi&aacute; rẻ đ&aacute;ng ch&uacute; &yacute; cho thu&ecirc; tại quận 3</em></strong><em> m&agrave; bạn c&oacute; thể tham khảo.</em></p>\r\n\r\n<h2><strong>Gi&agrave;y Việt Tower - văn ph&ograve;ng gi&aacute; rẻ đ&aacute;ng ch&uacute; &yacute; cho thu&ecirc; tại quận 3 TP Hồ Ch&iacute; Minh</strong></h2>\r\n\r\n<p>Một trong những văn ph&ograve;ng cho thu&ecirc; gi&aacute; rẻ ở quận 3 phải kể tới đ&oacute; l&agrave; Gi&agrave;y Việt Tower. Gi&agrave;y Việt Tower được thiết theo đ&uacute;ng ti&ecirc;u chuẩn của một t&ograve;a nh&agrave; hiện đại bao gồm 9 tầng d&ugrave;ng cho văn ph&ograve;ng v&agrave; 1 tầng hầm để xe. To&agrave;n bộ văn ph&ograve;ng cho thu&ecirc; b&ecirc;n trong t&ograve;a nh&agrave; đều được trang bị đầy đủ c&aacute;c trang thiết bị hiện đại, an ninh tuyệt đối v&agrave; đảm bảo về mặt phong thủy cho tất cả c&aacute;c c&ocirc;ng ty khi đến thu&ecirc; văn ph&ograve;ng tại đ&acirc;y.</p>\r\n\r\n<p style=\"text-align:center\"><img alt=\"\" src=\"https://data.cyberreal.vn/default/file-1568019079/van-phong-cho-thue-toa-nha-giay-viet-plaza.jpg\" style=\"height:400px; width:600px\" /></p>\r\n\r\n<p style=\"text-align:center\"><em>Gi&agrave;y Việt Tower nằm ngay tr&ecirc;n đường L&yacute; Ch&iacute;nh Thắng - Quận 3</em></p>\r\n\r\n<h2><strong>NP Tower</strong></h2>\r\n\r\n<p>Đ&acirc;y cũng l&agrave; một trong những t&ograve;a nh&agrave; hiện đại nhất cho thu&ecirc; văn ph&ograve;ng gi&aacute; rẻ ở quận 3 TP Hồ Ch&iacute; Minh. NP Tower tọa lạc tr&ecirc;n c&ocirc;n đường V&otilde; Thị S&aacute;u, l&agrave; nơi nắm giữ vị tr&iacute; giao th&ocirc;ng v&ocirc; c&ugrave;ng quan trọng. T&ograve;a nh&agrave; n&agrave;y nằm kh&aacute; gần c&aacute;c con đường lớn như Hai B&agrave; Trưng, Điện Bi&ecirc;n Phủ v&agrave; nằm gần c&aacute;c khu trung t&acirc;m thương mại lớn. Ch&iacute;nh v&igrave; thế lựa chọn thu&ecirc; văn ph&ograve;ng ở đ&acirc;y c&aacute;c c&ocirc;ng ty sẽ nhận được kh&aacute; nhiều lợi &iacute;ch.</p>\r\n\r\n<p>Ngo&agrave;i ra b&ecirc;n trong t&ograve;a nh&agrave; được thiết kế kh&aacute; độc đ&aacute;o với đầy đủ c&aacute;c tiện nghi gi&uacute;p cho c&aacute;c c&ocirc;ng ty thu&ecirc; văn ph&ograve;ng ở đ&acirc;y c&oacute; thể thoải m&aacute;i s&aacute;ng tạo v&agrave; ph&aacute;t triển c&ocirc;ng ty.</p>\r\n\r\n<p style=\"text-align:center\"><em><img alt=\"\" src=\"https://data.cyberreal.vn/default/file-1568019079/van-phong-cho-thue-toa-nha-np-tower.jpg\" style=\"height:400px; width:600px\" /></em></p>\r\n\r\n<p style=\"text-align:center\"><em>NP Tower nằm ngay cạnh c&aacute;c trung t&acirc;m thương mại lớn</em></p>\r\n\r\n<h2><strong>Tuấn Minh Building</strong></h2>\r\n\r\n<p>Nằm tr&ecirc;n đường Huỳnh Tịnh Của, Tuấn Minh Building được x&acirc;y dựng với thiết kế 68 tầng hiện đại v&agrave; đi k&eacute;m với đ&oacute; l&agrave; một khu&ocirc;n vi&ecirc;n v&ocirc; c&ugrave;ng rộng r&atilde;i. Đ&acirc;y c&oacute; thể coi l&agrave; địa điểm cho thu&ecirc; văn ph&ograve;ng l&yacute; tưởng nhất. Vừa l&agrave;m việc lại vừa c&oacute; thể ngắm nh&igrave;n c&acirc;y cối xung quanh, một khung cảnh v&ocirc; c&ugrave;ng y&ecirc;n b&igrave;nh.</p>\r\n\r\n<p>Ngo&agrave;i ra b&ecirc;n trong t&ograve;a nh&agrave; c&aacute;c văn ph&ograve;ng đều được thiết kế theo đ&uacute;ng ti&ecirc;u chuẩn hiện đại với đầy đủ trang thiết bị n&ecirc;n kh&aacute;ch h&agrave;ng c&oacute; thể ho&agrave;n to&agrave;n an t&acirc;m khi thu&ecirc; văn ph&ograve;ng tại đ&acirc;y. Do được thiết kế theo xu hướng &ldquo;T&ograve;a nh&agrave; xanh&rdquo; n&ecirc;n c&aacute;c vật liệu d&ugrave;ng để x&acirc;y dựng t&ograve;a nh&agrave; đều th&acirc;n thiện với m&ocirc;i trường xung quanh v&agrave; gi&uacute;p cho c&aacute;c c&ocirc;ng ty tiết kiệm được tối đa chi ph&iacute; d&ugrave;ng cho việc thu&ecirc; văn ph&ograve;ng.</p>\r\n\r\n<p style=\"text-align:center\"><em><img alt=\"\" src=\"https://data.cyberreal.vn/default/file-1568019079/mat-tien-toa-nha-tuan-minh-3-building-2.jpg\" style=\"height:400px; width:600px\" /></em></p>\r\n\r\n<p style=\"text-align:center\"><em>Tuấn Minh Building được thiết kế theo xu hướng &ldquo;T&ograve;a nh&agrave; Xanh&rdquo;</em></p>\r\n\r\n<h2><strong>A&amp;B Building</strong></h2>\r\n\r\n<p>Do c&oacute; vị tr&iacute; kh&aacute; thuận lợi (nằm tr&ecirc;n đường L&yacute; Ch&iacute;nh Thắng) n&ecirc;n A&amp;B Building kh&aacute; gần với c&aacute;c trung t&acirc;m thương mại. Đ&acirc;y cũng l&agrave; lợi thế khiến cho A&amp;B Building được nhiều kh&aacute;ch h&agrave;ng lựa chọn. Tại đ&acirc;y tất cả c&aacute;c văn ph&ograve;ng đều được thiết kế với hệ thống &aacute;nh s&aacute;ng hiện đại đảm bảo cung cấp đầy đủ lượng &aacute;nh s&aacute;ng cho c&aacute;c văn ph&ograve;ng b&ecirc;n trong t&ograve;a nh&agrave;.</p>\r\n\r\n<p>Với thiết kế 9 tầng hiện đại bao gồm 8 tầng văn ph&ograve;ng v&agrave; 1 tầng hầm để xe được bảo vệ an ninh nghi&ecirc;m ngặt n&ecirc;n c&aacute;c c&ocirc;ng ty c&oacute; thể tin tưởng v&agrave; lựa chọn thu&ecirc; văn ph&ograve;ng tại đ&acirc;y.</p>\r\n\r\n<p style=\"text-align:center\"><em><img alt=\"\" src=\"https://data.cyberreal.vn/default/file-1568019079/van-phong-cho-thue-toa-nha-ab-building-6.jpg\" style=\"height:400px; width:600px\" /></em></p>\r\n\r\n<p style=\"text-align:center\"><em>A&amp;B Building được thiết kế hiện đại theo đ&uacute;ng ti&ecirc;u chuẩn quốc tế</em></p>\r\n\r\n<h2><strong>TT Building</strong></h2>\r\n\r\n<p>Sở hữu vị tr&iacute; đắt gi&aacute;, c&oacute; mặt tiền ngay b&ecirc;n ngo&agrave;i đường Nam Kỳ Khởi Nghĩa, bao v&acirc;y xung quanh l&agrave; c&aacute;c khu chung cư, nh&agrave; h&agrave;ng cao cấp,... TT Building được coi l&agrave; t&ograve;a nh&agrave; đ&aacute;ng thu&ecirc; nhất ở TPHCM. Hơn nữa với vị tr&iacute; kết nối đường Nam Kỳ Khởi Nghĩa v&agrave; đường Nguyễn Thị Minh Khai, việc lựa chọn thu&ecirc; văn ph&ograve;ng tại TT Building sẽ gi&uacute;p cho c&aacute;c c&ocirc;ng ty tiết kiệm được tối đa thời gian di chuyển v&agrave; việc tiếp cận với kh&aacute;ch h&agrave;ng sẽ trở n&ecirc;n dễ d&agrave;ng hơn.</p>\r\n\r\n<p style=\"text-align:center\"><em><img alt=\"\" src=\"https://data.cyberreal.vn/default/file-1568019079/van-phong-cho-thue-toa-nha-tt-building-1-1.jpg\" style=\"height:400px; width:600px\" /></em></p>\r\n\r\n<p style=\"text-align:center\"><em>TT Building nằm ngay tr&ecirc;n đường Nam Kỳ Khởi Nghĩa</em></p>\r\n\r\n<h2><strong>Li&ecirc;n Hoa Building</strong></h2>\r\n\r\n<p>Li&ecirc;n Hoa Building được đ&aacute;nh gi&aacute; l&agrave; một t&ograve;a cao ốc sang trọng v&agrave; kh&aacute; ph&ugrave; hợp để đặt c&aacute;c văn ph&ograve;ng đại diện hoặc văn ph&ograve;ng l&agrave;m việc. Li&ecirc;n Hoa Building được x&acirc;y dựng ngay tr&ecirc;n đường C&aacute;ch Mạng Th&aacute;ng 8 bao gồm 1 tầng hầm, 1 tầng trệt v&agrave; 6 tầng văn ph&ograve;ng, bao quanh t&ograve;a nh&agrave; l&agrave; một khu&ocirc;n vi&ecirc;n kh&aacute; to v&agrave; đẹp. Khu&ocirc;n vi&ecirc;n n&agrave;y gi&uacute;p cho c&aacute;c c&ocirc;ng ty l&agrave;m việc hiệu quả hơn v&agrave; tạo n&ecirc;n một kh&ocirc;ng gian xanh xung quanh t&ograve;a nh&agrave;.</p>\r\n\r\n<p style=\"text-align:center\"><em><img alt=\"\" src=\"https://data.cyberreal.vn/default/file-1568019079/van-phong-cho-thue-toa-nha-lien-hoa-building-1.JPG\" style=\"height:400px; width:600px\" /></em></p>\r\n\r\n<p style=\"text-align:center\"><em>Li&ecirc;n Hoa Building nằm tr&ecirc;n đường C&aacute;ch Mạng Th&aacute;ng 8</em></p>\r\n\r\n<h2><strong>AVS Building</strong></h2>\r\n\r\n<p>Cũng giống như hầu hết c&aacute;c t&ograve;a nh&agrave; cho thu&ecirc; văn ph&ograve;ng đ&atilde; liệt k&ecirc; b&ecirc;n tr&ecirc;n, AVS Building nắm giữ vị tr&iacute; kh&aacute; quan trọng, l&agrave; cầu nối của nhiều con đường lớn của quận 3. D&ugrave; l&agrave; t&ograve;a cao ốc hạng C nhưng to&agrave;n bộ c&aacute;c văn ph&ograve;ng b&ecirc;n trong t&ograve;a nh&agrave; đều được cung cấp đầy đủ trang thiết bị hiện đại v&agrave; được lắp đặt hệ thống &aacute;nh s&aacute;ng ti&ecirc;n tiến nhất. Đ&acirc;y cũng ch&iacute;nh l&agrave; l&yacute; do khiến cho nhiều kh&aacute;ch h&agrave;ng lựa chọn t&ograve;a nh&agrave; n&agrave;y l&agrave;m điểm dừng ch&acirc;n cho văn ph&ograve;ng của m&igrave;nh.</p>\r\n\r\n<p style=\"text-align:center\"><img alt=\"\" src=\"https://data.cyberreal.vn/default/file-1568019079/mat-tien-toa-nha-avs-building-1.jpg\" style=\"height:400px; width:600px\" /></p>\r\n\r\n<p style=\"text-align:center\"><em>AVS Building nằm tr&ecirc;n đường Trương Quyền</em></p>\r\n\r\n<h2><strong>DBP Building</strong></h2>\r\n\r\n<p>Hầu hết c&aacute;c văn ph&ograve;ng cho thu&ecirc; tại DBP Building đều rất rộng r&atilde;i v&agrave; tho&aacute;ng m&aacute;t. Kh&ocirc;ng gian n&agrave;y sẽ gi&uacute;p cho c&aacute;c nh&acirc;n vi&ecirc;n l&agrave;m việc tốt hơn. Ngo&agrave;i ra v&igrave; nằm ngay c&ocirc;ng vi&ecirc;n L&ecirc; Văn T&aacute;m v&agrave; lại c&oacute; vị tr&iacute; đắc địa l&agrave; điểm nối giữa đường Điện Bi&ecirc;n Phủ v&agrave; đường Trương Quyền n&ecirc;n giao th&ocirc;ng đi lại quanh DBP Building cũng rất dễ d&agrave;ng v&agrave; thuận tiện.</p>\r\n\r\n<p style=\"text-align:center\"><em><img alt=\"\" src=\"https://data.cyberreal.vn/default/file-1568019079/van-phong-gia-re-dbp-building.jpeg\" style=\"height:435px; width:600px\" /></em></p>\r\n\r\n<p style=\"text-align:center\"><em>DBP Building nằm ngay tr&ecirc;n đường Điện Bi&ecirc;n Phủ</em></p>\r\n\r\n<h2><strong>Winhome Building</strong></h2>\r\n\r\n<p>Winhome Building được thiết kế theo ti&ecirc;u chuẩn t&ograve;a nh&agrave; văn ph&ograve;ng hạng C với đầy đủ c&aacute;c trang thiết bị chuy&ecirc;n nghiệp để đ&aacute;p ứng tối đa nhu cầu sử dụng cho c&aacute;c doanh nghiệp. Hai thang m&aacute;y tốc độ cao c&ugrave;ng hệ thống m&aacute;y ph&aacute;t điện hiện đại v&agrave; hệ thống an ninh đảm bảo 24/24, Winhome Building được bầu chọn l&agrave; t&ograve;a nh&agrave; văn ph&ograve;ng hạng C hiện đại nhất ở quận 3.</p>\r\n\r\n<p style=\"text-align:center\"><em><img alt=\"\" src=\"https://data.cyberreal.vn/default/file-1568019079/van-phong-toa-nha-winhome.jpg\" style=\"height:411px; width:600px\" /></em></p>\r\n\r\n<p style=\"text-align:center\"><em>Winhome Building t&ograve;a nh&agrave; văn ph&ograve;ng hiện đại</em></p>\r\n\r\n<p>Tr&ecirc;n đ&acirc;y l&agrave; danh s&aacute;ch văn ph&ograve;ng gi&aacute; rẻ đ&aacute;ng ch&uacute; &yacute; cho thu&ecirc; tại quận 3 đang được nhiều người lựa chọn. Hy vọng những th&ocirc;ng tin n&agrave;y sẽ gi&uacute;p bạn chọn được một văn ph&ograve;ng cho thu&ecirc; ưng &yacute;.</p>\r\n</div>\r\n', NULL, 'admin', '2019-11-28 17:12:15', 1, 'van-phong-gia-re-dang-chu-y-cho-thue-tai-quan-3-nam-2019', '​​​​​​​Văn Phòng giá rẻ đáng chú ý cho thuê tại quận 3 năm 2019', 'tesr awdadasdasd', 'aksdaskdkaskdasd'),
-(3, 'Một số văn phòng cho thuê nhiều nhất quận Tân Bình 2222', ' aSASD ', 'SDFSDFSDF', NULL, 'admin', '2019-12-05 21:51:09', 1, 'mot-so-van-phong-cho-thue-nhieu-nhat-quan-tan-binh-2222', 'TITLE 2', 'Descriptuon 2', 'Keyword 1, keyword 2');
+(3, 'Một số văn phòng cho thuê nhiều nhất quận Tân Bình 2222', ' aSASD ', 'SDFSDFSDF', NULL, 'admin', '2019-12-05 21:51:09', 1, 'mot-so-van-phong-cho-thue-nhieu-nhat-quan-tan-binh-2222', 'TITLE 2', 'Descriptuon 2', 'Keyword 1, keyword 2'),
+(4, 'bằng coder là ta hehe', ' test mo ta hehe', 'hahaha hehe&nbsp;', NULL, 'admin', '2019-12-07 14:43:19', 1, 'bang-coder-la-ta-hehe', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -8328,12 +8352,19 @@ INSERT INTO `role` (`Id`, `Name`) VALUES
 CREATE TABLE `slide` (
   `Id` int(11) NOT NULL,
   `Image` varchar(128) DEFAULT NULL,
-  `Order` tinyint(3) UNSIGNED DEFAULT NULL,
-  `Title` varchar(256) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `Status` tinyint(1) NOT NULL,
-  `Deleted` tinyint(1) NOT NULL DEFAULT '0',
-  `Description` longtext CHARACTER SET utf8mb4
+  `SortOrder` tinyint(3) UNSIGNED DEFAULT NULL,
+  `Status` tinyint(1) DEFAULT NULL,
+  `CreatedDate` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `slide`
+--
+
+INSERT INTO `slide` (`Id`, `Image`, `SortOrder`, `Status`, `CreatedDate`) VALUES
+(1, '1.5757087364495E+16.jpg', 1, 1, '2019-12-07 15:52:16'),
+(2, '15757093001247.jpg', 3, 1, '2019-12-07 16:01:40'),
+(4, '15757108704485.jpg', 2, 0, '2019-12-07 16:17:46');
 
 -- --------------------------------------------------------
 
@@ -71707,23 +71738,20 @@ CREATE TABLE `subscriber` (
 --
 
 CREATE TABLE `user` (
-  `Id` varchar(128) NOT NULL,
   `UserName` varchar(256) CHARACTER SET latin1 NOT NULL,
   `PasswordHash` text CHARACTER SET latin1 NOT NULL,
   `FullName` varchar(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `Avatar` varchar(256) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `Email` varchar(256) CHARACTER SET latin1 DEFAULT NULL,
   `Phone` varchar(128) CHARACTER SET latin1 DEFAULT NULL,
-  `CreatedDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `IsDeleted` tinyint(1) DEFAULT '0'
+  `CreatedDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`Id`, `UserName`, `PasswordHash`, `FullName`, `Avatar`, `Email`, `Phone`, `CreatedDate`, `IsDeleted`) VALUES
-('3DC1B2AE-C4E2-4BEC-978E-F1F29102C665', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Admin', 'user.png', NULL, NULL, '2019-11-08 06:35:49', 0);
+INSERT INTO `user` (`UserName`, `PasswordHash`, `FullName`, `Email`, `Phone`, `CreatedDate`) VALUES
+('admin', 'e10adc3949ba59abbe56e057f20f883e', 'Admin', NULL, NULL, '2019-11-08 06:35:49');
 
 -- --------------------------------------------------------
 
@@ -71732,7 +71760,7 @@ INSERT INTO `user` (`Id`, `UserName`, `PasswordHash`, `FullName`, `Avatar`, `Ema
 --
 
 CREATE TABLE `userrole` (
-  `UserId` varchar(128) NOT NULL,
+  `UserName` varchar(256) NOT NULL,
   `RoleId` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -83161,6 +83189,12 @@ ALTER TABLE `slide`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`UserName`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -83168,7 +83202,7 @@ ALTER TABLE `slide`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -83198,7 +83232,7 @@ ALTER TABLE `imagesproducts`
 -- AUTO_INCREMENT for table `mailbox`
 --
 ALTER TABLE `mailbox`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `menu`
@@ -83210,13 +83244,19 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `new`
 --
 ALTER TABLE `new`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `slide`
+--
+ALTER TABLE `slide`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

@@ -1,45 +1,56 @@
 <?php 
-  include '../model/class.banner.php';
-  include '../model/nocsrf.php';
+  include '../model/class.slideManager.php';
   
-  $bannerModel = new Banner();
+  $slideManager = new SlideManager();
   
  
   switch($action)
   {
   	case "index":
   	{
-      $view_data['title'] = "Banner";
-      $view_data['view_name'] = "banner/index.php";	
-      $view_data['section_styles'] = "banner/style_index.php";
-      $view_data['section_scripts'] = "banner/script_index.php";
-      $view_data['model'] = $bannerModel->GetList();
+      $view_data['title'] = "Danh sách Slide";
+      $view_data['view_name'] = "slide/index.php";	
+      // $view_data['section_styles'] = "slide/style_index.php";
+      // $view_data['section_scripts'] = "slide/script_index.php";
+      $view_data['model'] = $slideManager->GetList();
       break;
   	}
     case "create":
     {
-      $view_data['title'] = "Tạo mới banner";
-      $view_data['view_name'] = "banner/create.php";
-      $view_data['section_scripts'] = "banner/script_form.php";
-      if(count($_POST) > 0)
+      $view_data['title'] = "Tạo mới Slide";
+      $view_data['view_name'] = "slide/create.php";
+      // $view_data['section_scripts'] = "slide/script_form.php";
+      if(isset($_POST['SortOrder']))
       {
         try 
         {
-          $title = $_POST['title'];
-          $status = isset($_POST['status']) ? 1 : 0;
-          $sort_order = (int)$_POST['sort_order'];
-          $image = $_POST['image'];
-          
+          $_POST['Image'] = null;
+          $_POST['Status'] = isset($_POST['Status']) ? 1 : 0;
+          if(isset($_FILES["file"]) && !empty($_FILES['file']['tmp_name'])) {
+              $check = getimagesize($_FILES["file"]["tmp_name"]);
+              if($check !== false)
+              {
+                $mt = microtime(true);
+                $mt =  $mt*1000; //microsecs
+                $ticks = (string)$mt*10; //100 Nanosecs
+                $name = $_FILES["file"]["name"];
+                $ext = end((explode(".", $name))); # extra () to prevent notice
+                $_POST['Image'] = $ticks.".".$ext;
+                $result = UploadImageFile(SITE_PATH."/images/slides/".$_POST['Image']);
+                if($result != 1)
+                  $view_data['errors'][] = $result;
+              }
+          }
           if(count($view_data['errors']) == 0)
           {
-            $result = $bannerModel->Add($title, $image, $sort_order, $status);
+            $result = $slideManager->Add($_POST);
             if($result)
             {
-               header("Location: ".base_url_admin."/banner"); 
-            }
+              header("Location: ".base_url_admin."/slide");
+            }           
             else 
             {
-                $view_data['errors'][] = "Đã có lỗi xảy ra";
+              $view_data['errors'][] = "Đã có lỗi xảy ra";
             }
           }
         }
@@ -52,42 +63,44 @@
     }
     case "edit":
     {
-      $view_data['title'] = "Sửa banner";
-      $view_data['view_name'] = "banner/edit.php";
-      $view_data['section_scripts'] = "banner/script_form.php";
-      $id = (int)$_REQUEST['id'];
-      $view_data['model'] = $bannerModel->GetById($id);
-      $title = $view_data['model']['title'];
-      $status = $view_data['model']['status'];
-      $sort_order = $view_data['model']['sort_order'];
+      $view_data['title'] = "Sửa Slide";
+      $view_data['view_name'] = "slide/edit.php";
+      $view_data['model'] = $slideManager->GetById($_GET['id']);
       if($view_data['model'] == null)
       {
         header("HTTP/1.0 404 Not Found");
         header("Location: ".base_url."/pages/404/index.html");
       }
-      if(count($_POST) > 0)
+      if(isset($_POST['SortOrder']))
       {
         try 
         {
-          $image = $view_data['model']['image'];
-          if(isset($_POST['image']) && !empty($_POST['image']) )
-          {
-            $image = $_POST['image'];
+          $_POST['Status'] = isset($_POST['Status']) ? 1 : 0;
+          if(isset($_FILES["file"]) && !empty($_FILES['file']['tmp_name'])) {
+              $check = getimagesize($_FILES["file"]["tmp_name"]);
+              if($check !== false)
+              {
+                $mt = microtime(true);
+                $mt =  $mt*1000; //microsecs
+                $ticks = (string)$mt*10; //100 Nanosecs
+                $name = $_FILES["file"]["name"];
+                $ext = end((explode(".", $name))); # extra () to prevent notice
+                $_POST['Image'] = $ticks.".".$ext;
+                $result = UploadImageFile(SITE_PATH."/images/slides/".$_POST['Image']);
+                if($result != 1)
+                  $view_data['errors'][] = $result;
+              }
           }
-          $title = $_POST['title'];
-          $status = isset($_POST['status']) ? 1 : 0;
-          $sort_order = (int)$_POST['sort_order'];
-          $view_data['errors'] = $bannerModel->GetErrorsMessage($image, $sort_order, $status);
           if(count($view_data['errors']) == 0)
           {
-            $result = $bannerModel->Edit($id, $title, $image, $sort_order, $status);
+            $result = $slideManager->Edit($_POST);
             if($result)
             {
-               header("Location: ".base_url_admin."/banner"); 
-            }
+              header("Location: ".base_url_admin."/slide");
+            }           
             else 
             {
-                $view_data['errors'][] = "Đã có lỗi xảy ra";
+              $view_data['errors'][] = "Đã có lỗi xảy ra";
             }
           }
         }
@@ -96,40 +109,27 @@
           $view_data['errors'][] = $ex->getMessage();
         }
       } 
-      else 
-      {
-        $image = $view_data['model']['image'];
-        $sort_order = (int)$view_data['model']['sort_order'];
-        $status = (int)$view_data['model']['status'];
-      }
       break;
     }
   	case "delete":
   	{
-  		if(isset($_POST['id']) && isset($_POST['csrf_token']))
-  		{
-  			try 
-  			{
-  				$id = (int)$_POST['id'];
-  				$result = $bannerModel->Delete($id);
-  				if($result)
-  				 	header('Location:'.base_url_admin."/banner");
-  				else 
-  					$view_data['errors'][] = "Đã có lỗi xảy ra";
-  			}
-  			catch ( Exception $e )
-        {
-            $view_data['errors'][] = $e->getMessage();
-        }  
-  		}
-  		$view_data['title'] = "Banner";
-  		$view_data['view_name'] = "banner/index.php";	
-  		$view_data['section_styles'] = "banner/style_index.php";
-  		$view_data['section_scripts'] = "banner/script_index.php";
-  		$view_data['model'] = $bannerModel->GetList();
+			$id = (int)$_POST['id'];
+			$result = $slideManager->Delete($id);
+		 	header('Location:'.base_url_admin."/slide");
   		break;
   	}
-    
+    case "confirm":
+    {
+      $slideManager->Confirm((int)$_GET['id']);
+      header('Location:'.base_url_admin."/slide");
+      break;
+    }
+    case "unconfirm":
+    {
+      $slideManager->UnConfirm((int)$_GET['id']);
+      header('Location:'.base_url_admin."/slide");
+      break;
+    }
   }
 
 ?>

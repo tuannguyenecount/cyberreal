@@ -1,15 +1,11 @@
- <div id="home-slider">
-    <div class="owl-carousel" data-nav="true">
-        <figure class="photo">
-            <a href="/"><img src="https://data.cyberreal.vn/banner/03.jpg" alt=""></a>                
-        </figure>
-        <figure class="photo">
-            <a href="/"><img src="https://data.cyberreal.vn/banner/02.jpg" alt=""></a>                
-        </figure>
-        <figure class="photo">
-            <a href="/"><img src="https://data.cyberreal.vn/banner/01.jpg" alt=""></a>                
-        </figure>
-    </div>
+<div id="home-slider">
+   <div class="owl-carousel" data-nav="true">
+   <?php foreach($view_data['slides'] as $item) { ?>
+      <figure class="photo">
+            <img src="<?= base_url ?>/images/slides/<?= $item['Image'] ?>" alt="">        
+      </figure>
+   <?php } ?>
+   </div>
 </div>
 <section id="search" class="overlay pb-0">
     
