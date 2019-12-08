@@ -3,22 +3,24 @@ RewriteEngine on
 DirectoryIndex  index.php 
 
 RewriteRule ^adminlogin$ admin/login.php
-RewriteRule ^area/adminarea$ admin/index.php?controller=home&action=index&area=admin
-
+RewriteRule ^area/adminarea$ admin/index.php?controller=product&action=index&area=admin
 RewriteRule ^area/adminarea/([a-zA-Z0-9_-]+)$ admin/index.php?controller=$1&action=index&area=admin 
-
 RewriteRule ^area/adminarea/([a-zA-Z0-9_-]+)&(.*)$ admin/index.php?controller=$1&action=index&area=admin&$2 
-
 RewriteRule ^area/adminarea/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ admin/index.php?controller=$1&action=$2&area=admin
-
 RewriteRule ^area/adminarea/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)&(.*)$ admin/index.php?controller=$1&action=$2&area=admin&$3
-
 RewriteRule ^area/adminarea/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/(.*)$ admin/index.php?controller=$1&action=$2&id=$3&area=admin
-
 RewriteRule ^area/adminarea/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([0-9]+)$ admin/index.php?controller=$1&action=$2&id=$3&area=admin 
-
 RewriteRule ^area/adminarea/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([0-9]+)&(.*)$ admin/index.php?controller=$1&action=$2&id=$3&area=admin&$4 
 
+RewriteRule ^editorlogin$ editor/login.php
+RewriteRule ^area/editorarea$ editor/index.php?controller=product&action=index&area=editor
+RewriteRule ^area/editorarea/([a-zA-Z0-9_-]+)$ editor/index.php?controller=$1&action=index&area=editor 
+RewriteRule ^area/editorarea/([a-zA-Z0-9_-]+)&(.*)$ editor/index.php?controller=$1&action=index&area=editor&$2 
+RewriteRule ^area/editorarea/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ editor/index.php?controller=$1&action=$2&area=editor
+RewriteRule ^area/editorarea/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)&(.*)$ editor/index.php?controller=$1&action=$2&area=editor&$3
+RewriteRule ^area/editorarea/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/(.*)$ editor/index.php?controller=$1&action=$2&id=$3&area=editor
+RewriteRule ^area/editorarea/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([0-9]+)$ editor/index.php?controller=$1&action=$2&id=$3&area=editor 
+RewriteRule ^area/editorarea/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([0-9]+)&(.*)$ editor/index.php?controller=$1&action=$2&id=$3&area=editor&$4 
 
 RewriteRule ^$ index.php?controller=home&action=index
 RewriteRule ^tim-kiem.html$ index.php?controller=product&action=search

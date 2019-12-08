@@ -2,11 +2,22 @@
 
 class UserManager {
     
-    public function SignIn($userName, $passwordHash)
+    public function AdminSignIn($userName, $passwordHash)
     {
         $tsql = "SELECT *
                 FROM user
-                WHERE UserName = ? And PasswordHash = ? ";
+                WHERE UserName = ? And PasswordHash = ? And Role = 'Quản Trị Viên' ";
+        $params = array($userName, $passwordHash);
+        $database_Model = new Database();
+        $cnt =  count($database_Model->GetList($tsql, $params));
+        return $cnt > 0;
+    }
+
+    public function EditorSignIn($userName, $passwordHash)
+    {
+        $tsql = "SELECT *
+                FROM user
+                WHERE UserName = ? And PasswordHash = ? And Role = 'Biên Tập Viên' ";
         $params = array($userName, $passwordHash);
         $database_Model = new Database();
         $cnt =  count($database_Model->GetList($tsql, $params));
@@ -42,9 +53,9 @@ class UserManager {
    
     public function Add($model) {
         $tsql = "INSERT INTO user
-                (UserName, PasswordHash, FullName, Email, Phone, Role)
-                VALUES(?, ?, ?, ?, ?, ?) ";
-        $params = array($model['UserName'], $model['PasswordHash'], $model['FullName'], $model['Email'], $model['Phone'], $model['Role']);
+                (UserName, PasswordHash, FullName, Email, Phone, Avatar, Role)
+                VALUES(?, ?, ?, ?, ?, ?, ?) ";
+        $params = array($model['UserName'], $model['PasswordHash'], $model['FullName'], $model['Email'], $model['Phone'], $model['Avatar'], $model['Role']);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);
     }
@@ -63,9 +74,9 @@ class UserManager {
 
     public function EditInformation($model) {
         $tsql = "UPDATE user
-                SET FullName = ?,  Email = ?, Phone = ?, Role = ?
+                SET FullName = ?,  Email = ?, Phone = ?, Avatar = ?, Role = ?
                 WHERE UserName = ? ";
-        $params = array($model['FullName'], $model['Email'], $model['Phone'], $model['Role'], $model['UserName']);
+        $params = array($model['FullName'], $model['Email'], $model['Phone'], $model['Avatar'], $model['Role'], $model['UserName']);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);
     }

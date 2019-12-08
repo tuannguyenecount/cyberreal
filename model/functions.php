@@ -187,9 +187,52 @@
 		    return "Sorry, your file was not uploaded.";
 		// if everything is ok, try to upload file
 		} else {
+
 		    if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
 		        $uploadOk = 1;
 		    } else {
+		        return "Sorry, there was an error uploading your file.";
+		    }
+		}
+		return $uploadOk;
+	}
+
+	function UploadImageFileWithResize($target_dir, $new_img_width, $new_img_height)
+	{
+		$target_file = $target_dir;
+		$uploadOk = 1;
+		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+		// Check if image file is a actual image or fake image
+		if(isset($_FILES["file"]["tmp_name"])) {
+		    $check = getimagesize($_FILES["file"]["tmp_name"]);
+		    if($check == false) {
+		        return "File is not an image.";
+		    }
+		}
+		// Check file size
+		if ($_FILES["file"]["size"] > 2000000) {
+		    return "Sorry, your file is too large.";
+		}
+		// Allow certain file formats
+		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+		&& $imageFileType != "gif" ) {
+		    return "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+		}
+		// Check if $uploadOk is set to 0 by an error
+		if ($uploadOk == 0) {
+		    return "Sorry, your file was not uploaded.";
+		// if everything is ok, try to upload file
+		} else {
+			try 
+			{
+				$image = new SimpleImage();
+			    $image->load($_FILES["file"]['tmp_name']);
+			    $image->resize($new_img_width, $new_img_height);
+			    $image->save($target_file);
+			    $uploadOk = 1;
+			}
+		    catch(Exception $ex) 
+		    {
 		        return "Sorry, there was an error uploading your file.";
 		    }
 		}

@@ -11,7 +11,7 @@
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 <div class="box">
                     <div class="box-body">
                         <?php include_once 'view/shared/_errors.php'; ?>
@@ -52,6 +52,12 @@
                                         <td class="col-md-4 text-right">Số điện thoại</td>
                                         <td>
                                             <input type="text" name="Phone" value="<?= isset($_POST['Phone']) ? $_POST['Phone'] : "" ?>" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-4 text-right">Hình đại diện</td>
+                                        <td>
+                                            <input type="file" name="file" class="form-control" />
                                         </td>
                                     </tr>
                                     <tr>

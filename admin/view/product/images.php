@@ -13,8 +13,8 @@
          <div class="box">
             <div class="box-body">
                <p>
-                  <button type="button" data-toggle="collapse" data-target="#frmThemHinh" class="btn btn-link"><i class="fa fa-plus"></i> Thêm hình</button>
-                  <a class="btn btn-link" href="<?= base_url_admin ?>/product/listcountimages" ><i class="fa fa-back"></i> Trở về</a>
+                  <button type="button" data-toggle="collapse" data-target="#frmThemHinh" class="btn bg-green btn-xs"><i class="fa fa-plus"></i> Thêm hình</button>
+                  <a class="btn btn-default btn-xs" href="<?= base_url_admin ?>/product/listcountimages" ><i class="fa fa-back"></i> Trở về</a>
                </p>
                <div id="frmThemHinh" class="collapse">
                   <form action="<?= base_url_admin ?>/product/images/<?= $_GET['id'] ?>" class="form-inline" method="post" enctype="multipart/form-data">

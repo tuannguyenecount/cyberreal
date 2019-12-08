@@ -28,6 +28,9 @@
         <li>
             <a href="<?=base_url_admin?>/product">
                 <i class="fa fa-newspaper-o"></i> <span>Dự Án</span>
+                <span class="pull-right-container" >
+                    <small class="label pull-right bg-red" id="countProductNotShow" title=""></small>
+                </span>
             </a>
         </li>
 
@@ -63,6 +66,9 @@
         <li id="news">
             <a href="<?= base_url_admin ?>/new">
                 <i class="fa fa-newspaper-o"></i> <span>Tin Tức</span>
+                <span class="pull-right-container" >
+                    <small class="label pull-right bg-red" id="countArticleNotShow" title=""></small>
+                </span>
             </a>
         </li>
 

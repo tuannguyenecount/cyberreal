@@ -10,6 +10,17 @@ class NewManager
 	    return $database_Model->GetList($tsql);
 	}
 
+    public function GetListByUserCreated($UserName)
+    {
+        $tsql = "SELECT *
+                    FROM new 
+                    WHERE UserCreated = ?
+                    ORDER BY Id desc";  
+        $database_Model = new Database();
+        $params = array($UserName);
+        return $database_Model->GetList($tsql, $params);
+    }
+
     public function GetListArticleShow($skip, $take)
     {
         $params = array();
@@ -42,6 +53,7 @@ class NewManager
         $database_Model = new Database();
         return $database_Model->GetList($tsql, $params);
     }
+
 	public function CountAll($status = null)
 	{
         $params = array();
@@ -55,6 +67,13 @@ class NewManager
         $database_Model = new Database();
 	    return (int)$database_Model->ExecuteScalar($tsql, $params);
 	}
+
+    public function CountArticleNotShow()
+    {
+        $tsql = "SELECT COUNT(*) as CNT FROM new WHERE Status = 0 ";
+        $database_Model = new Database();
+        return (int)$database_Model->ExecuteScalar($tsql);
+    }
 	
     public function GetById($id)
     {

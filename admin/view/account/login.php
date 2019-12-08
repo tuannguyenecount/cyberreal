@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Đăng nhập quản trị</title>
+    <title>Đăng nhập Quản Trị Viên</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
@@ -78,7 +78,7 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
     <div class="login">
         <h1>Đăng Nhập</h1>
         <hr />
-        <p class="text-center white">Để truy cập trang quản trị</p>
+        <p class="text-center white">Để truy cập trang Quản Trị Viên</p>
        
         <form  method="post">     
             <input type="text" name="userlogin" required="" placeholder="Tài khoản" />

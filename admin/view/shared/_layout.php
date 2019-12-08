@@ -421,6 +421,7 @@
     <!-- AdminLTE for demo purposes -->
     <!-- <script src="dist/js/demo.js"></script> -->
     <script>
+        $('[data-toggle="tooltip"]').tooltip();
         function PopupCenter(url, title, w, h) {
             // Fixes dual-screen position                         Most browsers      Firefox
             var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : window.screenX;
@@ -483,6 +484,23 @@
                     self.trigger('reset');
                 }
             });
+        });
+
+
+        $.post("<?= base_url_admin ?>/new/countArticleNotShow", function(result){
+            if(result)
+            {
+                $("#countArticleNotShow").text(result);
+                $("#countArticleNotShow").attr("title", result + " bài viết đang ẩn");
+            }
+        });
+
+        $.post("<?= base_url_admin ?>/product/countProductNotShow", function(result){
+            if(result != 0)
+            {
+                $("#countProductNotShow").text(result);
+                $("#countProductNotShow").attr("title", result + " dự án đang ẩn");
+            }
         });
 
     </script>

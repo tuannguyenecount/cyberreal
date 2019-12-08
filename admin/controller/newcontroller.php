@@ -6,6 +6,12 @@
  
   switch($action)
   {
+    case "countArticleNotShow":
+    {
+      $cnt = $newManager->CountArticleNotShow();
+      echo $cnt;
+      exit();
+    }
   	case "index":
   	{
   		$view_data['title'] = "Tin Tức";

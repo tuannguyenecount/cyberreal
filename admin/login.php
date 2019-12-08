@@ -14,7 +14,7 @@
         {
             try
             {
-                $check = $userManager->SignIn($_POST["userlogin"], md5($_POST["passlogin"]));
+                $check = $userManager->AdminSignIn($_POST["userlogin"], md5($_POST["passlogin"]));
                 if($check) 
                 {  
                     $_SESSION['UserLogged'] = $userManager->GetByUserName($_POST["userlogin"]);

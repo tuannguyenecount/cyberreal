@@ -5,6 +5,7 @@
 	define("SITE_PATH", $_SERVER['DOCUMENT_ROOT'].'/');  // Thư mục gốc của website */
 	define("base_url", "http://localhost:8080/cyberreal");
   	define("base_url_admin", "http://localhost:8080/cyberreal/area/adminarea");
+  	define("base_url_editor", "http://localhost:8080/cyberreal/area/editorarea");
 	define("SITE_PATH", $_SERVER['DOCUMENT_ROOT'].'/cyberreal/');  // Thư mục gốc của website 
 	define('FANPAGE', 'https://www.facebook.com/volampk.net');
 	define('FORUM', 'https://www.facebook.com/groups/muabanvlns');

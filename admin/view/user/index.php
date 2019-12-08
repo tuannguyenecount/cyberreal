@@ -14,6 +14,7 @@
          <div class="box">
             <div class="box-body">
                <?php include_once 'view/shared/_errors.php'; ?>
+               
                <p>
                   <a class="btn btn-success btn-xs" href="<?=base_url_admin?>/user/create">Thêm người dùng mới</a>
                </p>
@@ -47,7 +48,12 @@
                           <?= $item['Role'] ?> 
                         </td>
                         <td>
-                          <a href="<?= base_url_admin ?>/user/edit&userName=<?= $item['UserName'] ?>" class="btn bg-blue btn-xs">Sửa</a>
+                          <a href="<?= base_url_admin ?>/user/edit&userName=<?= $item['UserName'] ?>" class="btn bg-blue btn-xs"><i class="fa fa-edit"></i> Sửa</a>
+                          <?php if($item['Role'] != "Quản Trị Viên") { ?>
+                            <a href="<?= base_url_admin ?>/user/setpassword&userName=<?= $item['UserName'] ?>" class="btn bg-blue btn-xs"><i class="fa fa-key"></i> Cấp lại mật khẩu</a>
+                          <?php } else {  ?>
+                            <button class="btn bg-blue btn-xs" type="button" disabled=""><i class="fa fa-key"></i> Cấp lại mật khẩu</button>
+                          <?php } ?>
                           <form class="hidden" id="frmDelete<?= $item['UserName'] ?>" action="<?= base_url_admin ?>/user/delete" method="post">
                             <input type="hidden" name="UserName" value="<?= $item['UserName'] ?>" />
                           </form>

@@ -14,6 +14,12 @@
 
   switch($action)
   {
+    case "countProductNotShow":
+    {
+      $cnt = $productManager->CountProductNotShow();
+      echo $cnt;
+      exit();
+    }
   	case "index":
   	{
   		$view_data['title'] = "Danh Sách Dự Án";
