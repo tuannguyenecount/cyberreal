@@ -63,7 +63,7 @@
         </li>
 
 
-        <li id="news">
+        <li>
             <a href="<?= base_url_admin ?>/new">
                 <i class="fa fa-newspaper-o"></i> <span>Tin Tức</span>
                 <span class="pull-right-container" >
@@ -72,13 +72,13 @@
             </a>
         </li>
 
-        <li id="slides">
+        <li>
             <a href="<?= base_url_admin ?>/slide">
                 <i class="fa fa-picture-o"></i> <span>Slide Hình</span>
             </a>
         </li>
         
-        <li id="mailbox">
+        <li>
             <a href="<?= base_url_admin ?>/mailbox">
                 <i class="fa fa-envelope"></i> <span>Hộp Thư Liên Hệ</span>
             </a>
@@ -90,13 +90,20 @@
             </a>
         </li>
         
-        <li id="menus">
+        <li>
             <a href="<?= base_url_admin ?>/menu">
                 <i class="fa fa-cog"></i> <span>Cấu Hình Menu</span>
             </a>
         </li>
+
+
+        <li>
+            <a href="<?= base_url_admin ?>/location/districts">
+                <i class="fa fa-map"></i> <span>Danh mục Quận/Huyện</span>
+            </a>
+        </li>
         
-        <li id="information">
+        <li>
             <a href="<?= base_url_admin ?>/infoweb/edit">
                 <i class="fa fa-info"></i> <span>Thông Tin Web</span>
             </a>

@@ -2,6 +2,7 @@
 <script src="<?= base_url ?>/js/slideout.min.js"></script>
 
 <script>jQuery(function ($) {
+
     $('.slider-for').slick({
         slidesToShow: 1,
         slidesToScroll: 1,

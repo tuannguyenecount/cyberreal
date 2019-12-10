@@ -11,7 +11,7 @@
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
-            <form method="post" action="<?= base_url_admin ?>/infoweb/edit" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data">
                 <div class="box">
                     <div class="box-body">
                         <div class="form-horizontal">

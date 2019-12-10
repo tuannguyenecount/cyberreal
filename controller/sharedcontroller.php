@@ -16,7 +16,14 @@
 
         case "_searchPartial":
         {
-            $view_data['districts'] = $locationManager->GetDistrictsByProvince(1);
+            if(CheckDeviceIsMobile())
+            {
+                $view_data['districts'] = $locationManager->GetDistrictIsGhim();
+            }
+            else 
+            {
+              $view_data['districts'] = $locationManager->GetDistrictsByProvince(1);
+            }
             $view_data['directions'] = $directionManager->GetList();
             $view_data['areas'] = $productManager->GetListArea(10);
             $view_data['prices']  = $productManager->GetListPrice(10);

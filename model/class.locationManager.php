@@ -2,6 +2,49 @@
 
 class LocationManager {
 
+    public function GetDistrictIsGhim()
+    {
+        $tsql = "SELECT `district`.* 
+                 FROM `district` 
+                 WHERE `district`.`ghim` = 1 
+                 ORDER By sortorder";
+        $database_Model = new Database();
+        return $database_Model->GetList($tsql);
+    }
+
+    public function UpdateSortOrderDistrict($districtId, $sortOrder)
+    {
+        $tsql = "UPDATE `district` SET `sortorder` = ? WHERE id = ? ";
+        $params = array($sortOrder, $districtId);
+        $database_Model = new Database();
+        return $database_Model->Execute($tsql, $params);
+    }
+
+     public function UpdateIntroduce($districtId, $introduce)
+    {
+        $tsql = "UPDATE `district` SET `introduce` = ? WHERE id = ? ";
+        $params = array($introduce, $districtId);
+        $database_Model = new Database();
+        return $database_Model->Execute($tsql, $params);
+    }
+
+
+    public function GhimDistrict($Id)
+    {
+        $tsql = "UPDATE `district` SET `ghim` = 1 WHERE id = ? ";
+        $params = array($Id);
+        $database_Model = new Database();
+        return $database_Model->Execute($tsql, $params);
+    }
+
+    public function RemoveGhimDistrict($Id)
+    {
+        $tsql = "UPDATE `district` SET `ghim` = 0 WHERE id = ? ";
+        $params = array($Id);
+        $database_Model = new Database();
+        return $database_Model->Execute($tsql, $params);
+    }
+
     public function GetDistrictByAlias($alias) {
         
         $districts = $this->GetDistrictsByProvince(1);
@@ -43,14 +86,26 @@ class LocationManager {
     }
 
     public function GetDistrictsByProvince($province) {
-        
+
         $tsql = "SELECT DISTINCT `district`.* 
                  FROM `district` 
                  INNER JOIN `province` 
-                 ON `district`.`_province_id` = `province`.`id` AND `province`.`id` = ? ";
+                 ON `district`.`_province_id` = `province`.`id` AND `province`.`id` = ? 
+                 ORDER By `district`.`sortorder` ";
         $params = array($province);
         $database_Model = new Database();
         return $database_Model->GetList($tsql, $params);
+    }
+
+    public function GetDistrictById($Id) {
+        
+        $tsql = "SELECT `district`.* 
+                 FROM `district` 
+                 WHERE `district`.`id` = ? ";
+        $params = array($Id);
+        $database_Model = new Database();
+        $rows = $database_Model->GetList($tsql, $params);
+        return count($rows) > 0 ? $rows[0] : null;
     }
 
     public function GetWardsByDistrict($district) {
@@ -92,6 +147,7 @@ class LocationManager {
                  FROM `district` 
                  INNER JOIN `product`
                  ON `district`.`id` = `product`.`District` AND `product`.Status = 1
+                 ORDER BY `district`.`sortorder`
                  ";
         $database_Model = new Database();
         return $database_Model->GetList($tsql);

@@ -162,6 +162,7 @@
       {
         try 
         {  
+          $_POST['Status'] = isset($_POST['Status']) ? 1 : 0;
           $view_data['errors'] = $productManager->GetErrorsMessage($_POST, $_POST['Name_Old'] != $_POST['Name'], $_POST['Alias_Old'] != $_POST['Alias'] );
 
           if(!empty($_POST['Street']) && $locationManager->CheckExistStreetName($_POST['Street']) == false){
@@ -205,6 +206,41 @@
         }
       } 
       break;
+    }
+    case "updateAsync":
+    {
+      try 
+        { 
+          $view_data['directions'] = $directionManager->GetList();
+          $view_data['categories'] = $categoryManager->GetList();
+          $view_data['fees'] = $feeManager->GetListByProductId((int)$_GET['id']); 
+          $_POST['Status'] = isset($_POST['Status']) ? 1 : 0;
+
+          $view_data['errors'] = $productManager->GetErrorsMessage($_POST, $_POST['Name_Old'] != $_POST['Name'], $_POST['Alias_Old'] != $_POST['Alias'] );
+
+          if(!empty($_POST['Street']) && $locationManager->CheckExistStreetName($_POST['Street']) == false){
+             echo "Tên đường này không tồn tại. Vui lòng kiểm tra và nhập lại cho đúng.";
+          }
+
+          foreach($view_data['fees'] as $item)
+          {
+            $feeManager->UpdateOrInsertFeeProduct((int)$_GET['id'], $item['Id'], $_POST['Fee'.$item['Id']]);
+          }
+
+          if(count($view_data['errors']) == 0)
+          {
+            $result = $productManager->Edit($_POST);
+            if($result)
+              echo "Update async success";
+            else 
+              echo "Đã có lỗi xảy ra";
+          }
+        }
+        catch(Exception $ex)
+        {
+          echo $ex->getMessage();
+        }
+        exit();
     }
   	case "delete":
   	{

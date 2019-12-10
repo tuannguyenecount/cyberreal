@@ -1,12 +1,51 @@
 <script src="<?= base_url?>/admin/ckeditor/ckeditor.js"></script>
 <script src="<?= base_url?>/js/functions.js"></script>
-<script>
+<script type="text/javascript">
+
+    function UpdateAsync(){
+        _changeInterval = setInterval(function (){
+           $.ajax({
+               url : "<?= base_url_admin ?>/product/updateAsync/<?= $_GET['id'] ?>",
+               method: "Post",
+               data: $("#frmEdit").serialize(),
+               success: function(data){
+                   console.log("Auto save success");
+               },
+               error: function(){
+                console.log("error ajax!");
+               }
+            });
+           clearInterval(_changeInterval);
+        }, 5000)           
+    }
 	$(function() {
-		CKEDITOR.replace("GeneralInformation");
-		CKEDITOR.replace("Location");
-		CKEDITOR.replace("Structure");
-		CKEDITOR.replace("ServiceCharge");
-        CKEDITOR.replace("Advantages");
+		var ckeditorGeneralInformation = CKEDITOR.replace("GeneralInformation");
+        var _changeInterval = null;
+
+        ckeditorGeneralInformation.on('change',function(){
+            clearInterval(_changeInterval);
+             _changeInterval = setInterval(function (){
+            var dataUpdate = $("#frmEdit").serialize();
+            dataUpdate += "&GeneralInformation="+ckeditorGeneralInformation.getData();
+           $.ajax({
+               url : "<?= base_url_admin ?>/product/updateAsync/<?= $_GET['id'] ?>",
+               method: "Post",
+               data: dataUpdate,
+               success: function(data){
+                   console.log("Auto save success");
+               },
+               error: function(){
+                console.log("error ajax!");
+               }
+            });
+           clearInterval(_changeInterval);
+        }, 5000)        
+        });
+
+		var ckeditorLocation = CKEDITOR.replace("Location");
+		var ckeditorStructure = CKEDITOR.replace("Structure");
+		var ckeditorServiceCharge = CKEDITOR.replace("ServiceCharge");
+        var ckeditorAdvantages = CKEDITOR.replace("Advantages");
 	});
 </script>
 <script>

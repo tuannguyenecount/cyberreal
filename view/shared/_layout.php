@@ -36,7 +36,7 @@
                     <div class="container">
                         <div class="row no-gutters">
                             <div class="col-lg-3">
-                                <a class="logo" href="<?= base_url ?>"><img src="<?= base_url ?>/images/logonew.png" alt=""></a>                    </div>
+                                <a class="logo" href="<?= base_url ?>"><img src="<?= base_url ?>/images/<?= $_SESSION['InfoWeb']['Logo'] ?>" alt=""></a>                    </div>
                             <div class="col-lg-auto ml-lg-auto information d-none d-md-flex mt-md-2 mt-lg-0">
                                 <div class="row">
                                     <div class="col-md">
@@ -216,6 +216,7 @@
         </div>
         <div id="bangtin"></div> 
 
+        </body>
         <script src="<?= base_url ?>/js/vendor.min.js"></script>
         <script src="<?= base_url ?>/assets/a98fcf71/yii.js"></script>
         <script src="<?= base_url ?>/js/slideout.min.js"></script>
@@ -224,7 +225,6 @@
         <script src="<?= base_url ?>/assets/a1ef791c/js/dependent-dropdown.min.js"></script>
         <script src="<?= base_url ?>/assets/eaef8c08/js/depdrop.min.js"></script>
         <script src="<?= base_url ?>/js/common.js"></script>
-        </body>
         <script>
             $(function () {
                 $('#Street').select2({
