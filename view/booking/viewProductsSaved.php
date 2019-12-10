@@ -14,10 +14,11 @@
    	<div class="row justify-content-center mb-4">
       	<div class="col-md-8 text-center">
          	<h1>Danh sách tòa nhà đã lưu</h1>
-         	<p>Quý Khách vui lòng chọn ngày đi xem văn phòng và đặt lịch hẹn bên dưới. Xin chân thành cảm ơn!</p>
+         	<p>Quý Khách vui lòng chọn ngày đi xem căn hộ và đặt lịch hẹn bên dưới. Xin chân thành cảm ơn!</p>
       	</div>
    	</div>
 	</section>
+   <?php if (isset($_SESSION['productSaved']) && count($_SESSION['productSaved']) > 0) { ?>
 	<form id="w0" method="post" >     
       <section class="office-saved">
          <div class="table-responsive">
@@ -64,6 +65,7 @@
             </table>
          </div>
       </section>
+   
       <div class="boxed p-3 my-3 rounded-0">
          <h4 class="text-uppercase mb-2">Thông tin đặt hẹn</h4>
          <div class="infomation">
@@ -116,4 +118,5 @@
          <button type="submit" class="btn btn-primary btn-with-ico"><i class="far fa-calendar-plus mr-1"></i> ĐẶT HẸN</button>            
       </div>
 	</form>
+   <?php } ?>
 </div>

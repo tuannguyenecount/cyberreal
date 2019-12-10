@@ -2,50 +2,116 @@
 <script src="<?= base_url?>/js/functions.js"></script>
 <script type="text/javascript">
 
-    function UpdateAsync(){
-        _changeInterval = setInterval(function (){
-           $.ajax({
-               url : "<?= base_url_admin ?>/product/updateAsync/<?= $_GET['id'] ?>",
-               method: "Post",
-               data: $("#frmEdit").serialize(),
-               success: function(data){
-                   console.log("Auto save success");
-               },
-               error: function(){
-                console.log("error ajax!");
-               }
-            });
-           clearInterval(_changeInterval);
-        }, 5000)           
-    }
 	$(function() {
 		var ckeditorGeneralInformation = CKEDITOR.replace("GeneralInformation");
-        var _changeInterval = null;
+    var _changeInterval = null;
 
-        ckeditorGeneralInformation.on('change',function(){
-            clearInterval(_changeInterval);
-             _changeInterval = setInterval(function (){
-            var dataUpdate = $("#frmEdit").serialize();
-            dataUpdate += "&GeneralInformation="+ckeditorGeneralInformation.getData();
-           $.ajax({
-               url : "<?= base_url_admin ?>/product/updateAsync/<?= $_GET['id'] ?>",
-               method: "Post",
-               data: dataUpdate,
-               success: function(data){
-                   console.log("Auto save success");
-               },
-               error: function(){
-                console.log("error ajax!");
-               }
-            });
-           clearInterval(_changeInterval);
-        }, 5000)        
-        });
+    ckeditorGeneralInformation.on('change',function(){
+        clearInterval(_changeInterval);
+        _changeInterval = setInterval(function (){
+          $.ajax({
+             url : "<?= base_url_admin ?>/product/updateContentByColumnAsync/<?= $_GET['id'] ?>",
+             method: "Post",
+             data: { ColumnName: "GeneralInformation", Content:  ckeditorGeneralInformation.getData()} ,
+             success: function(result){
+                 console.log(result);
+             },
+             error: function(){
+              console.log("error ajax!");
+             }
+          });
+          clearInterval(_changeInterval);
+        }, 3000)        
+    });
 
 		var ckeditorLocation = CKEDITOR.replace("Location");
+
+    _changeInterval = null;
+
+    ckeditorLocation.on('change',function(){
+        clearInterval(_changeInterval);
+        _changeInterval = setInterval(function (){
+          $.ajax({
+             url : "<?= base_url_admin ?>/product/updateContentByColumnAsync/<?= $_GET['id'] ?>",
+             method: "Post",
+             data: { ColumnName: "Location", Content:  ckeditorLocation.getData()} ,
+             success: function(result){
+                 console.log(result);
+             },
+             error: function(){
+              console.log("error ajax!");
+             }
+          });
+          clearInterval(_changeInterval);
+        }, 3000)        
+    });
+
 		var ckeditorStructure = CKEDITOR.replace("Structure");
+
+    _changeInterval = null;
+
+    ckeditorStructure.on('change',function(){
+        clearInterval(_changeInterval);
+        _changeInterval = setInterval(function (){
+          $.ajax({
+             url : "<?= base_url_admin ?>/product/updateContentByColumnAsync/<?= $_GET['id'] ?>",
+             method: "Post",
+             data: { ColumnName: "Structure", Content:  ckeditorStructure.getData()} ,
+             success: function(result){
+                 console.log(result);
+             },
+             error: function(){
+              console.log("error ajax!");
+             }
+          });
+          clearInterval(_changeInterval);
+        }, 3000)        
+    });
+
 		var ckeditorServiceCharge = CKEDITOR.replace("ServiceCharge");
-        var ckeditorAdvantages = CKEDITOR.replace("Advantages");
+
+    _changeInterval = null;
+
+    ckeditorServiceCharge.on('change',function(){
+        clearInterval(_changeInterval);
+        _changeInterval = setInterval(function (){
+          $.ajax({
+             url : "<?= base_url_admin ?>/product/updateContentByColumnAsync/<?= $_GET['id'] ?>",
+             method: "Post",
+             data: { ColumnName: "ServiceCharge", Content:  ckeditorServiceCharge.getData()} ,
+             success: function(result){
+                 console.log(result);
+             },
+             error: function(){
+              console.log("error ajax!");
+             }
+          });
+          clearInterval(_changeInterval);
+        }, 3000)        
+    });
+
+    var ckeditorAdvantages = CKEDITOR.replace("Advantages");
+
+    _changeInterval = null;
+
+    ckeditorAdvantages.on('change',function(){
+        clearInterval(_changeInterval);
+        _changeInterval = setInterval(function (){
+          $.ajax({
+             url : "<?= base_url_admin ?>/product/updateContentByColumnAsync/<?= $_GET['id'] ?>",
+             method: "Post",
+             data: { ColumnName: "Advantages", Content:  ckeditorAdvantages.getData()} ,
+             success: function(result){
+                 console.log(result);
+             },
+             error: function(){
+              console.log("error ajax!");
+             }
+          });
+          clearInterval(_changeInterval);
+        }, 3000)        
+    });
+
 	});
 </script>
 <script>

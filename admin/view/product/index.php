@@ -25,8 +25,6 @@
                            <th class="text-center">Hình ảnh</th>
                            <th>Tên dự án</th>
                            <th>Loại dự án</th>
-                           <th>Diện tích</th>
-                           <th>Giá bán</th>
                            <th>Quận/Huyện</th>
                            <th>Phường/Xã</th>
                            <th>Đường</th>
@@ -48,12 +46,6 @@
                           
                            <td>
                               <?= $item['CategoryName'] ?>
-                           </td>
-                           <td>
-                              <?= $item['Area'] ?> m2
-                           </td>
-                           <td>
-                              <?= $item['Price'] ?>
                            </td>
                            <td><?= $item['DistrictName'] ?></td>
                            <td><?= $item['WardName'] ?></td>

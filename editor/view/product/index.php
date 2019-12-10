@@ -25,8 +25,6 @@
                            <th class="text-center">Hình ảnh</th>
                            <th>Tên dự án</th>
                            <th>Loại dự án</th>
-                           <th>Diện tích</th>
-                           <th>Giá bán</th>
                            <th>Quận/Huyện</th>
                            <th>Phường/Xã</th>
                            <th>Đường</th>
@@ -45,22 +43,14 @@
                            <td>
                               <a target="_blank" href="<?=base_url?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html"><?= $item['Name'] ?></a>
                            </td>
-                          
                            <td>
                               <?= $item['CategoryName'] ?>
-                           </td>
-                           <td>
-                              <?= $item['Area'] ?> m2
-                           </td>
-                           <td>
-                              <?= $item['Price'] ?>
                            </td>
                            <td><?= $item['DistrictName'] ?></td>
                            <td><?= $item['WardName'] ?></td>
                            <td><?= $item['Street'] ?></td>
                            <td class="text-center">
-                              <?php if ($item['Status']) { ?>
-                              
+                              <?php if ($item['Status']) { ?>                         
                               <label class="label label-success">Hiển thị</label>
                               <?php } else { ?>
                               <label class="label label-danger">Ẩn</label>

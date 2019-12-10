@@ -255,6 +255,25 @@ class ProductManager
         return $result;
 	}
 
+    public function UpdateContentByColumnAsync($Id, $columnName, $content)
+    {
+        try 
+        {
+            $tsql = "UPDATE `product` SET `".$columnName."` = ? WHERE `Id` = ? ";
+            $params = array($content, $Id);  
+            $database_Model = new Database();
+            $result = $database_Model->Execute($tsql, $params);
+        }
+        catch (PDOException $e) {
+          echo "DataBase Error: ".$e->getMessage();
+          exit();
+        } catch (Exception $e) {
+          echo "General Error: ".$e->getMessage();
+          exit();
+        }
+        return $result;
+    }
+
 	public function Delete($id)
 	{
         $tsql = "DELETE FROM product WHERE Id = ? ";  
