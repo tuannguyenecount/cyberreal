@@ -13,9 +13,9 @@ class InfoWebManager {
 
     public function Edit($model) {
         $tsql = "UPDATE infoweb 
-                 Set WebName = ?, Logo = ?, Phone = ?, Email = ?, Address = ?,
+                 Set WebName = ?, Logo = ?, Phone = ?, Zalo = ?, Email = ?, Address = ?,
                  Fanpage = ?, GoogleMap = ?, CopyRight = ?, SeoTitle = ?, SeoDescription = ?, SeoKeyword = ? ";
-        $params = array($model['WebName'], $model['Logo'], $model['Phone'], $model['Email'], $model['Address'], $model['Fanpage'], $model['GoogleMap'], $model['CopyRight'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword']);
+        $params = array($model['WebName'], $model['Logo'], $model['Phone'], $model['Zalo'], $model['Email'], $model['Address'], $model['Fanpage'], $model['GoogleMap'], $model['CopyRight'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword']);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);
     }

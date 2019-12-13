@@ -17,15 +17,38 @@
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
         <link href="<?= base_url ?>/css/select2.css?v=1" rel="stylesheet">
         <link href="<?=base_url?>/assets/css/jquery.niftymodals.css" rel="stylesheet" />
+        <link href="<?=base_url?>/css/callbutton.css" rel="stylesheet" />
+        <style> 
+                @media screen and (max-width: 1960px) { 
+                    .call-now-button { display: flex !important; background: #1670bf; }  
+                    .quick-call-button { display: block !important; } 
+                }
+                @media screen and (min-width: px) { 
+                    .call-now-button .call-text { display: none !important; } 
+                } 
+                @media screen and (max-width: px) { 
+                .call-now-button .call-text { display: none !important; } 
+                } 
+                #zalobutton{
+                    left:unset;
+                    right:3%;
+                }
+                .call-now-button { top: 90%; }
+                .call-now-button { left: 3%; }
+                .call-now-button { background: #1670bf; }
+                .call-now-button div a .quick-alo-ph-img-circle, .call-now-button div a .quick-alo-phone-img-circle { background-color: #dd3333; }
+                .call-now-button .call-text { color: #ffffff; }
+                .zalo-button { left:unset; right:3%;  }
+        </style>
         <?php
-        if (isset($view_data['section_styles'])) {
-            include 'view/' . $view_data['section_styles'];
-        }
+            if (isset($view_data['section_styles'])) {
+                include 'view/' . $view_data['section_styles'];
+            }
         ?>
         <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
+          src="https://code.jquery.com/jquery-3.4.1.min.js"
+          integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+          crossorigin="anonymous"></script>
     </head>
     <body>
         <main id="panel">
@@ -190,7 +213,7 @@
             </footer>
             <!-- / footer -->
 
-            <aside id="phone-button" class="d-block d-md-none">
+          <!--   <aside id="phone-button" class="d-block d-md-none">
                 <a href="tel:0932.020.099">
                     <div class="media align-items-center">
                         <i class="fs-20 icon-phone bg-primary text-white icon-boxed mr-2"></i>
@@ -199,9 +222,28 @@
                         </div>
                     </div>
                 </a>
-            </aside>
-        </main>
+            </aside> -->
 
+            <div class="call-now-button ui-draggable ui-draggable-handle" id="draggable">
+                <div><p class="call-text"> <?= $_SESSION['InfoWeb']['Phone'] ?> </p>
+                    <a href="tel:<?= $_SESSION['InfoWeb']['Phone'] ?>" id="quickcallbutton" '="" title="Call Now">
+                    <div class="quick-alo-ph-circle active"></div>
+                    <div class="quick-alo-ph-circle-fill active"></div>
+                    <div class="quick-alo-ph-img-circle shake"></div>
+                    </a>
+                </div>
+            </div>
+             <div class="call-now-button ui-draggable ui-draggable-handle" id="zalobutton" >
+                <div><p class="call-text"> <?= $_SESSION['InfoWeb']['Zalo'] ?> </p>
+                    <a href="tel:<?= $_SESSION['InfoWeb']['Zalo'] ?>" id="quickcallbutton" '="" title="Call Now">
+                    <div class="zalo-ph-circle active" style="background: ('<?= base_url ?>/images/zalo.png') no-repeat center center !important;"></div>
+                    <div class="zalo-ph-circle-fill active"></div>
+                    <div class="zalo-ph-img-circle shake" style="background: ('<?= base_url ?>/images/zalo.png') no-repeat center center !important;"></div>
+                    </a>
+                </div>
+            </div>
+
+        </main>
 
         <div id="global" class="fade modal" role="dialog" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog ">
