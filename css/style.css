@@ -549,6 +549,7 @@ pre code {
     .container {
         max-width: 540px
     }
+
 }
 
 @media(min-width: 768px) {
@@ -565,7 +566,10 @@ pre code {
 
 @media(min-width: 1200px) {
     .container {
-        max-width: 1140px
+        max-width: 1140px;
+    }
+    .container-product{
+        max-width: 1340px;
     }
 }
 
@@ -30101,7 +30105,7 @@ header#main .logo img {
 }
 
 .office .figure-img {
-    height: 200px;
+    height: 250px;
     display: block
 }
 
@@ -30381,7 +30385,7 @@ section.banner-w-search {
 .office .card-footer {
     display: flex;
     justify-content: space-between;
-    font-size: .9rem
+    /*font-size: .9rem*/
 }
 
 .office-saved img {
@@ -30822,5 +30826,21 @@ footer .socials ul li {
     margin-top: .5rem
 }
 
+.top.right.show-on-hover{
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 99;
+        position: absolute;
+        top:10px;
+        right:10px;
+    } 
+.div_khu_vuc_small {
+    background-color:#5cb85c;
+    color:#ffffff;
+    padding:3px;
+}
+.div_khu_vuc_small a, .div_khu_vuc_small a:link, .div_khu_vuc_small a:visited{
+    color:#ffffff;
+}
 
 /*# sourceMappingURL=style.css.map */

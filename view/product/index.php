@@ -20,33 +20,6 @@
     </div>
 </nav>
 <div class="container my-3">
-    <section class="desc">
-        <div class="row justify-content-center mb-4">
-            <div class="col-md-10">
-                <h1 class="text-center"></h1>
-                <article class="description">
-                    <div class="show-less-content" id="category-description" data-max-height="200">
-                        <p><strong><a href="/van-phong-cho-thue/quan-go-vap">Văn ph&ograve;ng cho thu&ecirc; quận G&ograve; Vấp</a></strong> mang đến những th&ocirc;ng tin cụ thể, ch&iacute;nh x&aacute;c nhất về những dự &aacute;n, t&ograve;a nh&agrave; đang cho thu&ecirc; văn ph&ograve;ng tr&ecirc;n địa b&agrave;n quận th&ocirc;ng qua Cyberreal một trong những trang web nổi tiếng h&agrave;ng đầu thường xuy&ecirc;n cập nhật c&aacute;c loại văn ph&ograve;ng cho thu&ecirc; bao gồm như:</p>
-                        <ul>
-                            <li>Văn ph&ograve;ng hạng A</li>
-                            <li>Văn ph&ograve;ng hạng B</li>
-                            <li>Văn ph&ograve;ng hạng C</li>
-                            <li>Văn ph&ograve;ng trọn g&oacute;i</li>
-                            <li>Văn ph&ograve;ng gi&aacute; rẻ.</li>
-                        </ul>
-                        <p>Cyberreal địa chỉ trang web đi đầu trong lĩnh vực bất động sản th&agrave;nh phố Hồ Ch&iacute; Minh n&oacute;i chung v&agrave; t&igrave;m kiếm <strong>cao ốc văn ph&ograve;ng cho thu&ecirc; quận G&ograve; Vấp</strong> n&oacute;i ri&ecirc;ng.</p>
-                        <p>Khi nhắc đến quận G&ograve; Vấp chắc hẳn ai cũng nh&igrave;n thấy v&agrave; c&ocirc;ng nhận được sự ph&aacute;t triển mạnh mẽ trong những năm trở lại đ&acirc;y. Tuy l&agrave; một trong những quận c&oacute; sự xuất hiện của những dự &aacute;n lớn rất muộn tuy nhi&ecirc;n với mật độ cơ sở hạ tầng trong thời gian hiện tại kh&ocirc;ng ngừng đưa đến những bất ngờ cho những người đ&atilde; từng đến G&ograve; Vấp trước đ&acirc;y, cũng như những ai mới vừa đặt ch&acirc;n đến khu vực n&agrave;y. Bạn c&oacute; thể dễ d&agrave;ng bắt gặp nhiều c&ocirc;ng tr&igrave;nh t&ograve;a nh&agrave; đang thi c&ocirc;ng, si&ecirc;u thị, trung t&acirc;m thương mại, h&agrave;ng qu&aacute;n lớn trong một b&aacute;n k&iacute;nh hẹp. Kh&ocirc;ng những thế G&ograve; Vấp c&ograve;n l&agrave; cửa ng&otilde; ph&iacute;a bắc của th&agrave;nh phố nằm ngay cạnh s&acirc;n bay T&acirc;n Sơn Nhất v&agrave; di chuyển đến trung t&acirc;m quận 1 chỉ mất 30 ph&uacute;t. Bởi những điểm thu h&uacute;t tr&ecirc;n n&ecirc;n ng&agrave;y c&agrave;ng c&oacute; nhiều nh&agrave; đầu tư muốn mở rộng thị phần ở đ&acirc;y. Việc t&igrave;m kiếm <strong>văn ph&ograve;ng cho thu&ecirc; tại quận G&ograve; Vấp</strong> ph&ugrave; hợp với quy m&ocirc; c&ocirc;ng ty của doanh nghiệp thật kh&ocirc;ng dễ d&agrave;ng. Để gi&uacute;p kh&aacute;ch h&agrave;ng nhanh ch&oacute;ng giải quyết được điều đ&oacute;, Cyberreal lu&ocirc;n t&iacute;ch cực t&igrave;m kiếm thu thập những t&ograve;a nh&agrave; <strong>văn ph&ograve;ng gi&aacute; rẻ quận G&ograve; Vấp</strong> mới nhất gi&uacute;p kh&aacute;ch h&agrave;ng dễ d&agrave;ng chọn lựa online với lượng th&ocirc;ng tin, h&igrave;nh ảnh, mức gi&aacute;, ph&acirc;n kh&uacute;c ch&iacute;nh x&aacute;c nhất.</p>                    </div>
-
-                    <div data-target="#category-description" class="show-less text-center" style="display:none">
-                        <span class="btn btn-outline-secondary">Thu gọn</span>
-                    </div>
-                    <div data-target="#category-description" class="show-more text-center" style="display:none">
-                        <span class="btn btn-outline-secondary">Xem thêm</span>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
     <section class="office-listing">
         <div class="row">
             <div class="col-md-9">
@@ -63,7 +36,7 @@
                                 <h5 class="card-title mb-0"><a href="/van-phong-cho-thue/toa-nha-win-home-nguyen-kiem.html">Toà Nhà Win Home Nguyễn Kiệm</a></h5>
                                 <p class="address text-muted small">Đường Nguyễn Kiệm, Phường 3, Quận Gò Vấp</p>
 
-                                <ul class="list-group list-group-minimal fs-14">
+                                <ul class="list-group list-group-minimal">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-primary fa-lg"></i>
                                         15, 30, 50, 70, 90, 180, 360, 720 m2            </li>
@@ -89,7 +62,7 @@
                                 <h5 class="card-title mb-0"><a href="/van-phong-cho-thue/toa-nha-the-chateau.html">Tòa Nhà The Chateau</a></h5>
                                 <p class="address text-muted small">Đường Phan Văn Trị, Phường 7, Quận Gò Vấp</p>
 
-                                <ul class="list-group list-group-minimal fs-14">
+                                <ul class="list-group list-group-minimal">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-primary fa-lg"></i>
                                         250, 500, 800, 1000 m2            </li>
@@ -114,7 +87,7 @@
                                 <h5 class="card-title mb-0"><a href="/van-phong-cho-thue/toa-nha-tan-tin-duc-building.html">Tòa Nhà Tân Tín Đức Building</a></h5>
                                 <p class="address text-muted small">Đường Lê Văn Thọ, Phường 11, Quận Gò Vấp</p>
 
-                                <ul class="list-group list-group-minimal fs-14">
+                                <ul class="list-group list-group-minimal">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-primary fa-lg"></i>
                                         95, 190, 285 m2            </li>
@@ -139,7 +112,7 @@
                                 <h5 class="card-title mb-0"><a href="/van-phong-cho-thue/toa-nha-nha-khach-phia-nam.html">Tòa Nhà Nhà Khách Phía Nam</a></h5>
                                 <p class="address text-muted small">Đường Phan Văn Trị, Phường 10 , Quận Gò Vấp</p>
 
-                                <ul class="list-group list-group-minimal fs-14">
+                                <ul class="list-group list-group-minimal">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-primary fa-lg"></i>
                                         30, 55, 84 m2            </li>
@@ -164,7 +137,7 @@
                                 <h5 class="card-title mb-0"><a href="/van-phong-cho-thue/toa-nha-fruzii-building.html">Tòa Nhà Fruzii Building</a></h5>
                                 <p class="address text-muted small">Đường Trần Thị Nghỉ, Phường 7, Quận Gò Vấp</p>
 
-                                <ul class="list-group list-group-minimal fs-14">
+                                <ul class="list-group list-group-minimal">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-primary fa-lg"></i>
                                         25, 60, 140, 280 m2            </li>
@@ -189,7 +162,7 @@
                                 <h5 class="card-title mb-0"><a href="/van-phong-cho-thue/toa-nha-can-ho-8x-thai-an.html">Tòa Nhà Căn Hộ 8x Thái An</a></h5>
                                 <p class="address text-muted small">Đường Phan Huy Ích, Phường 14, Quận Gò Vấp</p>
 
-                                <ul class="list-group list-group-minimal fs-14">
+                                <ul class="list-group list-group-minimal">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-primary fa-lg"></i>
                                         55, 60, 80 m2            </li>
@@ -214,7 +187,7 @@
                                 <h5 class="card-title mb-0"><a href="/van-phong-cho-thue/toa-nha-nguyen-tuan-building.html">Tòa Nhà Nguyễn Tuân Building</a></h5>
                                 <p class="address text-muted small">Đường Nguyễn Tuân, Phường 3, Quận Gò Vấp</p>
 
-                                <ul class="list-group list-group-minimal fs-14">
+                                <ul class="list-group list-group-minimal">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-primary fa-lg"></i>
                                         160, 320, 480, 640, 800, 960 m2            </li>
@@ -239,7 +212,7 @@
                                 <h5 class="card-title mb-0"><a href="/van-phong-cho-thue/toa-nha-ken-building.html">Tòa Nhà Ken Building</a></h5>
                                 <p class="address text-muted small">Đường Lê Lợi, Phường 4, Quận Gò Vấp</p>
 
-                                <ul class="list-group list-group-minimal fs-14">
+                                <ul class="list-group list-group-minimal">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-primary fa-lg"></i>
                                         10, 12, 30, 32, 40 m2            </li>
@@ -264,7 +237,7 @@
                                 <h5 class="card-title mb-0"><a href="/van-phong-cho-thue/toa-nha-saigon-building.html">Tòa Nhà Saigon Building</a></h5>
                                 <p class="address text-muted small">Đường Nguyễn Bỉnh Khiêm, Phường 1, Quận Gò Vấp</p>
 
-                                <ul class="list-group list-group-minimal fs-14">
+                                <ul class="list-group list-group-minimal">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-primary fa-lg"></i>
                                         20, 30, 50 m2            </li>

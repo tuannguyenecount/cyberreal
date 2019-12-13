@@ -44,8 +44,12 @@
             <div class="col-md-9">
                 <div class="row">
                 <?php foreach($view_data['model'] as $item) { ?>
-                    <div class="col-lg-4 col-md-6 office mb-4">
+                    <div class="col-md-6 office mb-4">
                         <div class="card stacked">
+                            <div class="image-tools top right show-on-hover">
+                                <div class="div_khu_vuc_small"><a title="Bất động sản <?= $item['DistrictName'] ?>" href="<?= base_url ?>/can-ho/<?= strtolower(vn_to_str($item['DistrictName'])) ?>">TP.HCM <i class="fa fa-angle-right" aria-hidden="true"></i> <?= $item['DistrictName'] ?></a>
+                                </div>
+                            </div>
                             <div class="card-header p-0 lift">
                                 <figure class="figure mb-0">
                                     <a class="figure-img img-fluid" href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html">
@@ -57,7 +61,7 @@
                                 <h5 class="card-title mb-0"><a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html"><?= $item['Name'] ?></a></h5>
                                 <p class="address text-muted small"><?= $item['Street'] ?>, <?= $item['WardName'] ?>, <?= $item['DistrictName'] ?></p>
 
-                                <ul class="list-group list-group-minimal fs-14">
+                                <ul class="list-group list-group-minimal">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-success fa-lg"></i>
                                         <?= $item['Area'] ?>            
