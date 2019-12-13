@@ -45,7 +45,7 @@
             $view_data['district'] = $locationManager->GetDistrictByAlias($_GET['alias']);
             $view_data['title'] = "Căn hộ ".$view_data['district']['_prefix']." ".$view_data['district']['_name'];
             $view_data['model'] = $productManager->GetProductsShowByDistrict($view_data['district']['id']);
-            $view_data['view_name'] = "product/getByDistrict.php";
+            $view_data['view_name'] = "product/getByDistrict2.php";
             break;
         }
         case "getByStreet":

@@ -22,10 +22,10 @@
 <div class="container my-3">
     <section class="office-listing">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="row">
                 <?php foreach($view_data['model'] as $item) { ?>
-                    <div class="col-md-6 office mb-4">
+                    <div class="col-lg-4 col-md-6 office mb-4">
                         <div class="card stacked">
                             <div class="image-tools top right show-on-hover">
                                 <div class="div_khu_vuc_small"><a title="Bất động sản <?= $item['DistrictName'] ?>" href="<?= base_url ?>/can-ho/<?= strtolower(vn_to_str($item['DistrictName'])) ?>">TP.HCM <i class="fa fa-angle-right" aria-hidden="true"></i> <?= $item['DistrictName'] ?></a>
@@ -62,9 +62,9 @@
                 <?php } ?>
                 </div>
             </div>
-            <div class="col-md-3" id="filter-container">
+            <!-- <div class="col-md-3" id="filter-container">
                 
-            </div>
+            </div> -->
         </div>
     </section>
 </div> 

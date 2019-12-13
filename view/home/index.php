@@ -12,7 +12,7 @@
 </section>
 <main>
    <div class="top-offices py-5 bg-home">
-      <div class="container container-product">
+      <div class="container">
          <h3 class="heading pb-2">Căn hộ cho thuê                   
             <strong class="text-green">vị trí tốt nhất</strong>
          </h3>
