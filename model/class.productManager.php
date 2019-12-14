@@ -95,7 +95,7 @@ class ProductManager
         $database_Model = new Database();
         return $database_Model->GetList($tsql, $params);
     }
-    public function GetProductsShowByDistrict($districtId)
+    public function GetProductsShowByDistrict($districtId, $skip, $take)
     {
         $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, CONCAT(C._prefix,' ', C._name) AS DistrictName, CONCAT(D._prefix ,' ',D._name) AS WardName, F.Name As DirectionName
                     FROM product A LEFT JOIN category B  
@@ -104,12 +104,22 @@ class ProductManager
                     LEFT JOIN ward D ON A.Ward = D.id AND D._district_id = C.id
                     LEFT JOIN direction F ON A.Direction = F.Id 
                     WHERE A.Status = 1 AND A.District = ?
-                    ORDER BY A.Id desc"; 
+                    ORDER BY A.Id desc LIMIT $skip, $take"; 
         $params = array($districtId);
         $database_Model = new Database();
         return $database_Model->GetList($tsql, $params);
     }
-    public function GetProductsShowByStreet($street)
+    public function CountProductsShowByDistrict($districtId)
+    {
+        $tsql = "SELECT COUNT(*)
+                    FROM product A 
+                    LEFT JOIN district C ON A.District = C.id AND C._province_id = 1
+                    WHERE A.Status = 1 AND A.District = ?"; 
+        $params = array($districtId);
+        $database_Model = new Database();
+        return (int)$database_Model->ExecuteScalar($tsql, $params);
+    }
+    public function GetProductsShowByStreet($street, $skip, $take)
     {
         $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, CONCAT(C._prefix,' ', C._name) AS DistrictName, CONCAT(D._prefix ,' ',D._name) AS WardName, F.Name As DirectionName
                     FROM product A LEFT JOIN category B  
@@ -118,12 +128,21 @@ class ProductManager
                     LEFT JOIN ward D ON A.Ward = D.id AND D._district_id = C.id
                     LEFT JOIN direction F ON A.Direction = F.Id 
                     WHERE A.Status = 1 AND A.Street = ?
-                    ORDER BY A.Id desc"; 
+                    ORDER BY A.Id desc LIMIT $skip, $take"; 
         $params = array($street);
         $database_Model = new Database();
         return $database_Model->GetList($tsql, $params);
     }
-    public function GetProductsShowByDirection($direction)
+    public function CountProductsShowByStreet($street)
+    {
+        $tsql = "SELECT COUNT(*)
+                    FROM product A 
+                    WHERE A.Status = 1 AND A.Street = ?"; 
+        $params = array($street);
+        $database_Model = new Database();
+        return (int)$database_Model->ExecuteScalar($tsql, $params);
+    }
+    public function GetProductsShowByDirection($direction, $skip, $take)
     {
         $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, CONCAT(C._prefix,' ', C._name) AS DistrictName, CONCAT(D._prefix ,' ',D._name) AS WardName, F.Name As DirectionName
                     FROM product A LEFT JOIN category B  
@@ -132,10 +151,20 @@ class ProductManager
                     LEFT JOIN ward D ON A.Ward = D.id AND D._district_id = C.id
                     LEFT JOIN direction F ON A.Direction = F.Id 
                     WHERE A.Status = 1 AND A.Direction = ?
-                    ORDER BY A.Id desc"; 
+                    ORDER BY A.Id desc LIMIT $skip, $take"; 
         $params = array($direction);
         $database_Model = new Database();
         return $database_Model->GetList($tsql, $params);
+    }
+     public function CountProductsShowByDirection($direction)
+    {
+        $tsql = "SELECT COUNT(*)
+                    FROM product A 
+                    LEFT JOIN district C ON A.District = C.id AND C._province_id = 1
+                    WHERE A.Status = 1 AND A.Direction = ?"; 
+        $params = array($direction);
+        $database_Model = new Database();
+        return (int)$database_Model->ExecuteScalar($tsql, $params);
     }
 	public function CountAll($status = null)
 	{

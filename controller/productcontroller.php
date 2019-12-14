@@ -32,36 +32,58 @@
             $view_data['streetsOnProduct'] = $locationManager->GetStreetsOnProduct();
             break;
         }
-        case "index":
-        {
-            $view_data['title'] = "Index";
-            $view_data['view_name'] = "product/index.php";
-            $view_data['districtsOnProduct'] = $locationManager->GetDistrictsOnProduct();
-            $view_data['streetsOnProduct'] = $locationManager->GetStreetsOnProduct();
-            break;
-        }
+        // case "index":
+        // {
+        //     $view_data['title'] = "Index";
+        //     $view_data['view_name'] = "product/index.php";
+        //     $view_data['districtsOnProduct'] = $locationManager->GetDistrictsOnProduct();
+        //     $view_data['streetsOnProduct'] = $locationManager->GetStreetsOnProduct();
+        //     break;
+        // }
         case "getByDistrict":
         {
             $view_data['district'] = $locationManager->GetDistrictByAlias($_GET['alias']);
+            if(!empty($view_data['district']['introduce']))
+            {
+                $view_data['description'] = $view_data['district']['introduce'];
+            }
             $view_data['title'] = "Căn hộ ".$view_data['district']['_prefix']." ".$view_data['district']['_name'];
-            $view_data['model'] = $productManager->GetProductsShowByDistrict($view_data['district']['id']);
-            $view_data['view_name'] = "product/getByDistrict2.php";
+            $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+            $take = 6;
+            $skip = $take * ($page - 1);
+            $view_data['page'] = $page;
+            $view_data['model'] = $productManager->GetProductsShowByDistrict($view_data['district']['id'], $skip, $take);
+            $view_data['totalPage'] = ceil($productManager->CountProductsShowByDistrict($view_data['district']['id']) / $take);
+            $view_data['urlCurrent'] = base_url."/can-ho/".strtolower(vn_to_str($view_data['district']['_name']));
+            $view_data['view_name'] = "product/index.php";
             break;
         }
         case "getByStreet":
         {
             $view_data['street'] = $locationManager->GetStreetByAlias($_GET['alias']);
             $view_data['title'] = "Căn hộ đường ".$view_data['street']['Street'];
-            $view_data['model'] = $productManager->GetProductsShowByStreet($view_data['street']['Street']);
-            $view_data['view_name'] = "product/getByStreet.php";
+            $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+            $take = 6;
+            $skip = $take * ($page - 1);
+            $view_data['page'] = $page;
+            $view_data['model'] = $productManager->GetProductsShowByStreet($view_data['street']['Street'], $skip, $take);
+            $view_data['totalPage'] = ceil($productManager->CountProductsShowByStreet($view_data['street']['Street']) / $take);
+            $view_data['urlCurrent'] = base_url."/can-ho/duong-".strtolower(vn_to_str($view_data['street']['Street']));
+            $view_data['view_name'] = "product/index.php";
             break;
         }
         case "getByDirection":
         {
             $view_data['direction'] = $locationManager->GetDirectionByAlias('huong-'.$_GET['alias']);
             $view_data['title'] = "Căn hộ ".$view_data['direction']['Name'];
-            $view_data['model'] = $productManager->GetProductsShowByDirection($view_data['direction']['Id']);
-            $view_data['view_name'] = "product/getByDirection.php";
+            $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+            $take = 6;
+            $skip = $take * ($page - 1);
+            $view_data['page'] = $page;
+            $view_data['model'] = $productManager->GetProductsShowByDirection($view_data['direction']['Id'], $skip, $take);
+            $view_data['totalPage'] = ceil($productManager->CountProductsShowByDirection($view_data['direction']['Id']) / $take);
+            $view_data['urlCurrent'] = base_url."/can-ho/huong-".$_GET['alias'];
+            $view_data['view_name'] = "product/index.php";
             break;
         }
         case "details":

@@ -27,9 +27,15 @@ RewriteRule ^tim-kiem.html$ index.php?controller=product&action=search
 RewriteRule ^hen-di-xem.html$ index.php?controller=booking&action=viewProductsSaved
 RewriteRule ^cam-on.html$ index.php?controller=booking&action=thankyou
 RewriteRule ^lien-he-thanh-cong.html$ index.php?controller=home&action=contactsuccess
+
 RewriteRule ^can-ho/duong-([a-zA-Z0-9_-]+)$ index.php?controller=product&action=getByStreet&alias=$1
+RewriteRule ^can-ho/duong-([a-zA-Z0-9_-]+)&page=([0-9]+)$ index.php?controller=product&action=getByStreet&alias=$1&page=$2
+
 RewriteRule ^can-ho/huong-([a-zA-Z0-9_-]+)$ index.php?controller=product&action=getByDirection&alias=$1
+RewriteRule ^can-ho/huong-([a-zA-Z0-9_-]+)&page=([0-9]+)$ index.php?controller=product&action=getByDirection&alias=$1&page=$2
+
 RewriteRule ^can-ho/([a-zA-Z0-9_-]+)$ index.php?controller=product&action=getByDistrict&alias=$1
+RewriteRule ^can-ho/([a-zA-Z0-9_-]+)&page=([0-9]+)$ index.php?controller=product&action=getByDistrict&alias=$1&page=$2
 
 RewriteRule ^tin-tuc.html$ index.php?controller=new&action=index
 RewriteRule ^tin-tuc.html&page=([0-9]+)$ index.php?controller=new&action=index&page=$1

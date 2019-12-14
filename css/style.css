@@ -30888,9 +30888,9 @@ footer .socials ul li {
     text-align: center;
     padding-top: 10;
 }
-@media screen and (max-width: 576px){
+@media screen and (max-width: 768px){
     .banner-bg{
-        margin: 5px !important;
+        margin: 10px !important;
     }
 }
 /*# sourceMappingURL=style.css.map */
