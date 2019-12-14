@@ -36,7 +36,7 @@
                                 <h5 class="card-title mb-0"><a href="/van-phong-cho-thue/toa-nha-win-home-nguyen-kiem.html">Toà Nhà Win Home Nguyễn Kiệm</a></h5>
                                 <p class="address text-muted small">Đường Nguyễn Kiệm, Phường 3, Quận Gò Vấp</p>
 
-                                <ul class="list-group list-group-minimal">
+                                <ul class="list-group list-group-minimal small">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-primary fa-lg"></i>
                                         15, 30, 50, 70, 90, 180, 360, 720 m2            </li>
@@ -62,7 +62,7 @@
                                 <h5 class="card-title mb-0"><a href="/van-phong-cho-thue/toa-nha-the-chateau.html">Tòa Nhà The Chateau</a></h5>
                                 <p class="address text-muted small">Đường Phan Văn Trị, Phường 7, Quận Gò Vấp</p>
 
-                                <ul class="list-group list-group-minimal">
+                                <ul class="list-group list-group-minimal small">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-primary fa-lg"></i>
                                         250, 500, 800, 1000 m2            </li>
@@ -87,7 +87,7 @@
                                 <h5 class="card-title mb-0"><a href="/van-phong-cho-thue/toa-nha-tan-tin-duc-building.html">Tòa Nhà Tân Tín Đức Building</a></h5>
                                 <p class="address text-muted small">Đường Lê Văn Thọ, Phường 11, Quận Gò Vấp</p>
 
-                                <ul class="list-group list-group-minimal">
+                                <ul class="list-group list-group-minimal small">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-primary fa-lg"></i>
                                         95, 190, 285 m2            </li>
@@ -112,7 +112,7 @@
                                 <h5 class="card-title mb-0"><a href="/van-phong-cho-thue/toa-nha-nha-khach-phia-nam.html">Tòa Nhà Nhà Khách Phía Nam</a></h5>
                                 <p class="address text-muted small">Đường Phan Văn Trị, Phường 10 , Quận Gò Vấp</p>
 
-                                <ul class="list-group list-group-minimal">
+                                <ul class="list-group list-group-minimal small">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-primary fa-lg"></i>
                                         30, 55, 84 m2            </li>
@@ -137,7 +137,7 @@
                                 <h5 class="card-title mb-0"><a href="/van-phong-cho-thue/toa-nha-fruzii-building.html">Tòa Nhà Fruzii Building</a></h5>
                                 <p class="address text-muted small">Đường Trần Thị Nghỉ, Phường 7, Quận Gò Vấp</p>
 
-                                <ul class="list-group list-group-minimal">
+                                <ul class="list-group list-group-minimal small">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-primary fa-lg"></i>
                                         25, 60, 140, 280 m2            </li>
@@ -162,7 +162,7 @@
                                 <h5 class="card-title mb-0"><a href="/van-phong-cho-thue/toa-nha-can-ho-8x-thai-an.html">Tòa Nhà Căn Hộ 8x Thái An</a></h5>
                                 <p class="address text-muted small">Đường Phan Huy Ích, Phường 14, Quận Gò Vấp</p>
 
-                                <ul class="list-group list-group-minimal">
+                                <ul class="list-group list-group-minimal small">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-primary fa-lg"></i>
                                         55, 60, 80 m2            </li>
@@ -187,7 +187,7 @@
                                 <h5 class="card-title mb-0"><a href="/van-phong-cho-thue/toa-nha-nguyen-tuan-building.html">Tòa Nhà Nguyễn Tuân Building</a></h5>
                                 <p class="address text-muted small">Đường Nguyễn Tuân, Phường 3, Quận Gò Vấp</p>
 
-                                <ul class="list-group list-group-minimal">
+                                <ul class="list-group list-group-minimal small">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-primary fa-lg"></i>
                                         160, 320, 480, 640, 800, 960 m2            </li>
@@ -212,7 +212,7 @@
                                 <h5 class="card-title mb-0"><a href="/van-phong-cho-thue/toa-nha-ken-building.html">Tòa Nhà Ken Building</a></h5>
                                 <p class="address text-muted small">Đường Lê Lợi, Phường 4, Quận Gò Vấp</p>
 
-                                <ul class="list-group list-group-minimal">
+                                <ul class="list-group list-group-minimal small">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-primary fa-lg"></i>
                                         10, 12, 30, 32, 40 m2            </li>
@@ -237,7 +237,7 @@
                                 <h5 class="card-title mb-0"><a href="/van-phong-cho-thue/toa-nha-saigon-building.html">Tòa Nhà Saigon Building</a></h5>
                                 <p class="address text-muted small">Đường Nguyễn Bỉnh Khiêm, Phường 1, Quận Gò Vấp</p>
 
-                                <ul class="list-group list-group-minimal">
+                                <ul class="list-group list-group-minimal small">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-primary fa-lg"></i>
                                         20, 30, 50 m2            </li>
@@ -280,7 +280,7 @@
                </div>
             </div>
             <div class="col-lg-6 description">
-               <ul class="list-group list-group-minimal">
+               <ul class="list-group list-group-minimal small">
                   <li class="list-group-item d-flex align-items-center fs-20 font-weight-bold text-danger">
                      <i class="icon-dollar bg-danger text-white icon-boxed mr-1"></i><strong class="text-nowrap">Giá thuê từ</strong>: 12$/m2                            
                   </li>

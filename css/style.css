@@ -39,7 +39,7 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #555;
+    color: #000;
     text-align: left;
     background-color: #f8f8f8
 }
@@ -346,7 +346,8 @@ h6,
 .h5,
 .h6 {
     margin-bottom: .5rem;
-    font-family: "Open Sans", sans-serif;
+    /*font-family: "Open Sans", sans-serif;*/
+    font-family: Arial;
     font-weight: 600;
     line-height: 1.4;
     color: #000
@@ -30847,5 +30848,49 @@ footer .socials ul li {
 .div_khu_vuc_small a, .div_khu_vuc_small a:link, .div_khu_vuc_small a:visited{
     color:#ffffff;
 }
-
+.icon-box-img{
+    margin: 10px auto;
+}
+.relative{
+    position: relative;
+}
+#quangcao{
+/*    margin:10px;
+*/    padding:0px 15px 0px 15px !important;
+      
+}
+#quangcao .section-content{
+    background-image: url(../images/duan-bg.jpg);
+    margin-top:20px;
+    margin-bottom: -20px;
+}
+.banner-bg{
+    height:265px;
+    cursor: pointer;
+    background-size:cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin:-10px;
+}
+.banner-bg a{
+    color:#fff;
+    text-transform: uppercase;
+    font-size:1.3em;
+    font-weight: 600;
+    z-index:99;
+    display: block;
+    width:60%;
+    position: absolute;
+    height: 20%;
+    top: 40%;
+    left: 20%;
+    right: 20%;
+    text-align: center;
+    padding-top: 10;
+}
+@media screen and (max-width: 576px){
+    .banner-bg{
+        margin: 5px !important;
+    }
+}
 /*# sourceMappingURL=style.css.map */

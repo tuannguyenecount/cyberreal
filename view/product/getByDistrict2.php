@@ -41,7 +41,7 @@
     </section>
     <section class="office-listing">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-9">
                 <div class="row">
                 <?php foreach($view_data['model'] as $item) { ?>
                     <div class="col-lg-4 col-md-6 office mb-4">
@@ -59,9 +59,9 @@
                             </div>
                             <div class="card-body p-1 pt-3">
                                 <h5 class="card-title mb-0"><a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html"><?= $item['Name'] ?></a></h5>
-                                <p class="address text-muted small"><?= $item['Street'] ?>, <?= $item['WardName'] ?>, <?= $item['DistrictName'] ?></p>
+                                <p class="address small"><?= $item['Street'] ?>, <?= $item['WardName'] ?>, <?= $item['DistrictName'] ?></p>
 
-                                <ul class="list-group list-group-minimal">
+                              <!--   <ul class="list-group list-group-minimal small">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-success fa-lg"></i>
                                         <?= $item['Area'] ?>            
@@ -70,9 +70,9 @@
                                         <i class="fas fa-compass mr-2 text-success fa-lg"></i>
                                         <?= $item['Direction'] ?>            
                                     </li>
-                                </ul>
+                                </ul> -->
                             </div>
-                            <div class="card-footer p-1">
+                            <div class="card-footer p-1 small">
                                 
                                 <a href="<?= base_url ?>/product/select/<?= $item['Id'] ?>" data-toggle="modal" data-target="#global"><i class="fa fa-check"></i> Chọn đi xem</a></a>  
                             </div>
@@ -81,9 +81,9 @@
                 <?php } ?>
                 </div>
             </div>
-           <!--  <div class="col-md-3" id="filter-container">
+            <div class="col-md-3" id="filter-container">
                 
-            </div> -->
+            </div>
         </div>
     </section>
 </div> 

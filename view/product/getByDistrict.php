@@ -61,7 +61,7 @@
                                 <h5 class="card-title mb-0"><a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html"><?= $item['Name'] ?></a></h5>
                                 <p class="address text-muted small"><?= $item['Street'] ?>, <?= $item['WardName'] ?>, <?= $item['DistrictName'] ?></p>
 
-                               <!--  <ul class="list-group list-group-minimal">
+                               <!--  <ul class="list-group list-group-minimal small">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-success fa-lg"></i>
                                         <?= $item['Area'] ?>            

@@ -18,6 +18,7 @@
         <link href="<?= base_url ?>/css/select2.css?v=1" rel="stylesheet">
         <link href="<?=base_url?>/assets/css/jquery.niftymodals.css" rel="stylesheet" />
         <link href="<?=base_url?>/css/callbutton.css" rel="stylesheet" />
+        <link href="https://canho247.vn/wp-content/themes/flatsome/assets/css/flatsome.css?ver=3.8.4" />
         <style> 
                 @media screen and (max-width: 1960px) { 
                     .call-now-button { display: flex !important; background: #1670bf; }  
@@ -235,7 +236,7 @@
             </div>
              <div class="call-now-button ui-draggable ui-draggable-handle" id="zalobutton" >
                 <div><p class="call-text"> <?= $_SESSION['InfoWeb']['Zalo'] ?> </p>
-                    <a href="tel:<?= $_SESSION['InfoWeb']['Zalo'] ?>" id="quickcallbutton" '="" title="Call Now">
+                    <a href="<?= $_SESSION['InfoWeb']['Zalo'] ?>" id="quickcallbutton" '="" title="Call Now">
                     <div class="zalo-ph-circle active" style="background: ('<?= base_url ?>/images/zalo.png') no-repeat center center !important;"></div>
                     <div class="zalo-ph-circle-fill active"></div>
                     <div class="zalo-ph-img-circle shake" style="background: ('<?= base_url ?>/images/zalo.png') no-repeat center center !important;"></div>
@@ -269,6 +270,7 @@
         <script src="<?= base_url ?>/js/common.js"></script>
         <script>
             $(function () {
+                $('[data-toggle="tooltip"]').tooltip();
                 $('#Street').select2({
                     theme: "flat",
                 });
