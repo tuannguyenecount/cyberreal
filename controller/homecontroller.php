@@ -25,8 +25,13 @@
 			$view_data['section_scripts'] = "home/scripts.php";
             $view_data['section_meta'] = "home/meta.php";
             $view_data['products'] = $productManager->GetList(1);
-            $view_data['news'] = $newManager->GetTop10New();
+            $view_data['news'] = $newManager->GetTopNew();
+            if(count($view_data['news']) > 0)
+            {
+                $view_data['firstNew'] = $view_data['news'][0];
+            }
             $view_data['slides'] = $slideManager->GetListShow();
+            $view_data['productsHOT'] = $productManager->GetProductsHot();
             break;
         }
         case "contact":

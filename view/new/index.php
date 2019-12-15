@@ -28,32 +28,30 @@
    <section class="post-listing">
       <div class="row">
          <div class="col-md-9">
-         <?php foreach($view_data['model'] as $item) { ?>
-            <div class="card stacked my-4">
+           <?php foreach($view_data['model'] as $item) { ?>
+            <div class="card stacked my-4" style="margin-top:unset !important">
                <div class="card-body p-2">
-                  <div class="row post no-gutters">
-                     <div class="col">
-                        <h5 class="card-title"><a href="<?=base_url?>/tin-tuc/<?= $item['Alias'] ?>.html">​​​​​​​<?= $item['Title'] ?></a></h5>
+                  <div class="row post">
+                     <div class="col-md-4 col-sm-6" style="padding-bottom: 10px">
+                       <img src="<?= base_url ?>/images/news/<?= $item['Image'] ?>" class="img-responsive" />
+                     </div>
+                     <div class="col-md-8 col-sm-6">
+                        <h5><a href="<?=base_url?>/tin-tuc/<?= $item['Alias'] ?>.html">​​​​​​​<?= $item['Title'] ?></a></h5>
                         <div class="intro mb-2"><?= $item['Description'] ?></div>
                         <a class="action" href="<?=base_url?>/tin-tuc/<?= $item['Alias'] ?>.html">Chi tiết</a>                                
                      </div>
                   </div>
                </div>
             </div>
-         <?php } ?>
-           
+           <?php } ?>
             <ul class="pagination">
-              <!--  <?php if($pageCurrent > 1) { ?>
-               <li class="page-item"><a class="page-link" href="/tin-tuc?page=6" data-page="5">&laquo;</a></li>
-               <?php } ?> -->
-
-                  <?php for($i = 1; $i <= $view_data['totalPage']; $i++) { ?>
-                     <li class="page-item <?= $i == $pageCurrent ? "active" : "" ?>"><a class="page-link" href="<?= $view_data['urlCurrent'] ?>&page=<?= $i ?>"><?= $i ?></a>
-                     </li>
-                  <?php } ?>       
+              <?php for($i = 1; $i <= $view_data['totalPage']; $i++) { ?>
+                 <li class="page-item <?= $i == $pageCurrent ? "active" : "" ?>"><a class="page-link" href="<?= $view_data['urlCurrent'] ?>&page=<?= $i ?>"><?= $i ?></a>
+                 </li>
+              <?php } ?>       
             </ul>
          </div>
-         <div class="col-lg-3" id="filter-container">
+         <div class="col-md-3" id="filter-container">
                
           </div>
       </div>

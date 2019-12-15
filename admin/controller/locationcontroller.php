@@ -45,15 +45,15 @@
 		}
 		case "ghimDistrict":
 		{
-		  $locationManager->GhimDistrict($_GET['id']);
-		  header("Location: ".base_url_admin."/location/districts");
-		  break;
+		  	$locationManager->GhimDistrict($_GET['id']);
+		  	header("Location: ".base_url_admin."/location/districts");
+		  	break;
 		}
 		case "removeGhimDistrict":
 		{
-		  $locationManager->RemoveGhimDistrict($_GET['id']);
-		  header("Location: ".base_url_admin."/location/districts");
-		  break;
+		  	$locationManager->RemoveGhimDistrict($_GET['id']);
+		  	header("Location: ".base_url_admin."/location/districts");
+		  	break;
 		}
 	}
 		

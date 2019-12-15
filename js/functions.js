@@ -25,6 +25,11 @@ function generateSlug(text) {
     slug = '@' + slug + '@';
     slug = slug.replace(/\@\-|\-\@|\@/gi, '');
     slug = slug.replace(/\”|\“/gi, '');
+    slug = slug.replace('%','');
+    slug = slug.replace('+','');
+    slug = slug.replace('.','');
+    slug = slug.replace('?','');
+    slug = slug.replace(':','');
     return slug;
 }
 // end friendly url proccessing

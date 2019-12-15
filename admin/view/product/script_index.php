@@ -4,8 +4,8 @@
 <script>
     $(function () {
         $('#tblData').DataTable({
-            columnDefs: [{ orderable: false, targets: [8] }],
-            order: [[0, 'desc']],
+            columnDefs: [{ orderable: false, targets: [9] }],
+            order: [[7, 'asc']],
         });
     });
 </script>

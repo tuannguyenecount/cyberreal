@@ -33,7 +33,21 @@
           $_POST['UserCreated'] = $_SESSION['UserLogged']['UserName'];
           $_POST['Status'] = isset($_POST['Status']) ? 1 : 0;
           $view_data['errors'] = $newManager->GetErrorsMessage($_POST['Title'], $_POST['Alias'], true, true);
-
+          if(isset($_FILES["file"]) && !empty($_FILES['file']['tmp_name'])) {
+              $check = getimagesize($_FILES["file"]["tmp_name"]);
+              if($check !== false)
+              {
+                $mt = microtime(true);
+                $mt =  $mt*1000; //microsecs
+                $ticks = (string)$mt*10; //100 Nanosecs
+                $name = $_FILES["file"]["name"];
+                $ext = end((explode(".", $name))); # extra () to prevent notice
+                $_POST['Image'] = $ticks.".".$ext;
+                $result = UploadImageFileWithResize(SITE_PATH."/images/news/".$_POST['Image'], 600,400);
+                if($result != 1)
+                  $view_data['errors'][] = $result;
+              }
+          }
           if(count($view_data['errors']) == 0)
           {
             $result = $newManager->Add($_POST);
@@ -61,9 +75,24 @@
       {
         try 
         {
+          $_POST['Id'] = $_GET['id'];
           $_POST['Status'] = isset($_POST['Status']) ? 1 : 0;
           $view_data['errors'] = $newManager->GetErrorsMessage($_POST['Title'], $_POST['Alias'], $_POST['Title_Old'] != $_POST['Title'], $_POST['Alias_Old'] != $_POST['Alias']);
-
+          if(isset($_FILES["file"]) && !empty($_FILES['file']['tmp_name'])) {
+              $check = getimagesize($_FILES["file"]["tmp_name"]);
+              if($check !== false)
+              {
+                $mt = microtime(true);
+                $mt =  $mt*1000; //microsecs
+                $ticks = (string)$mt*10; //100 Nanosecs
+                $name = $_FILES["file"]["name"];
+                $ext = end((explode(".", $name))); # extra () to prevent notice
+                $_POST['Image'] = $ticks.".".$ext;
+                $result = UploadImageFileWithResize(SITE_PATH."/images/news/".$_POST['Image'], 600,400);
+                if($result != 1)
+                  $view_data['errors'][] = $result;
+              }
+          }
           if(count($view_data['errors']) == 0)
           {
             $result = $newManager->Edit($_POST);

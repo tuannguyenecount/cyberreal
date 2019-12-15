@@ -11,12 +11,12 @@
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 <div class="box">
                     <div class="box-body">
-                        <input type="hidden" name="Id" value="<?= $view_data['model']['Id'] ?>" />
                         <input type="hidden" name="Title_Old" value="<?= $view_data['model']['Title']?>"> 
                         <input type="hidden" name="Alias_Old" value="<?= $view_data['model']['Alias'] ?>"> 
+                        <input type="hidden" name="Image" value="<?= $view_data['model']['Image'] ?>" />
                         <?php include_once 'view/shared/_errors.php'; ?>
                         <div class="col-md-12">
                             <table class="table table-border-none table-middle">
@@ -37,6 +37,12 @@
                                         <td class="col-md-2">Mô tả</td>
                                         <td>
                                             <textarea id="Description" class="form-control" cols="30" name="Description"><?= isset($_POST['Description']) ? $_POST['Description'] : $view_data['model']['Description'] ?> </textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-2">Sửa hình ảnh (Size 600x400)</td>
+                                        <td>
+                                            <input type="file" name="file"  />
                                         </td>
                                     </tr>
                                     <tr>

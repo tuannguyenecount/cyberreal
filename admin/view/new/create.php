@@ -11,7 +11,7 @@
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 <div class="box">
                     <div class="box-body">
                         <?php include_once 'view/shared/_errors.php'; ?>
@@ -34,6 +34,12 @@
                                         <td class="col-md-2">Mô tả</td>
                                         <td>
                                             <textarea id="Description" class="form-control" cols="30" name="Description"><?= isset($_POST['Description']) ? $_POST['Description'] : "" ?> </textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-2">Hình ảnh (Size 600x400)</td>
+                                        <td>
+                                            <input type="file" name="file" required="" />
                                         </td>
                                     </tr>
                                     <tr>

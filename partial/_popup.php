@@ -1,6 +1,6 @@
 <div class="md-container md-effect-4" id="modal-4" style="z-index:999999; top: 20% !important; perspective: none;">
     <div class="md-content" style="background:#fff;color:#000">
-        <h3  style="font-size:1.8em; background:#28a745;color:#fff">Bảng Tin</h3>
+        <h3  style="font-size:1.8em; background:#3162ad;color:#fff">Bảng Tin</h3>
         <button class="md-close" style="
                 position:absolute;
                 right: 10px;

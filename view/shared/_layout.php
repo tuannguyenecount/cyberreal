@@ -316,6 +316,9 @@
                         url: "<?= base_url ?>/location/GetDistrictsByProvince",
                         method: "Post",
                         data: { Province : $(this).val(), dataSelected : $("#District").attr("data-selected"), showValueAll: 1 },
+                        beforeSend: function(){
+                            $("#District").html("");
+                        },
                         success: function(result){
                             $("#District").html(result);
                             $("#District").change().bind();
@@ -330,6 +333,9 @@
                         url: "<?= base_url ?>/location/GetWardsByDistrict",
                         method: "Post",
                         data: { District : $(this).val(), dataSelected : $("#Ward").attr("data-selected"), showValueAll: 1 },
+                        beforeSend: function(){
+                            $("#Ward").html("");
+                        },
                         success: function(result){
                             $("#Ward").html(result);
                             $("#Ward").change().bind();
@@ -341,6 +347,9 @@
                         url: "<?= base_url ?>/location/GetStreetsByDistrict",
                         method: "Post",
                         data: { District : $(this).val(), dataSelected : $("#Street").attr("data-selected"), showValueAll: 1 },
+                        beforeSend: function(){
+                            $("#Street").html("");
+                        },
                         success: function(result){
                             $("#Street").html(result);
                         }

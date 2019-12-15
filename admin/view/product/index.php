@@ -28,6 +28,7 @@
                            <th>Quận/Huyện</th>
                            <th>Phường/Xã</th>
                            <th>Đường</th>
+                           <th class="text-center">HOT</th>
                            <th class="text-center">Trạng thái</th>
                            <th class="text-center col-md-2">Thao tác</th>
                         </tr>
@@ -41,15 +42,23 @@
                               <img src="<?= base_url ?>/images/products/<?= $item['Image'] ?>" width="80" height="auto" />
                            </td>
                            <td>
-                              <a target="_blank" href="<?=base_url?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html"><?= $item['Name'] ?></a>
+                              <b><a target="_blank" href="<?=base_url?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html"><?= $item['Name'] ?></a></b>
                            </td>
                           
                            <td>
                               <?= $item['CategoryName'] ?>
-                           </td>
+                           </td> 
                            <td><?= $item['DistrictName'] ?></td>
                            <td><?= $item['WardName'] ?></td>
                            <td><?= $item['Street'] ?></td>
+                           <td class="text-center">
+                              <?php if ($item['HOT']) { ?>
+                              
+                              <label class="label label-danger">HOT</label>
+                              <?php } else { ?>
+                              <label class="label label-default">Không</label>
+                              <?php } ?>
+                           </td>
                            <td class="text-center">
                               <?php if ($item['Status']) { ?>
                               

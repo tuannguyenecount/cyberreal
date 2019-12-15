@@ -81,6 +81,7 @@
                                            <input type="text" class="form-control" name="Rank" value="<?= isset($_POST['Rank']) ? $_POST['Rank'] : "" ?>" />
                                         </td>
                                     </tr>
+                                    
                                     <tr>
                                         <td class="col-md-2">Nhập loại phí</td>
                                         <td>
@@ -162,6 +163,19 @@
                                         <td class="col-md-2">Ưu điểm</td>
                                         <td>
                                             <textarea id="Advantages" name="Advantages"><?= isset($_POST['Advantages']) ? $_POST['Advantages'] : ""   ?></textarea>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-2">Dự án HOT</td>
+                                        <td>
+                                           <input type="checkbox" class="form-control" name="HOT" <?= isset($_POST['HOT']) ? "checked" : "" ?> />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-2">Số thứ tự</td>
+                                        <td>
+                                           <input type="number" style="width:200px" step="1" min="1" class="form-control" name="SortOrder" value="<?= isset($_POST['SortOrder']) ? $_POST['SortOrder'] : "" ?>" />
                                         </td>
                                     </tr>
                                                                    

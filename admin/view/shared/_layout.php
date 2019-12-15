@@ -488,7 +488,7 @@
 
 
         $.post("<?= base_url_admin ?>/new/countArticleNotShow", function(result){
-            if(result)
+            if(result != 0)
             {
                 $("#countArticleNotShow").text(result);
                 $("#countArticleNotShow").attr("title", result + " bài viết đang ẩn");

@@ -27,7 +27,12 @@
       <div class="row my-4">
          <div class="col-md-9">
             <section class="bordered stacked p-3 office-detail">
-               <h1 class="h3 heading mb-2"><strong>​​​​​​​<?= $view_data['model']['Title'] ?></strong></h1>
+               <h1 class="h3 heading mb-2">
+                  <?= $view_data['model']['Title'] ?>
+               </h1>
+               <h5 style="margin-bottom:1em">
+                  <?= $view_data['model']['Description'] ?>
+               </h5>
                <div class="content">
                   <?= $view_data['model']['Content'] ?>
                </div>

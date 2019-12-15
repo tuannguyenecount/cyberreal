@@ -42,13 +42,13 @@ class NewManager
         return (int)$database_Model->ExecuteScalar($tsql);
     }
 
-    public function GetTop10New()
+    public function GetTopNew()
     {
         $params = array();
         $tsql = "SELECT *
                 FROM new 
                 WHERE Status = 1
-                ORDER BY Id desc LIMIT 0,10";  
+                ORDER BY Id desc LIMIT 0,5";  
         
         $database_Model = new Database();
         return $database_Model->GetList($tsql, $params);
@@ -130,9 +130,9 @@ class NewManager
 
 	public function Add($model)
 	{
-        $tsql ="INSERT INTO new(Title, Description, Content, UserCreated, Status, Alias, SeoTitle, SeoDescription, SeoKeyword)
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?) ";   
-        $params = array($model['Title'], $model['Description'], $model['Content'], $model['UserCreated'], $model['Status'], $model['Alias'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword']);
+        $tsql ="INSERT INTO new(Title, Description, Image, Content, UserCreated, Status, Alias, SeoTitle, SeoDescription, SeoKeyword)
+                VALUES(?, ?, ?,?, ?, ?, ?, ?, ?, ?) ";   
+        $params = array($model['Title'], $model['Description'], $model['Image'], $model['Content'], $model['UserCreated'], $model['Status'], $model['Alias'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword']);
         $database_Model = new Database();
 	    return $database_Model->Execute($tsql, $params);
 	}
@@ -140,10 +140,10 @@ class NewManager
 	public function Edit($model)
 	{
         $tsql ="UPDATE new
-                SET	Title = ?, Description = ?, Content = ?, 
+                SET	Title = ?, Description = ?, Image = ?, Content = ?, 
                     Status = ?, Alias = ?, SeoTitle = ?, SeoDescription = ?, SeoKeyword = ?
                 WHERE Id = ? ";   
-        $params = array($model['Title'], $model['Description'], $model['Content'], $model['Status'], $model['Alias'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword'], $model['Id']);
+        $params = array($model['Title'], $model['Description'], $model['Image'], $model['Content'], $model['Status'], $model['Alias'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword'], $model['Id']);
         $database_Model = new Database();
 	    return $database_Model->Execute($tsql, $params);
 	}

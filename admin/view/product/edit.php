@@ -50,6 +50,25 @@
                                         </td>
                                     </tr>    
                                     <tr>
+                                        <td class="col-md-2">Dự án HOT</td>
+                                        <td>
+                                           <input type="checkbox"  name="HOT" <?= isset($_POST['HOT']) ? "checked" : ($view_data['model']['HOT'] ? "checked" : "") ?> />
+                                        </td>
+                                    </tr>
+                                                                
+                                    <tr>
+                                        <td class="col-md-2">Hiển thị</td>
+                                        <td>
+                                            <input  <?= isset($_POST['Status']) ? "checked" : ($view_data['model']['Status'] == true ? "checked" : "") ?> type="checkbox" name="Status" value="1" />
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-2">Số thứ tự</td>
+                                        <td>
+                                           <input style="width:200px" type="number" step="1" min="1" class="form-control" name="SortOrder" value="<?= isset($_POST['SortOrder']) ? $_POST['SortOrder'] : "" ?>" />
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td class="col-md-2">Sửa hình</td>
                                         <td>
                                             <input type="file" name="file" />
@@ -162,12 +181,8 @@
                                             <textarea id="Advantages" name="Advantages"><?= isset($_POST['Advantages']) ? $_POST['Advantages'] : $view_data['model']['Advantages']   ?></textarea>
                                         </td>
                                     </tr>
-                                                                
-                                    <tr>
-                                        <td class="col-md-2">Trạng thái</td>
-                                        <td>
-                                            <input  <?= isset($_POST['Status']) ? "checked" : ($view_data['model']['Status'] == true ? "checked" : "") ?> type="checkbox" name="Status" value="1" />
-                                    </tr>
+
+    
 
                                     <tr>
                                         <td class="col-md-2">Seo Title</td>

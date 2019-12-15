@@ -12,14 +12,16 @@
       <div class="col-xs-12">
          <div class="box">
             <div class="box-body">
-               <div>
+               <p>
                   <a class="btn btn-primary btn-xs" href="<?= base_url_admin ?>/new/create">Viết bài mới</a>
-               </div>
+               </p>
                <?php include_once 'view/shared/_errors.php'; ?>
                <div class="table-responsive">
                   <table id="tblData" class="table table-bordered" method="post">
                   <thead>
                      <tr>
+                        <th class="hidden">Mã số</th>
+                        <th>Hình ảnh</th>
                         <th>Tiêu đề</th>
                         <th>Mô tả</th>
                         <th class="text-center">Trạng thái</th>
@@ -30,6 +32,10 @@
                   <tbody>
                      <?php foreach($view_data['model'] as $item) { ?>
                      <tr>
+                        <td class="hidden"><?= $item['Id'] ?></td>
+                        <td class="text-center">
+                           <img width="120" height="auto" src="<?= base_url ?>/images/news/<?= $item['Image'] ?>" />
+                        </td>
                         <td>
                            <a target="_blank" href="<?=base_url?>/tin-tuc/<?= $item['Alias'] ?>.html"><?= $item['Title'] ?></a>
                         </td>

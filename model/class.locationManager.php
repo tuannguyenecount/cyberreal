@@ -45,6 +45,22 @@ class LocationManager {
         return $database_Model->Execute($tsql, $params);
     }
 
+    // public function setHOTDistrict($Id)
+    // {
+    //     $tsql = "UPDATE `district` SET `HOT` = 0; UPDATE `district` SET `HOT` = 1 WHERE id = ? ";
+    //     $params = array($Id);
+    //     $database_Model = new Database();
+    //     return $database_Model->Execute($tsql, $params);
+    // }
+
+    // public function unsetHOTDistrict($Id)
+    // {
+    //     $tsql = "UPDATE `district` SET `HOT` = 0 WHERE id = ? ";
+    //     $params = array($Id);
+    //     $database_Model = new Database();
+    //     return $database_Model->Execute($tsql, $params);
+    // }
+
     public function GetDistrictByAlias($alias) {
         
         $districts = $this->GetDistrictsByProvince(1);

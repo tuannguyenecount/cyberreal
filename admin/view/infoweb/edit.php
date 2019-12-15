@@ -82,6 +82,13 @@
                             </div>
 
                             <div class="form-group">
+                                <label class = "control-label col-md-3">Tên vị trí đang HOT</label>
+                                <div class="col-md-7">
+                                    <input type="text" class="form-control" name="ViTriDangHot" value="<?= $view_data['model']['ViTriDangHot'] ?>" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class = "control-label col-md-3">SEO Title</label>
                                 <div class="col-md-7">
                                     <input type="text" class="form-control" name="SeoTitle" value="<?= $view_data['model']['SeoTitle'] ?>" />

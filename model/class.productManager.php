@@ -104,10 +104,23 @@ class ProductManager
                     LEFT JOIN ward D ON A.Ward = D.id AND D._district_id = C.id
                     LEFT JOIN direction F ON A.Direction = F.Id 
                     WHERE A.Status = 1 AND A.District = ?
-                    ORDER BY A.Id desc LIMIT $skip, $take"; 
+                    ORDER BY A.SortOrder ASC, A.Id DESC LIMIT $skip, $take"; 
         $params = array($districtId);
         $database_Model = new Database();
         return $database_Model->GetList($tsql, $params);
+    }
+    public function GetProductsHot()
+    {
+        $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, CONCAT(C._prefix,' ', C._name) AS DistrictName, CONCAT(D._prefix ,' ',D._name) AS WardName, F.Name As DirectionName
+                    FROM product A LEFT JOIN category B  
+                    ON A.CategoryId = B.Id
+                    LEFT JOIN district C ON A.District = C.id AND C._province_id = 1
+                    LEFT JOIN ward D ON A.Ward = D.id AND D._district_id = C.id
+                    LEFT JOIN direction F ON A.Direction = F.Id 
+                    WHERE A.Status = 1 AND A.HOT = 1
+                    ORDER BY A.SortOrder ASC, A.Id DESC LIMIT 0, 6"; 
+        $database_Model = new Database();
+        return $database_Model->GetList($tsql);
     }
     public function CountProductsShowByDistrict($districtId)
     {
@@ -196,7 +209,7 @@ class ProductManager
 	public function GetById($id)
 	{
         $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, CONCAT(C._prefix,' ', C._name) AS DistrictName, CONCAT(D._prefix ,' ',D._name) AS WardName, F.Name As DirectionName
-                    FROM product A INNER JOIN category B  
+                    FROM product A LEFT JOIN category B  
                     ON A.CategoryId = B.Id
                     LEFT JOIN district C ON A.District = C.id AND C._province_id = 1
                     LEFT JOIN ward D ON A.Ward = D.id AND D._district_id = C.id
@@ -212,7 +225,7 @@ class ProductManager
 	public function GetByAlias($alias)
 	{
         $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, CONCAT(C._prefix,' ', C._name) AS DistrictName, CONCAT(D._prefix ,' ',D._name) AS WardName, F.Name As DirectionName
-                    FROM product A INNER JOIN category B  
+                    FROM product A LEFT JOIN category B  
                     ON A.CategoryId = B.Id
                     LEFT JOIN district C ON A.District = C.id AND C._province_id = 1
                     LEFT JOIN ward D ON A.Ward = D.id AND D._district_id = C.id
@@ -261,23 +274,44 @@ class ProductManager
 	    return (int)$database_Model->ExecuteScalar($tsql, $params) > 0;
 	}
 
+    public function AddTemp($Name)
+    {
+        $tsql = "INSERT INTO product(Name) VALUES (?)";
+        $database_Model = new Database();
+        $params = array($Name);
+        return $database_Model->Execute($tsql, $params);
+    }
+
 	public function Add($model)
 	{
-        $tsql ="INSERT INTO product(Name,CategoryId,Area,Direction,Rank,Address,Province,District,Ward,Street,GeneralInformation,Location,Structure,ServiceCharge,Advantages,Price,Image,Alias,Status,UserCreated, SeoTitle, SeoDescription, SeoKeyword)
-                VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";   
+        $tsql ="INSERT INTO product(Name,CategoryId,Area,Direction,Rank,Address,Province,District,Ward,Street,GeneralInformation,Location,Structure,ServiceCharge,Advantages,Price,Image,Alias,Status,UserCreated, SortOrder, HOT, SeoTitle, SeoDescription, SeoKeyword)
+                VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";   
 
-        $params = array($model['Name'], $model['CategoryId'], $model['Area'], $model['Direction'], $model['Rank'], $model['Address'], $model['Province'], $model['District'], $model['Ward'], $model['Street'], $model['GeneralInformation'], $model['Location'], $model['Structure'], $model['ServiceCharge'], $model['Advantages'], $model['Price'], $model['Image'] , $model['Alias'], $model['Status'], $model['UserCreated'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword']);
+        $params = array($model['Name'], $model['CategoryId'], $model['Area'], $model['Direction'], $model['Rank'], $model['Address'], $model['Province'], $model['District'], $model['Ward'], $model['Street'], $model['GeneralInformation'], $model['Location'], $model['Structure'], $model['ServiceCharge'], $model['Advantages'], $model['Price'], $model['Image'] , $model['Alias'], $model['Status'], $model['UserCreated'], $model['SortOrder'], $model['HOT'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword']);
 
         $database_Model = new Database();
 	    return $database_Model->Execute($tsql, $params);
 	}
 
+    public function GetByName($Name)
+    {
+        $tsql = "SELECT * from product WHERE Name = ? ";
+        $database_Model = new Database();
+        $params = array($Name);
+        $rows = $database_Model->GetList($tsql, $params);
+        if(count($rows) > 0)
+        {
+            return $rows[0];
+        }
+        return null;
+    }
+
 	public function Edit($model)
 	{
 
-        $tsql = "UPDATE `product` SET `Name`= ?,`CategoryId`=?,`Area`=?,`Direction`=?,`Rank`=?,`Address`=?,`Province`=?,`District`=?,`Ward`=?,`Street`=?,`GeneralInformation`=?,`Location`=?,`Structure`=?,`ServiceCharge`=?,`Advantages`=?, `Price`=?,`Image`=?,`Alias`=?,`Status`=?, `SeoTitle` = ?, `SeoDescription` = ?, `SeoKeyword` = ? WHERE `Id` = ? ";   
+        $tsql = "UPDATE `product` SET `Name`= ?,`CategoryId`=?,`Area`=?,`Direction`=?,`Rank`=?,`Address`=?,`Province`=?,`District`=?,`Ward`=?,`Street`=?,`GeneralInformation`=?,`Location`=?,`Structure`=?,`ServiceCharge`=?,`Advantages`=?, `Price`=?,`Image`=?,`Alias`=?,`Status`=?,`SortOrder`=?,`HOT`=?, `SeoTitle` = ?, `SeoDescription` = ?, `SeoKeyword` = ? WHERE `Id` = ? ";   
 
-        $params =  array($model['Name'], $model['CategoryId'], $model['Area'], $model['Direction'], $model['Rank'], $model['Address'], $model['Province'], $model['District'], $model['Ward'], $model['Street'], $model['GeneralInformation'], $model['Location'], $model['Structure'], $model['ServiceCharge'], $model['Advantages'], $model['Price'], $model['Image'] , $model['Alias'], $model['Status'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword'], $model['Id']);
+        $params =  array($model['Name'], $model['CategoryId'], $model['Area'], $model['Direction'], $model['Rank'], $model['Address'], $model['Province'], $model['District'], $model['Ward'], $model['Street'], $model['GeneralInformation'], $model['Location'], $model['Structure'], $model['ServiceCharge'], $model['Advantages'], $model['Price'], $model['Image'] , $model['Alias'], $model['Status'], $model['SortOrder'], $model['HOT'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword'], $model['Id']);
 
         $database_Model = new Database();
 	    $result = $database_Model->Execute($tsql, $params);
