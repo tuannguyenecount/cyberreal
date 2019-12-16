@@ -113,7 +113,7 @@
                     <div class="row">
                         <div class="col text-center">
                             <div class="btn-frame">
-                                <a data-scroll href="#top" class="btn btn-success btn-ico btn-lg btn-rounded"><i class="fa fa-arrow-up"></i></a>
+                                <a data-scroll href="#top" class="btn btn-primary btn-ico btn-lg btn-rounded"><i class="fa fa-arrow-up"></i></a>
                             </div>
                         </div>
                     </div>

@@ -12,7 +12,7 @@
       $view_data['view_name'] = "mailbox/index.php";	
       $view_data['section_styles'] = "mailbox/style_index.php";
       $view_data['section_scripts'] = "mailbox/script_index.php";
-      $view_data['model'] = $mailBoxManager->GetList($_SESSION['UserLogged']['UserName']);
+      $view_data['model'] = $mailBoxManager->GetListContact($_SESSION['UserLogged']['UserName']);
       break;
   	}
   	case "delete":

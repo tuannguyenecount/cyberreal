@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4 col-lg-2 text-center pb-1">
-                                <button type="submit" class="btn btn-block btn-success text-uppercase">Tìm kiếm</button>
+                                <button type="submit" class="btn btn-block btn-primary text-uppercase">Tìm kiếm</button>
                                 <a class="form-text text-muted small d-block" href="#search-advance">Tìm kiếm nâng cao</a>
                             </div>
                         </div>

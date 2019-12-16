@@ -43,13 +43,13 @@
             if(isset($_POST['Name']))
             {
                 $view_data['errors'] = $mailBoxManager->GetErrorsMessage($_POST);
-                // if(CheckRecaptchav2() == false)
-                // {
-                //     $view_data['errors'][] = "Mã xác nhận không đúng!";
-                // }
+                if(CheckRecaptchav2() == false)
+                {
+                    $view_data['errors'][] = "Mã xác nhận không đúng!";
+                }
                 if(count($view_data['errors']) == 0)
                 {
-                    $result = $mailBoxManager->Add($_POST);
+                    $result = $mailBoxManager->AddContact($_POST);
                     if($result)
                     {
                         // try 

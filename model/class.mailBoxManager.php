@@ -2,11 +2,12 @@
 
 class MailBoxManager {
 
-    public function GetList($UserName) {        
+    public function GetListContact($UserName) {        
         $tsql = "SELECT A.*, IFNULL(B.MailBoxId, 0) AS IsConfirm   
                 FROM mailbox A
                 LEFT JOIN confirmmailbox B 
                 ON A.Id = B.MailBoxId AND B.UserName = ?
+                WHERE A.TenForm = 'Liên hệ'
                 ORDER BY IFNULL(B.MailBoxId, 0) ASC, A.Id Desc";
         $params = array($UserName);
         $database_Model = new Database();
@@ -14,10 +15,10 @@ class MailBoxManager {
     }
 
 
-    public function Add($model) {
+    public function AddContact($model) {
         $tsql = "INSERT INTO mailbox
-                (Name, Email, Phone, Content)
-                VALUES(?, ?, ?, ?) ";
+                (Name, Email, Phone, Content, TenForm)
+                VALUES(?, ?, ?, ?, 'Liên hệ') ";
 
         $params = array($model['Name'], $model['Email'], $model['Phone'], $model['Content']);
         $database_Model = new Database();

@@ -99,7 +99,7 @@
                 </div>
               <?php } ?>
                <div class="controls my-3">
-                  <a class="btn btn-success btn-lg d-block d-lg-inline-block" href="<?= base_url ?>/product/select/<?= $view_data['model']['Id'] ?>" data-toggle="modal" data-target="#global"><i class="fas fa-business-time"></i> Chọn đi xem</a></a>                        
+                  <a class="btn btn-primary btn-lg d-block d-lg-inline-block" href="<?= base_url ?>/product/select/<?= $view_data['model']['Id'] ?>" data-toggle="modal" data-target="#global"><i class="fas fa-business-time"></i> Chọn đi xem</a></a>                        
                </div>
             </div>
          </div>
@@ -128,7 +128,7 @@
             </ul>
          </section>
          <div class="row mb-4">
-            <div class="col-lg-9">
+            <div class="col-md-8">
                <section class="bordered stacked p-3 office-detail">
                   <div class="tab-content" id="pills-tabContent">
                      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
@@ -158,8 +158,35 @@
                   </div>
                </section>
             </div>
-            <div class="col-lg-3" id="filter-container">
+           <!--  <div class="col-lg-3" id="filter-container">
                
+            </div> -->
+            <div class="col-md-4" >
+              <div  id="formhotro">
+                <div class="well" >
+                  <h5>Mr. Thế Thắng</h5>
+                  <p>Phòng kinh doanh</p>
+                </div>
+                <div>
+                  <p>Chúng tôi luôn sẵn sàng giải đáp cho bạn vì chúng tôi hoạt động 24/7.</p>
+                </div>
+                <p class="margin-top-10">
+                  <a class="buttonLienHe steelblue expand"><i class="icon-phone"></i>  <span><?= $_SESSION['InfoWeb']['Phone'] ?></span></a>
+                  <p class="text-center">Hoặc</p>
+                  <p>
+                    <a href="#" class="btn btn-info expand border-radius-none">Đăng ký xem nhà mẫu</a>
+                  </p>
+                  <p>
+                    <a href="#" class="btn btn-info expand border-radius-none">Đăng ký nhận bảng giá</a>
+                  </p>
+                  <p>
+                    <a href="#" class="btn btn-info expand border-radius-none">Hỏi thêm thông tin</a>
+                  </p>
+                  
+                </p>
+              </div>  
+              <div>&nbsp;</div>        
+              <div id="filter-container"></div>    
             </div>
          </div>
       </div>

@@ -2414,29 +2414,10 @@ fieldset:disabled a.btn {
     box-shadow: 0 0 0 0 rgba(133, 133, 133, .5)
 }
 
-.btn-success {
-    color: #fff;
-    background-color: #3162ad;
-    border-color: #3162ad
-}
-
-.btn-success:hover {
-    color: #fff;
-    background-color: #218838;
-    border-color: #1e7e34
-}
-
-.btn-success:focus,
-.btn-success.focus {
-    box-shadow: 0 0 0 0 rgba(72, 180, 97, .5)
-}
-
-.btn-success.disabled,
-.btn-success:disabled {
-    color: #fff;
-    background-color: #3162ad;
-    border-color: #3162ad
-}
+.btn-success{color:#fff;background-color:#28a745;border-color:#28a745}
+.btn-success:hover{color:#fff;background-color:#218838;border-color:#1e7e34}
+.btn-success:focus,.btn-success.focus{box-shadow:0 0 0 0 rgba(72,180,97,.5)}
+.btn-success.disabled,.btn-success:disabled{color:#fff;background-color:#28a745;border-color:#28a745}
 
 .btn-success:not(:disabled):not(.disabled):active,
 .btn-success:not(:disabled):not(.disabled).active,
@@ -30122,7 +30103,7 @@ header#main .logo img {
 }
 
 .office .figure-caption {
-    border-color: #4cae4c;
+    border-color: #204071;
     background-color: #3162ad;
     color: #fff;
     font-weight: 700
