@@ -192,3 +192,15 @@
       </div>
    </section>
 </div>
+
+<button type="button" class="btn" data-toggle="modal" data-target="#modal-example">Open Modal</button>
+
+<div id="modal-example" class="fade modal" role="dialog">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-body">
+              <p>Modal Content</p>
+            </div>
+        </div>
+    </div>
+</div>

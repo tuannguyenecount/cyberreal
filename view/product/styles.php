@@ -1,4 +1,5 @@
 <link href="<?= base_url ?>/js/slick/slick.css" rel="stylesheet">
+<link href="<?= base_url ?>/css/modelo.css" rel="stylesheet">
 <style>
 	#formhotro{
 		padding:15px 20px 15px;background-color:#fff;border:1px solid #ddd;box-shadow:2px 2px 10px 0 rgba(0,0,0,0.05)
