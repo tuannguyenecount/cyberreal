@@ -18,9 +18,9 @@ class MailBoxManager {
     public function AddContact($model) {
         $tsql = "INSERT INTO mailbox
                 (Name, Email, Phone, Content, TenForm)
-                VALUES(?, ?, ?, ?, 'Liên hệ') ";
+                VALUES(?, ?, ?, ?, ?) ";
 
-        $params = array($model['Name'], $model['Email'], $model['Phone'], $model['Content']);
+        $params = array($model['Name'], $model['Email'], $model['Phone'], $model['Content'], $model['TenForm']);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);
     }

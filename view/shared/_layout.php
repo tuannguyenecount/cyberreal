@@ -253,125 +253,124 @@
 
 
                     </div>
-
                 </div>
             </div>
         </div>
         <div id="bangtin"></div> 
 
-        </body>
-        <script src="<?= base_url ?>/js/vendor.min.js"></script>
-        <script src="<?= base_url ?>/assets/a98fcf71/yii.js"></script>
-        <script src="<?= base_url ?>/js/slideout.min.js"></script>
-        <script src="<?= base_url ?>/js/app.min.js"></script>
-        <script src="<?= base_url ?>/assets/fc340a4a/js/kv-widgets.min.js"></script>
-        <script src="<?= base_url ?>/assets/a1ef791c/js/dependent-dropdown.min.js"></script>
-        <script src="<?= base_url ?>/assets/eaef8c08/js/depdrop.min.js"></script>
-        <script src="<?= base_url ?>/js/common.js"></script>
-        <script>
-            $(function () {
-                $('[data-toggle="tooltip"]').tooltip();
-                $('#Street').select2({
-                    theme: "flat",
-                });
-                if($("#search") != undefined)
-                {
-                    $.ajax({
-                        url : "<?= base_url ?>/shared/_searchPartial",
-                        method: "Post",
-                        success: function(result){
-                            $("#search").html(result);
-                        }
-                    });
-                }
-
+    </body>
+    <script src="<?= base_url ?>/js/vendor.min.js"></script>
+    <script src="<?= base_url ?>/assets/a98fcf71/yii.js"></script>
+    <script src="<?= base_url ?>/js/slideout.min.js"></script>
+    <script src="<?= base_url ?>/js/app.min.js"></script>
+    <script src="<?= base_url ?>/assets/fc340a4a/js/kv-widgets.min.js"></script>
+    <script src="<?= base_url ?>/assets/a1ef791c/js/dependent-dropdown.min.js"></script>
+    <script src="<?= base_url ?>/assets/eaef8c08/js/depdrop.min.js"></script>
+    <script src="<?= base_url ?>/js/common.js"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+            $('#Street').select2({
+                theme: "flat",
+            });
+            if($("#search") != undefined)
+            {
                 $.ajax({
-                    url : "<?= base_url ?>/shared/navbar",
+                    url : "<?= base_url ?>/shared/_searchPartial",
                     method: "Post",
                     success: function(result){
-                        $("#nav-container").html(result);
+                        $("#search").html(result);
+                    }
+                });
+            }
+
+            $.ajax({
+                url : "<?= base_url ?>/shared/navbar",
+                method: "Post",
+                success: function(result){
+                    $("#nav-container").html(result);
+                }
+            });
+
+            if($("#filter-container") != undefined)
+            {
+                $.ajax({
+                    url : "<?= base_url ?>/shared/filters",
+                    method: "Post",
+                    success: function(result){
+                        $("#filter-container").html(result);
+                    }
+                });
+            }
+
+            $("#global").on("show.bs.modal", function(e) {
+                var link = $(e.relatedTarget);
+                $(this).find(".modal-body").load(link.attr("href"));
+            });
+
+            $(document).on("change","#Province", function(e){
+                e.preventDefault();
+                $.ajax({
+                    cache: true,
+                    url: "<?= base_url ?>/location/GetDistrictsByProvince",
+                    method: "Post",
+                    data: { Province : $(this).val(), dataSelected : $("#District").attr("data-selected"), showValueAll: 1 },
+                    beforeSend: function(){
+                        $("#District").html("");
+                    },
+                    success: function(result){
+                        $("#District").html(result);
+                        $("#District").change().bind();
+                    }
+                })
+            });
+
+            $(document).on("change","#District", function(e){
+                e.preventDefault();
+                $.ajax({
+                    cache: true,
+                    url: "<?= base_url ?>/location/GetWardsByDistrict",
+                    method: "Post",
+                    data: { District : $(this).val(), dataSelected : $("#Ward").attr("data-selected"), showValueAll: 1 },
+                    beforeSend: function(){
+                        $("#Ward").html("");
+                    },
+                    success: function(result){
+                        $("#Ward").html(result);
+                        $("#Ward").change().bind();
                     }
                 });
 
-                if($("#filter-container") != undefined)
-                {
-                    $.ajax({
-                        url : "<?= base_url ?>/shared/filters",
-                        method: "Post",
-                        success: function(result){
-                            $("#filter-container").html(result);
-                        }
-                    });
-                }
-
-                $("#global").on("show.bs.modal", function(e) {
-                    var link = $(e.relatedTarget);
-                    $(this).find(".modal-body").load(link.attr("href"));
+                $.ajax({
+                    cache: true,
+                    url: "<?= base_url ?>/location/GetStreetsByDistrict",
+                    method: "Post",
+                    data: { District : $(this).val(), dataSelected : $("#Street").attr("data-selected"), showValueAll: 1 },
+                    beforeSend: function(){
+                        $("#Street").html("");
+                    },
+                    success: function(result){
+                        $("#Street").html(result);
+                    }
                 });
-
-                $(document).on("change","#Province", function(e){
-                    e.preventDefault();
-                    $.ajax({
-                        cache: true,
-                        url: "<?= base_url ?>/location/GetDistrictsByProvince",
-                        method: "Post",
-                        data: { Province : $(this).val(), dataSelected : $("#District").attr("data-selected"), showValueAll: 1 },
-                        beforeSend: function(){
-                            $("#District").html("");
-                        },
-                        success: function(result){
-                            $("#District").html(result);
-                            $("#District").change().bind();
-                        }
-                    })
-                });
-
-                $(document).on("change","#District", function(e){
-                    e.preventDefault();
-                    $.ajax({
-                        cache: true,
-                        url: "<?= base_url ?>/location/GetWardsByDistrict",
-                        method: "Post",
-                        data: { District : $(this).val(), dataSelected : $("#Ward").attr("data-selected"), showValueAll: 1 },
-                        beforeSend: function(){
-                            $("#Ward").html("");
-                        },
-                        success: function(result){
-                            $("#Ward").html(result);
-                            $("#Ward").change().bind();
-                        }
-                    });
-
-                    $.ajax({
-                        cache: true,
-                        url: "<?= base_url ?>/location/GetStreetsByDistrict",
-                        method: "Post",
-                        data: { District : $(this).val(), dataSelected : $("#Street").attr("data-selected"), showValueAll: 1 },
-                        beforeSend: function(){
-                            $("#Street").html("");
-                        },
-                        success: function(result){
-                            $("#Street").html(result);
-                        }
-                    });
-                });
-
             });
-        </script> 
-        <script>
-            $(document).ready(function () {
-                if (sessionStorage.getItem('ShowPopUp') === null) {
-                    sessionStorage.setItem('ShowPopUp', "yes");
-                }
-                if (sessionStorage.getItem('ShowPopUp') == "yes") {
-                    $.post('<?=base_url?>/home/showpopup', function (result) { $("#bangtin").html(result); });
-                } 
-            });
-        </script>
-        <?php
-        if (isset($view_data['section_scripts'])) {
-            include 'view/' . $view_data['section_scripts'];
-        }
-        ?>
+
+        });
+    </script> 
+    <script>
+        $(document).ready(function () {
+            if (sessionStorage.getItem('ShowPopUp') === null) {
+                sessionStorage.setItem('ShowPopUp', "yes");
+            }
+            if (sessionStorage.getItem('ShowPopUp') == "yes") {
+                $.post('<?=base_url?>/home/showpopup', function (result) { $("#bangtin").html(result); });
+            } 
+        });
+    </script>
+    <?php
+    if (isset($view_data['section_scripts'])) {
+        include 'view/' . $view_data['section_scripts'];
+    }
+    ?>
 </html>
 

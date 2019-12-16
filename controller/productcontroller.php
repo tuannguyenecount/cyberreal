@@ -120,6 +120,21 @@
             include 'partial/messageSaved.php';
             exit();
         }
+        case "dangkyxemnhamau":
+        {
+            include 'partial/dangkyxemnhamau.php';
+            exit();
+        }
+        case "dangkynhanbanggia":
+        {
+            include 'partial/dangkynhanbanggia.php';
+            exit();
+        }
+        case "hoithemthongtin":
+        {
+            include 'partial/hoithemthongtin.php';
+            exit();
+        }
 
     }
 

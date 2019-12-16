@@ -49,6 +49,7 @@
                 }
                 if(count($view_data['errors']) == 0)
                 {
+                    $_POST['TenForm'] = "Liên hệ";
                     $result = $mailBoxManager->AddContact($_POST);
                     if($result)
                     {

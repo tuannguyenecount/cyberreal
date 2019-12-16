@@ -1,6 +1,5 @@
 <script src="<?= base_url ?>/js/slick/slick.js"></script>
 <script src="<?= base_url ?>/js/slideout.min.js"></script>
-<script src="<?= base_url ?>/js/modelo.js"></script>
 <script>
     jQuery(function ($) {
 
@@ -17,8 +16,5 @@
         infinite: true,
         focusOnSelect: true,
         variableWidth: true,
-    });
-    $('#modal-example').modelo({
-      maxWidth: 500 // default: 600
     });
 });</script>

@@ -174,13 +174,13 @@
                   <a class="buttonLienHe steelblue expand"><i class="icon-phone"></i>  <span><?= $_SESSION['InfoWeb']['Phone'] ?></span></a>
                   <p class="text-center">Hoặc</p>
                   <p>
-                    <a href="#" class="btn btn-info expand border-radius-none">Đăng ký xem nhà mẫu</a>
+                    <a href="<?= base_url ?>/product/dangkyxemnhamau" data-toggle="modal" data-target="#global" class="btn btn-danger expand border-radius-none">Đăng ký xem nhà mẫu</a>
                   </p>
                   <p>
-                    <a href="#" class="btn btn-info expand border-radius-none">Đăng ký nhận bảng giá</a>
+                    <a href="<?= base_url ?>/product/dangkynhanbanggia" data-toggle="modal" data-target="#global" class="btn btn-danger expand border-radius-none">Đăng ký nhận bảng giá</a>
                   </p>
                   <p>
-                    <a href="#" class="btn btn-info expand border-radius-none">Hỏi thêm thông tin</a>
+                    <a href="<?= base_url ?>/product/hoithemthongtin" data-toggle="modal" data-target="#global" class="btn btn-danger expand border-radius-none">Hỏi thêm thông tin</a>
                   </p>
                   
                 </p>
@@ -193,14 +193,3 @@
    </section>
 </div>
 
-<button type="button" class="btn" data-toggle="modal" data-target="#modal-example">Open Modal</button>
-
-<div id="modal-example" class="fade modal" role="dialog">
-    <div class="modal-dialog ">
-        <div class="modal-content">
-            <div class="modal-body">
-              <p>Modal Content</p>
-            </div>
-        </div>
-    </div>
-</div>
