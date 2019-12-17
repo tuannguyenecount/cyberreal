@@ -2,25 +2,25 @@
 
 class MailBoxManager {
 
-    public function GetListContact($UserName) {        
+    public function GetList($UserName, $TenForm) {        
         $tsql = "SELECT A.*, IFNULL(B.MailBoxId, 0) AS IsConfirm   
                 FROM mailbox A
                 LEFT JOIN confirmmailbox B 
                 ON A.Id = B.MailBoxId AND B.UserName = ?
-                WHERE A.TenForm = 'Liên hệ'
+                WHERE A.TenForm = ?
                 ORDER BY IFNULL(B.MailBoxId, 0) ASC, A.Id Desc";
-        $params = array($UserName);
+        $params = array($UserName, $TenForm);
         $database_Model = new Database();
         return $database_Model->GetList($tsql, $params);
     }
 
 
-    public function AddContact($model) {
+    public function Add($model) {
         $tsql = "INSERT INTO mailbox
-                (Name, Email, Phone, Content, TenForm)
-                VALUES(?, ?, ?, ?, ?) ";
+                (Name, Email, Phone, Content, TenForm, DuAnQuanTam, Link, NhanBaoGiaChiTiet, NhanPhanTichDuAn)
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 
-        $params = array($model['Name'], $model['Email'], $model['Phone'], $model['Content'], $model['TenForm']);
+        $params = array($model['Name'], $model['Email'], $model['Phone'], $model['Content'], $model['TenForm'], $model['DuAnQuanTam'], $model['Link'], $model['NhanBaoGiaChiTiet'], $model['NhanPhanTichDuAn']);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);
     }
@@ -66,9 +66,7 @@ class MailBoxManager {
         if (empty($model['Phone'])) {
             $errors[] = "Điện thoại không được để trống.";
         }
-        if (empty($model['Content'])) {
-            $errors[] = "Lời nhắn không được để trống..";
-        }
+      
         return $errors;
     }
 

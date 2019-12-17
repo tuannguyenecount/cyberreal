@@ -47,10 +47,18 @@
                 {
                     $view_data['errors'][] = "Mã xác nhận không đúng!";
                 }
+                else if(empty($_POST['Content']))
+                {
+                    $view_data['errors'][] = "Lời nhắn không được để trống!";
+                }
                 if(count($view_data['errors']) == 0)
                 {
                     $_POST['TenForm'] = "Liên hệ";
-                    $result = $mailBoxManager->AddContact($_POST);
+                    $_POST['DuAnQuanTam'] = null;
+                    $_POST['Link'] = null;
+                    $_POST['NhanBaoGiaChiTiet'] = false;
+                    $_POST['NhanPhanTichDuAn'] = false;
+                    $result = $mailBoxManager->Add($_POST);
                     if($result)
                     {
                         // try 
@@ -113,5 +121,111 @@
             include 'partial/_popup.php';
             exit();
         }
+
+        case "dangkyxemnhamau":
+        {
+            if(isset($_POST['Name']))
+            {
+                $_POST['TenForm'] = "Đăng ký nhà xem mẫu";   
+                $productObj = $productManager->GetById($_GET['id']);             
+                $_POST['DuAnQuanTam'] = $productObj['Name'];
+                $_POST['Link'] = base_url."/".$productObj['CategoryAlias']."/".$productObj['Alias'].".html";
+                $_POST['NhanBaoGiaChiTiet'] = false;
+                $_POST['NhanPhanTichDuAn'] = false;
+                $_POST['Content'] = null;
+                $view_data['errors'] = $mailBoxManager->GetErrorsMessage($_POST);
+                if(count($view_data['errors']) == 0)
+                {
+                    $result = $mailBoxManager->Add($_POST);
+                    if($result)
+                    {
+                        echo "1";
+                    }
+                    else 
+                    {
+                        echo "Đã có lỗi xảy lỗi.";
+                    }
+                }
+                else 
+                {
+                    echo ConvertListErrorToString($view_data['errors']);
+                }  
+            }
+            else 
+            {
+                include 'partial/dangkyxemnhamau.php';
+            }
+            exit();
+        }
+        case "dangkynhanbanggia":
+        {
+            if(isset($_POST['Name']))
+            {
+                $_POST['TenForm'] = "Đăng ký nhận bảng giá";   
+                $productObj = $productManager->GetById($_GET['id']);             
+                $_POST['DuAnQuanTam'] = $productObj['Name'];
+                $_POST['Link'] = base_url."/".$productObj['CategoryAlias']."/".$productObj['Alias'].".html";
+                $_POST['NhanBaoGiaChiTiet'] = isset($_POST['NhanBaoGiaChiTiet']);
+                $_POST['NhanPhanTichDuAn'] = isset($_POST['NhanPhanTichDuAn']);
+                $_POST['Content'] = null;
+                $view_data['errors'] = $mailBoxManager->GetErrorsMessage($_POST);
+                if(count($view_data['errors']) == 0)
+                {
+                    $result = $mailBoxManager->Add($_POST);
+                    if($result)
+                    {
+                        echo "1";
+                    }
+                    else 
+                    {
+                        echo "Đã có lỗi xảy lỗi.";
+                    }
+                }   
+                else 
+                {
+                    echo ConvertListErrorToString($view_data['errors']);
+                }      
+            }
+            else 
+            {
+                include 'partial/dangkynhanbanggia.php';
+            }           
+            exit();
+        }
+        case "hoithemthongtin":
+        {
+            if(isset($_POST['Name']))
+            {
+                $_POST['TenForm'] = "Hỏi thêm thông tin";   
+                $productObj = $productManager->GetById($_GET['id']);             
+                $_POST['DuAnQuanTam'] = $productObj['Name'];
+                $_POST['Link'] = base_url."/".$productObj['CategoryAlias']."/".$productObj['Alias'].".html";
+                $_POST['NhanBaoGiaChiTiet'] = false;
+                $_POST['NhanPhanTichDuAn'] = false;
+                $view_data['errors'] = $mailBoxManager->GetErrorsMessage($_POST);
+                if(count($view_data['errors']) == 0)
+                {
+                    $result = $mailBoxManager->Add($_POST);
+                    if($result)
+                    {
+                        echo "1";
+                    }
+                    else 
+                    {
+                        echo "Đã có lỗi xảy lỗi.";
+                    }
+                }   
+                else 
+                {
+                    echo ConvertListErrorToString($view_data['errors']);
+                }      
+            }
+            else 
+            {
+                include 'partial/hoithemthongtin.php';
+            }
+            exit();
+        }
+
     }
 
