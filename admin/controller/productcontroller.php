@@ -42,7 +42,7 @@
       $ticks = (string)$mt*10; //100 Nanosecs
       $Name = "Tên dự án mới ".$ticks;
       $productManager->AddTemp($Name);
-      $product  = $productManager->GetByName($Name);
+      $product  = $productManager->GetByName($Name, $_SESSION['UserLogged']['UserName']);
       header("Location: ".base_url_admin."/product/edit/".$product['Id']);
       break;
     }

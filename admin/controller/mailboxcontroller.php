@@ -42,15 +42,6 @@
       $view_data['model'] = $mailBoxManager->GetList($_SESSION['UserLogged']['UserName'], "Hỏi thêm thông tin");
       break;
     }
-    case "index":
-    {
-      $view_data['title'] = "Hộp thư";
-      $view_data['view_name'] = "mailbox/index.php";  
-      $view_data['section_styles'] = "mailbox/style_index.php";
-      $view_data['section_scripts'] = "mailbox/script_index.php";
-      $view_data['model'] = $mailBoxManager->GetList($_SESSION['UserLogged']['UserName'], "Liên hệ");
-      break;
-    }
   	case "delete":
   	{
   		foreach($_POST['dsXoa'] as $Id)

@@ -8,6 +8,7 @@
     $userManager = new UserManager();
     $view_data = array();
     $view_data['errors'] = array();
+    
     if(isset($_POST['userlogin']) && isset($_POST['passlogin']))
     {
         if($_POST["userlogin"] != "" &&  $_POST["passlogin"] != "")

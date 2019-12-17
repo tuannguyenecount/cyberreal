@@ -37,95 +37,13 @@
       $view_data['directions'] = $directionManager->GetList();
       $view_data['fees'] = $feeManager->GetList();
       $view_data['section_scripts'] = "product/script_form.php";
-      if(isset($_POST['Name']))
-      {
-        try 
-        {  
-          $view_data['errors'] = $productManager->GetErrorsMessage($_POST, true, true);
-
-          if(!empty($_POST['Street']) && $locationManager->CheckExistStreetName($_POST['Street']) == false)
-          {
-            $view_data['errors'][] = "Tên đường này không tồn tại. Vui lòng kiểm tra và nhập lại cho đúng.";
-          }     
-
-          $_POST['Image'] = null;
-          if(isset($_FILES["file"]) && !empty($_FILES['file']['tmp_name'])) {
-              $check = getimagesize($_FILES["file"]["tmp_name"]);
-              if($check !== false)
-              {
-                $name = $_FILES["file"]["name"];
-                $ext = end((explode(".", $name))); # extra () to prevent notice
-                $_POST['Image'] = $_POST['Alias'].".".$ext;
-                $result = UploadImageFile(SITE_PATH."/images/products/".$_POST['Image']);
-                if($result != 1)
-                  $view_data['errors'][] = $result;
-              }
-          }
-
-          $_POST['UserCreated'] = $_SESSION['UserLogged']['UserName'];
-          $_POST['Status'] = 0;
-
-          if(count($view_data['errors']) == 0)
-          {
-            $result = $productManager->Add($_POST);
-
-            if($result)
-            {
-              if(isset($_FILES['files']) && count($_FILES["files"]['name']) > 0 && !empty($_FILES['files']['tmp_name'][0])) 
-              {
-                for($i = 0; $i < count($_FILES["files"]['name']); $i++)
-                {
-                  $check = getimagesize($_FILES["files"]["tmp_name"][$i]);
-                  if($check !== false)
-                  {
-                    $name = $_FILES["files"]["name"][$i];
-                    $ext = end((explode(".", $name))); # extra () to prevent notice
-                    $fileName = $_POST['Alias']."-".($i + 1).".".$ext;
-                    $result = UploadImageFileMultiple(SITE_PATH."/images/products/slides/".$fileName, "files", $i);
-                    if($result != 1)
-                    {
-                      $view_data['errors'][] = $result;
-                      break;
-                    } 
-                    else 
-                    {
-                      $productNew = $productManager->GetByAlias($_POST['Alias']);
-                      $imageProduct = array();
-                      $imageProduct['ProductId'] = $productNew['Id'];
-                      $imageProduct['Image'] =  $fileName;
-                      $imageProduct['OrderNum'] = $i + 1;
-                      $result = $productManager->AddImage($imageProduct);
-                      if($result == false)
-                      {
-                        $view_data['errors'][] = "Xảy ra lỗi khi lưu hình số ". ($i + 1);
-                        break;
-                      }
-                    }
-                  }
-                }
-              }
-
-              foreach($view_data['fees'] as $item)
-              {
-                if(isset($_POST['Fee'.$item['Id']]))
-                {
-                  $productNew = $productManager->GetByAlias($_POST['Alias']);
-                  $feeManager->AddFeeToProduct($productNew['Id'], $item['Id'], $_POST['Fee'.$item['Id']]);
-                }
-              }
-
-              header("Location: ".base_url_editor."/product"); 
-              exit();
-            }
-            else 
-              $view_data['errors'][] = "Đã có lỗi xảy ra";
-          }
-        }
-        catch(Exception $ex)
-        {
-          $view_data['errors'][] = $ex->getMessage();
-        }
-      } 
+      $mt = microtime(true);
+      $mt =  $mt*1000; //microsecs
+      $ticks = (string)$mt*10; //100 Nanosecs
+      $Name = "Tên dự án mới ".$ticks;
+      $productManager->AddTemp($Name, $_SESSION['UserLogged']['UserName']);
+      $product  = $productManager->GetByName($Name);
+      header("Location: ".base_url_editor."/product/edit/".$product['Id']);
       break;
     }
     case "details":

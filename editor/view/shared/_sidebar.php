@@ -66,6 +66,24 @@
         </li>
 
         <li>
+            <a href="<?= base_url_editor ?>/mailbox/dangkyxemnhamau">
+                <i class="fa fa-envelope"></i> <span>Đăng Ký Xem Nhà Mẫu</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="<?= base_url_editor ?>/mailbox/dangkynhanbanggia">
+                <i class="fa fa-envelope"></i> <span>Đăng Ký Nhận Bảng Giá</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="<?= base_url_editor ?>/mailbox/hoithemthongtin">
+                <i class="fa fa-envelope"></i> <span>Hỏi Thêm Thông Tin</span>
+            </a>
+        </li>
+
+        <li>
             <a href="<?=base_url_editor?>/user">
                 <i class="fa fa-users"></i> <span>Người Dùng</span>
             </a>

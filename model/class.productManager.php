@@ -274,11 +274,11 @@ class ProductManager
 	    return (int)$database_Model->ExecuteScalar($tsql, $params) > 0;
 	}
 
-    public function AddTemp($Name)
+    public function AddTemp($Name, $UserCreated)
     {
-        $tsql = "INSERT INTO product(Name) VALUES (?)";
+        $tsql = "INSERT INTO product(Name, UserCreated) VALUES (?,?)";
         $database_Model = new Database();
-        $params = array($Name);
+        $params = array($Name, $UserCreated);
         return $database_Model->Execute($tsql, $params);
     }
 
