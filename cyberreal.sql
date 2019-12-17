@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 17, 2019 at 04:56 AM
+-- Generation Time: Dec 17, 2019 at 09:28 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -1011,15 +1011,20 @@ CREATE TABLE IF NOT EXISTS `infoweb` (
   `ViTriDangHot` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
   `SeoTitle` varchar(512) COLLATE utf8_unicode_ci DEFAULT NULL,
   `SeoDescription` text COLLATE utf8_unicode_ci,
-  `SeoKeyword` varchar(512) COLLATE utf8_unicode_ci DEFAULT NULL
+  `SeoKeyword` varchar(512) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `OgTitle` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `OgDescription` text COLLATE utf8_unicode_ci,
+  `OgFacebookId` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `OgSiteName` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `OgImage` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `infoweb`
 --
 
-INSERT INTO `infoweb` (`WebName`, `Logo`, `Phone`, `Zalo`, `Email`, `Address`, `Fanpage`, `GoogleMap`, `CopyRight`, `ViTriDangHot`, `SeoTitle`, `SeoDescription`, `SeoKeyword`) VALUES
-('Căn Hộ 24/7', '15759046416685.png', '0932635602', '0932635602', 'diepanh@gmail.com', 'Địa chỉ: L18-11-13, Tầng 18, Vincom Center Đồng Khởi, 72 Lê, Phường Bến Nghé, Quận 1, Tp HCM', 'https://www.facebook.com/Vanphongchothue.cyberreal/', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3924.8838492318832!2d107.06429301411349!3d10.351171469730867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31756fb008ee5f6f%3A0x703dd926b22b1bba!2zSOG7kyBNw6J5IFBhcmsgVsWpbmcgVMOgdQ!5e0!3m2!1svi!2s!4v1575555913723!5m2!1svi!2s" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>', '© 2019 - CanHo247', 'Thủ Thiêm', 'Canho247', 'Văn phòng cho thuê quận Gò Vấp với gần 5 năm kinh nghiệm : ✅ Giá Rẻ nhất ✅ Báo Giá Nhanh ✅ Nhiều Diện Tích. Cyber Real - Chuyên văn phòng Quận Gò Vấp', 'can ho quan 1, can ho quan 2');
+INSERT INTO `infoweb` (`WebName`, `Logo`, `Phone`, `Zalo`, `Email`, `Address`, `Fanpage`, `GoogleMap`, `CopyRight`, `ViTriDangHot`, `SeoTitle`, `SeoDescription`, `SeoKeyword`, `OgTitle`, `OgDescription`, `OgFacebookId`, `OgSiteName`, `OgImage`) VALUES
+('Căn Hộ 24/7', '15759046416685.png', '0932635602', '0932635602', 'diepanh@gmail.com', 'Địa chỉ: L18-11-13, Tầng 18, Vincom Center Đồng Khởi, 72 Lê, Phường Bến Nghé, Quận 1, Tp HCM', 'https://www.facebook.com/Vanphongchothue.cyberreal/', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3924.8838492318832!2d107.06429301411349!3d10.351171469730867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31756fb008ee5f6f%3A0x703dd926b22b1bba!2zSOG7kyBNw6J5IFBhcmsgVsWpbmcgVMOgdQ!5e0!3m2!1svi!2s!4v1575555913723!5m2!1svi!2s" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>', '© 2019 - CanHo247', 'Thủ Thiêm', 'Canho247', 'Văn phòng cho thuê quận Gò Vấp với gần 5 năm kinh nghiệm :  Giá Rẻ nhất - Báo Giá Nhanh - Nhiều Diện Tích.  ', 'can ho quan 1, can ho quan 2', 'Căn Hộ 24/7', 'Văn phòng cho thuê quận Gò Vấp với gần 5 năm kinh nghiệm :  Giá Rẻ nhất - Báo Giá Nhanh - Nhiều Diện Tích.  ', '1444659255736273', 'Căn Hộ 24/7', 'http://localhost:8088/cyberreal/images/Phoi-canh-Eco-Green-Sai-Gon-6zzzz.jpg');
 
 -- --------------------------------------------------------
 
@@ -1193,7 +1198,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `SeoTitle` varchar(512) DEFAULT NULL,
   `SeoDescription` text,
   `SeoKeyword` varchar(512) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product`
@@ -83294,7 +83299,7 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -110,6 +110,41 @@
                             </div>
 
                             <div class="form-group">
+                                <label class = "control-label col-md-3">Og FacebookId</label>
+                                <div class="col-md-7">
+                                    <input type="text" class="form-control" name="OgFacebookId" value="<?= $view_data['model']['OgFacebookId'] ?>" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class = "control-label col-md-3">Og Title</label>
+                                <div class="col-md-7">
+                                    <input type="text" class="form-control" name="OgTitle" value="<?= $view_data['model']['OgTitle'] ?>" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class = "control-label col-md-3">Og Description</label>
+                                <div class="col-md-7">
+                                    <input type="text" class="form-control" name="OgDescription" value="<?= $view_data['model']['OgDescription'] ?>" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class = "control-label col-md-3">Og SiteName</label>
+                                <div class="col-md-7">
+                                    <input type="text" class="form-control" name="OgSiteName" value="<?= $view_data['model']['OgSiteName'] ?>" />
+                                </div>
+                            </div>
+
+                           <div class="form-group">
+                                <label class = "control-label col-md-3">Og Image</label>
+                                <div class="col-md-7">
+                                    <input type="text" class="form-control" name="OgImage" value="<?= $view_data['model']['OgImage'] ?>" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <div class="col-md-7 col-md-offset-3">
                                     <button type="submit" class="btn bg-green btn-sm"><i class="fa fa-save"></i> Lưu</button>
                                     <a class = "btn btn-default btn-sm" href="<?= base_url_admin ?>/infoweb/edit">Trở về</a>

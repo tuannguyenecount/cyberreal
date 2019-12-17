@@ -65,7 +65,7 @@
                                     <tr>
                                         <td class="col-md-2">Số thứ tự</td>
                                         <td>
-                                           <input style="width:200px" type="number" step="1" min="1" class="form-control" name="SortOrder" value="<?= isset($_POST['SortOrder']) ? $_POST['SortOrder'] : "" ?>" />
+                                           <input style="width:200px" type="number" step="1" min="1" class="form-control" name="SortOrder" value="<?= isset($_POST['SortOrder']) ? $_POST['SortOrder'] : $view_data['model']['SortOrder'] ?>" />
                                         </td>
                                     </tr>
                                     <tr>
