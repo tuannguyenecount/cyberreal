@@ -126,7 +126,7 @@
         {
             if(isset($_POST['Name']))
             {
-                $_POST['TenForm'] = "Đăng ký nhà xem mẫu";   
+                $_POST['TenForm'] = "Đăng ký xem nhà mẫu";   
                 $productObj = $productManager->GetById($_GET['id']);             
                 $_POST['DuAnQuanTam'] = $productObj['Name'];
                 $_POST['Link'] = base_url."/".$productObj['CategoryAlias']."/".$productObj['Alias'].".html";

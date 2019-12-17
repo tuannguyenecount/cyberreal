@@ -4,7 +4,7 @@
 <script>
     $(function () {
         $('#tblData').DataTable({
-            columnDefs: [{ orderable: false, targets: [7] }],
+            columnDefs: [{ orderable: false, targets: [8] }],
             order: [[0, 'desc']],
         });
         $(".dsXoa").change(function(){

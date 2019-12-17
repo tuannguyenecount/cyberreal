@@ -14,7 +14,7 @@
             <div class="box-body">
                <?php include_once 'view/shared/_errors.php'; ?>
                <form action="<?= base_url_admin ?>/mailbox/delete" method="post">
-                  <input type="hidden" name="urlReference" value="<?= base_url_admin ?>/mailbox" />
+                  <input type="hidden" name="urlReference" value="<?= base_url_admin ?>/mailbox/dangkynhanbanggia" />
                   <div class="table-responsive">
                      <table id="tblData" class="table table-bordered table-striped" method="post">
                         <thead>
@@ -23,7 +23,9 @@
                               <th>Họ tên</th>
                               <th>Email</th>
                               <th>Số điện thoại</th>
-                              <th>Lời nhắn</th>
+                              <th>Dự án quan tâm</th>
+                              <th>Nhận báo giá chi tiết</th>
+                              <th>Nhận phân tích dự án từ chuyên gia</th>
                               <th>Ngày gửi</th>
                               <th class="text-center">Xác nhận</th>
                               <th class="text-center">Chọn</th>
@@ -31,7 +33,7 @@
                         </thead>
                         <tbody>
                            <?php foreach($view_data['model'] as $item) { ?>
-                           <tr class="<?= $item['IsConfirm'] == 0 ? "danger" : "" ?>">
+                           <tr>
                               <td class="hidden">
                                  <?= $item['Id'] ?>
                               </td>
@@ -45,7 +47,13 @@
                                  <?= $item['Phone'] ?>
                               </td>
                               <td>
-                                 <?= $item['Content'] ?>   
+                                 <a target="_blank" href="<?= $item['Link'] ?>"><?= $item['DuAnQuanTam'] ?></a>
+                              </td>
+                              <td>
+                                 <?= $item['NhanBaoGiaChiTiet'] ? "Có" : "Không" ?>
+                              </td>
+                              <td>
+                                 <?= $item['NhanPhanTichDuAn'] ? "Có" : "Không" ?>
                               </td>
                               <td>
                                  <?= $item['DateSend'] ?>  
@@ -67,9 +75,9 @@
                         <tfoot>
                            <tr>
                               <td class="hidden"></td>
-                              <td colspan="6"></td>
+                              <td colspan="8"></td>
                               <td class="text-center">
-                                 <button type="submit" id="btnXoa" disabled="" onclick="return confirm('Xác nhận xóa các thư được chọn')" class="btn btn-default btn-xs">
+                                 <button type="submit" id="btnXoa" disabled="" onclick="return confirm('Xác nhận xóa các bản ghi được chọn')" class="btn btn-default btn-xs">
                                     <i class="fa fa-trash"></i> Xóa</button>
                               </td>
                            </tr>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2019 at 08:58 AM
+-- Generation Time: Dec 17, 2019 at 04:56 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -136,19 +136,18 @@ CREATE TABLE IF NOT EXISTS `confirmmailbox` (
 
 INSERT INTO `confirmmailbox` (`UserName`, `MailBoxId`) VALUES
 ('admin', 3),
-('admin', 4),
 ('admin', 5),
 ('admin', 6),
 ('admin2', 10),
-('admin2', 9),
-('admin2', 7),
 ('admin2', 6),
 ('admin2', 5),
-('admin2', 4),
 ('admin2', 3),
 ('editor1', 10),
-('editor1', 9),
-('admin', 7);
+('admin', 11),
+('admin', 10),
+('admin', 18),
+('admin', 21),
+('admin', 19);
 
 -- --------------------------------------------------------
 
@@ -1060,21 +1059,22 @@ CREATE TABLE IF NOT EXISTS `mailbox` (
   `Link` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `NhanBaoGiaChiTiet` tinyint(1) DEFAULT '0',
   `NhanPhanTichDuAn` tinyint(1) DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mailbox`
 --
 
 INSERT INTO `mailbox` (`Id`, `Name`, `Email`, `Phone`, `Content`, `DateSend`, `TenForm`, `DuAnQuanTam`, `Link`, `NhanBaoGiaChiTiet`, `NhanPhanTichDuAn`) VALUES
-(3, 'Nguyễn Ái Tuấn qweqweqwe', 'teenboylaanh@gmail.com', '1648315269', 'fsdfsdfsdf', '2019-12-06 20:22:37', 'Liên hệ', NULL, NULL, NULL, NULL),
-(4, 'nguyen van A', 'nguyenvana@gmail.com', '821562154', 'like you', '2019-12-07 14:09:29', 'Liên hệ', NULL, NULL, NULL, NULL),
-(5, 'Nguyễn Văn B', 'nguyenvanb@gmail.com', '123456789', 'test send mail', '2019-12-07 15:02:30', 'Liên hệ', NULL, NULL, NULL, NULL),
-(6, 'Bang coder ', 'bangcoder@gmail.com', '12345678', 'test send mail', '2019-12-07 15:03:25', 'Liên hệ', NULL, NULL, NULL, NULL),
-(7, 'Bang coder ', 'bangcoder@gmail.com', '12345678', 'test send mail', '2019-12-07 15:04:09', 'Liên hệ', NULL, NULL, NULL, NULL),
-(9, 'Bang coder  1', 'bangcoder@gmail.com', '12345678', 'test send mail', '2019-12-07 15:07:14', 'Liên hệ', NULL, NULL, NULL, NULL),
-(10, 'Bang coder  2', 'bangcoder@gmail.com', '12345678', 'test send mail', '2019-12-07 15:09:20', 'Liên hệ', NULL, NULL, NULL, NULL),
-(11, 'Trần Quốc Tuấn', 'tranquoctuan@gmail.com', '08215321532', 'Xin chao ca nha nhe', '2019-12-16 14:56:45', 'Liên hệ', NULL, NULL, 0, 0);
+(3, 'Nguyễn Ái Tuấn qweqweqwe', 'teenboylaanh@gmail.com', '1648315269', 'fsdfsdfsdf', '2019-12-06 20:22:37', 'Liên hệ', NULL, NULL, 0, 0),
+(5, 'Nguyễn Văn B', 'nguyenvanb@gmail.com', '123456789', 'test send mail', '2019-12-07 15:02:30', 'Liên hệ', NULL, NULL, 0, 0),
+(6, 'Bang coder ', 'bangcoder@gmail.com', '12345678', 'test send mail', '2019-12-07 15:03:25', 'Liên hệ', NULL, NULL, 0, 0),
+(10, 'Bang coder  2', 'bangcoder@gmail.com', '12345678', 'test send mail', '2019-12-07 15:09:20', 'Liên hệ', NULL, NULL, 0, 0),
+(11, 'Trần Quốc Tuấn', 'tranquoctuan@gmail.com', '08215321532', 'Xin chao ca nha nhe', '2019-12-16 14:56:45', 'Liên hệ', NULL, NULL, 0, 0),
+(18, 'Nguyễn Ái Tuấn333 ', 'nguyenaituan@yahoo.com', '0164 831 5269', NULL, '2019-12-17 09:44:57', 'Đăng ký xem nhà mẫu', 'Tòa Nhà Artex SaiGon Building', 'http://localhost:8088/cyberreal/ban-can-ho-chung-cu/toa-nha-artex-saigon-building.html', 0, 0),
+(19, 'Nguyễn Ái Tuấn 444', 'teenboylaanh@gmail.com', '0932635602', NULL, '2019-12-17 09:57:01', 'Đăng ký nhận bảng giá', 'Tòa Nhà Artex SaiGon Building', 'http://localhost:8088/cyberreal/ban-can-ho-chung-cu/toa-nha-artex-saigon-building.html', 1, 1),
+(20, 'Lê Lập Thành', 'lelapthanh@gmail.com', '81853184315465', 'adsafgfdgdbfdbdburtyrwer', '2019-12-17 10:01:01', 'Hỏi thêm thông tin', 'Tòa Nhà Artex SaiGon Building', 'http://localhost:8088/cyberreal/ban-can-ho-chung-cu/toa-nha-artex-saigon-building.html', 0, 0),
+(21, 'test 2222', 'nguyenaituan@yahoo.com', '0164 831 5269', NULL, '2019-12-17 10:01:16', 'Đăng ký nhận bảng giá', 'Tòa Nhà Artex SaiGon Building', 'http://localhost:8088/cyberreal/ban-can-ho-chung-cu/toa-nha-artex-saigon-building.html', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1193,7 +1193,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `SeoTitle` varchar(512) DEFAULT NULL,
   `SeoDescription` text,
   `SeoKeyword` varchar(512) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product`
@@ -1214,7 +1214,8 @@ INSERT INTO `product` (`Id`, `Name`, `CategoryId`, `Area`, `Direction`, `Rank`, 
 (17, 'PALM HEIGHTS', 1, '', 1, '', '', 1, 14, 191, 'Vạn Kiếp', '', '', '', '', '', '', 'palm-heights15764331578868.jpg', 'palm-heights', 1, NULL, '2019-12-16 00:59:05.643041', 3, 1, '', '', ''),
 (18, 'LEXINGTON', 1, '', 1, '', '', 1, 10, 129, '', '', '', '', '', '', '', 'lexington15764329050930.jpg', 'lexington', 1, NULL, '2019-12-16 01:01:01.488548', 2, 1, '', '', ''),
 (19, 'FELIZ EN VISTA', 1, '', 1, '', '', 1, 10, 129, '', '', '', '', '', '', '', 'feliz-en-vista15764336185093.jpg', 'feliz-en-vista', 1, NULL, '2019-12-16 01:12:52.908865', 5, 1, '', '', ''),
-(20, 'SALA', 1, '', 1, '', '', 1, 10, 129, '', '', '', '', '', '', '', 'sala15764336639072.jpg', 'sala', 1, NULL, '2019-12-16 01:13:59.634206', 6, 1, '', '', '');
+(20, 'SALA', 1, '', 1, '', '', 1, 10, 129, '', '', '', '', '', '', '', 'sala15764336639072.jpg', 'sala', 1, NULL, '2019-12-16 01:13:59.634206', 6, 1, '', '', ''),
+(21, 'Tên dự án mới 15765517478922', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2019-12-17 10:02:27.891843', NULL, 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -83283,7 +83284,7 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 -- AUTO_INCREMENT for table `mailbox`
 --
 ALTER TABLE `mailbox`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `new`
 --
@@ -83293,7 +83294,7 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
