@@ -6,13 +6,14 @@
     include_once 'model/class.slideManager.php';
     include_once 'phpMailer/class.phpmailer.php';
     include_once 'model/class.popupManager.php';
+    include_once 'model/class.advertisementManager.php';
 
     $slideManager = new SlideManager();
     $productManager = new ProductManager();
     $newManager = new NewManager();
     $productManager = new ProductManager();
     $mailBoxManager = new MailBoxManager();
-    $popupManager = new PopupManager();
+    $avertisementManager = new AdvertisementManager();
     
     switch($action)
     {
@@ -26,6 +27,7 @@
             $view_data['section_meta'] = "home/meta.php";
             $view_data['products'] = $productManager->GetList(1);
             $view_data['news'] = $newManager->GetTopNew();
+            $view_data['advertisements'] = $avertisementManager->GetList();
             if(count($view_data['news']) > 0)
             {
                 $view_data['firstNew'] = $view_data['news'][0];

@@ -40,6 +40,28 @@
       }
       break;
     }
+    case "editRobots":
+    { 
+      $view_data['title'] = "Chỉnh sửa file robots.txt";
+      $view_data['view_name'] = "infoweb/editRobots.php";
+      if(isset($_POST['Content']))
+      {
+        try
+        {
+          $myfile = fopen(SITE_PATH."/robots.txt", "w") or die("Unable to open file!");
+          fwrite($myfile, $_POST['Content']);
+          fclose($myfile);
+        } 
+        catch(Exception $ex)
+        {
+          $view_data['errors'][] = $ex->getMessage();
+        }
+      }
+      $myfile = fopen(SITE_PATH."/robots.txt", "r") or die("Unable to open file!");
+      $view_data['model']  = fread($myfile,filesize(SITE_PATH."/robots.txt"));
+      fclose($myfile);
+      break;
+    }
     
   }
 

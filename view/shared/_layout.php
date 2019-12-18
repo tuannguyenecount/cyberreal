@@ -46,10 +46,10 @@
                 include 'view/' . $view_data['section_styles'];
             }
         ?>
-        <script
+       <!--  <script
           src="https://code.jquery.com/jquery-3.4.1.min.js"
           integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-          crossorigin="anonymous"></script>
+          crossorigin="anonymous"></script> -->
     </head>
     <body>
         <main id="panel">
@@ -152,22 +152,6 @@
                                 </div>
                             </div>
                         </div>
-                       <!--  <div class="col-md col-md-3">
-                            <div class="card border-0 bordered">
-                                <div class="card-body p-0">
-                                    <h3 class="title text-light">Loại Văn Phòng</h3>
-                                    <div class="text-widget pt-1">
-                                        <ul>
-                                            <li><a href="/can-ho/van-phong-hang-a">Văn Ph&ograve;ng Hạng A</a></li>
-                                            <li><a href="/can-ho/van-phong-hang-b">Văn Ph&ograve;ng Hạng B</a></li>
-                                            <li><a href="/can-ho/van-phong-hang-c">Văn Ph&ograve;ng Hạng C</a></li>
-                                            <li><a href="/can-ho/van-phong-gia-re">Văn Ph&ograve;ng Gi&aacute; Rẻ</a></li>
-                                            <li>Văn Ph&ograve;ng Trọn G&oacute;i</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                     <hr>
                 </div>      

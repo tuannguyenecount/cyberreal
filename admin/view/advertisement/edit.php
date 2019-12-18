@@ -20,20 +20,24 @@
                             <table class="table table-border-none table-middle">
                                 <tbody>
                                     <tr>
-                                        <td class="col-md-4 text-right">Sửa hình</td>
+                                        <td class="col-md-4 text-right">Tên</td>
                                         <td>
-                                            <input type="file" name="file" class="form-control" />
+                                            <input type="text" value="<?= isset($_POST['Name']) ? $_POST['Name'] : $view_data['model']['Name'] ?>" name="Name" class="form-control" />
                                     </tr>
                                     <tr>
-                                        <td class="col-md-4 text-right">Thứ tự</td>
+                                        <td class="col-md-4 text-right">Mô tả</td>
+                                        <td>
+                                            <textarea name="Description" class="form-control"><?= isset($_POST['Description']) ? $_POST['Description'] : $view_data['model']['Description'] ?></textarea> 
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-4 text-right">Số thứ tự</td>
                                         <td>
                                             <input type="number" min="0" value="<?= isset($_POST['SortOrder']) ? $_POST['SortOrder'] : $view_data['model']['SortOrder'] ?>"   step="1" name="SortOrder" class="form-control" />
                                     </tr>
                                     <tr>
-                                        <td class="col-md-4 text-right">Trạng thái</td>
+                                        <td class="col-md-4 text-right">Sửa hình</td>
                                         <td>
-                                            <input <?= isset($_POST['Status']) && $_POST['Status'] == 1 ? "checked='checked'" : ($view_data['model']['Status'] ? "checked" : "" ) ?> type="checkbox" name="Status"  />
-                                        </td>
+                                            <input type="file" name="file" class="form-control" />
                                     </tr>
                                 </tbody>
                                 <tfoot>

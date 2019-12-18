@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 17, 2019 at 09:28 AM
+-- Generation Time: Dec 18, 2019 at 10:40 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -19,6 +19,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `cyberreal`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `advertisement`
+--
+
+CREATE TABLE IF NOT EXISTS `advertisement` (
+`Id` int(11) NOT NULL,
+  `Name` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Image` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `SortOrder` tinyint(4) DEFAULT NULL,
+  `Description` text COLLATE utf8mb4_unicode_ci
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `advertisement`
+--
+
+INSERT INTO `advertisement` (`Id`, `Name`, `Image`, `SortOrder`, `Description`) VALUES
+(1, 'Tiết kiệm thời gian', '15766611526759.png', 1, 'Hỗ trợ tư vấn và cung cấp thông tin dự án,căn hộ bán, căn hộ cho thuê phù hợp với nhu cầu của khách hàng trong thời gian ngắn nhất'),
+(2, 'Đúng giá thị trường', '15766611971589.png', 2, 'Chúng tôi có bộ phận chuyên định giá các căn hộ bán, căn hô cho thuê chuyên nghiệp nhằm mang lại lợi nhuận cao nhất cho khách hàng.'),
+(3, 'Hậu mãi chu đáo', '15766612567305.png', 3, 'Sau khi hoàn tất mọi thủ tục cần thiết cho 1 giao dịch,quý khách hàng sẽ được chúng tôi đồng hành xuyên suốt và hỗ trợ trọn đời.');
 
 -- --------------------------------------------------------
 
@@ -1198,7 +1221,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `SeoTitle` varchar(512) DEFAULT NULL,
   `SeoDescription` text,
   `SeoKeyword` varchar(512) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product`
@@ -83175,6 +83198,12 @@ INSERT INTO `ward` (`id`, `_name`, `_prefix`, `_province_id`, `_district_id`) VA
 --
 
 --
+-- Indexes for table `advertisement`
+--
+ALTER TABLE `advertisement`
+ ADD PRIMARY KEY (`Id`);
+
+--
 -- Indexes for table `booking`
 --
 ALTER TABLE `booking`
@@ -83281,6 +83310,11 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `advertisement`
+--
+ALTER TABLE `advertisement`
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
@@ -83299,7 +83333,7 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

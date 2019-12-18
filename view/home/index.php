@@ -11,67 +11,29 @@
 
 </section>
 <section class="container"  id="quangcao">
-
-    <!-- .section-bg -->
-    <div class="section-content relative" >
-
-        <div class="row" >
-            <div class="col-sm-4 text-center" data-animate="fadeInLeft" data-animated="true">
-                <div class="col-inner">
-
-                     <div class="icon-box-img" style="width: 128px">
-                         <div class="icon">
-                             <div class="icon-inner">
-                                 <img width="128" height="128" src="<?= base_url ?>/images/time.png" class="attachment-medium size-medium" alt=""   > </div>
-                         </div>
-                     </div>
-                     <div class="last-reset">
-                         <h4>Tiết kiệm thời gian</h4>
-                         <p>Hỗ trợ tư vấn và cung cấp thông tin dự án,căn hộ bán, căn hộ cho thuê phù hợp với nhu cầu của khách hàng trong thời gian ngắn nhất</p>
-                     </div>
-                    <!-- .icon-box -->
-                </div>
-            </div>
-            <div class="col-sm-4 text-center" data-animate="fadeInLeft" data-animated="true">
-                <div class="col-inner">
-
-                     <div class="icon-box-img" style="width: 128px">
-                         <div class="icon">
-                             <div class="icon-inner">
-                                 <img width="128" height="128" src="<?= base_url ?>/images/coin.png" class="attachment-medium size-medium" alt=""  > </div>
-                         </div>
-                     </div>
-                     <div class="last-reset">
-                         <h4>Đúng giá thị trường</h4>
-                         <p>Chúng tôi có bộ phận chuyên định giá các căn hộ bán, căn hô cho thuê chuyên nghiệp nhằm mang lại lợi nhuận cao nhất cho khách hàng.
-                         </p>
-                     </div>
-                    <!-- .icon-box -->
-
-                </div>
-            </div>
-            <div class="col-sm-4 text-center" data-animate="fadeInLeft" data-animated="true">
-                <div class="col-inner">
-
-                     <div class="icon-box-img" style="width: 128px">
-                         <div class="icon">
-                             <div class="icon-inner">
-                                 <img width="128" height="128" src="<?= base_url ?>/images/customer-service.png" class="attachment-medium size-medium" alt="" > </div>
-                         </div>
-                     </div>
-                     <div class="last-reset">
-
-                         <h4>Hậu mãi chu đáo</h4>
-                         <p>Sau khi hoàn tất mọi thủ tục cần thiết cho 1 giao dịch,quý khách hàng sẽ được chúng tôi đồng hành xuyên suốt và hỗ trợ trọn đời.</p>
-                     </div>
-                    <!-- .icon-box -->
-
-                </div>
-            </div>
+  <!-- .section-bg -->
+  <div class="section-content relative" >
+    <div class="row" >
+    <?php foreach($view_data['advertisements'] as $item) { ?>
+      <div class="col-sm-4 text-center margin-top-10" data-animate="fadeInLeft" data-animated="true">
+        <div class="col-inner">
+             <div class="icon-box-img" style="width: 128px">
+                 <div class="icon">
+                     <div class="icon-inner">
+                         <img width="128" height="128" src="<?= base_url ?>/images/advertisements/<?= $item['Image'] ?>" class="attachment-medium size-medium" alt=""   > </div>
+                 </div>
+             </div>
+             <div class="last-reset">
+                 <h4><?= $item['Name'] ?></h4>
+                 <p><?= $item['Description'] ?></p>
+             </div>
+            <!-- .icon-box -->
         </div>
+      </div>
+    <?php } ?>
     </div>
-    <!-- .section-content -->
-
+  </div>
+  <!-- .section-content -->
 </section>   
 <section class="container">
    <div class="row">

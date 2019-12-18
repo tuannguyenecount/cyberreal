@@ -1,31 +1,28 @@
 <?php 
-  include '../model/class.slideManager.php';
+  include '../model/class.advertisementManager.php';
   
-  $slideManager = new SlideManager();
+  $advertisementManager = new AdvertisementManager();
   
  
   switch($action)
   {
   	case "index":
   	{
-      $view_data['title'] = "Danh sách Slide";
-      $view_data['view_name'] = "slide/index.php";	
-      // $view_data['section_styles'] = "slide/style_index.php";
-      // $view_data['section_scripts'] = "slide/script_index.php";
-      $view_data['model'] = $slideManager->GetList();
+      $view_data['title'] = "Danh sách quảng cáo";
+      $view_data['view_name'] = "advertisement/index.php";	
+      $view_data['model'] = $advertisementManager->GetList();
       break;
   	}
     case "create":
     {
-      $view_data['title'] = "Tạo mới Slide";
-      $view_data['view_name'] = "slide/create.php";
-      // $view_data['section_scripts'] = "slide/script_form.php";
-      if(isset($_POST['SortOrder']))
+      $view_data['title'] = "Tạo mới quảng cáo";
+      $view_data['view_name'] = "advertisement/create.php";
+      if(isset($_POST['Name']))
       {
         try 
         {
+          $view_data['errors'] = $advertisementManager->GetErrorsMessage($_POST);
           $_POST['Image'] = null;
-          $_POST['Status'] = isset($_POST['Status']) ? 1 : 0;
           if(isset($_FILES["file"]) && !empty($_FILES['file']['tmp_name'])) {
               $check = getimagesize($_FILES["file"]["tmp_name"]);
               if($check !== false)
@@ -36,17 +33,21 @@
                 $name = $_FILES["file"]["name"];
                 $ext = end((explode(".", $name))); # extra () to prevent notice
                 $_POST['Image'] = $ticks.".".$ext;
-                $result = UploadImageFile(SITE_PATH."/images/slides/".$_POST['Image']);
+                $result = UploadImageFile(SITE_PATH."/images/advertisements/".$_POST['Image']);
                 if($result != 1)
                   $view_data['errors'][] = $result;
               }
           }
+          else 
+          {
+            $view_data['errors'][] = "Vui lòng chọn hình!";
+          }
           if(count($view_data['errors']) == 0)
           {
-            $result = $slideManager->Add($_POST);
+            $result = $advertisementManager->Add($_POST);
             if($result)
             {
-              header("Location: ".base_url_admin."/slide");
+              header("Location: ".base_url_admin."/advertisement");
             }           
             else 
             {
@@ -63,20 +64,20 @@
     }
     case "edit":
     {
-      $view_data['title'] = "Sửa Slide";
-      $view_data['view_name'] = "slide/edit.php";
-      $view_data['model'] = $slideManager->GetById($_GET['id']);
+      $view_data['title'] = "Sửa quảng cáo";
+      $view_data['view_name'] = "advertisement/edit.php";
+      $view_data['model'] = $advertisementManager->GetById($_GET['id']);
       if($view_data['model'] == null)
       {
         header("HTTP/1.0 404 Not Found");
         header("Location: ".base_url."/pages/404/index.html");
       }
-      if(isset($_POST['SortOrder']))
+      if(isset($_POST['Name']))
       {
         try 
         {
           $_POST['Id'] = $_GET['id'];
-          $_POST['Status'] = isset($_POST['Status']) ? 1 : 0;
+          $view_data['errors'] = $advertisementManager->GetErrorsMessage($_POST);
           if(isset($_FILES["file"]) && !empty($_FILES['file']['tmp_name'])) {
               $check = getimagesize($_FILES["file"]["tmp_name"]);
               if($check !== false)
@@ -87,17 +88,17 @@
                 $name = $_FILES["file"]["name"];
                 $ext = end((explode(".", $name))); # extra () to prevent notice
                 $_POST['Image'] = $ticks.".".$ext;
-                $result = UploadImageFile(SITE_PATH."/images/slides/".$_POST['Image']);
+                $result = UploadImageFile(SITE_PATH."/images/advertisements/".$_POST['Image']);
                 if($result != 1)
                   $view_data['errors'][] = $result;
               }
           }
           if(count($view_data['errors']) == 0)
           {
-            $result = $slideManager->Edit($_POST);
+            $result = $advertisementManager->Edit($_POST);
             if($result)
             {
-              header("Location: ".base_url_admin."/slide");
+              header("Location: ".base_url_admin."/advertisement");
             }           
             else 
             {
@@ -115,22 +116,10 @@
   	case "delete":
   	{
 			$id = (int)$_POST['id'];
-			$result = $slideManager->Delete($id);
-		 	header('Location:'.base_url_admin."/slide");
+			$result = $advertisementManager->Delete($id);
+		 	header('Location:'.base_url_admin."/advertisement");
   		break;
   	}
-    case "confirm":
-    {
-      $slideManager->Confirm((int)$_GET['id']);
-      header('Location:'.base_url_admin."/slide");
-      break;
-    }
-    case "unconfirm":
-    {
-      $slideManager->UnConfirm((int)$_GET['id']);
-      header('Location:'.base_url_admin."/slide");
-      break;
-    }
   }
 
 ?>

@@ -114,16 +114,27 @@
             </a>
         </li>
 
-
         <li>
             <a href="<?= base_url_admin ?>/location/districts">
                 <i class="fa fa-map"></i> <span>Danh mục Quận/Huyện</span>
+            </a>
+        </li>
+
+         <li>
+            <a href="<?= base_url_admin ?>/advertisement">
+                <i class="fa fa-square"></i> <span>Quảng Cáo</span>
             </a>
         </li>
         
         <li>
             <a href="<?= base_url_admin ?>/infoweb/edit">
                 <i class="fa fa-info"></i> <span>Thông Tin Web</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="<?= base_url_admin ?>/infoweb/editRobots">
+                <i class="fa fa-file"></i> <span>File Robots.txt</span>
             </a>
         </li>
     

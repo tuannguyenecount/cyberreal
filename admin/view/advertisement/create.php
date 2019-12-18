@@ -12,7 +12,6 @@
     <div class="row">
         <div class="col-xs-12">
             <form method="post" enctype="multipart/form-data">
-                <input type="hidden" name="Image" value="<?= $view_data['model']['Image'] ?>" />
                 <div class="box">
                     <div class="box-body">
                         <?php include_once 'view/shared/_errors.php'; ?>
@@ -20,27 +19,31 @@
                             <table class="table table-border-none table-middle">
                                 <tbody>
                                     <tr>
-                                        <td class="col-md-4 text-right">Sửa hình</td>
+                                        <td class="col-md-4 text-right">Tên</td>
                                         <td>
-                                            <input type="file" name="file" class="form-control" />
+                                            <input type="text" value="<?= isset($_POST['Name']) ? $_POST['Name'] : "" ?>" name="Name" class="form-control" />
                                     </tr>
                                     <tr>
-                                        <td class="col-md-4 text-right">Thứ tự</td>
+                                        <td class="col-md-4 text-right">Mô tả</td>
                                         <td>
-                                            <input type="number" min="0" value="<?= isset($_POST['SortOrder']) ? $_POST['SortOrder'] : $view_data['model']['SortOrder'] ?>"   step="1" name="SortOrder" class="form-control" />
+                                            <textarea name="Description" class="form-control"><?= isset($_POST['Description']) ? $_POST['Description'] : "" ?></textarea> 
                                     </tr>
                                     <tr>
-                                        <td class="col-md-4 text-right">Trạng thái</td>
+                                        <td class="col-md-4 text-right">Số thứ tự</td>
                                         <td>
-                                            <input <?= isset($_POST['Status']) && $_POST['Status'] == 1 ? "checked='checked'" : ($view_data['model']['Status'] ? "checked" : "" ) ?> type="checkbox" name="Status"  />
-                                        </td>
+                                            <input type="number" min="0" value="<?= isset($_POST['SortOrder']) ? $_POST['SortOrder'] : "" ?>"   step="1" name="SortOrder" class="form-control" />
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-4 text-right">Hình ảnh</td>
+                                        <td>
+                                            <input type="file" name="file" class="form-control" required="" />
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <td class="col-md-4 text-right"></td>
                                         <td>
-                                             <button type="submit" class="btn bg-green btn-sm"><i class="fa fa-save"></i> Cập Nhật</button>
+                                             <button type="submit" class="btn bg-green btn-sm"><i class="fa fa-save"></i> Lưu</button>
                                             <a href="<?=base_url_admin?>/slide" class = "btn btn-default btn-sm">Về danh sách</a>
                                         </td>
                                     </tr>
