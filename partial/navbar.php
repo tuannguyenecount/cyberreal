@@ -12,7 +12,8 @@
                         <a class="dropdown-toggle nav-link" href="<?= $menuParent['URL'] ?>" data-toggle="dropdown"><?= $menuParent['Name'] ?><span class="fas fa-angle-down"></span></a>
                         <div id="w1" class="dropdown-menu">
                             <?php foreach($listMenuChild as $item) { ?>
-                            <a class="dropdown-item" href="<?= $item['URL'] ?>"><?= $item['Name'] ?></a>
+                            <div class="col-sm-4">
+                            <a class="dropdown-item" href="<?= $item['URL'] ?>"><?= $item['Name'] ?></a></div>
                             <?php } ?>
                         </div>
                     <?php } else { ?>

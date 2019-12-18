@@ -257,6 +257,12 @@
             $('#Street').select2({
                 theme: "flat",
             });
+            $(document).on("mouseover","#main-menu .dropdown-toggle", function(){
+                $(this).click().bind();
+            });
+            $(document).on("mouseleave","#main-menu .dropdown-menu",function(){
+                $(this).removeClass("show");
+            });
             if($("#search") != undefined)
             {
                 $.ajax({

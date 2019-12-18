@@ -53,7 +53,7 @@
                            </td>
                            <td class="text-center">
                               <?php if ($item['IsConfirm'] != 0) { ?>
-                                 <img src="<?= base_url ?>/images/check.png" width="20" height="20" />
+                                 <a title="Bỏ Xác nhận" href="<?= base_url_admin ?>/mailbox/unconfirm/<?= $item['Id'] ?>"><img src="<?= base_url ?>/images/check.png" width="20" height="20" /></a>
                               <?php } else { ?>
                                  <a title="Xác nhận ngay" href="<?= base_url_admin ?>/mailbox/confirm/<?= $item['Id'] ?>">
                                     <img src="<?= base_url ?>/images/stop.png" width="20" height="20" /></a>

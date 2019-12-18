@@ -18382,13 +18382,13 @@ pre[class*=language-],
     transition-delay: 0s;
     position: relative;
     padding: .5rem 1rem;
-    font-size: .875rem;
+    font-size: 1rem;
     color: #555
 }
 
 .dropdown .dropdown-menu .dropdown-item:hover {
-    background-color: rgba(0, 0, 0, .1);
-    color: #000
+    background-color: #3162ad;
+    color: #fff
 }
 
 .dropdown .dropdown-menu .dropdown-item.active {
@@ -29993,7 +29993,7 @@ header#main .navbar a.nav-link span {
 
 @media(min-width: 992px) {
     header#main .navbar .dropdown-menu {
-        width: 400px
+        width: 500px
     }
     header#main .navbar .dropdown-menu.show {
         display: flex;
@@ -30898,7 +30898,17 @@ footer .socials ul li {
 .padding-10{
     padding:10px;
 }
-
+.box-shadow-3-hover:hover{
+    box-shadow:0 10px 20px rgba(0,0,0,0.19),0 6px 6px rgba(0,0,0,0.22);
+    transition: transform .3s, box-shadow .3s, background-color .3s, color .3s, opacity .3s;
+}
+#chudautu img{
+    cursor: pointer;
+}
+#chudautu img:hover{
+    box-shadow:0 10px 20px rgba(0,0,0,0.19),0 6px 6px rgba(0,0,0,0.22);
+    transition: transform .3s, box-shadow .3s, background-color .3s, color .3s, opacity .3s;
+}
 @media screen and (max-width: 768px){
     .banner-bg{
         margin: 10px !important;

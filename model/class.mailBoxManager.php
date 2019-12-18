@@ -39,7 +39,14 @@ class MailBoxManager {
     {
         $tsql = "INSERT INTO confirmmailbox(UserName, MailBoxId)
                 VALUES(?, ?)";
+        $params = array($UserName,$MailBoxId);
+        $database_Model = new Database();
+        return $database_Model->Execute($tsql, $params);
+    }
 
+    public function UnConfirm($UserName, $MailBoxId)
+    {
+        $tsql = "DELETE FROM confirmmailbox WHERE UserName = ? AND MailBoxId = ? ";
         $params = array($UserName,$MailBoxId);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);

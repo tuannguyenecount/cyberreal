@@ -48,6 +48,12 @@
       header("Location: ".base_url_editor."/mailbox");
       break;
     }
+    case "unconfirm":
+    {
+      $mailBoxManager->UnConfirm($_SESSION['UserLogged']['UserName'], (int)$_GET['id']);
+      header("Location: ".base_url_editor."/mailbox");
+      break;
+    }
     
   }
 

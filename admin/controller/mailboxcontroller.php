@@ -57,6 +57,12 @@
       header("Location: ".$_SERVER['HTTP_REFERER']);
       break;
     }
+    case "unconfirm":
+    {
+      $mailBoxManager->UnConfirm($_SESSION['UserLogged']['UserName'], (int)$_GET['id']);
+      header("Location: ".$_SERVER['HTTP_REFERER']);
+      break;
+    }
     
   }
 

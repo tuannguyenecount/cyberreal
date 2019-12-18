@@ -84,6 +84,13 @@ class BookingManager {
         return $database_Model->Execute($tsql, $params);
     }
 
+    public function UnConfirm($BookingId, $UserName) {
+        $tsql = "DELETE FROM confirmbooking WHERE BookingId = ? AND UserName = ? ";
+        $params = array($BookingId, $UserName);
+        $database_Model = new Database();
+        return $database_Model->Execute($tsql, $params);
+    }
+
     public function Delete($Id) {
         $tsql = " DELETE FROM booking WHERE Id = ? ";
         $params = array($Id, $Id);

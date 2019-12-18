@@ -34,6 +34,12 @@
       header("Location: ".base_url_admin."/booking");
       break;
     }
+    case "unconfirm":
+    {
+      $bookingManager->UnConfirm((int)$_GET['id'], $_SESSION['UserLogged']['UserName']);
+      header("Location: ".base_url_admin."/booking");
+      break;
+    }
   }
 
 ?>

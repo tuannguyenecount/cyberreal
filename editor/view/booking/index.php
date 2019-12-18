@@ -52,7 +52,6 @@
                               <?php if ($item['IsConfirm'] != 0) { ?>
                                  <img src="<?= base_url ?>/images/check.png" width="20" height="20" />
                               <?php } else { ?>
-                                 
                                     <img src="<?= base_url ?>/images/stop.png" width="20" height="20" />
                               <?php } ?>
                            </td>

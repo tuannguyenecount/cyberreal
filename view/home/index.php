@@ -143,7 +143,45 @@
         </div>
     </div>
 
-    
+    <div class="py-5 bg-home" id="chudautu">
+      <div class="container">
+        <h3 class="heading pb-2">Chủ Đầu Tư
+          <strong class="text-green">nổi bật</strong>
+        </h3>
+        <div class="row">
+          <div class="col-md-2 col-sm-3 col-xs-6 text-center">
+            <p>
+              <img src="https://honghaland.com.vn/wp-content/uploads/2019/11/Logo-Hongkongland.png" width="150" height="150" />
+            </p>
+          </div>
+          <div class="col-md-2 col-sm-3 col-xs-6 text-center">
+            <p>
+              <img src="https://honghaland.com.vn/wp-content/uploads/2019/11/Logo-pi-group.png" width="150" height="150" />
+            </p>
+          </div>
+          <div class="col-md-2 col-sm-3 col-xs-6 text-center">
+            <p>
+              <img src="https://honghaland.com.vn/wp-content/uploads/2019/11/Logo-Capitaland.png" width="150" height="150" />
+            </p>
+          </div>
+          <div class="col-md-2 col-sm-3 col-xs-6 text-center">
+            <p>
+              <img src="https://honghaland.com.vn/wp-content/uploads/2019/11/Logo-Hongkongland.png" width="150" height="150" />
+            </p>
+          </div>
+          <div class="col-md-2 col-sm-3 col-xs-6 text-center">
+            <p>
+              <img src="https://honghaland.com.vn/wp-content/uploads/2019/11/Logo-Hongkongland.png" width="150" height="150" />
+            </p>
+          </div>
+          <div class="col-md-2 col-sm-3 col-xs-6 text-center">
+            <p>
+              <img src="https://honghaland.com.vn/wp-content/uploads/2019/11/Logo-Hongkongland.png" width="150" height="150" />
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="latest-news py-5 bg-home">
       <div class="container">
