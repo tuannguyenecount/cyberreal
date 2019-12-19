@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2019 at 10:40 AM
+-- Generation Time: Dec 19, 2019 at 05:04 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -169,8 +169,7 @@ INSERT INTO `confirmmailbox` (`UserName`, `MailBoxId`) VALUES
 ('admin', 11),
 ('admin', 10),
 ('admin', 18),
-('admin', 21),
-('admin', 19);
+('admin', 21);
 
 -- --------------------------------------------------------
 
@@ -1023,7 +1022,10 @@ INSERT INTO `imagesproducts` (`Id`, `ProductId`, `Image`, `OrderNum`) VALUES
 
 CREATE TABLE IF NOT EXISTS `infoweb` (
   `WebName` varchar(256) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `Representative` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Department` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Logo` varchar(256) CHARACTER SET latin1 DEFAULT NULL,
+  `Favicon` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Phone` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
   `Zalo` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Email` varchar(256) CHARACTER SET utf8mb4 DEFAULT NULL,
@@ -1046,8 +1048,32 @@ CREATE TABLE IF NOT EXISTS `infoweb` (
 -- Dumping data for table `infoweb`
 --
 
-INSERT INTO `infoweb` (`WebName`, `Logo`, `Phone`, `Zalo`, `Email`, `Address`, `Fanpage`, `GoogleMap`, `CopyRight`, `ViTriDangHot`, `SeoTitle`, `SeoDescription`, `SeoKeyword`, `OgTitle`, `OgDescription`, `OgFacebookId`, `OgSiteName`, `OgImage`) VALUES
-('Căn Hộ 24/7', '15759046416685.png', '0932635602', '0932635602', 'diepanh@gmail.com', 'Địa chỉ: L18-11-13, Tầng 18, Vincom Center Đồng Khởi, 72 Lê, Phường Bến Nghé, Quận 1, Tp HCM', 'https://www.facebook.com/Vanphongchothue.cyberreal/', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3924.8838492318832!2d107.06429301411349!3d10.351171469730867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31756fb008ee5f6f%3A0x703dd926b22b1bba!2zSOG7kyBNw6J5IFBhcmsgVsWpbmcgVMOgdQ!5e0!3m2!1svi!2s!4v1575555913723!5m2!1svi!2s" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>', '© 2019 - CanHo247', 'Thủ Thiêm', 'Canho247', 'Văn phòng cho thuê quận Gò Vấp với gần 5 năm kinh nghiệm :  Giá Rẻ nhất - Báo Giá Nhanh - Nhiều Diện Tích.  ', 'can ho quan 1, can ho quan 2', 'Căn Hộ 24/7', 'Văn phòng cho thuê quận Gò Vấp với gần 5 năm kinh nghiệm :  Giá Rẻ nhất - Báo Giá Nhanh - Nhiều Diện Tích.  ', '1444659255736273', 'Căn Hộ 24/7', 'http://localhost:8088/cyberreal/images/Phoi-canh-Eco-Green-Sai-Gon-6zzzz.jpg');
+INSERT INTO `infoweb` (`WebName`, `Representative`, `Department`, `Logo`, `Favicon`, `Phone`, `Zalo`, `Email`, `Address`, `Fanpage`, `GoogleMap`, `CopyRight`, `ViTriDangHot`, `SeoTitle`, `SeoDescription`, `SeoKeyword`, `OgTitle`, `OgDescription`, `OgFacebookId`, `OgSiteName`, `OgImage`) VALUES
+('Căn Hộ 24/7', 'Mr. Thế Thắng', 'Phòng kinh doanh', '15759046416685.png', 'favico15767252395256.ico', '0932635602', '0932635602', 'diepanh@gmail.com', 'Địa chỉ: L18-11-13, Tầng 18, Vincom Center Đồng Khởi, 72 Lê, Phường Bến Nghé, Quận 1, Tp HCM', 'https://www.facebook.com/Vanphongchothue.cyberreal/', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3924.8838492318832!2d107.06429301411349!3d10.351171469730867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31756fb008ee5f6f%3A0x703dd926b22b1bba!2zSOG7kyBNw6J5IFBhcmsgVsWpbmcgVMOgdQ!5e0!3m2!1svi!2s!4v1575555913723!5m2!1svi!2s" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>', '© 2019 - CanHo247', 'Thủ Thiêm', 'Canho247', 'Văn phòng cho thuê quận Gò Vấp với gần 5 năm kinh nghiệm :  Giá Rẻ nhất - Báo Giá Nhanh - Nhiều Diện Tích.  ', 'can ho quan 1, can ho quan 2', 'Căn Hộ 24/7', 'Văn phòng cho thuê quận Gò Vấp với gần 5 năm kinh nghiệm :  Giá Rẻ nhất - Báo Giá Nhanh - Nhiều Diện Tích.  ', '1444659255736273', 'Căn Hộ 24/7', 'http://localhost:8088/cyberreal/images/Phoi-canh-Eco-Green-Sai-Gon-6zzzz.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `investor`
+--
+
+CREATE TABLE IF NOT EXISTS `investor` (
+`Id` int(11) NOT NULL,
+  `Logo` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `SortOrder` int(11) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `investor`
+--
+
+INSERT INTO `investor` (`Id`, `Logo`, `SortOrder`) VALUES
+(4, '15767238066923.png', 1),
+(5, '15767239097345.png', 2),
+(6, '15767239648919.png', 3),
+(7, '15767242097821.png', 4),
+(8, '15767242523211.png', 5),
+(9, '15767242866965.png', 6);
 
 -- --------------------------------------------------------
 
@@ -1087,7 +1113,7 @@ CREATE TABLE IF NOT EXISTS `mailbox` (
   `Link` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `NhanBaoGiaChiTiet` tinyint(1) DEFAULT '0',
   `NhanPhanTichDuAn` tinyint(1) DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mailbox`
@@ -1102,7 +1128,19 @@ INSERT INTO `mailbox` (`Id`, `Name`, `Email`, `Phone`, `Content`, `DateSend`, `T
 (18, 'Nguyễn Ái Tuấn333 ', 'nguyenaituan@yahoo.com', '0164 831 5269', NULL, '2019-12-17 09:44:57', 'Đăng ký xem nhà mẫu', 'Tòa Nhà Artex SaiGon Building', 'http://localhost:8088/cyberreal/ban-can-ho-chung-cu/toa-nha-artex-saigon-building.html', 0, 0),
 (19, 'Nguyễn Ái Tuấn 444', 'teenboylaanh@gmail.com', '0932635602', NULL, '2019-12-17 09:57:01', 'Đăng ký nhận bảng giá', 'Tòa Nhà Artex SaiGon Building', 'http://localhost:8088/cyberreal/ban-can-ho-chung-cu/toa-nha-artex-saigon-building.html', 1, 1),
 (20, 'Lê Lập Thành', 'lelapthanh@gmail.com', '81853184315465', 'adsafgfdgdbfdbdburtyrwer', '2019-12-17 10:01:01', 'Hỏi thêm thông tin', 'Tòa Nhà Artex SaiGon Building', 'http://localhost:8088/cyberreal/ban-can-ho-chung-cu/toa-nha-artex-saigon-building.html', 0, 0),
-(21, 'test 2222', 'nguyenaituan@yahoo.com', '0164 831 5269', NULL, '2019-12-17 10:01:16', 'Đăng ký nhận bảng giá', 'Tòa Nhà Artex SaiGon Building', 'http://localhost:8088/cyberreal/ban-can-ho-chung-cu/toa-nha-artex-saigon-building.html', 0, 1);
+(21, 'test 2222', 'nguyenaituan@yahoo.com', '0164 831 5269', NULL, '2019-12-17 10:01:16', 'Đăng ký nhận bảng giá', 'Tòa Nhà Artex SaiGon Building', 'http://localhost:8088/cyberreal/ban-can-ho-chung-cu/toa-nha-artex-saigon-building.html', 0, 1),
+(22, 'Lý Thư', 'lythu@gmail.com', '851861654', 'abcded haha hehe', '2019-12-19 10:37:08', 'Liên hệ', NULL, NULL, 0, 0),
+(23, 'Hoàng Mỹ Linh', 'hoangmylinh@gmail.com', '848431846465', 'kaka keke hihi haha hehe', '2019-12-19 10:39:55', 'Liên hệ', NULL, NULL, 0, 0),
+(24, 'Hoàng Mỹ Linh', 'hoangmylinh@gmail.com', '48518431654654', 'gửi lần 3', '2019-12-19 10:41:13', 'Liên hệ', NULL, NULL, 0, 0),
+(25, 'Hoàng Mỹ Linh ', 'hoangmylinh@gmail.com', '8218318658787', 'gửi lần 4', '2019-12-19 10:43:35', 'Liên hệ', NULL, NULL, 0, 0),
+(26, 'Hoàng Mỹ Linh ', 'hoangmylinh@gmail.com', '8218318658787', 'gửi lần 5', '2019-12-19 10:47:00', 'Liên hệ', NULL, NULL, 0, 0),
+(27, 'Hoàng Mỹ Linh ', 'hoangmylinh@gmail.com', '8218318658787', 'gửi lần 5', '2019-12-19 10:47:07', 'Liên hệ', NULL, NULL, 0, 0),
+(28, 'Hoàng Mỹ Linh ', 'hoangmylinh@gmail.com', '8218318658787', 'gửi lần 5', '2019-12-19 10:47:36', 'Liên hệ', NULL, NULL, 0, 0),
+(29, 'Lê Lập Thành', 'lelapthanh@gmail.com', '8158318464', NULL, '2019-12-19 10:55:21', 'Đăng ký xem nhà mẫu', 'Tòa Nhà Việt Phone 1 Building', 'http://localhost:8088/cyberreal/ban-can-ho-chung-cu/toa-nha-viet-phone-1-building.html', 0, 0),
+(30, 'Lê Lập Thành', 'lelapthanh@gmail.com', '43234234234', NULL, '2019-12-19 10:56:31', 'Đăng ký xem nhà mẫu', 'Tòa Nhà Việt Phone 1 Building', 'http://localhost:8088/cyberreal/ban-can-ho-chung-cu/toa-nha-viet-phone-1-building.html', 0, 0),
+(31, 'Lê Lập Thành', 'lelapthanh@gmail.com', '43234234234', NULL, '2019-12-19 10:57:27', 'Đăng ký xem nhà mẫu', 'Tòa Nhà Việt Phone 1 Building', 'http://localhost:8088/cyberreal/ban-can-ho-chung-cu/toa-nha-viet-phone-1-building.html', 0, 0),
+(32, 'Nguyễn Ái Tuấn', 'teenboylaanh@gmail.com', '0164 831 5269', NULL, '2019-12-19 11:00:28', 'Đăng ký nhận bảng giá', 'Tòa Nhà Việt Phone 1 Building', 'http://localhost:8088/cyberreal/ban-can-ho-chung-cu/toa-nha-viet-phone-1-building.html', 1, 1),
+(33, 'Nguyễn Ái Tuấn 333', 'teenboylaanh@gmail.com', '0932635602', 'test 123', '2019-12-19 11:03:25', 'Hỏi thêm thông tin', 'Tòa Nhà Việt Phone 1 Building', 'http://localhost:8088/cyberreal/ban-can-ho-chung-cu/toa-nha-viet-phone-1-building.html', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1185,7 +1223,7 @@ CREATE TABLE IF NOT EXISTS `popup` (
 --
 
 INSERT INTO `popup` (`Content`, `IsShow`, `Timeout`) VALUES
-('test 123', 1, 1);
+('test 123', 0, 3);
 
 -- --------------------------------------------------------
 
@@ -83246,6 +83284,12 @@ ALTER TABLE `imagesproducts`
  ADD PRIMARY KEY (`Id`), ADD KEY `ProductId` (`ProductId`), ADD KEY `ProductId_2` (`ProductId`), ADD KEY `ProductId_3` (`ProductId`);
 
 --
+-- Indexes for table `investor`
+--
+ALTER TABLE `investor`
+ ADD PRIMARY KEY (`Id`);
+
+--
 -- Indexes for table `language`
 --
 ALTER TABLE `language`
@@ -83320,10 +83364,15 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 ALTER TABLE `booking`
 MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
+-- AUTO_INCREMENT for table `investor`
+--
+ALTER TABLE `investor`
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
 -- AUTO_INCREMENT for table `mailbox`
 --
 ALTER TABLE `mailbox`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `new`
 --
