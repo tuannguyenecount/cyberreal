@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" href="<?= base_url ?>/favicon.png" type="image/png"/>
+        <link rel="shortcut icon" href="<?= base_url ?>/images/<?= $_SESSION['InfoWeb']['Favicon'] ?>" />
         <title><?= $view_data['title'] ?></title>
         <?php if(isset($view_data['section_meta'])) { 
             include 'view/' . $view_data['section_meta'];

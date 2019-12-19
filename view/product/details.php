@@ -164,8 +164,8 @@
             <div class="col-md-4" >
               <div  id="formhotro">
                 <div class="well" >
-                  <h5>Mr. Thế Thắng</h5>
-                  <p>Phòng kinh doanh</p>
+                  <h5><?= $_SESSION['InfoWeb']['Representative'] ?></h5>
+                  <p><?= $_SESSION['InfoWeb']['Department'] ?></p>
                 </div>
                 <div>
                   <p>Chúng tôi luôn sẵn sàng giải đáp cho bạn vì chúng tôi hoạt động 24/7.</p>

@@ -149,36 +149,13 @@
           <strong class="text-green">nổi bật</strong>
         </h3>
         <div class="row">
+        <?php foreach($view_data['investors'] as $item) { ?>
           <div class="col-md-2 col-sm-3 col-xs-6 text-center">
             <p>
-              <img src="https://honghaland.com.vn/wp-content/uploads/2019/11/Logo-Hongkongland.png" width="150" height="150" />
+              <img src="<?= base_url ?>/images/investors/<?= $item['Logo'] ?>" width="150" height="150" />
             </p>
           </div>
-          <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-            <p>
-              <img src="https://honghaland.com.vn/wp-content/uploads/2019/11/Logo-pi-group.png" width="150" height="150" />
-            </p>
-          </div>
-          <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-            <p>
-              <img src="https://honghaland.com.vn/wp-content/uploads/2019/11/Logo-Capitaland.png" width="150" height="150" />
-            </p>
-          </div>
-          <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-            <p>
-              <img src="https://honghaland.com.vn/wp-content/uploads/2019/11/Logo-Hongkongland.png" width="150" height="150" />
-            </p>
-          </div>
-          <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-            <p>
-              <img src="https://honghaland.com.vn/wp-content/uploads/2019/11/Logo-Hongkongland.png" width="150" height="150" />
-            </p>
-          </div>
-          <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-            <p>
-              <img src="https://honghaland.com.vn/wp-content/uploads/2019/11/Logo-Hongkongland.png" width="150" height="150" />
-            </p>
-          </div>
+        <?php } ?>
         </div>
       </div>
     </div>

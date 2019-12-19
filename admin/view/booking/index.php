@@ -24,14 +24,14 @@
                            <th>Ghi chú</th>
                            <th>Ngày gửi</th>
                            <th class="text-center">Trạng thái</th>
-                           <th class="text-center">Thao tác</th>
+                           <th class="col-sm-2">Thao tác</th>
                         </tr>
                      </thead>
                      <tbody>
                         <?php foreach($view_data['model'] as $item) { ?>
                         <tr class="<?= $item['IsConfirm'] == 0 ? "danger" : "" ?>">
                            <td class="text-center">
-                              #<?= $item['Id'] ?>
+                              <label class="badge">#<?= $item['Id'] ?></label>
                            </td>
                            <td>
                               <?= $item['Name'] ?>
@@ -57,7 +57,7 @@
                               <?php } ?>
                            </td>
                            <td class="text-center">
-                              <a href="<?= base_url_admin ?>/booking/viewdetail/<?= $item['Id'] ?>" data-toggle="modal" data-target="#modalViewDetail" class="btn btn-xs bg-green"><i class="fa fa-info"></i> Xem chi tiết</a>
+                              <a href="<?= base_url_admin ?>/booking/viewdetail/<?= $item['Id'] ?>" data-toggle="modal" data-target="#modalViewDetail" class="btn btn-xs bg-green"><i class="fa fa-info"></i> Xem dự án</a>
                               
                               <a onclick="return confirm('Xác nhận xóa lịch hẹn #<?=$item['Id']?>')" href="<?= base_url_admin ?>/booking/delete/<?= $item['Id'] ?>" class="btn btn-xs btn-default"><i class="fa fa-remove"></i> Xóa</a>
                            </td>

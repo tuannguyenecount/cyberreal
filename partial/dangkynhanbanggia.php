@@ -19,7 +19,7 @@
                     </div>
                     <div class="form-group">
                         <p><input type="checkbox" name="NhanBaoGiaChiTiet" /> Nhận báo giá chi tiết dự án</p>
-                        <p><input type="checkbox" name="NhanPhanTichDuAn" /> Nhận phân tích dự án</p>
+                        <p><input type="checkbox" name="NhanPhanTichDuAn" /> Nhận phân tích dự án từ chuyên gia</p>
                     </div>
                     <p style="text-align: center">Hoặc gọi trực tiếp vào Hotline (24/7) <?= $_SESSION['InfoWeb']['Phone'] ?></p>
                     <p id="messageResult"></p>

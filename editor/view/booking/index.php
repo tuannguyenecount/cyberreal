@@ -56,7 +56,7 @@
                               <?php } ?>
                            </td>
                            <td class="text-center">
-                              <a href="<?= base_url_editor ?>/booking/viewdetail/<?= $item['Id'] ?>" data-toggle="modal" data-target="#modalViewDetail" class="btn btn-xs bg-green"><i class="fa fa-info"></i> Xem chi tiết</a>
+                              <a href="<?= base_url_editor ?>/booking/viewdetail/<?= $item['Id'] ?>" data-toggle="modal" data-target="#modalViewDetail" class="btn btn-xs bg-green"><i class="fa fa-info"></i> Xem dự án</a>
                            </td>
                         </tr>
                         <?php } ?>

@@ -10915,14 +10915,9 @@ a.text-secondary:focus {
     color: #737373 !important
 }
 
-.text-success {
-    color: #3162ad !important
-}
+.text-success{color:#28a745 !important}
 
-a.text-success:hover,
-a.text-success:focus {
-    color: #19692c !important
-}
+a.text-success:hover,a.text-success:focus{color:#19692c !important}
 
 .text-info {
     color: #17a2b8 !important

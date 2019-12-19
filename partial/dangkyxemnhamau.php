@@ -33,13 +33,13 @@
             console.log(result);
             if(result.trim() == "1")
             {
-                $("#messageResult").addClass("text-success");
+                $("#messageResult").attr("class","text-success");
                 $("#messageResult").html("Gửi thông tin thành công. Chúng tôi sẽ sớm liên hệ cho bạn qua số điện thoại hoặc email bạn nhập.");
                 $("#frmDangkyxemnhamau").trigger("reset");
             }
             else 
             {
-                $("#messageResult").addClass("text-danger");
+                $("#messageResult").attr("class","text-danger");
                 $("#messageResult").html(result);
             }
         });

@@ -116,13 +116,19 @@
 
         <li>
             <a href="<?= base_url_admin ?>/location/districts">
-                <i class="fa fa-map"></i> <span>Danh mục Quận/Huyện</span>
+                <i class="fa fa-map"></i> <span>Danh Mục Quận/Huyện</span>
             </a>
         </li>
 
-         <li>
+        <li>
             <a href="<?= base_url_admin ?>/advertisement">
                 <i class="fa fa-square"></i> <span>Quảng Cáo</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="<?= base_url_admin ?>/investor">
+                <i class="fa fa-handshake-o"></i> <span>Chủ Đầu Tư</span>
             </a>
         </li>
         
@@ -131,16 +137,22 @@
                 <i class="fa fa-info"></i> <span>Thông Tin Web</span>
             </a>
         </li>
+    
+        <li>
+            <a href="<?=base_url?>" target="_blank">
+                <i class="fa fa-globe"></i> <span>Xem Website</span>
+            </a>
+        </li>
 
+        <li class="header">TỐI ƯU SEO</li>
         <li>
             <a href="<?= base_url_admin ?>/infoweb/editRobots">
                 <i class="fa fa-file"></i> <span>File Robots.txt</span>
             </a>
         </li>
-    
         <li>
-            <a href="<?=base_url?>" target="_blank">
-                <i class="fa fa-globe"></i> <span>Xem Website</span>
+            <a href="<?= base_url_admin ?>/infoweb/sitemap">
+                <i class="fa fa-file"></i> <span>Sitemap</span>
             </a>
         </li>
 

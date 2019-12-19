@@ -18,6 +18,8 @@
                             <hr />
                             <?php include_once 'view/shared/_errors.php'; ?>
                             <input type="hidden" name="Logo" value="<?= $view_data['model']['Logo'] ?>" />
+                            <input type="hidden" name="Favicon" value="<?= $view_data['model']['Favicon'] ?>" />
+
                             <div class="form-group">
                                 <label class = "control-label col-md-3">Tên website</label>
                                 <div class="col-md-7">
@@ -26,9 +28,30 @@
                             </div>
 
                             <div class="form-group">
+                                <label class = "control-label col-md-3">Tên người đại diện</label>
+                                <div class="col-md-7">
+                                    <input type="text" class="form-control" name="Representative" value="<?= $view_data['model']['Representative'] ?>" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class = "control-label col-md-3">Thuộc phòng ban</label>
+                                <div class="col-md-7">
+                                    <input type="text" class="form-control" name="Department" value="<?= $view_data['model']['Department'] ?>" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class = "control-label col-md-3">Logo</label>
                                 <div class="col-md-7">
                                     <input type="file" name="file" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class = "control-label col-md-3">Favicon</label>
+                                <div class="col-md-7">
+                                    <input type="file" name="fileFavicon" accept=".ico" />
                                 </div>
                             </div>
 
@@ -138,7 +161,7 @@
                             </div>
 
                            <div class="form-group">
-                                <label class = "control-label col-md-3">Og Image</label>
+                                <label class = "control-label col-md-3">Og Image URL</label>
                                 <div class="col-md-7">
                                     <input type="text" class="form-control" name="OgImage" value="<?= $view_data['model']['OgImage'] ?>" />
                                 </div>

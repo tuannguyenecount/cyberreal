@@ -1,4 +1,31 @@
 <?php 
+	function SendMail($mailTo, $subject, $body)
+	{
+		include_once 'phpMailer/class.phpmailer.php';
+		$mail = new PHPMailer();
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
+        $mail->IsSMTP();
+        $mail->CharSet = 'UTF-8';
+        $mail->Host = "smtp.gmail.com"; // SMTP server example
+        $mail->SMTPDebug = 0;                     // enables SMTP debug information (for testing)
+        $mail->SMTPAuth = true;                  // enable SMTP authentication
+        $mail->Port = 465;                    // set the SMTP port for the GMAIL server
+        $mail->Username = "chuyenlaptrinh@gmail.com"; // SMTP account username example
+        $mail->Password = "Tp46TwWp3f";        // SMTP account password example
+        $mail->SMTPSecure = "ssl";
+        $mail->SetFrom($mail->Username, "CanHo247.Com.Vn");
+        $mail->AddAddress($mailTo, $subject);
+        $mail->Subject = $subject;
+        $mail->IsHTML(true);
+        $mail->Body = $body;
+        $result = $mail->Send();
+	}
 	function NEWGUID()
 	{
 	    if (function_exists('com_create_guid') === true)
@@ -190,7 +217,7 @@
 		}
 		// Allow certain file formats
 		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-		&& $imageFileType != "gif" ) {
+		&& $imageFileType != "gif") {
 		    return "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
 		}
 		// Check if $uploadOk is set to 0 by an error
@@ -200,6 +227,25 @@
 		} else {
 
 		    if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+		        $uploadOk = 1;
+		    } else {
+		        return "Sorry, there was an error uploading your file.";
+		    }
+		}
+		return $uploadOk;
+	}
+
+	function UploadFile($nameInput, $target_dir)
+	{
+		$target_file = $target_dir;
+		$uploadOk = 1;
+		// Check if $uploadOk is set to 0 by an error
+		if ($uploadOk == 0) {
+		    return "Sorry, your file was not uploaded.";
+		// if everything is ok, try to upload file
+		} 
+		else {
+		    if (move_uploaded_file($_FILES[$nameInput]["tmp_name"], $target_file)) {
 		        $uploadOk = 1;
 		    } else {
 		        return "Sorry, there was an error uploading your file.";

@@ -4,9 +4,9 @@
     include_once 'model/class.newManager.php';
     include_once 'model/class.mailBoxManager.php';
     include_once 'model/class.slideManager.php';
-    include_once 'phpMailer/class.phpmailer.php';
     include_once 'model/class.popupManager.php';
     include_once 'model/class.advertisementManager.php';
+    include_once 'model/class.investorManager.php';
 
     $slideManager = new SlideManager();
     $productManager = new ProductManager();
@@ -15,6 +15,7 @@
     $mailBoxManager = new MailBoxManager();
     $popupManager = new PopupManager();
     $avertisementManager = new AdvertisementManager();
+    $investorManager = new InvestorManager();
     
     switch($action)
     {
@@ -35,6 +36,7 @@
             }
             $view_data['slides'] = $slideManager->GetListShow();
             $view_data['productsHOT'] = $productManager->GetProductsHot();
+            $view_data['investors'] = $investorManager->GetList();
             break;
         }
         case "contact":
@@ -46,11 +48,11 @@
             if(isset($_POST['Name']))
             {
                 $view_data['errors'] = $mailBoxManager->GetErrorsMessage($_POST);
-                if(CheckRecaptchav2() == false)
-                {
-                    $view_data['errors'][] = "Mã xác nhận không đúng!";
-                }
-                else if(empty($_POST['Content']))
+                // if(CheckRecaptchav2() == false)
+                // {
+                //     $view_data['errors'][] = "Mã xác nhận không đúng!";
+                // }
+                if(empty($_POST['Content']))
                 {
                     $view_data['errors'][] = "Lời nhắn không được để trống!";
                 }
@@ -64,42 +66,17 @@
                     $result = $mailBoxManager->Add($_POST);
                     if($result)
                     {
-                        // try 
-                        // {
-
-                        //     $mail = new PHPMailer();
-                        //     $mail->SMTPOptions = array(
-                        //         'ssl' => array(
-                        //             'verify_peer' => false,
-                        //             'verify_peer_name' => false,
-                        //             'allow_self_signed' => true
-                        //         )
-                        //     );
-                        //     $mail->IsSMTP();
-                        //     $mail->CharSet = 'UTF-8';
-                        //     $mail->Host = "sng122.hawkhost.com"; // SMTP server example
-                        //     $mail->SMTPDebug = 2;                     // enables SMTP debug information (for testing)
-                        //     $mail->SMTPAuth = true;                  // enable SMTP authentication
-                        //     $mail->Port = 465;                    // set the SMTP port for the GMAIL server
-                        //     $mail->Username = "contact@canho247.com.vn"; // SMTP account username example
-                        //     $mail->Password = "v4O}-3?.S5Bu";        // SMTP account password example
-                        //     $mail->SMTPSecure = "ssl";
-                        //     $subject = "Khách hàng ".$_POST['Name']. " đã gửi lời nhắn đến website canho247.com.vn";    
-                        //     $body = "Họ tên: <b>" . $_POST['Name'] . "</b><br/>Email: <b>" . $_POST['Email'] . "</b><br/>Điện thoại: <b>".$_POST['Phone']."</b><br/> Nội dung: <b>" . $_POST['Content'] . "</b><br/>Gửi vào lúc " .date("d/m/Y H:i:s A");
-                        //     $mail->SetFrom($mail->Username, "CanHo247.Com.Vn");
-                        //     $mail->AddAddress("admin@canho247.com.vn", $subject);
-                        //     $mail->Subject = $subject;
-                        //     $mail->IsHTML(true);
-                        //     $mail->Body = $body;
-                        //     $result = $mail->Send();
-                        //     echo "send";
-                        //     exit();
-                        // } 
-                        // catch (Exception $ex) 
-                        // {
-                        //     echo $ex->getMessage();
-                        //     exit();
-                        // }
+                        try 
+                        {
+                            $subject = "Khách hàng ".$_POST['Name']. " đã gửi lời nhắn đến website canho247.com.vn";    
+                            $body = "Họ tên: <b>" . $_POST['Name'] . "</b><br/>Email: <b>" . $_POST['Email'] . "</b><br/>Điện thoại: <b>".$_POST['Phone']."</b><br/> Nội dung: <b>" . $_POST['Content'] . "</b><br/>Gửi vào lúc " .date("d/m/Y H:i:s A");
+                            SendMail("nguyenaituan95@gmail.com",$subject, $body);
+                        } 
+                        catch (Exception $ex) 
+                        {
+                            echo $ex->getMessage();
+                            exit();
+                        }
                         header("location: ".base_url."/lien-he-thanh-cong.html");
                     }
                 } 
@@ -143,6 +120,9 @@
                     if($result)
                     {
                         echo "1";
+                        $subject = "Khách hàng ".$_POST['Name']. " vừa thực hiện đăng ký xem nhà mẫu dự án ".$_POST['DuAnQuanTam'];    
+                        $body = "Họ tên: <b>" . $_POST['Name'] . "</b><br/>Email: <b>" . $_POST['Email'] . "</b><br/>Điện thoại: <b>".$_POST['Phone']."</b><br/> Dự án khách quan tâm: <b><a href='".$_POST['Link']."' rel='nofollow' target='_blank'>" . $_POST['DuAnQuanTam'] . "</a></b><br/>Gửi vào lúc " .date("d/m/Y H:i:s A");
+                        SendMail("nguyenaituan95@gmail.com",$subject, $body);
                     }
                     else 
                     {
@@ -178,6 +158,9 @@
                     if($result)
                     {
                         echo "1";
+                        $subject = "Khách hàng ".$_POST['Name']. " vừa thực hiện đăng ký nhận bảng giá dự án ".$_POST['DuAnQuanTam'];    
+                        $body = "Họ tên: <b>" . $_POST['Name'] . "</b><br/>Email: <b>" . $_POST['Email'] . "</b><br/>Điện thoại: <b>".$_POST['Phone']."</b><br/> Dự án khách quan tâm: <b><a href='".$_POST['Link']."' rel='nofollow' target='_blank'>" . $_POST['DuAnQuanTam'] . "</a></b><br/>Nhận báo giá chi tiết: <b>".($_POST['NhanBaoGiaChiTiet'] ? "Có" : "Không")."</b><br/>Nhận phân tích dự án từ chuyên gia: <b>".($_POST['NhanPhanTichDuAn'] ? "Có" : "Không")."</b> <br/>Gửi vào lúc " .date("d/m/Y H:i:s A");
+                        SendMail("nguyenaituan95@gmail.com",$subject, $body);
                     }
                     else 
                     {
@@ -212,6 +195,9 @@
                     if($result)
                     {
                         echo "1";
+                        $subject = "Khách hàng ".$_POST['Name']. " vừa thực hiện hỏi thêm thông tin về dự án ".$_POST['DuAnQuanTam'];    
+                        $body = "Họ tên: <b>" . $_POST['Name'] . "</b><br/>Email: <b>" . $_POST['Email'] . "</b><br/>Điện thoại: <b>".$_POST['Phone']."</b><br/> Dự án khách quan tâm: <b><a href='".$_POST['Link']."' rel='nofollow' target='_blank'>" . $_POST['DuAnQuanTam'] . "</a></b><br/> Nội dung: <b>" . $_POST['Content'] . "</b><br/>Gửi vào lúc " .date("d/m/Y H:i:s A");
+                        SendMail("nguyenaituan95@gmail.com",$subject, $body);
                     }
                     else 
                     {

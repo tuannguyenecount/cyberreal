@@ -12,7 +12,7 @@
       $view_data['model'] = $infoWebManager->Get();
       if(isset($_POST['WebName']))
       {
-         if(isset($_FILES["file"]) && !empty($_FILES['file']['tmp_name'])) {
+        if(isset($_FILES["file"]) && !empty($_FILES['file']['tmp_name'])) {
             $check = getimagesize($_FILES["file"]["tmp_name"]);
             if($check !== false)
             {
@@ -27,15 +27,33 @@
                 $view_data['errors'][] = $result;
             }
         }
-        $result = $infoWebManager->Edit($_POST);
-        if($result)
-        {
-          $_SESSION['InfoWeb'] = $infoWebManager->Get();
-          header("Location: ".base_url_admin."/infoweb/edit");
+        if(isset($_FILES["fileFavicon"]) && !empty($_FILES['fileFavicon']['tmp_name'])) {
+            $check = getimagesize($_FILES["fileFavicon"]["tmp_name"]);
+            if($check !== false)
+            {
+              $mt = microtime(true);
+              $mt =  $mt * 1000; //microsecs
+              $ticks = (string)$mt*10; //100 Nanosecs
+              $name = $_FILES["fileFavicon"]["name"];
+              $ext = end((explode(".", $name))); # extra () to prevent notice
+              $_POST['Favicon'] = "favico".$ticks.".".$ext;
+              $result = UploadFile("fileFavicon", SITE_PATH."/images/".$_POST['Favicon']);
+              if($result != 1)
+                $view_data['errors'][] = $result;
+            }
         }
-        else 
+        if(count($view_data['errors']) == 0)
         {
-          $view_data['errors'][] = "Xảy ra lỗi khi sửa dữ liệu!";
+          $result = $infoWebManager->Edit($_POST);
+          if($result)
+          {
+            $_SESSION['InfoWeb'] = $infoWebManager->Get();
+            header("Location: ".base_url_admin."/infoweb/edit");
+          }
+          else 
+          {
+            $view_data['errors'][] = "Xảy ra lỗi khi sửa dữ liệu!";
+          }
         }
       }
       break;

@@ -17,21 +17,21 @@
                         <?php include_once 'view/shared/_errors.php'; ?>
                       
                         <div class="form-group">
-                            <label class="control-label col-md-1">Nội Dung</label>
+                            <label class="control-label col-md-2">Nội Dung</label>
                             <div class="col-md-10">
                                 <textarea class="form-control" name="Content" id="Content"><?= $view_data['model']['Content'] ?></textarea>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-md-1">Hiển Thị</label>
+                            <label class="control-label col-md-2">Hiển Thị</label>
                             <div class="col-md-3">
                                 <input type="checkbox" name="IsShow" <?= $view_data['model']['IsShow'] == true ? "checked=''" : "" ?>  />
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-md-1">Timeout</label>
+                            <label class="control-label col-md-2">Timeout</label>
                             <div class="col-md-3">
                                 <input class="form-control" required="" min="0" name="Timeout" step="1" type="number" value="<?= (int)$view_data['model']['Timeout'] ?>">
                             </div>
@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-offset-3 col-md-8">
+                            <div class="col-md-offset-2 col-md-10">
                                 <input type="submit" value="Sửa" class="btn btn-default" />
                             </div>
                         </div>
