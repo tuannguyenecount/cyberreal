@@ -3,6 +3,10 @@ Domain: canho247.com.vn
 Username: canhocom
 Password: T:F66e6UuWq1k:
 
+https://my.hawkhost.com/clientarea.php
+id: lucasshimer@gmail.com
+pass: mp3.zing.vn
+
 Domain demo:
 http://goldrezin.com
 
