@@ -65,11 +65,11 @@
 
                                 <ul class="list-group list-group-minimal small">
                                     <li class="list-group-item d-flex align-items-center">
-                                        <i class="fas fa-box mr-2 text-success fa-lg"></i>
+                                        <i class="fas fa-box mr-2 text-warning fa-lg"></i>
                                         <?= $item['Area'] ?>            
                                     </li>
                                     <li class="list-group-item d-flex align-items-center">
-                                        <i class="fas fa-compass mr-2 text-success fa-lg"></i>
+                                        <i class="fas fa-compass mr-2 text-warning fa-lg"></i>
                                         <?= $item['Direction'] ?>            
                                     </li>
                                 </ul>
