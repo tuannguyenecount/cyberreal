@@ -10,32 +10,6 @@
 	    padding-right: 0 !important;
 	    display: block;
 	}
-	.buttonLienHe {
-    	background: #1e73be;
-    	color:#fff !important;
-    	border-color:rgba(0,0,0,0.05);
-    	font-size:.97em;
-    	letter-spacing: 0.3em;
-    	cursor: pointer;
-    	vertical-align:middle;
-    	border-radius:0;
-    	font-weight:bolder;
-    	touch-action: none;
-    	text-transform:uppercase;
-    	position: relative;
-    	padding: 0 1.2em;
-    	line-height: 2.4em;
-    	min-height: 2.5em;
-    	margin-right:1em;
-    	margin-top:0;
-    	transition: transform .3s, border .3s, background .3s, box-shadow .3s, opacity .3s, color .3s;
-    	text-align: center;
-    	margin-bottom: 1em;
-	}
-	.buttonLienHe span {
-    	display: inline-block;
-    	line-height: 1.6;
-	}
 	.well {
 	  min-height: 20px;
 	  padding: 19px;

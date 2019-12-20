@@ -2,3 +2,90 @@ select.form-control{
 	height: auto;
 	padding: 7px .9375rem !important;
 }
+.clearfix{
+    clear: both;
+}
+.margin-top-10{
+    margin-top:10px;
+}
+.margin-top-20{
+    margin-top:20px;
+}
+.margin-bottom-10{
+    margin-bottom:10px;
+}
+.margin-bottom-20{
+    margin-bottom:20px;
+}
+.firstNew{
+        margin-right:-20px
+}
+.office-detail .content h1,.office-detail .content h2,.office-detail .content h3,
+.office-detail .content h4,
+.office-detail .content h5,.office-detail .content h6{
+    font-size: unset;
+} 
+.description{
+    font-weight: 600;
+}
+.padding-10{
+    padding:10px;
+}
+.box-shadow-3-hover:hover{
+    box-shadow:0 10px 20px rgba(0,0,0,0.19),0 6px 6px rgba(0,0,0,0.22);
+    transition: transform .3s, box-shadow .3s, background-color .3s, color .3s, opacity .3s;
+}
+#chudautu img{
+    cursor: pointer;
+}
+#chudautu img:hover{
+    box-shadow:0 10px 20px rgba(0,0,0,0.19),0 6px 6px rgba(0,0,0,0.22);
+    transition: transform .3s, box-shadow .3s, background-color .3s, color .3s, opacity .3s;
+}
+.section-title{position:relative;-js-display:flex;display:-ms-flexbox;display:flex;-ms-flex-flow:row wrap;flex-flow:row wrap;-ms-flex-align:center;align-items:center;-ms-flex-pack:justify;justify-content:space-between;width:100%}
+.section-title i{opacity:.6;margin-right:0.5em}
+.section-title i.icon-angle-right{margin-right:0;margin-left:10px}
+.section-title span{text-transform:uppercase}
+.section-title small{text-transform:none;font-weight:normal;padding-left:15px;font-size:1em;opacity:.7}
+.section-title b{display:block;-ms-flex:1;flex:1;height:2px;opacity:.1;background-color:currentColor;}
+.section-title a{display:block;padding-left:15px;font-size:.8em;margin-left:auto}
+.section-title-normal{border-bottom:2px solid #ececec}
+.section-title-normal span{margin-right:15px;padding-bottom:7.5px;border-bottom:2px solid rgba(0,0,0,0.1);margin-bottom:-2px}
+.dark .section-title-normal span,.dark .section-title-normal{border-color:rgba(255,255,255,0.2)}
+.section-title-normal b{display:none}
+.section-title-center span{margin:0 15px}
+.section-title-center span,.section-title-bold-center span{text-align:center}
+.section-title-center small,.section-title-bold-center small{padding:0 15px;display:block}
+.section-title-bold-center span,.section-title-bold span{border:2px solid rgba(0,0,0,0.1);padding:.3em .8em}
+.section-title-bold b:first-of-type{display:none}
+.section-title-main{font-size:90%;color:rgb(255, 166, 0);}
+.btn-blue{
+	background: #1e73be;
+	border-color: #1e73be;
+}
+.buttonLienHe {
+	background: rgb(255, 166, 0) ;
+	color:#fff !important;
+	border-color:rgba(0,0,0,0.05);
+	font-size:.97em;
+	letter-spacing: 0.3em;
+	cursor: pointer;
+	vertical-align:middle;
+	border-radius:0;
+	font-weight:bolder;
+	touch-action: none;
+	text-transform:uppercase;
+	position: relative;
+	padding: 0 1.2em;
+	line-height: 2.4em;
+	min-height: 2.5em;
+	margin-right:1em;
+	margin-top:0;
+	transition: transform .3s, border .3s, background .3s, box-shadow .3s, opacity .3s, color .3s;
+	text-align: center;
+	margin-bottom: 1em;
+}
+.buttonLienHe span {
+	display: inline-block;
+	line-height: 1.6;
+}

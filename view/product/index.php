@@ -61,9 +61,9 @@
                             </div>
                             <div class="card-body p-1 pt-3">
                                 <h5 class="card-title mb-0"><a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html"><?= $item['Name'] ?></a></h5>
-                                <p class="address small"><?= $item['Street'] ?>, <?= $item['WardName'] ?>, <?= $item['DistrictName'] ?></p>
+                                <p class="address"><?= $item['Street'] ?>, <?= $item['WardName'] ?>, <?= $item['DistrictName'] ?></p>
 
-                                <ul class="list-group list-group-minimal small">
+                                <ul class="list-group list-group-minimal">
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-box mr-2 text-warning fa-lg"></i>
                                         <?= $item['Area'] ?>            
@@ -74,7 +74,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="card-footer p-1 small">
+                            <div class="card-footer p-1">
                                 
                                 <a href="<?= base_url ?>/product/select/<?= $item['Id'] ?>" data-toggle="modal" data-target="#global"><i class="fa fa-check"></i> Chọn đi xem</a></a>  
                             </div>

@@ -25,7 +25,7 @@
         </div>
         <ul class="navbar-nav navbar-right">
             <a class="nav-link" href="<?= base_url ?>/hen-di-xem.html">
-                <span class="btn btn-info btn-sm btn-with-ico text-white font-weight-bold"><i class="icon-star"></i> Hẹn đi xem</span>
+                <span class="btn btn-blue btn-sm btn-with-ico text-white font-weight-bold"><i class="icon-star"></i> Hẹn đi xem</span>
             </a>
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url ?>/lien-he.html">Liên hệ</a>

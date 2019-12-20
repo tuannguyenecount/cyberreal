@@ -39,6 +39,11 @@
    <div class="row">
       <div class="col-md-8  col-md-offset-2 text-center" style="margin:0 auto">
          <h3>Các dự án HOT <?= $_SESSION['InfoWeb']['ViTriDangHot'] ?></h3>
+        <!--  <h2 class="section-title section-title-center">
+          <b></b>
+          <span class="section-title-main">Các dự án HOT <?= $_SESSION['InfoWeb']['ViTriDangHot'] ?></span>
+          <b></b>
+         </h2> -->
          <p>
             Chúng tôi sở hữu cổng thông tin bất động sản chất lượng và được thẩm định đầy đủ, cung cấp cho khách hàng đa dạng sản phẩm để lựa chọn tại các khu vực đang “hot” trên thị trường
          </p>
@@ -94,11 +99,13 @@
    </div>
 </section>
 <main>
-    <div class="top-offices py-5 bg-home">
+    <div class="top-offices py-5 bg-home" style="margin-top:-70px">
         <div class="container">
-          <h3 class="heading pb-2">Các dự án                 
-            <strong class="text-green">vị trí tốt nhất</strong>
-          </h3>
+          <h2 class="section-title section-title-center">
+            <b></b>
+            <span class="section-title-main">Các dự án vị trí tốt nhất</span>
+            <b></b>
+          </h2>
           <div class="row">
              <?php foreach($view_data['products'] as $item) { ?>
                   <div class="col-lg-4 col-md-6 office mb-4">
@@ -116,12 +123,13 @@
                           </div>
                           <div class="card-body p-1 pt-3">
                               <h5 class="card-title mb-0"><a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html"><?= $item['Name'] ?></a></h5>
-                              <p class="address text-muted small">
+                              <p class="address text-muted">
+                                Đường
                                   <?= $item['Street'] ?>,
                                       <?= $item['WardName'] ?>,
                                           <?= $item['DistrictName'] ?>
                               </p>
-                              <ul class="list-group list-group-minimal small">
+                              <ul class="list-group list-group-minimal">
                                   <li class="list-group-item d-flex align-items-center">
                                       <i class="fas fa-th mr-2 text-warning fa-lg"></i>
                                       <?= $item['Area'] ?>
@@ -132,7 +140,7 @@
                                   </li>
                               </ul>
                           </div>
-                          <div class="card-footer p-1 small">
+                          <div class="card-footer p-1">
 
                               <a href="<?= base_url ?>/product/select/<?= $item['Id'] ?>" data-toggle="modal" data-target="#global"><i class="fa fa-check"></i> Chọn đi xem</a></a>
                           </div>
@@ -143,11 +151,13 @@
         </div>
     </div>
 
-    <div class="py-5 bg-home" id="chudautu">
+    <div class="py-5 bg-home" id="chudautu" style="margin-top:-70px">
       <div class="container">
-        <h3 class="heading pb-2">Chủ Đầu Tư
-          <strong class="text-green">nổi bật</strong>
-        </h3>
+        <h2 class="section-title section-title-center">
+          <b></b>
+          <span class="section-title-main">Chủ Đầu Tư Nổi Bật</span>
+          <b></b>
+        </h2>
         <div class="row">
         <?php foreach($view_data['investors'] as $item) { ?>
           <div class="col-md-2 col-sm-3 col-xs-6 text-center">
@@ -160,11 +170,13 @@
       </div>
     </div>
 
-    <div class="latest-news py-5 bg-home">
+    <div class="latest-news py-5 bg-home" style="margin-top:-70px">
       <div class="container">
-        <h3 class="heading pb-2">Tin Tức
-          <strong class="text-green">mới nhất</strong>
-        </h3>
+        <h2 class="section-title section-title-center">
+          <b></b>
+          <span class="section-title-main">Tin Tức Mới Nhất</span>
+          <b></b>
+        </h2>
         <div class="row"  >
         <?php if(isset($view_data['firstNew'])) { ?>
           <div class="col-md-6 firstNew" >
