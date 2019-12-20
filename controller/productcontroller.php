@@ -19,7 +19,7 @@
         {
 
             $view_data['title'] = "Kết quả tìm kiếm";
-            $view_data['view_name'] = "product/search.php";
+            $view_data['view_name'] = "product/index.php";
             $Name = isset($_POST['Name']) ? $_POST['Name'] : "";
             $District = isset($_POST['District']) ? $_POST['District'] : "";
             $Ward = isset($_POST['Ward']) ? $_POST['Ward'] : "";
