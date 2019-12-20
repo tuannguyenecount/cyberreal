@@ -42,7 +42,9 @@ select.form-control{
     box-shadow:0 10px 20px rgba(0,0,0,0.19),0 6px 6px rgba(0,0,0,0.22);
     transition: transform .3s, box-shadow .3s, background-color .3s, color .3s, opacity .3s;
 }
-.section-title{position:relative;-js-display:flex;display:-ms-flexbox;display:flex;-ms-flex-flow:row wrap;flex-flow:row wrap;-ms-flex-align:center;align-items:center;-ms-flex-pack:justify;justify-content:space-between;width:100%}
+.section-title{position:relative;-js-display:flex;display:-ms-flexbox;display:flex;-ms-flex-flow:row wrap;
+	flex-flow:row wrap;-ms-flex-align:center;align-items:center;-ms-flex-pack:justify;
+	justify-content:space-between;width:100%}
 .section-title i{opacity:.6;margin-right:0.5em}
 .section-title i.icon-angle-right{margin-right:0;margin-left:10px}
 .section-title span{text-transform:uppercase}

@@ -9,7 +9,7 @@
         <?php if(isset($view_data['section_meta'])) { 
             include 'view/' . $view_data['section_meta'];
         } ?>
-        <link href="<?= base_url ?>/css/style2.css?v=4" rel="stylesheet">
+        <link href="<?= base_url ?>/css/style2.css?v=5" rel="stylesheet">
         <link href="<?= base_url ?>/css/custom.css?v=2" rel="stylesheet">
         <link href="<?= base_url ?>/css/icon.css?v=1" rel="stylesheet">
         <link href="<?= base_url ?>/assets/fc340a4a/css/kv-widgets.min.css" rel="stylesheet">
