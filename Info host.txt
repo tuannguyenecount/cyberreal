@@ -7,6 +7,10 @@ https://my.hawkhost.com/clientarea.php
 id: lucasshimer@gmail.com
 pass: mp3.zing.vn
 
+http://access.pavietnam.vn/
+Domain : goldrezin.com
+Mat khau: 8G1KAnaS53uk
+
 Domain demo:
 http://goldrezin.com
 
