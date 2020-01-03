@@ -70,7 +70,7 @@
                                     </li>
                                     <li class="list-group-item d-flex align-items-center">
                                         <i class="fas fa-compass mr-2 text-warning fa-lg"></i>
-                                        <?= $item['Direction'] ?>            
+                                        <?= $item['DirectionName'] ?>            
                                     </li>
                                 </ul>
                             </div>
