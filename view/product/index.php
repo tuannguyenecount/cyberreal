@@ -46,33 +46,50 @@
             <div class="col-md-9">
                 <div class="row" style="width:94%;margin-left:auto; margin-right:auto">
                 <?php foreach($view_data['model'] as $item) { ?>
-                    <div class="col-md-6 office mb-4" >
+                    <div class="col-md-6 office mb-4 project-box" >
                         <div class="card stacked">
-                            <div class="image-tools top right show-on-hover">
+                            <div class="image-tools top right show-on-hover ">
                                 <div class="div_khu_vuc_small"><a title="Bất động sản <?= $item['DistrictName'] ?>" href="<?= base_url ?>/can-ho/<?= strtolower(vn_to_str($item['DistrictName'])) ?>">TP.HCM <i class="fa fa-angle-right" aria-hidden="true"></i> <?= $item['DistrictName'] ?></a>
                                 </div>
                             </div>
-                            <div class="card-header p-0 lift">
+                            <div class="card-header p-0 lift img-project-box">
                                 <figure class="figure mb-0">
                                     <a class="figure-img img-fluid" href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html">
                                     <img class="rounded-top" src="<?= base_url ?>/images/products/<?= $item['Image'] ?>" alt="" /></a>            
-                                    <figcaption class="figure-caption"><?= $item['Price'] ?></figcaption>
+                                    <div class="captionBottom">
+                                        Giá: <?= $item['PriceOn1m2'] ?> / m<sup>2</sup>
+                                    </div>
+
+                                    <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html" class="storylink">
+                                        <div class="hover-div">
+                                          <div>
+                                            <h2><?= $item['Name'] ?></h2>
+                                              <div class="contnt">
+                                                  <ul>
+                                                    <li>Đường
+                                            <?= $item['Street'] ?>,
+                                                <?= $item['WardName'] ?>,
+                                                    <?= $item['DistrictName'] ?></li>
+                                                    <li>Chủ đầu tư Khang Điền</li>
+                                                    <li>Giá từ <?= $item['Price'] / 1000000000 >= 1 ? number_format($item['Price'] / 1000000000)." tỷ " : number_format($item['Price'] / 1000000 )  . " triệu"  ?>/căn</li>
+                                                    <li>Ngày bàn giao: <?= $item['HandoverTime'] ?></li>
+                                                  </ul>                             
+                                              </div>
+                                              <span class="readmore-story">XEM THÊM <img src="https://nhatpham.net/wp-content/plugins/skycodec-elementor/assets/images/b-arrow.png" alt=""></span>
+                                          </div>
+                                        </div>
+                                  </a>  
                                 </figure>
                             </div>
                             <div class="card-body p-1 pt-3">
                                 <h5 class="card-title mb-0"><a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html"><?= $item['Name'] ?></a></h5>
-                                <p class="address"><?= $item['Street'] ?>, <?= $item['WardName'] ?>, <?= $item['DistrictName'] ?></p>
+                                <p class="address">
+                                Đường
+                                  <?= $item['Street'] ?>,
+                                      <?= $item['WardName'] ?>,
+                                          <?= $item['DistrictName'] ?>
+                                </p>
 
-                                <ul class="list-group list-group-minimal">
-                                    <li class="list-group-item d-flex align-items-center">
-                                        <i class="fas fa-box mr-2 text-warning fa-lg"></i>
-                                        <?= $item['Area'] ?>            
-                                    </li>
-                                    <li class="list-group-item d-flex align-items-center">
-                                        <i class="fas fa-compass mr-2 text-warning fa-lg"></i>
-                                        <?= $item['DirectionName'] ?>            
-                                    </li>
-                                </ul>
                             </div>
                             <div class="card-footer p-1">
                                 
@@ -82,6 +99,7 @@
                     </div>
                 <?php } ?>
                 </div>
+                <?php if(isset($view_data['page'])) { ?>
                 <div class="row text-center" style="width:95%;margin-left:auto; margin-right:auto">
                     <ul class="pagination" style="margin: 0 auto">
                         <?php if($view_data['page'] <= 1) { ?>
@@ -101,7 +119,7 @@
                         <?php } ?>
                     </ul>
                 </div>
-                
+                <?php  } ?>
             </div>
             <div class="col-md-3" id="filter-container">
                 

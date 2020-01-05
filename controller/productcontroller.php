@@ -24,22 +24,14 @@
             $District = isset($_POST['District']) ? $_POST['District'] : "";
             $Ward = isset($_POST['Ward']) ? $_POST['Ward'] : "";
             $Street = isset($_POST['Street']) ? $_POST['Street'] : "";
-            $Area = isset($_POST['Area']) ? $_POST['Area'] : "";
+            $Rank = isset($_POST['Rank']) ? $_POST['Rank'] : "";
             $Price = isset($_POST['Price']) ? $_POST['Price'] : "";
             $Direction = isset($_POST['Direction']) ? $_POST['Direction'] : "";
-            $view_data['model'] = $productManager->Search($Name, $District, $Ward, $Street, $Area, $Price, $Direction);
+            $view_data['model'] = $productManager->Search($Name, $District, $Ward, $Street, $Rank, $Price, $Direction);
             $view_data['districtsOnProduct'] = $locationManager->GetDistrictsOnProduct();
             $view_data['streetsOnProduct'] = $locationManager->GetStreetsOnProduct();
             break;
         }
-        // case "index":
-        // {
-        //     $view_data['title'] = "Index";
-        //     $view_data['view_name'] = "product/index.php";
-        //     $view_data['districtsOnProduct'] = $locationManager->GetDistrictsOnProduct();
-        //     $view_data['streetsOnProduct'] = $locationManager->GetStreetsOnProduct();
-        //     break;
-        // }
         case "getByDistrict":
         {
             $view_data['district'] = $locationManager->GetDistrictByAlias($_GET['alias']);

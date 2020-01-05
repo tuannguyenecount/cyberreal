@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg" id="navbar">
     <div class="container">
         <button class="navbar-toggler" type="button" aria-label="Toggle navigation" id="mobile-menu-icon">
             <i class="fas fa-bars"></i> MENU

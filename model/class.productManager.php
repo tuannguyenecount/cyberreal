@@ -57,7 +57,7 @@ class ProductManager
         $database_Model = new Database();
         return $database_Model->GetList($tsql, $params);
     }
-    public function Search($Name, $District, $Ward, $Street, $Area, $Price, $Direction)
+    public function Search($Name, $District, $Ward, $Street, $Rank, $Price, $Direction)
     {
         $whereQuery = "WHERE A.Status = 1 ";
         $params = array();
@@ -81,14 +81,32 @@ class ProductManager
             $whereQuery .= " AND G.id = ? ";
             $params[] = $Street;
         }
-        if(!empty($Area))
+        if(!empty($Rank))
         {
-            $whereQuery .= " AND A.Area = ? ";
-            $params[] = $Area;
+            $whereQuery .= " AND A.Rank = ? ";
+            $params[] = $Rank;
         }
         else if(!empty($Price))
         {
-            $whereQuery .= " AND A.Price = ? ";
+            switch($Price)
+            {
+                case "duoi1ty":
+                    $whereQuery .= " AND A.Price < 1000000000 "; 
+                    break;
+                case "1den3ty":
+                    $whereQuery .= " AND A.Price >= 1000000000 AND A.Price <= 3000000000"; 
+                    break;
+                case "3den5ty":
+                    $whereQuery .= " AND A.Price >= 3000000000 AND A.Price <= 5000000000"; 
+                    break;
+                case "5den10ty":
+                    $whereQuery .= " AND A.Price >= 5000000000 AND A.Price <= 10000000000"; 
+                    break;
+                case "tren10ty":
+                    $whereQuery .= " AND A.Price >= 10000000000 "; 
+                    break;
+            }
+            
             $params[] = $Price;
         }
          else if(!empty($Direction))
@@ -297,10 +315,10 @@ class ProductManager
 
 	public function Add($model)
 	{
-        $tsql ="INSERT INTO product(Name,CategoryId,Area,Direction,Rank,Address,Province,District,Ward,Street,GeneralInformation,Location,Structure,ServiceCharge,Advantages,Price,Image,Alias,Status,UserCreated, SortOrder, HOT, SeoTitle, SeoDescription, SeoKeyword)
-                VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";   
+        $tsql ="INSERT INTO product(Name,CategoryId,Area,Direction,Rank,Address,Province,District,Ward,Street,GeneralInformation,Location,Structure,ServiceCharge,Advantages,Price,PriceOn1m2,Image,Alias,Status,UserCreated, SortOrder, HOT, SeoTitle, SeoDescription, SeoKeyword)
+                VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";   
 
-        $params = array($model['Name'], $model['CategoryId'], $model['Area'], $model['Direction'], $model['Rank'], $model['Address'], $model['Province'], $model['District'], $model['Ward'], $model['Street'], $model['GeneralInformation'], $model['Location'], $model['Structure'], $model['ServiceCharge'], $model['Advantages'], $model['Price'], $model['Image'] , $model['Alias'], $model['Status'], $model['UserCreated'], $model['SortOrder'], $model['HOT'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword']);
+        $params = array($model['Name'], $model['CategoryId'], $model['Area'], $model['Direction'], $model['Rank'], $model['Address'], $model['Province'], $model['District'], $model['Ward'], $model['Street'], $model['GeneralInformation'], $model['Location'], $model['Structure'], $model['ServiceCharge'], $model['Advantages'], $model['Price'], $model['PriceOn1m2'], $model['Image'] , $model['Alias'], $model['Status'], $model['UserCreated'], $model['SortOrder'], $model['HOT'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword']);
 
         $database_Model = new Database();
 	    return $database_Model->Execute($tsql, $params);
@@ -322,9 +340,9 @@ class ProductManager
 	public function Edit($model)
 	{
 
-        $tsql = "UPDATE `product` SET `Name`= ?,`CategoryId`=?,`Area`=?,`Direction`=?,`Rank`=?,`Address`=?,`Province`=?,`District`=?,`Ward`=?,`Street`=?,`GeneralInformation`=?,`Location`=?,`Structure`=?,`ServiceCharge`=?,`Advantages`=?, `Price`=?,`Image`=?,`Alias`=?,`Status`=?,`SortOrder`=?,`HOT`=?, `SeoTitle` = ?, `SeoDescription` = ?, `SeoKeyword` = ? WHERE `Id` = ? ";   
+        $tsql = "UPDATE `product` SET `Name`= ?,`CategoryId`=?,`Area`=?,`Direction`=?,`Rank`=?,`Address`=?,`Province`=?,`District`=?,`Ward`=?,`Street`=?,`GeneralInformation`=?,`Location`=?,`Structure`=?,`ServiceCharge`=?,`Advantages`=?, `Price`=?, `PriceOn1m2` = ?, `Image`=?, `HandoverTime` = ?, `Alias`=?,`Status`=?,`SortOrder`=?,`HOT`=?, `SeoTitle` = ?, `SeoDescription` = ?, `SeoKeyword` = ? WHERE `Id` = ? ";   
 
-        $params =  array($model['Name'], $model['CategoryId'], $model['Area'], $model['Direction'], $model['Rank'], $model['Address'], $model['Province'], $model['District'], $model['Ward'], $model['Street'], $model['GeneralInformation'], $model['Location'], $model['Structure'], $model['ServiceCharge'], $model['Advantages'], $model['Price'], $model['Image'] , $model['Alias'], $model['Status'], $model['SortOrder'], $model['HOT'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword'], $model['Id']);
+        $params =  array($model['Name'], $model['CategoryId'], $model['Area'], $model['Direction'], $model['Rank'], $model['Address'], $model['Province'], $model['District'], $model['Ward'], $model['Street'], $model['GeneralInformation'], $model['Location'], $model['Structure'], $model['ServiceCharge'], $model['Advantages'], $model['Price'], $model['PriceOn1m2'], $model['Image'], $model['HandoverTime'], $model['Alias'], $model['Status'], $model['SortOrder'], $model['HOT'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword'], $model['Id']);
 
         $database_Model = new Database();
 	    $result = $database_Model->Execute($tsql, $params);
@@ -421,6 +439,13 @@ class ProductManager
     public function GetListArea($take)
     {
         $tsql = "SELECT DISTINCT Area FROM product  WHERE Area <> '' Order by Area limit 0, $take ";  
+        $database_Model = new Database();
+        return $database_Model->GetList($tsql);
+    }
+
+    public function GetListRank()
+    {
+        $tsql = "SELECT DISTINCT Rank FROM product  WHERE Rank <> '' Order by Rank";  
         $database_Model = new Database();
         return $database_Model->GetList($tsql);
     }

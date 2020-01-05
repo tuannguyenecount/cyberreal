@@ -37,11 +37,23 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="col-md-2">Đơn giá</td>
+                                    <td class="col-md-2">Đơn giá / 1m^2</td>
                                     <td>
-                                        <input type="text" readonly="" value="<?= $view_data['model']['Price'] ?>"  name="Price" class="form-control" />
+                                        <input type="text" readonly="" value="<?= $view_data['model']['PriceOn1m2'] ?>"  name="PriceOn1m2" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-2">Giá tổng cộng</td>
+                                    <td>
+                                        <input type="text" readonly="" value="<?= $view_data['model']['Price'] ?>"  name="Price" class="form-control divide" />
                                     </td>
                                 </tr>    
+                                <tr>
+                                    <td class="col-md-2">Thời gian bàn giao</td>
+                                    <td>
+                                        <input type="text" readonly="" value="<?= $view_data['model']['HandoverTime'] ?>"  name="HandoverTime" class="form-control" />
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td class="col-md-2">Diện tích (m2)</td>
                                     <td>

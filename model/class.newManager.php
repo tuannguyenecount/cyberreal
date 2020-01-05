@@ -48,7 +48,7 @@ class NewManager
         $tsql = "SELECT *
                 FROM new 
                 WHERE Status = 1
-                ORDER BY Id desc LIMIT 0,5";  
+                ORDER BY Id desc LIMIT 0,4";  
         
         $database_Model = new Database();
         return $database_Model->GetList($tsql, $params);

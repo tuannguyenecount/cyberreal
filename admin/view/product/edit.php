@@ -44,9 +44,21 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="col-md-2">Đơn giá</td>
+                                        <td class="col-md-2">Đơn giá / 1m^2 </td>
                                         <td>
-                                            <input type="text" value="<?= isset($_POST['Price']) ? $_POST['Price'] : $view_data['model']['Price']   ?>"  name="Price" class="form-control" />
+                                            <input type="text" value="<?= isset($_POST['PriceOn1m2']) ? $_POST['PriceOn1m2'] : $view_data['model']['PriceOn1m2']   ?>"  name="PriceOn1m2" class="form-control" />
+                                        </td>
+                                    </tr>   
+                                    <tr>
+                                        <td class="col-md-2">Giá tổng cộng</td>
+                                        <td>
+                                            <input type="text" value="<?= isset($_POST['Price']) ? $_POST['Price'] : $view_data['model']['Price']   ?>"  name="Price" class="form-control divide" />
+                                        </td>
+                                    </tr> 
+                                    <tr>
+                                        <td class="col-md-2">Thời gian bàn giao</td>
+                                        <td>
+                                            <input type="text" value="<?= isset($_POST['HandoverTime']) ? $_POST['HandoverTime'] : $view_data['model']['HandoverTime']   ?>"  name="HandoverTime" class="form-control" />
                                         </td>
                                     </tr>    
                                     <tr>

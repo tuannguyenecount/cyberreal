@@ -19,33 +19,35 @@
                                             </select>                                    
                                         </div>
                                         <div class="col-md mb-2">
-                                            <select class="form-control" id="Ward" name="Ward" data-selected="">
+                                            <select class="form-control" id="Ward" name="Ward" data-selected="" >
                                                 <option value="">Tất cả phường/xã</option>
                                             </select>                                
                                         </div>
                                         <div class="col-md mb-2">
-                                            <select class="form-control" id="Street" name="Street" data-selected="">
+                                            <select class="form-control" id="Street" name="Street" data-selected="" style="width:100%">
                                                 <option value="">Tất cả đường</option>
                                             </select>
                                         </div>
                                         <div class="w-100"></div>
-                                        <div class="col-md mb-2">
-                                            <select  class="form-control" name="Area">
-                                                <option value="">Tất cả diện tích</option>
-                                                <?php foreach($view_data['areas'] as $item) { ?>
-                                                    <option value="<?= $item['Area'] ?>">
-                                                        <?= $item['Area'] ?>    
-                                                    </option>
-                                                <?php } ?>
-                                            </select>                                    
-                                        </div>
+                                        
                                         <div class="col-md mb-2">
                                             <select class="form-control" name="Price">
                                                 <option value="">Tất cả giá</option>
-                                            <?php foreach($view_data['prices'] as $item) { ?>                                                
-                                                <option value="<?= $item['Price'] ?>"><?= $item['Price'] ?></option>
-                                            <?php } ?>
-                                                
+                                                <option value="duoi1ty">Dưới 1 tỷ</option>
+                                                <option value="1den3ty">1 - 3 tỷ</option>
+                                                <option value="3den5ty">3 - 5 tỷ</option>
+                                                <option value="5den10ty">5 - 10 tỷ</option>
+                                                <option value="tren10ty">Trên 10 tỷ</option>
+                                            </select>                                    
+                                        </div>
+                                        <div class="col-md mb-2">
+                                            <select  class="form-control" name="Rank">
+                                                <option value="">Tất cả xếp hạng</option>
+                                                <?php foreach($view_data['ranks'] as $item) { ?>
+                                                    <option value="<?= $item['Rank'] ?>">
+                                                        <?= $item['Rank'] ?>    
+                                                    </option>
+                                                <?php } ?>
                                             </select>                                    
                                         </div>
                                         <div class="col-md mb-2">

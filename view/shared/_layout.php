@@ -9,8 +9,8 @@
         <?php if(isset($view_data['section_meta'])) { 
             include 'view/' . $view_data['section_meta'];
         } ?>
-        <link href="<?= base_url ?>/css/style2.css?v=5" rel="stylesheet">
-        <link href="<?= base_url ?>/css/custom.css?v=2" rel="stylesheet">
+        <link href="<?= base_url ?>/css/style2.css?v=7" rel="stylesheet">
+        <link href="<?= base_url ?>/css/custom.css?v=3" rel="stylesheet">
         <link href="<?= base_url ?>/css/icon.css?v=1" rel="stylesheet">
         <link href="<?= base_url ?>/assets/fc340a4a/css/kv-widgets.min.css" rel="stylesheet">
         <link href="<?= base_url ?>/assets/a1ef791c/css/dependent-dropdown.min.css" rel="stylesheet">
@@ -21,7 +21,7 @@
         <link href="https://canho247.vn/wp-content/themes/flatsome/assets/css/flatsome.css?ver=3.8.4" />
         <style> 
                 @media screen and (max-width: 1960px) { 
-                    .call-now-button { display: flex !important; background: #1670bf; }  
+                    .call-now-button { display: flex !important; background: rgb(255, 166, 0); }  
                     .quick-call-button { display: block !important; } 
                 }
                 @media screen and (min-width: px) { 
@@ -36,10 +36,94 @@
                 }
                 .call-now-button { top: 90%; }
                 .call-now-button { left: 3%; }
-                .call-now-button { background: #1670bf; }
+                .call-now-button { background: rgb(255, 166, 0); }
                 .call-now-button div a .quick-alo-ph-img-circle, .call-now-button div a .quick-alo-phone-img-circle { background-color: #dd3333; }
                 .call-now-button .call-text { color: #ffffff; }
                 .zalo-button { left:unset; right:3%;  }
+                .sticky {
+                  position: fixed;
+                  top: 0;
+                  width: 100%;
+                }
+                .hover-div{
+                    opacity: 0;
+                    background-color: rgb(255, 166, 0);
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    padding: 15px;
+                    border-radius: 4px;
+                    -webkit-transition: all 400ms linear;
+                    -moz-transition: all 400ms linear;
+                    -o-transition: all 400ms linear;
+                    -ms-transition: all 400ms linear;
+                    transition: all 400ms linear;
+                }
+            .img-project-box:hover .hover-div {
+                opacity: 1;
+            }
+            .project-box .hover-div > div {
+                height: 100%;
+                display: flex;
+                display: -webkit-flex;
+                flex-direction: column;
+                -webkit-flex-direction: column;
+                justify-content: flex-end;
+                -webkit-justify-content: flex-end;
+            }
+            .project-box .hover-div .contnt {
+                color: #000;
+                font-family: "Tahoma",serif;
+                font-size: 16px;
+                font-style: italic;
+                font-weight: 300;
+                /*min-height: 160px;*/
+                margin: 16px 0 0;
+            }
+            .project-box .hover-div ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+            .project-box .hover-div .contnt li {
+                padding: 0 0 9px 24px;
+            }
+            .project-box .hover-div .contnt li:before {
+                content: "-";
+                display: inline-block;
+                margin: 0 10px 0 -23px;
+            }
+            .project-box .hover-div h2 {
+                font-size: 18px;
+                font-family: 'Tahoma', serif;
+                font-weight: 500;
+                line-height: normal;
+                color: #000;
+                margin: 0;
+                padding: 10px 0 10px;
+                clear: both;
+            }
+            .project-box .hover-div .contnt + a, .project-box a.storylink span.readmore-story {
+                color: #000;
+                font-size: 15px;
+                font-weight: 800;
+                text-transform: uppercase;
+            }
+            .project-box .hover-div .contnt + a img, .project-box a.storylink span.readmore-story img {
+                margin: 8px 0 0 30px;
+                vertical-align: top;
+                -webkit-transition: all 200ms linear;
+                -moz-transition: all 200ms linear;
+                -o-transition: all 200ms linear;
+                -ms-transition: all 200ms linear;
+                transition: all 200ms linear;
+            }
+            .project-box .hover-div .contnt + a:hover img, .project-box a.storylink span.readmore-story:hover img {
+                margin: 8px 0 0 35px;
+            }
+ 
         </style>
         <?php
             if (isset($view_data['section_styles'])) {
@@ -121,41 +205,7 @@
             </div>
             <footer class="bg-dark py-3">
 
-                <div class="container">
-                    <div class="row gutter-3 text-white mb-0 top">
-                        <div class="col-md districts">
-                            <div class="card border-0 bordered">
-                                <div class="card-body p-0">
-                                    <h3 class="title text-light">Căn Hộ Cho Thuê Theo Quận</h3>
-                                    <div class="text-widget pt-1">
-                                        <ul>
-                                            <li><a href="<?=base_url?>/can-ho/quan-1">Quận 1</a></li>
-                                            <li><a href="<?=base_url?>/can-ho/quan-2">Quận 2</a></li>
-                                            <li><a href="<?=base_url?>/can-ho/quan-3">Quận 3</a></li>
-                                            <li><a href="<?=base_url?>/can-ho/quan-4">Quận 4</a></li>
-                                            <li><a href="<?=base_url?>/can-ho/quan-5">Quận 5</a></li>
-                                            <li><a href="<?=base_url?>/can-ho/quan-6">Quận 6</a></li>
-                                            <li><a href="<?=base_url?>/can-ho/quan-7">Quận 7</a></li>
-                                            <li><a href="<?=base_url?>/can-ho/quan-8">Quận 8</a></li>
-                                            <li><a href="<?=base_url?>/can-ho/quan-9">Quận 9</a></li>
-                                            <li><a href="<?=base_url?>/can-ho/quan-10">Quận 10</a></li>
-                                            <li><a href="<?=base_url?>/can-ho/quan-11">Quận 11</a></li>
-                                            <li><a href="<?=base_url?>/can-ho/quan-12">Quận 12</a></li>
-                                            <li><a href="<?=base_url?>/can-ho/quan-tan-binh">Quận T&acirc;n B&igrave;nh</a></li>
-                                            <li><a href="<?=base_url?>/can-ho/quan-binh-thanh">Quận B&igrave;nh Thạnh</a></li>
-                                            <li><a href="<?=base_url?>/can-ho/quan-phu-nhuan">Quận Ph&uacute; Nhuận</a></li>
-                                            <li><a href="<?=base_url?>/can-ho/quan-go-vap">Quận G&ograve; Vấp</a></li>
-                                            <li><a href="<?=base_url?>/can-ho/quan-thu-duc">Quận Thủ Đức</a></li>
-                                            <li><a href="<?=base_url?>/can-ho/quan-tan-phu">Quận T&acirc;n Ph&uacute;</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                </div>      
-                <div class="container">
+                 <div class="container">
                     <div class="row gutter-3 text-white mb-0">
                         <div class="col-12 col-md-6 ">
                             <div class="card border-0 bordered">
@@ -191,23 +241,48 @@
                         </div>
                     </div>
                     <hr>
-                </div>        
+                </div>  
+
+                <div class="container">
+                    <div class="row gutter-3 text-white mb-0 top">
+                        <div class="col-md districts">
+                            <div class="card border-0 bordered">
+                                <div class="card-body p-0">
+                                    <h3 class="title text-light">Căn Hộ Cho Thuê Theo Quận</h3>
+                                    <div class="text-widget pt-1">
+                                        <ul>
+                                            <li><a href="<?=base_url?>/can-ho/quan-1">Quận 1</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-2">Quận 2</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-3">Quận 3</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-4">Quận 4</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-5">Quận 5</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-6">Quận 6</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-7">Quận 7</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-8">Quận 8</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-9">Quận 9</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-10">Quận 10</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-11">Quận 11</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-12">Quận 12</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-tan-binh">Quận T&acirc;n B&igrave;nh</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-binh-thanh">Quận B&igrave;nh Thạnh</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-phu-nhuan">Quận Ph&uacute; Nhuận</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-go-vap">Quận G&ograve; Vấp</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-thu-duc">Quận Thủ Đức</a></li>
+                                            <li><a href="<?=base_url?>/can-ho/quan-tan-phu">Quận T&acirc;n Ph&uacute;</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                </div>      
+                     
                 <div class="copyright container">
                     <p class="m-0"><?= $_SESSION['InfoWeb']['CopyRight'] ?></p>
                 </div>
             </footer>
             <!-- / footer -->
-
-          <!--   <aside id="phone-button" class="d-block d-md-none">
-                <a href="tel:0932.020.099">
-                    <div class="media align-items-center">
-                        <i class="fs-20 icon-phone bg-primary text-white icon-boxed mr-2"></i>
-                        <div class="media-body">
-                            <h6 class="my-0 text-nowrap text-white"><?= $_SESSION['InfoWeb']['Phone'] ?></h6>
-                        </div>
-                    </div>
-                </a>
-            </aside> -->
 
             <div class="call-now-button ui-draggable ui-draggable-handle" id="draggable">
                 <div><p class="call-text"> <?= $_SESSION['InfoWeb']['Phone'] ?> </p>
@@ -221,9 +296,9 @@
              <div class="call-now-button ui-draggable ui-draggable-handle" id="zalobutton" >
                 <div><p class="call-text"> <?= $_SESSION['InfoWeb']['Zalo'] ?> </p>
                     <a href="<?= $_SESSION['InfoWeb']['Zalo'] ?>" id="quickcallbutton" '="" title="Call Now">
-                    <div class="zalo-ph-circle active" style="background: ('<?= base_url ?>/images/zalo.png') no-repeat center center !important;"></div>
+                    <div class="zalo-ph-circle active" style="background: ('<?= base_url ?>/images/email.png') no-repeat center center !important;"></div>
                     <div class="zalo-ph-circle-fill active"></div>
-                    <div class="zalo-ph-img-circle shake" style="background: ('<?= base_url ?>/images/zalo.png') no-repeat center center !important;"></div>
+                    <div class="zalo-ph-img-circle shake" style="background: ('<?= base_url ?>/images/email.png') no-repeat center center !important;"></div>
                     </a>
                 </div>
             </div>
@@ -348,6 +423,7 @@
         });
     </script> 
     <script>
+
         $(document).ready(function () {
             if (sessionStorage.getItem('ShowPopUp') === null) {
                 sessionStorage.setItem('ShowPopUp', "yes");
@@ -356,11 +432,27 @@
                 $.post('<?=base_url?>/home/showpopup', function (result) { $("#bangtin").html(result); });
             } 
         });
+        setTimeout(function(){
+                window.onscroll = function() {
+                changeMenu();
+            };
+
+            var navbar = document.getElementById("nav-container");
+            var sticky = navbar.offsetTop;
+            function changeMenu() {
+              if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+              } else {
+                navbar.classList.remove("sticky");
+              }
+            }
+        }, 1000);
     </script>
     <?php
-    if (isset($view_data['section_scripts'])) {
-        include 'view/' . $view_data['section_scripts'];
-    }
+        if (isset($view_data['section_scripts'])) {
+            include 'view/' . $view_data['section_scripts'];
+        }
     ?>
+
 </html>
 

@@ -38,7 +38,7 @@
 <section class="container">
    <div class="row">
       <div class="col-md-8  col-md-offset-2 text-center" style="margin:0 auto">
-         <h3>Các dự án HOT <?= $_SESSION['InfoWeb']['ViTriDangHot'] ?></h3>
+         <h3>CÁC DỰ ÁN HOT NHẤT HIỆN NAY</h3>
         <!--  <h2 class="section-title section-title-center">
           <b></b>
           <span class="section-title-main">Các dự án HOT <?= $_SESSION['InfoWeb']['ViTriDangHot'] ?></span>
@@ -103,48 +103,64 @@
         <div class="container">
           <h2 class="section-title section-title-center">
             <b></b>
-            <span class="section-title-main">Các dự án vị trí tốt nhất</span>
+            <span class="section-title-main">CÁC DỰ ÁN CĂN HỘ HẠNG SANG TRUNG TÂM SÀI GÒN</span>
             <b></b>
           </h2>
           <div class="row">
              <?php foreach($view_data['products'] as $item) { ?>
-                  <div class="col-lg-4 col-md-6 office mb-4">
+                  <div class="col-lg-4 col-md-6 office mb-4 project-box">
                       <div class="card stacked">
                           <div class="image-tools top right show-on-hover">
                               <div class="div_khu_vuc_small"><a title="Bất động sản <?= $item['DistrictName'] ?>" href="<?= base_url ?>/can-ho/<?= strtolower(vn_to_str($item['DistrictName'])) ?>">TP.HCM <i class="fa fa-angle-right" aria-hidden="true"></i> <?= $item['DistrictName'] ?></a></div>
                           </div>
-                          <div class="card-header p-0 lift">
-                              <figure class="figure mb-0">
+                          <div class="card-header p-0 lift img-project-box">
+                            <figure class="figure mb-0">
                                   <a class="figure-img img-fluid" href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html"><img class="rounded-top" src="<?= base_url ?>/images/products/<?= $item['Image'] ?>" alt="<?= $item['Name'] ?>"></a>
-                                  <figcaption class="figure-caption">
-                                      <?= $item['Price'] ?>
-                                  </figcaption>
-                              </figure>
+                                 <!--  <figcaption class="figure-caption">
+                                      <?= $item['Price'] / 1000000000 >= 1 ? number_format($item['Price'] / 1000000000)." tỉ " : number_format($item['Price']) . " triệu"  ?>
+                                  </figcaption> -->
+                                  <div class="captionBottom">
+                                    Giá: <?= $item['PriceOn1m2'] ?> / m<sup>2</sup>
+                                  </div>
+
+                                  <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html" class="storylink">
+                                    <div class="hover-div">
+                                      <div>
+                                        <h2><?= $item['Name'] ?></h2>
+                                          <div class="contnt">
+                                              <ul>
+                                                <li>Đường
+                                        <?= $item['Street'] ?>,
+                                            <?= $item['WardName'] ?>,
+                                                <?= $item['DistrictName'] ?></li>
+                                                <li>Chủ đầu tư Khang Điền</li>
+                                                <li>Giá từ <?= $item['Price'] / 1000000000 >= 1 ? number_format($item['Price'] / 1000000000)." tỷ " : number_format($item['Price'] / 1000000) . " triệu"  ?>/căn</li>
+                                                <li>Ngày bàn giao: <?= $item['HandoverTime'] ?></li>
+                                              </ul>                             
+                                          </div>
+                                          <span class="readmore-story">XEM THÊM <img src="https://nhatpham.net/wp-content/plugins/skycodec-elementor/assets/images/b-arrow.png" alt=""></span>
+                                      </div>
+                                    </div>
+                                  </a>   
+                            </figure> 
+                                                  
                           </div>
                           <div class="card-body p-1 pt-3">
                               <h5 class="card-title mb-0"><a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html"><?= $item['Name'] ?></a></h5>
-                              <p class="address text-muted">
+                              <p class="address">
                                 Đường
                                   <?= $item['Street'] ?>,
                                       <?= $item['WardName'] ?>,
                                           <?= $item['DistrictName'] ?>
                               </p>
-                              <ul class="list-group list-group-minimal">
-                                  <li class="list-group-item d-flex align-items-center">
-                                      <i class="fas fa-th mr-2 text-warning fa-lg"></i>
-                                      <?= $item['Area'] ?>
-                                  </li>
-                                  <li class="list-group-item d-flex align-items-center">
-                                      <i class="fas fa-compass mr-2 text-warning fa-lg"></i>
-                                      <?= $item['DirectionName'] ?>
-                                  </li>
-                              </ul>
                           </div>
                           <div class="card-footer p-1">
 
-                              <a href="<?= base_url ?>/product/select/<?= $item['Id'] ?>" data-toggle="modal" data-target="#global"><i class="fa fa-check"></i> Chọn đi xem</a></a>
+                          <a class="text-warning" href="<?= base_url ?>/product/select/<?= $item['Id'] ?>" data-toggle="modal" data-target="#global"><i class="fa fa-check"></i> Chọn đi xem</a></a>
                           </div>
+                         
                       </div>
+
                   </div>
              <?php } ?>
           </div>
@@ -159,13 +175,15 @@
           <b></b>
         </h2>
         <div class="row">
-        <?php foreach($view_data['investors'] as $item) { ?>
-          <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-            <p>
-              <img src="<?= base_url ?>/images/investors/<?= $item['Logo'] ?>" width="150" height="150" />
-            </p>
+          <div class="bxslider">
+          <?php foreach($view_data['investors'] as $item) { ?>
+            <div class="col-md-2 col-sm-3 col-xs-6 text-center">
+              <div class="text-center">
+                <img src="<?= base_url ?>/images/investors/<?= $item['Logo'] ?>" width="150" height="150" style="margin:10px auto" />
+              </div>
+            </div>
+          <?php } ?>
           </div>
-        <?php } ?>
         </div>
       </div>
     </div>
@@ -194,11 +212,12 @@
             <?php for($i = 1; $i < count($view_data['news']); $i++) { $item = $view_data['news'][$i]; ?>
               <div class="col-md-4 pull-left clearfix margin-bottom-20 text-center">
                 <a href="<?= base_url ?>/tin-tuc/<?= $item['Alias'] ?>.html"><img src="<?= base_url ?>/images/news/<?= $item['Image'] ?>" alt="<?= $item['Title'] ?>" class="img-responsive" /></a>
-              </div>
+              </div> 
               <div class="col-md-8 pull-right margin-bottom-20 text-left">
                 <h6><a href="<?= base_url ?>/tin-tuc/<?= $item['Alias'] ?>.html"><?= $item['Title'] ?></a></h6>
                 <div class="is-divider"></div>
               </div>
+
             <?php } ?>
           </div>
         <?php } ?>

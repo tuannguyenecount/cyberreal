@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <style>
 	.box-text { 
 		padding-top:.7em;padding-bottom:1.4em;position:relative;width:100%;  
@@ -11,4 +12,8 @@
 	    max-width: 30px;
 	}
 	.box-text p{margin-top:.1em;margin-bottom:.1em}
+	.bx-wrapper {
+		margin: 0 auto;
+	}
+	.bx-prev, .bx-next { display: none;  }
 </style> 

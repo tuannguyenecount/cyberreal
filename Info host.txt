@@ -1,11 +1,3 @@
-http://172.96.191.5/cpanel
-Domain: canho247.com.vn
-Username: canhocom
-Password: T:F66e6UuWq1k:
-
-https://my.hawkhost.com/clientarea.php
-id: lucasshimer@gmail.com
-pass: mp3.zing.vn
 
 http://access.pavietnam.vn/
 Domain : goldrezin.com
@@ -15,12 +7,9 @@ Domain demo:
 http://goldrezin.com
 
 DB Info:
-172.96.191.139
-canhocom_cyberreal
-canhocom_user
-nU.VMtD0K?;%
+localhost
+cyberrealdbv2
+cyberrealuser
+Wcy6puNGls#6if3b
 
-Email account:
-admin@canho247.com.vn
-=W]rG7ITO?HB
 
