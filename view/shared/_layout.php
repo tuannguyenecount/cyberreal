@@ -9,6 +9,7 @@
         <?php if(isset($view_data['section_meta'])) { 
             include 'view/' . $view_data['section_meta'];
         } ?>
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Muli" />
         <link href="<?= base_url ?>/css/style2.css?v=7" rel="stylesheet">
         <link href="<?= base_url ?>/css/custom.css?v=3" rel="stylesheet">
         <link href="<?= base_url ?>/css/icon.css?v=1" rel="stylesheet">
@@ -19,112 +20,6 @@
         <link href="<?=base_url?>/assets/css/jquery.niftymodals.css" rel="stylesheet" />
         <link href="<?=base_url?>/css/callbutton.css" rel="stylesheet" />
         <link href="https://canho247.vn/wp-content/themes/flatsome/assets/css/flatsome.css?ver=3.8.4" />
-        <style> 
-                @media screen and (max-width: 1960px) { 
-                    .call-now-button { display: flex !important; background: rgb(255, 166, 0); }  
-                    .quick-call-button { display: block !important; } 
-                }
-                @media screen and (min-width: px) { 
-                    .call-now-button .call-text { display: none !important; } 
-                } 
-                @media screen and (max-width: px) { 
-                .call-now-button .call-text { display: none !important; } 
-                } 
-                #zalobutton{
-                    left:unset;
-                    right:3%;
-                }
-                .call-now-button { top: 90%; }
-                .call-now-button { left: 3%; }
-                .call-now-button { background: rgb(255, 166, 0); }
-                .call-now-button div a .quick-alo-ph-img-circle, .call-now-button div a .quick-alo-phone-img-circle { background-color: #dd3333; }
-                .call-now-button .call-text { color: #ffffff; }
-                .zalo-button { left:unset; right:3%;  }
-                .sticky {
-                  position: fixed;
-                  top: 0;
-                  width: 100%;
-                }
-                .hover-div{
-                    opacity: 0;
-                    background-color: rgb(255, 166, 0);
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    width: 100%;
-                    height: 100%;
-                    padding: 15px;
-                    border-radius: 4px;
-                    -webkit-transition: all 400ms linear;
-                    -moz-transition: all 400ms linear;
-                    -o-transition: all 400ms linear;
-                    -ms-transition: all 400ms linear;
-                    transition: all 400ms linear;
-                }
-            .img-project-box:hover .hover-div {
-                opacity: 1;
-            }
-            .project-box .hover-div > div {
-                height: 100%;
-                display: flex;
-                display: -webkit-flex;
-                flex-direction: column;
-                -webkit-flex-direction: column;
-                justify-content: flex-end;
-                -webkit-justify-content: flex-end;
-            }
-            .project-box .hover-div .contnt {
-                color: #000;
-                font-family: "Tahoma",serif;
-                font-size: 16px;
-                font-style: italic;
-                font-weight: 300;
-                /*min-height: 160px;*/
-                margin: 16px 0 0;
-            }
-            .project-box .hover-div ul {
-                margin: 0;
-                padding: 0;
-                list-style: none;
-            }
-            .project-box .hover-div .contnt li {
-                padding: 0 0 9px 24px;
-            }
-            .project-box .hover-div .contnt li:before {
-                content: "-";
-                display: inline-block;
-                margin: 0 10px 0 -23px;
-            }
-            .project-box .hover-div h2 {
-                font-size: 18px;
-                font-family: 'Tahoma', serif;
-                font-weight: 500;
-                line-height: normal;
-                color: #000;
-                margin: 0;
-                padding: 10px 0 10px;
-                clear: both;
-            }
-            .project-box .hover-div .contnt + a, .project-box a.storylink span.readmore-story {
-                color: #000;
-                font-size: 15px;
-                font-weight: 800;
-                text-transform: uppercase;
-            }
-            .project-box .hover-div .contnt + a img, .project-box a.storylink span.readmore-story img {
-                margin: 8px 0 0 30px;
-                vertical-align: top;
-                -webkit-transition: all 200ms linear;
-                -moz-transition: all 200ms linear;
-                -o-transition: all 200ms linear;
-                -ms-transition: all 200ms linear;
-                transition: all 200ms linear;
-            }
-            .project-box .hover-div .contnt + a:hover img, .project-box a.storylink span.readmore-story:hover img {
-                margin: 8px 0 0 35px;
-            }
- 
-        </style>
         <?php
             if (isset($view_data['section_styles'])) {
                 include 'view/' . $view_data['section_styles'];
@@ -144,38 +39,9 @@
                     <div class="container">
                         <div class="row no-gutters">
                             <div class="col-lg-3">
-                                <a class="logo" href="<?= base_url ?>"><img src="<?= base_url ?>/images/<?= $_SESSION['InfoWeb']['Logo'] ?>" alt=""></a>                    </div>
-                            <div class="col-lg-auto ml-lg-auto information d-none d-md-flex mt-md-2 mt-lg-0">
-                                <div class="row">
-                                    <div class="col-md">
-                                        <div class="media align-items-center">
-                                            <i class="fs-24 icon-clock bg-secondary text-white icon-boxed mr-2"></i>
-                                            <div class="media-body">
-                                                <span class="title text-nowrap">Thời gian làm việc</span>
-                                                <h6 class="my-0 text-nowrap">8:30 - 17:30</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md">
-                                        <div class="media align-items-center">
-                                            <i class="fs-24 icon-phone bg-secondary text-white icon-boxed mr-2"></i>
-                                            <div class="media-body">
-                                                <span class="title text-nowrap">Hotline</span>
-                                                <h6 class="my-0 text-nowrap"><?= $_SESSION['InfoWeb']['Phone'] ?></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md">
-                                        <div class="media align-items-center">
-                                            <i class="fs-24 icon-envelope bg-secondary text-white icon-boxed mr-2"></i>
-                                            <div class="media-body">
-                                                <span class="title text-nowrap">Email tư vấn</span>
-                                                <h6 class="my-0 text-nowrap"><a href="mailto:<?= $_SESSION['InfoWeb']['Email'] ?>"><?= $_SESSION['InfoWeb']['Email'] ?></a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <a class="logo" href="<?= base_url ?>"><img src="<?= base_url ?>/images/<?= $_SESSION['InfoWeb']['Logo'] ?>" alt=""></a>                    
                             </div>
+                            
                         </div>
                     </div>
                 </div>

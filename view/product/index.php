@@ -8,9 +8,9 @@
         </div>
     </div>
 </section>
-<section id="search" class="overlay pb-0">
+<!-- <section id="search" class="overlay pb-0">
     
-</section>
+</section> -->
 <nav aria-label="breadcrumb" class="pt-2">
     <div class="container">
         <a class="breadcrumb-back" href="<?= base_url ?>"></a>                    
@@ -49,17 +49,14 @@
                     <div class="col-md-6 office mb-4 project-box" >
                         <div class="card stacked">
                             <div class="image-tools top right show-on-hover ">
-                                <div class="div_khu_vuc_small"><a title="Bất động sản <?= $item['DistrictName'] ?>" href="<?= base_url ?>/can-ho/<?= strtolower(vn_to_str($item['DistrictName'])) ?>">TP.HCM <i class="fa fa-angle-right" aria-hidden="true"></i> <?= $item['DistrictName'] ?></a>
+                                <div class="div_khu_vuc_small"><a title="Bất động sản <?= $item['DistrictName'] ?>" href="<?= base_url ?>/can-ho/<?= strtolower(vn_to_str($item['DistrictName'])) ?>"> <?= $item['DistrictName'] ?></a>
                                 </div>
                             </div>
                             <div class="card-header p-0 lift img-project-box">
                                 <figure class="figure mb-0">
                                     <a class="figure-img img-fluid" href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html">
                                     <img class="rounded-top" src="<?= base_url ?>/images/products/<?= $item['Image'] ?>" alt="" /></a>            
-                                    <div class="captionBottom">
-                                        Giá: <?= $item['PriceOn1m2'] ?> / m<sup>2</sup>
-                                    </div>
-
+                                  
                                     <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html" class="storylink">
                                         <div class="hover-div">
                                           <div>
@@ -83,11 +80,14 @@
                             </div>
                             <div class="card-body p-1 pt-3">
                                 <h5 class="card-title mb-0"><a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html"><?= $item['Name'] ?></a></h5>
-                                <p class="address">
+                                <p>
+                                    <i class="fa fa-map-marker"></i>
                                 Đường
                                   <?= $item['Street'] ?>,
                                       <?= $item['WardName'] ?>,
                                           <?= $item['DistrictName'] ?>
+                                <br/>
+                                    <b>Giá: <?= $item['PriceOn1m2'] ?> / m<sup>2</sup></b>
                                 </p>
 
                             </div>

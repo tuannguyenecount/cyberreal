@@ -78,7 +78,7 @@
       <?php $item = $view_data['productsHOT'][$i]; if($i < ceil(count($view_data['productsHOT']) - 1 )) { ?>
       <div class="col-md-3">
          <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html">
-            <div class="banner-bg" style="background-image: url(https://canho247.vn/wp-content/uploads/2019/10/lexington-residence.jpg)">
+            <div class="banner-bg" style="background-image: url(<?= base_url ?>/images/products/<?= $item['Image'] ?>)">
                <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html" data-toggle="tooltip" title="<?= $item['Name'] ?>">
                    <?= $item['Name'] ?>
                </a>
@@ -99,7 +99,7 @@
    </div>
 </section>
 <main>
-    <div class="top-offices py-5 bg-home" style="margin-top:-70px">
+    <div class="top-offices py-5 bg-home" >
         <div class="container">
           <h2 class="section-title section-title-center">
             <b></b>
@@ -111,17 +111,14 @@
                   <div class="col-lg-4 col-md-6 office mb-4 project-box">
                       <div class="card stacked">
                           <div class="image-tools top right show-on-hover">
-                              <div class="div_khu_vuc_small"><a title="Bất động sản <?= $item['DistrictName'] ?>" href="<?= base_url ?>/can-ho/<?= strtolower(vn_to_str($item['DistrictName'])) ?>">TP.HCM <i class="fa fa-angle-right" aria-hidden="true"></i> <?= $item['DistrictName'] ?></a></div>
+                              <div class="div_khu_vuc_small"><a title="Bất động sản <?= $item['DistrictName'] ?>" href="<?= base_url ?>/can-ho/<?= strtolower(vn_to_str($item['DistrictName'])) ?>">  <?= $item['DistrictName'] ?></a></div>
                           </div>
                           <div class="card-header p-0 lift img-project-box">
                             <figure class="figure mb-0">
                                   <a class="figure-img img-fluid" href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html"><img class="rounded-top" src="<?= base_url ?>/images/products/<?= $item['Image'] ?>" alt="<?= $item['Name'] ?>"></a>
-                                 <!--  <figcaption class="figure-caption">
-                                      <?= $item['Price'] / 1000000000 >= 1 ? number_format($item['Price'] / 1000000000)." tỉ " : number_format($item['Price']) . " triệu"  ?>
-                                  </figcaption> -->
-                                  <div class="captionBottom">
+                                <!--   <div class="captionBottom">
                                     Giá: <?= $item['PriceOn1m2'] ?> / m<sup>2</sup>
-                                  </div>
+                                  </div> -->
 
                                   <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html" class="storylink">
                                     <div class="hover-div">
@@ -147,11 +144,15 @@
                           </div>
                           <div class="card-body p-1 pt-3">
                               <h5 class="card-title mb-0"><a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html"><?= $item['Name'] ?></a></h5>
-                              <p class="address">
+                              <p>
+                                
+                                <i class="fa fa-map-marker"></i>
                                 Đường
                                   <?= $item['Street'] ?>,
                                       <?= $item['WardName'] ?>,
                                           <?= $item['DistrictName'] ?>
+                                <br/>
+                                <b>Giá: <?= $item['PriceOn1m2'] ?> / m<sup>2</sup></b>
                               </p>
                           </div>
                           <div class="card-footer p-1">
@@ -167,7 +168,7 @@
         </div>
     </div>
 
-    <div class="py-5 bg-home" id="chudautu" style="margin-top:-70px">
+    <div class="py-5 bg-home" id="chudautu" >
       <div class="container">
         <h2 class="section-title section-title-center">
           <b></b>
@@ -188,7 +189,7 @@
       </div>
     </div>
 
-    <div class="latest-news py-5 bg-home" style="margin-top:-70px">
+    <div class="latest-news py-5 bg-home" >
       <div class="container">
         <h2 class="section-title section-title-center">
           <b></b>
