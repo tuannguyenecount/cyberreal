@@ -211,4 +211,11 @@ margin: 8px 0 0 35px;
 .img-project-box:hover .hover-div {
     opacity: 0.8;
 }
-
+@media(min-width: 1200px) {
+    .fixedFormHoTro{    
+        position: fixed;
+        right: 120px;
+        top: 100px;
+        max-width: 350px;
+    }
+}

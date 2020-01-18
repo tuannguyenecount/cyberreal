@@ -3,14 +3,6 @@
 	#formhotro{
 		padding:15px 20px 15px;background-color:#fff;border:1px solid #ddd;box-shadow:2px 2px 10px 0 rgba(0,0,0,0.05)
 	}
-	.fixedFormHoTro{
-		
-	    position: fixed;
-	    right: 100px;
-	    top: 100px;
-	    max-width: 350px;
-
-	}
 	.full-width, .expand {
 	    width: 100% !important;
 	    max-width: 100% !important;

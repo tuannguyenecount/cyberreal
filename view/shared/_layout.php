@@ -193,6 +193,9 @@
             $('#Street').select2({
                 theme: "flat",
             });
+            $(document).on("click","#main-menu .dropdown-toggle", function(){
+                $(this).click().bind();
+            });
             $(document).on("mouseover","#main-menu .dropdown-toggle", function(){
                 $(this).click().bind();
             });
