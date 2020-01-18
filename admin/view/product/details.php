@@ -62,6 +62,13 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td class="col-md-2">Số phòng</td>
+                                    <td>
+                                        <input type="text" readonly="" class="form-control" 
+                                        value="<?= $view_data['model']['Room'] ?>" name="Room" />
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td class="col-md-2">Hướng</td>
                                     <td>
                                         <select disabled="" class="form-control" name="Direction">

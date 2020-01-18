@@ -216,6 +216,9 @@
               </div> 
               <div class="col-md-8 pull-right margin-bottom-20 text-left">
                 <h6><a href="<?= base_url ?>/tin-tuc/<?= $item['Alias'] ?>.html"><?= $item['Title'] ?></a></h6>
+                <small>
+                  <?= strlen($item['Description']) > 100 ? substr($item['Description'],0,100) . "..." : $item['Description'] ?>
+                </small>
                 <div class="is-divider"></div>
               </div>
 

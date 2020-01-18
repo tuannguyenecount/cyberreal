@@ -42,13 +42,13 @@ class NewManager
         return (int)$database_Model->ExecuteScalar($tsql);
     }
 
-    public function GetTopNew()
+    public function GetTopNew($take)
     {
         $params = array();
         $tsql = "SELECT *
                 FROM new 
                 WHERE Status = 1
-                ORDER BY Id desc LIMIT 0,4";  
+                ORDER BY Id desc LIMIT 0,$take";  
         
         $database_Model = new Database();
         return $database_Model->GetList($tsql, $params);

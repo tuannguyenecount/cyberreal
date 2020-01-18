@@ -24,6 +24,7 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
     <link href="dist/css/jquery-ui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="<?= base_url ?>/js/DatePicker/themes/jquery-ui.css">
     <?php if(isset($view_data['section_styles']))
      include 'view/'.$view_data['section_styles']; ?>
     <!-- Google Font -->
@@ -410,17 +411,19 @@
     <script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
     <script src="Scripts/jquery.validate.min.js"></script>
     <script src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
-
-
     <!-- Slimscroll -->
     <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
     <script src="bower_components/fastclick/lib/fastclick.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
+    <script src="<?= base_url ?>/js/DatePicker/jquery-ui.js"></script>
+    <script src="<?= base_url ?>/js/DatePicker/jquery.ui.datepicker-vi.js"></script>
+
     <!-- AdminLTE for demo purposes -->
     <!-- <script src="dist/js/demo.js"></script> -->
     <script>
+        $( ".calendar" ).datepicker( $.datepicker.regional[ "vi" ] );
         $('[data-toggle="tooltip"]').tooltip();
         function PopupCenter(url, title, w, h) {
             // Fixes dual-screen position                         Most browsers      Firefox

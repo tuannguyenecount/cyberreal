@@ -115,11 +115,9 @@
           {
             $result = $productManager->Edit($_POST);
             if($result)
-              // header("Location: ".base_url_admin."/product/details/".$_GET['id']); 
               header("Location: ".base_url_admin."/product"); 
             else 
               $view_data['errors'][] = "Đã có lỗi xảy ra";
-            
           }
         }
         catch(Exception $ex)

@@ -550,7 +550,6 @@ pre code {
     .container {
         max-width: 540px
     }
-
 }
 
 @media(min-width: 768px) {
@@ -4207,6 +4206,7 @@ input[type=button].btn-block {
         padding-right: 0;
         padding-left: 0
     }
+
 }
 
 @media(min-width: 576px) {
@@ -17693,6 +17693,7 @@ pre[class*=language-],
     .navbar-nav {
         margin-top: 30px
     }
+
 }
 
 .navbar-brand {
@@ -29960,18 +29961,25 @@ header#main .top .title {
     header#main .top .information .col-md {
         margin-bottom: 1rem
     }
+    #nav-container{
+        position: absolute !important;
+        width:100%;
+    }
+    main#primary{
+        padding-top:120px;
+    }
 }
 
 header#main .navbar {
-    padding: 0;
-    background-color: #152b75;
+    padding: 10px;
+    background-color: #fff;
 }
 
 header#main .navbar a.nav-link {
-    color: #fff;
+    /*color: #fff;*/
     border: none !important;
     padding: .6rem;
-    font-size:1em;
+    font-size:1.1em;
 }
 
 header#main .navbar a.nav-link:hover {
@@ -29982,9 +29990,6 @@ header#main .navbar a.nav-link.dropdown-toggle::after {
     display: none
 }
 
-header#main .navbar a.nav-link:hover {
-    color: #fff;
-}
 
 header#main .navbar a.nav-link span {
     margin-left: 5px
@@ -30008,10 +30013,14 @@ header#main .navbar a.nav-link span {
         display: block;
         text-align: center
     }
+    header#main .navbar a.nav-link{
+        color:#fff;
+
+    }
 }
 
 header#main .logo img {
-    max-height: 40px
+    max-height: 70px;
 }
 
 @media(max-width: 991px) {
@@ -30499,9 +30508,7 @@ aside#filters .list-group-item {
 }
 
 @media(max-width: 991px) {
-    .navbar-toggler {
-        color: #fff
-    }
+   
     #main-menu {
         display: none
     }
@@ -30571,7 +30578,7 @@ aside#filters .list-group-item {
     .slideout-open .slideout-menu a.nav-link.dropdown-toggle>span {
         position: absolute;
         right: 0;
-        top: 0;
+        top: 10px;
         bottom: 0;
         padding: 1rem;
         z-index: 999
@@ -30876,13 +30883,5 @@ footer .socials ul li {
     .firstNew{
         margin-right:unset;
     }
-    header#main .navbar a.nav-link {
-        color: #fff;
-    }
-    header#main .navbar a.nav-link:hover {
-        color: #fff;
-        font-weight: bold;
-    }
-
 }
 /*# sourceMappingURL=style.css.map */

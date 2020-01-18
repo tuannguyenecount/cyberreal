@@ -56,7 +56,7 @@
             <div class="col-lg-6 description">
                <ul class="list-group list-group-minimal">
                   <li class="list-group-item d-flex align-items-center fs-20 font-weight-bold text-danger">
-                     <i class="icon-dollar bg-danger text-white icon-boxed mr-1"></i><strong class="text-nowrap">Giá thuê</strong>: <?= $view_data['model']['Price'] ?>                            
+                     <i class="icon-dollar bg-danger text-white icon-boxed mr-1"></i><strong class="text-nowrap">Giá tổng cộng</strong>: <?= $view_data['model']['Price'] / 1000000000 >= 1 ? number_format($view_data['model']['Price'] / 1000000000)." tỷ " : number_format($view_data['model']['Price'] / 1000000 )  . " triệu"  ?>                            
                   </li>
                   <li class="list-group-item d-flex align-items-center">
                      <i class="icon-map-marker bg-success text-white icon-boxed mr-1"></i><strong class="text-nowrap">Vị trí</strong>: Đường <?= $view_data['model']['Street'] ?>, <?= $view_data['model']['WardName'] ?>,  <?= $view_data['model']['DistrictName'] ?>
@@ -65,10 +65,16 @@
                      <i class="icon-square bg-success text-white icon-boxed mr-1"></i><strong class="text-nowrap">Diện tích</strong>: <?= $view_data['model']['Area'] ?>
                   </li>
                   <li class="list-group-item d-flex align-items-center">
+                     <i class="icon-windows bg-success text-white icon-boxed mr-1"></i><strong class="text-nowrap">Số phòng</strong>: <?= $view_data['model']['Room'] ?> phòng
+                  </li>
+                  <li class="list-group-item d-flex align-items-center">
                      <i class="icon-compass bg-success text-white icon-boxed mr-1"></i><strong class="text-nowrap">Hướng</strong>:  <?= $view_data['model']['DirectionName'] ?>
                   </li>
                   <li class="list-group-item d-flex align-items-center">
                      <i class="icon-star bg-success text-white icon-boxed mr-1"></i><strong class="text-nowrap">Xếp Hạng</strong>: <?= $view_data['model']['Rank'] ?>                                
+                  </li>
+                  <li class="list-group-item d-flex align-items-center">
+                     <i class="icon-calendar bg-success text-white icon-boxed mr-1"></i><strong class="text-nowrap">Ngày bàn giao</strong>: <?= $view_data['model']['HandoverTime'] ?>                                
                   </li>
                <!--    <li class="list-group-item d-flex align-items-center">
                      <i class="icon-toggle-on bg-primary text-white icon-boxed mr-1"></i><strong class="text-nowrap">Tình trạng</strong>: Đang cho thuê                                
@@ -105,7 +111,7 @@
          </div>
       </section>
       <div class="position-relative">
-         <section class="detail-tabs sticky my-2">
+         <section class="detail-tabs my-2">
             <ul class="nav nav-pills d-flex" id="pills-tab" role="tablist">
                <li class="nav-item">
                   <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Thông tin chung</a>
@@ -161,7 +167,7 @@
            <!--  <div class="col-lg-3" id="filter-container">
                
             </div> -->
-            <div class="col-md-4" >
+            <div class="col-md-4" id="formHoTroContainer">
               <div  id="formhotro">
                 <div class="well" >
                   <h5><?= $_SESSION['InfoWeb']['Representative'] ?></h5>
@@ -186,7 +192,7 @@
                 </p>
               </div>  
               <div>&nbsp;</div>        
-              <div id="filter-container"></div>    
+              <!-- <div id="filter-container"></div>     -->
             </div>
          </div>
       </div>

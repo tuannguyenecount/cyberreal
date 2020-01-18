@@ -28,7 +28,7 @@
 			$view_data['section_scripts'] = "home/scripts.php";
             $view_data['section_meta'] = "home/meta.php";
             $view_data['products'] = $productManager->GetListNew();
-            $view_data['news'] = $newManager->GetTopNew();
+            $view_data['news'] = $newManager->GetTopNew(4);
             $view_data['advertisements'] = $avertisementManager->GetList();
             if(count($view_data['news']) > 0)
             {

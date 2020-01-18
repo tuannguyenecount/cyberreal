@@ -3,8 +3,14 @@
         <button class="navbar-toggler" type="button" aria-label="Toggle navigation" id="mobile-menu-icon">
             <i class="fas fa-bars"></i> MENU
         </button>
-        <div id="main-menu">
-            <ul id="w0" class="navbar-nav mr-auto nav"><li class="nav-item"><a class="nav-link" href="<?= base_url ?>"><i class="fas fa-home"></i></a></li>
+        <div >
+            <ul id="w0" class="navbar-nav mr-auto nav"><li class="nav-item">
+                <a class="logo" href="<?= base_url ?>"><img src="<?= base_url ?>/images/<?= $_SESSION['InfoWeb']['Logo'] ?>" alt=""></a>
+                
+            </ul>                
+        </div>
+        <ul class="navbar-nav navbar-right" id="main-menu">
+            <a class="nav-link" href="<?= base_url ?>"><i class="fas fa-home"></i></a></li>
                 <?php foreach($view_data['menuParentHead'] as $menuParent) { ?>
                     <?php $listMenuChild = $menuManager->GetListMenuShowByParentId($menuParent['Id']); ?>
                     <?php if(count($listMenuChild) > 0) { ?>
@@ -20,10 +26,7 @@
                         <li class="nav-item"><a class="nav-link" href="<?= $menuParent['URL'] ?>"><?= $menuParent['Name'] ?></a></li>
                     <?php } ?>
                 </li>
-                <?php } ?>
-            </ul>                
-        </div>
-        <ul class="navbar-nav navbar-right">
+            <?php } ?>
             <a class="nav-link" href="<?= base_url ?>/hen-di-xem.html">
                 <span class="btn btn-blue btn-sm btn-with-ico text-white font-weight-bold"><i class="icon-star"></i> Hẹn đi xem</span>
             </a>

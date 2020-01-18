@@ -58,7 +58,7 @@
                                     <tr>
                                         <td class="col-md-2">Thời gian bàn giao</td>
                                         <td>
-                                            <input type="text" value="<?= isset($_POST['HandoverTime']) ? $_POST['HandoverTime'] : $view_data['model']['HandoverTime']   ?>"  name="HandoverTime" class="form-control" />
+                                            <input type="text" value="<?= isset($_POST['HandoverTime']) ? $_POST['HandoverTime'] : $view_data['model']['HandoverTime']   ?>"  name="HandoverTime" class="calendar form-control" />
                                         </td>
                                     </tr>    
                                     <tr>
@@ -77,7 +77,7 @@
                                     <tr>
                                         <td class="col-md-2">Số thứ tự</td>
                                         <td>
-                                           <input style="width:200px" type="number" step="1" min="1" class="form-control" name="SortOrder" value="<?= isset($_POST['SortOrder']) ? $_POST['SortOrder'] : $view_data['model']['SortOrder'] ?>" />
+                                           <input style="width:200px" type="number" step="1" min="0" class="form-control" name="SortOrder" value="<?= isset($_POST['SortOrder']) ? $_POST['SortOrder'] : $view_data['model']['SortOrder'] ?>" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -91,6 +91,13 @@
                                         <td>
                                             <input type="text" class="form-control" 
                                             value="<?= isset($_POST['Area']) ? $_POST['Area'] : $view_data['model']['Area'] ?>" name="Area" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-2">Số phòng</td>
+                                        <td>
+                                            <input type="number" min="0" step="1" max="128" class="form-control" 
+                                            value="<?= isset($_POST['Room']) ? $_POST['Room'] : $view_data['model']['Room'] ?>" name="Room" />
                                         </td>
                                     </tr>
                                     <tr>

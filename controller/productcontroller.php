@@ -27,7 +27,15 @@
             $Rank = isset($_POST['Rank']) ? $_POST['Rank'] : "";
             $Price = isset($_POST['Price']) ? $_POST['Price'] : "";
             $Direction = isset($_POST['Direction']) ? $_POST['Direction'] : "";
-            $view_data['model'] = $productManager->Search($Name, $District, $Ward, $Street, $Rank, $Price, $Direction);
+            $Room = isset($_POST['Room']) ? $_POST['Room'] : "";
+            $HandoverTime = isset($_POST['HandoverTime']) && $_POST['HandoverTime'] != "Thời gian bàn giao" ? $_POST['HandoverTime'] : "";
+            if($Name == "" && $District == "" && $Ward == "" && $Street == "" && $Rank == ""
+                && $Price == "" && $Direction == "" && $Room == "" && $HandoverTime == ""){
+                $view_data['model'] = $productManager->GetList(1);
+            }
+            else {
+                $view_data['model'] = $productManager->Search($Name, $District, $Ward, $Street, $Rank, $Price, $Direction, $Room, $HandoverTime);
+            }
             $view_data['districtsOnProduct'] = $locationManager->GetDistrictsOnProduct();
             $view_data['streetsOnProduct'] = $locationManager->GetStreetsOnProduct();
             break;

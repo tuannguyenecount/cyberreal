@@ -19,18 +19,6 @@
                                             </select>                                    
                                         </div>
                                         <div class="col-md mb-2">
-                                            <select class="form-control" id="Ward" name="Ward" data-selected="" >
-                                                <option value="">Tất cả phường/xã</option>
-                                            </select>                                
-                                        </div>
-                                        <div class="col-md mb-2">
-                                            <select class="form-control" id="Street" name="Street" data-selected="" style="width:100%">
-                                                <option value="">Tất cả đường</option>
-                                            </select>
-                                        </div>
-                                        <div class="w-100"></div>
-                                        
-                                        <div class="col-md mb-2">
                                             <select class="form-control" name="Price">
                                                 <option value="">Tất cả giá</option>
                                                 <option value="duoi1ty">Dưới 1 tỷ</option>
@@ -41,6 +29,42 @@
                                             </select>                                    
                                         </div>
                                         <div class="col-md mb-2">
+                                            <select class="form-control" name="Room">
+                                                <option value="">Tất cả số phòng</option>
+                                                <option value="1">1 Phòng</option>
+                                                <option value="2">2 Phòng</option>
+                                                <option value="3">3 Phòng</option>
+                                                <option value="4">4 Phòng</option>
+                                                <option value="5phongtrolen">5 Phòng trở lên</option>
+                                            </select>                                    
+                                        </div>
+                                        <div class="col-md mb-2">
+                                            <input type="text" name="HandoverTime" class="calendar form-control" style="height:38px" placeholder="Thời gian bàn giao" value="Thời gian bàn giao" />                                  
+                                        </div>
+                                        <!-- <div class="col-md mb-2">
+                                            <select class="form-control" id="Ward" name="Ward" data-selected="" >
+                                                <option value="">Tất cả phường/xã</option>
+                                            </select>                                
+                                        </div>
+                                        <div class="col-md mb-2">
+                                            <select class="form-control" id="Street" name="Street" data-selected="" style="width:100%">
+                                                <option value="">Tất cả đường</option>
+                                            </select>
+                                        </div> -->
+                                        <!-- <div class="w-100"></div> -->
+                                        
+                                      
+                                       <!--  <div class="col-md mb-2">
+                                            <select  class="form-control" name="Rank">
+                                                <option value="">Tất cả xếp hạng</option>
+                                                <?php foreach($view_data['ranks'] as $item) { ?>
+                                                    <option value="<?= $item['Rank'] ?>">
+                                                        <?= $item['Rank'] ?>    
+                                                    </option>
+                                                <?php } ?>
+                                            </select>                                    
+                                        </div> -->
+                                        <!-- <div class="col-md mb-2">
                                             <select  class="form-control" name="Rank">
                                                 <option value="">Tất cả xếp hạng</option>
                                                 <?php foreach($view_data['ranks'] as $item) { ?>
@@ -57,7 +81,7 @@
                                                     <option value="<?= $item['Id'] ?>"><?= $item['Name'] ?></option>
                                                 <?php } ?>
                                             </select>                                    
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -79,10 +103,11 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>
 
     <script>
         $('#Street').select2({
                     theme: "flat",
                 });
+        $( ".calendar" ).datepicker( $.datepicker.regional[ "vi" ] );
     </script> 

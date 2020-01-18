@@ -57,7 +57,8 @@ class ProductManager
         $database_Model = new Database();
         return $database_Model->GetList($tsql, $params);
     }
-    public function Search($Name, $District, $Ward, $Street, $Rank, $Price, $Direction)
+    public function Search($Name, $District, $Ward, $Street, $Rank, $Price, $Direction, $Room, 
+        $HandoverTime)
     {
         $whereQuery = "WHERE A.Status = 1 ";
         $params = array();
@@ -106,13 +107,28 @@ class ProductManager
                     $whereQuery .= " AND A.Price >= 10000000000 "; 
                     break;
             }
-            
-            $params[] = $Price;
         }
-         else if(!empty($Direction))
+        else if(!empty($Direction))
         {
             $whereQuery .= " AND A.Direction = ? ";
             $params[] = $Direction;
+        }
+        else if(!empty($Room))
+        {
+            if($Room != "5phongtrolen")
+            {
+                $whereQuery .= " AND A.Room = ? ";
+                $params[] = $Room;
+            }
+            else 
+            {
+                $whereQuery .= " AND A.Room >= 5 ";
+            }
+        }
+        else if(!empty($HandoverTime))
+        {
+            $whereQuery .= " AND A.HandoverTime = ? ";
+            $params[] = $HandoverTime;
         }
         $tsql = "SELECT DISTINCT A.*, B.Name AS CategoryName, B.Alias AS CategoryAlias, CONCAT(C._prefix,' ', C._name) AS DistrictName, CONCAT(D._prefix ,' ',D._name) AS WardName, F.Name As DirectionName
                     FROM product A LEFT JOIN category B  
@@ -340,9 +356,9 @@ class ProductManager
 	public function Edit($model)
 	{
 
-        $tsql = "UPDATE `product` SET `Name`= ?,`CategoryId`=?,`Area`=?,`Direction`=?,`Rank`=?,`Address`=?,`Province`=?,`District`=?,`Ward`=?,`Street`=?,`GeneralInformation`=?,`Location`=?,`Structure`=?,`ServiceCharge`=?,`Advantages`=?, `Price`=?, `PriceOn1m2` = ?, `Image`=?, `HandoverTime` = ?, `Alias`=?,`Status`=?,`SortOrder`=?,`HOT`=?, `SeoTitle` = ?, `SeoDescription` = ?, `SeoKeyword` = ? WHERE `Id` = ? ";   
+        $tsql = "UPDATE `product` SET `Name` = ?,`CategoryId`= ?,`Area` = ?,`Room` = ?,`Direction`= ?,`Rank` = ?,`Address` = ?,`Province` = ?,`District` = ?,`Ward` = ?,`Street`=?,`GeneralInformation`=?,`Location`=?,`Structure`=?,`ServiceCharge`=?,`Advantages`=?, `Price`=?, `PriceOn1m2` = ?, `Image`=?, `HandoverTime` = ?, `Alias`=?,`Status`=?,`SortOrder`=?,`HOT`=?, `SeoTitle` = ?, `SeoDescription` = ?, `SeoKeyword` = ? WHERE `Id` = ? ";   
 
-        $params =  array($model['Name'], $model['CategoryId'], $model['Area'], $model['Direction'], $model['Rank'], $model['Address'], $model['Province'], $model['District'], $model['Ward'], $model['Street'], $model['GeneralInformation'], $model['Location'], $model['Structure'], $model['ServiceCharge'], $model['Advantages'], $model['Price'], $model['PriceOn1m2'], $model['Image'], $model['HandoverTime'], $model['Alias'], $model['Status'], $model['SortOrder'], $model['HOT'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword'], $model['Id']);
+        $params =  array($model['Name'], $model['CategoryId'], $model['Area'], $model['Room'], $model['Direction'], $model['Rank'], $model['Address'], $model['Province'], $model['District'], $model['Ward'], $model['Street'], $model['GeneralInformation'], $model['Location'], $model['Structure'], $model['ServiceCharge'], $model['Advantages'], $model['Price'], $model['PriceOn1m2'], $model['Image'], $model['HandoverTime'], $model['Alias'], $model['Status'], $model['SortOrder'], $model['HOT'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword'], $model['Id']);
 
         $database_Model = new Database();
 	    $result = $database_Model->Execute($tsql, $params);

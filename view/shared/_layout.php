@@ -20,6 +20,7 @@
         <link href="<?=base_url?>/assets/css/jquery.niftymodals.css" rel="stylesheet" />
         <link href="<?=base_url?>/css/callbutton.css" rel="stylesheet" />
         <link href="https://canho247.vn/wp-content/themes/flatsome/assets/css/flatsome.css?ver=3.8.4" />
+        <link rel="stylesheet" href="<?= base_url ?>/js/DatePicker/themes/jquery-ui.css">
         <?php
             if (isset($view_data['section_styles'])) {
                 include 'view/' . $view_data['section_styles'];
@@ -35,17 +36,7 @@
             <div class="close-mobile-menu"><i class="fas fa-times"></i> ĐÓNG</div>
             <!-- header -->
             <header id="main">
-                <div class="top py-2">
-                    <div class="container">
-                        <div class="row no-gutters">
-                            <div class="col-lg-3">
-                                <a class="logo" href="<?= base_url ?>"><img src="<?= base_url ?>/images/<?= $_SESSION['InfoWeb']['Logo'] ?>" alt=""></a>                    
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-
+                 
                 <div id="nav-container">
                     
                 </div>
@@ -184,6 +175,7 @@
         <div id="bangtin"></div> 
 
     </body>
+
     <script src="<?= base_url ?>/js/vendor.min.js"></script>
     <script src="<?= base_url ?>/assets/a98fcf71/yii.js"></script>
     <script src="<?= base_url ?>/js/slideout.min.js"></script>
@@ -192,8 +184,11 @@
     <script src="<?= base_url ?>/assets/a1ef791c/js/dependent-dropdown.min.js"></script>
     <script src="<?= base_url ?>/assets/eaef8c08/js/depdrop.min.js"></script>
     <script src="<?= base_url ?>/js/common.js"></script>
+    <script src="<?= base_url ?>/js/DatePicker/jquery-ui.js"></script>
+    <script src="<?= base_url ?>/js/DatePicker/jquery.ui.datepicker-vi.js"></script>
     <script>
         $(function () {
+            $( ".calendar" ).datepicker( $.datepicker.regional[ "vi" ] );
             $('[data-toggle="tooltip"]').tooltip();
             $('#Street').select2({
                 theme: "flat",
@@ -297,10 +292,14 @@
             if (sessionStorage.getItem('ShowPopUp') == "yes") {
                 $.post('<?=base_url?>/home/showpopup', function (result) { $("#bangtin").html(result); });
             } 
+            $('*').bind('cut copy paste contextmenu', function (e) {
+                e.preventDefault();
+            });
         });
         setTimeout(function(){
                 window.onscroll = function() {
                 changeMenu();
+                changeFormHoTro();
             };
 
             var navbar = document.getElementById("nav-container");
@@ -312,6 +311,18 @@
                 navbar.classList.remove("sticky");
               }
             }
+
+            var formhotro = document.getElementById("formhotro");
+            var formhotroOffsetTop = formhotro.offsetTop;
+            var footerOffsetTop = document.getElementsByTagName("footer")[0].offsetTop ;
+            function changeFormHoTro() {
+              if (window.pageYOffset >= 1000  && window.pageYOffset  <=  footerOffsetTop - 1000) {
+                formhotro.classList.add("fixedFormHoTro")
+              } else {
+                formhotro.classList.remove("fixedFormHoTro");
+              }
+            }
+
         }, 1000);
     </script>
     <?php

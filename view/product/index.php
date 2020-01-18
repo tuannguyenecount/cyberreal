@@ -20,27 +20,6 @@
     </div>
 </nav>
 <div class="container my-3">
-    <?php if(isset($view_data['description']) && !empty($view_data['description'])) { ?>
-    <section class="desc">
-        <div class="row justify-content-center mb-4">
-            <div class="col-md-10">
-                <h1 class="text-center"></h1>
-                <article class="description">
-                    <div class="show-less-content" id="category-description" data-max-height="200">
-                        <?= $view_data['description'] ?>
-                    </div>
-
-                    <div data-target="#category-description" class="show-less text-center" style="display:none">
-                        <span class="btn btn-outline-secondary">Thu gọn</span>
-                    </div>
-                    <div data-target="#category-description" class="show-more text-center" style="display:none">
-                        <span class="btn btn-outline-secondary">Xem thêm</span>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-    <?php } ?>
     <section class="office-listing">
         <div class="row">
             <div class="col-md-9">
@@ -120,12 +99,36 @@
                     </ul>
                 </div>
                 <?php  } ?>
+
+                <?php if(isset($view_data['description']) && !empty($view_data['description'])) { ?>
+                <section class="desc">
+                    <div class="row justify-content-center mb-4">
+                        <div class="col-md-10">
+                            <h1 class="text-center"></h1>
+                            <article class="description">
+                                <div class="show-less-content" id="category-description" data-max-height="200">
+                                    <?= $view_data['description'] ?>
+                                </div>
+
+                                <div data-target="#category-description" class="show-less text-center" style="display:none">
+                                    <span class="btn btn-outline-secondary">Thu gọn</span>
+                                </div>
+                                <div data-target="#category-description" class="show-more text-center" style="display:none">
+                                    <span class="btn btn-outline-secondary">Xem thêm</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+                <?php } ?>
             </div>
+
             <div class="col-md-3" id="filter-container">
                 
             </div>
         </div>
     </section>
+
 </div> 
 
  
