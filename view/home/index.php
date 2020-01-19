@@ -35,70 +35,68 @@
   </div>
   <!-- .section-content -->
 </section>   
-<section class="container">
-   <div class="row">
-      <div class="col-md-8  col-md-offset-2 text-center" style="margin:0 auto">
-         <h3>CÁC DỰ ÁN HOT NHẤT HIỆN NAY</h3>
-        <!--  <h2 class="section-title section-title-center">
-          <b></b>
-          <span class="section-title-main">Các dự án HOT <?= $_SESSION['InfoWeb']['ViTriDangHot'] ?></span>
-          <b></b>
-         </h2> -->
-         <p>
-            Chúng tôi sở hữu cổng thông tin bất động sản chất lượng và được thẩm định đầy đủ, cung cấp cho khách hàng đa dạng sản phẩm để lựa chọn tại các khu vực đang “hot” trên thị trường
-         </p>
-      </div>   
-   </div>   
-   <div class="row">
-    <?php for($i = 0; $i < ceil(count($view_data['productsHOT'])) / 2; $i++) { ?> 
-      <?php $item = $view_data['productsHOT'][$i]; if($i == 0) { ?>
-      <div class="col-md-6">
-         <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html">
-            <div class="banner-bg" style="background-image: url(<?= base_url ?>/images/products/<?= $item['Image'] ?>)">
-               <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html" data-toggle="tooltip" title="<?= $item['Name'] ?>">
-                  <?= $item['Name'] ?>
-               </a>
-            </div>
-         </a>
-      </div>
-      <?php } else { ?>
-      <div class="col-md-3">
-         <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html">
-            <div class="banner-bg" style="background-image: url(https://canho247.vn/wp-content/uploads/2019/10/lexington-residence.jpg)">
-               <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html" data-toggle="tooltip" title="<?= $item['Name'] ?>">
-                   <?= $item['Name'] ?>
-               </a>
-            </div>
-         </a>
-      </div>
-    <?php }} ?>
-   </div>
-   <div class="row">
-    <?php for($i = ceil(count($view_data['productsHOT']) / 2); $i < count($view_data['productsHOT']); $i++) { ?> 
-      <?php $item = $view_data['productsHOT'][$i]; if($i < ceil(count($view_data['productsHOT']) - 1 )) { ?>
-      <div class="col-md-3">
-         <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html">
-            <div class="banner-bg" style="background-image: url(<?= base_url ?>/images/products/<?= $item['Image'] ?>)">
-               <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html" data-toggle="tooltip" title="<?= $item['Name'] ?>">
-                   <?= $item['Name'] ?>
-               </a>
-            </div>
-         </a>
-      </div>
-    <?php } else { ?>
-      <div class="col-md-6">
-         <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html">
-            <div class="banner-bg" style="background-image: url(<?= base_url ?>/images/products/<?= $item['Image'] ?>)">
-               <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html" data-toggle="tooltip" title="<?= $item['Name'] ?>">
-                  <?= $item['Name'] ?>
-               </a>
-            </div>
-         </a>
-      </div>
-    <?php }} ?>
-   </div>
-</section>
 <main>
+	<div class="top-offices py-5 bg-home" >
+        <div class="container">
+        	<div class="row">
+	          	<div class="text-center col-md-8" style="margin-top:50px;margin-left:auto;margin-right:auto"  >
+		         	<h3>CÁC DỰ ÁN HOT NHẤT HIỆN NAY</h3>
+			         <p>
+			            Chúng tôi sở hữu cổng thông tin bất động sản chất lượng và được thẩm định đầy đủ, cung cấp cho khách hàng đa dạng sản phẩm để lựa chọn tại các khu vực đang “hot” trên thị trường
+			         </p>
+		      	</div>
+	      	</div>
+	      	<div class="row">
+			    <?php for($i = 0; $i < ceil(count($view_data['productsHOT'])) / 2; $i++) { ?> 
+			      <?php $item = $view_data['productsHOT'][$i]; if($i == 0) { ?>
+			      <div class="col-md-6">
+			         <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html">
+			            <div class="banner-bg" style="background-image: url(<?= base_url ?>/images/products/<?= $item['Image'] ?>)">
+			               <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html" data-toggle="tooltip" title="<?= $item['Name'] ?>">
+			                  <?= $item['Name'] ?>
+			               </a>
+			            </div>
+			         </a>
+			      </div>
+			      <?php } else { ?>
+			      <div class="col-md-3">
+			         <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html">
+			            <div class="banner-bg" style="background-image: url(https://canho247.vn/wp-content/uploads/2019/10/lexington-residence.jpg)">
+			               <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html" data-toggle="tooltip" title="<?= $item['Name'] ?>">
+			                   <?= $item['Name'] ?>
+			               </a>
+			            </div>
+			         </a>
+			      </div>
+			    <?php }} ?>
+		    </div>
+		   	<div class="row">
+			    <?php for($i = ceil(count($view_data['productsHOT']) / 2); $i < count($view_data['productsHOT']); $i++) { ?> 
+			      <?php $item = $view_data['productsHOT'][$i]; if($i < ceil(count($view_data['productsHOT']) - 1 )) { ?>
+			      <div class="col-md-3">
+			         <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html">
+			            <div class="banner-bg" style="background-image: url(<?= base_url ?>/images/products/<?= $item['Image'] ?>)">
+			               <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html" data-toggle="tooltip" title="<?= $item['Name'] ?>">
+			                   <?= $item['Name'] ?>
+			               </a>
+			            </div>
+			         </a>
+			      </div>
+			    <?php } else { ?>
+			      <div class="col-md-6">
+			         <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html">
+			            <div class="banner-bg" style="background-image: url(<?= base_url ?>/images/products/<?= $item['Image'] ?>)">
+			               <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html" data-toggle="tooltip" title="<?= $item['Name'] ?>">
+			                  <?= $item['Name'] ?>
+			               </a>
+			            </div>
+			         </a>
+			      </div>
+			    <?php }} ?>
+		   	</div>
+        </div>
+    </div>
+
     <div class="top-offices py-5 bg-home" >
         <div class="container">
           <h2 class="section-title section-title-center">
