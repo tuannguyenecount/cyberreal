@@ -100,6 +100,7 @@
             $view_data['imagesProduct'] = $productManager->GetImagesProductByProductId($view_data['model']['Id']);
             $view_data['streets'] = $locationManager->GetStreetsOnProductByDistrict($view_data['model']['District']);
             $view_data['fees'] = $feeManager->GetListByProductId($view_data['model']['Id']);
+            $view_data['relatedProducts'] = $productManager->GetRelatedProducts($view_data['model']['Id'], $view_data['model']['District']);
             $view_data['section_scripts'] = "product/scripts.php"; 
             $view_data['section_styles'] = "product/styles.php"; 
             $view_data['section_meta'] = "product/metadetail.php"; 

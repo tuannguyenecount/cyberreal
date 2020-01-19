@@ -10,7 +10,7 @@
             include 'view/' . $view_data['section_meta'];
         } ?>
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Muli" />
-        <link href="<?= base_url ?>/css/style2.css?v=7" rel="stylesheet">
+        <link href="<?= base_url ?>/css/style2.css?v=10" rel="stylesheet">
         <link href="<?= base_url ?>/css/custom.css?v=3" rel="stylesheet">
         <link href="<?= base_url ?>/css/icon.css?v=1" rel="stylesheet">
         <link href="<?= base_url ?>/assets/fc340a4a/css/kv-widgets.min.css" rel="stylesheet">
@@ -227,7 +227,7 @@
                     url : "<?= base_url ?>/shared/filters",
                     method: "Post",
                     success: function(result){
-                        $("#filter-container").html(result);
+                        $("#filter-container").append(result);
                     }
                 });
             }
@@ -295,14 +295,17 @@
             if (sessionStorage.getItem('ShowPopUp') == "yes") {
                 $.post('<?=base_url?>/home/showpopup', function (result) { $("#bangtin").html(result); });
             } 
-            $('*').bind('cut copy paste contextmenu', function (e) {
-                e.preventDefault();
-            });
+            // $('*').bind('cut copy paste contextmenu', function (e) {
+            //     e.preventDefault();
+            // });
         });
         setTimeout(function(){
                 window.onscroll = function() {
                 changeMenu();
-                changeFormHoTro();
+                var formhotro = document.getElementById("formhotro");
+                if(formhotro != undefined) {
+                    changeFormHoTro();
+                }
             };
 
             var navbar = document.getElementById("nav-container");
@@ -316,14 +319,17 @@
             }
 
             var formhotro = document.getElementById("formhotro");
-            var formhotroOffsetTop = formhotro.offsetTop;
-            var footerOffsetTop = document.getElementsByTagName("footer")[0].offsetTop ;
-            function changeFormHoTro() {
-              if (window.pageYOffset >= 1000  && window.pageYOffset  <=  footerOffsetTop - 1000) {
-                formhotro.classList.add("fixedFormHoTro")
-              } else {
-                formhotro.classList.remove("fixedFormHoTro");
-              }
+            if(formhotro != undefined)
+            {
+                var formhotroOffsetTop = formhotro.offsetTop;
+                var footerOffsetTop = document.getElementsByTagName("footer")[0].offsetTop ;
+                function changeFormHoTro() {
+                  if (window.pageYOffset >= 1200  && window.pageYOffset  <=  footerOffsetTop - 1800) {
+                    formhotro.classList.add("fixedFormHoTro")
+                  } else {
+                    formhotro.classList.remove("fixedFormHoTro");
+                  }
+                }
             }
 
         }, 1000);

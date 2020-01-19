@@ -31,18 +31,12 @@
   	}
     case "create":
     {
-      $view_data['title'] = "Thêm Dự Án";
-      $view_data['view_name'] = "product/create.php";
-      $view_data['categories'] = $categoryManager->GetList();
-      $view_data['directions'] = $directionManager->GetList();
-      $view_data['fees'] = $feeManager->GetList();
-      $view_data['section_scripts'] = "product/script_form.php";
       $mt = microtime(true);
       $mt =  $mt*1000; //microsecs
       $ticks = (string)$mt*10; //100 Nanosecs
       $Name = "Tên dự án mới ".$ticks;
-      $productManager->AddTemp($Name);
-      $product  = $productManager->GetByName($Name, $_SESSION['UserLogged']['UserName']);
+      $productManager->AddTemp($Name, $_SESSION['UserLogged']['UserName']);
+      $product  = $productManager->GetByName($Name);
       header("Location: ".base_url_admin."/product/edit/".$product['Id']);
       break;
     }

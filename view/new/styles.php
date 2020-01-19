@@ -1,22 +1,12 @@
-<link type="text/css" rel="stylesheet"
-     href="<?=base_url?>/img.zing.vn/volamthuphi/skin/jxthuphi_2014_06/css/style1c1d.css?ver=222"/>
-  <link type="text/css" rel="stylesheet"
-     href="<?=base_url?>/img.zing.vn/volamthuphi/skin/jxthuphi_2014_06/css/sub.css"/>
-  <link type="text/css" rel="stylesheet"
-     href="<?=base_url?>/img.zing.vn/volamthuphi/skin/jxthuphi_2014_06/css/content.css"/>
-  <link type="text/css" rel="stylesheet"
-     href="<?=base_url?>/img.zing.vn/volamthuphi/skin/jxthuphi_2014_06/css/j-navigation.css"/>
-  <link type="text/css" rel="stylesheet"
-     href="<?=base_url?>/img.zing.vn/volamthuphi/skin/jxthuphi_2014_06/css/detailnews.css"/>
-  <link type="text/css" rel="stylesheet"
-     href="<?=base_url?>/img.zing.vn/volamthuphi/skin/jxthuphi_2014_06/css/listnews.css"/>
-  <link rel="stylesheet" type="text/css"
-     href="<?=base_url?>/img.zing.vn/volamthuphi/skin/jxthuphi_2014_06/css/listevent.css"/>
-  <link type="text/css" rel="stylesheet" href="<?=base_url?>/css/apprise.css"/>
-  <script language="javascript" src="<?=base_url?>/css/apprise-1.5.full.js"></script>
-    <link rel="stylesheet" type="text/css"
-     href="<?=base_url?>/css/subpage.css"/>
+
   <style>
-    
+    .label-info{    position: relative;
+    margin: auto;
+    overflow: hidden;
+    float: left;
+    margin-bottom: 10px;}
+	.label-info a,.label-tags{float:left;display:inline-block;position:relative;font-size:10px;margin-left:8px;color:#999;text-decoration:none;text-transform:uppercase;padding:5px;border:1px solid rgba(0,0,0,0.1);border-radius:3px}
+	.label-tags{color:#f39c12;border:1px solid #f1c40f;}
+	.label-info a:hover{color:#000;border-color:inherit;text-decoration:none; }
   </style> 
  

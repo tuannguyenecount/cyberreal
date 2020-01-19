@@ -1,4 +1,4 @@
-<aside id="filters">
+<aside class="filters">
    <div class="bordered stacked mb-3 p-0">
       <h3 class="title m-0"  style="color:#333">Văn phòng theo Quận</h3>
       <div class="list-group">

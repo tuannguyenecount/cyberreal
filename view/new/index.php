@@ -1,7 +1,7 @@
 <?php 
    $pageCurrent = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 ?>
-<section class="hero banner-w-search">
+<!-- <section class="hero banner-w-search">
     <div class="image image-overlay" style="background-image:url('<?=base_url?>/images/banner.jpg')"></div>
     <div class="container">
         <div class="row">
@@ -10,7 +10,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- <section id="search" class="overlay pb-0">
     
 </section> -->
@@ -19,7 +19,7 @@
       <a class="breadcrumb-back" href="<?= base_url ?>"></a>					
       <ol class="breadcrumb">
          <li class='breadcrumb-item'><a href="<?= base_url ?>">Trang chủ</a></li>
-         <li class='breadcrumb-item active'>Tin tức</li>
+         <li class='breadcrumb-item active'><?= $view_data['title'] ?></li>
       </ol>
    </div>
 </nav>

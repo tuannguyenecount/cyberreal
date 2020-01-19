@@ -31,12 +31,6 @@
   	}
     case "create":
     {
-      $view_data['title'] = "Thêm Dự Án";
-      $view_data['view_name'] = "product/create.php";
-      $view_data['categories'] = $categoryManager->GetList();
-      $view_data['directions'] = $directionManager->GetList();
-      $view_data['fees'] = $feeManager->GetList();
-      $view_data['section_scripts'] = "product/script_form.php";
       $mt = microtime(true);
       $mt =  $mt*1000; //microsecs
       $ticks = (string)$mt*10; //100 Nanosecs

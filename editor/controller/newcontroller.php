@@ -23,33 +23,13 @@
   	}
     case "create":
     {
-      $view_data['title'] = "Viết Bài Mới (Tin Tức)";
-      $view_data['view_name'] = "new/create.php";
-      $view_data['section_scripts'] = "new/script_form.php";
-      if(isset($_POST['Title']))
-      {
-        try 
-        {
-          $_POST['UserCreated'] = $_SESSION['UserLogged']['UserName'];
-          $_POST['Status'] = 0;
-          $view_data['errors'] = $newManager->GetErrorsMessage($_POST['Title'], $_POST['Alias'], true, true);
-
-          if(count($view_data['errors']) == 0)
-          {
-            $result = $newManager->Add($_POST);
-
-            if($result)
-              header("Location: ".base_url_editor."/new"); 
-            else 
-              $view_data['errors'][] = "Đã có lỗi xảy ra";
-          }
-
-        }
-        catch(Exception $ex)
-        {
-          $view_data['errors'][] = $ex->getMessage();
-        }
-      } 
+      $mt = microtime(true);
+      $mt =  $mt*1000; //microsecs
+      $ticks = (string)$mt*10; //100 Nanosecs
+      $Title = "Tin tức mới ".$ticks;
+      $newManager->AddTemp($Title, $_SESSION['UserLogged']['UserName']);
+      $new  = $newManager->GetByTitle($Title);
+      header("Location: ".base_url_editor."/new/edit/".$new['Id']);
       break;
     }
     case "edit":
@@ -57,6 +37,7 @@
       $view_data['title'] = "Sửa Bài Viết (Tin Tức)";
       $view_data['view_name'] = "new/edit.php";
       $view_data['section_scripts'] = "new/script_form.php";
+      $view_data['section_styles'] = "new/style_form.php";
       if(isset($_POST['Title']))
       {
         try 
@@ -127,7 +108,22 @@
       $view_data['model'] = $newManager->GetList();
   		break;
   	}
-    
+    case "updateContent":
+    {
+      try 
+        { 
+          $result = $newManager->UpdateContent($_GET['id'], $_POST['Content']);
+          if($result)
+            echo "Update async success";
+          else 
+            echo "Auto save error!";
+        }
+        catch(Exception $ex)
+        {
+          echo $ex->getMessage();
+        }
+        exit();
+    }
   }
 
 ?>

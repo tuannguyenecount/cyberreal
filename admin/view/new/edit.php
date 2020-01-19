@@ -75,6 +75,18 @@
                                             <input type="text" value="<?= isset($_POST['SeoKeyword']) ? $_POST['SeoKeyword'] : $view_data['model']['SeoKeyword'] ?>"   name="SeoKeyword" class="form-control" />
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td class="col-md-2">Tags</td>
+                                        <td>
+                                            <input type="text" value="<?= isset($_POST['Tags']) ? $_POST['Tags'] : $view_data['model']['Tags'] ?>"   name="Tags" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-2"></td>
+                                        <td>
+                                            <label class='text-info'>Nhập tên tag sau đó enter để thêm tag. Có thể nhập nhiều tag trong cùng 1 ô.</label>
+                                        </td>
+                                    </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>

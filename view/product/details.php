@@ -1,4 +1,4 @@
-<section class="hero banner-w-search">
+<!-- <section class="hero banner-w-search">
     <div class="image image-overlay" style="background-image:url('<?=base_url?>/images/banner.jpg')"></div>
     <div class="container">
         <div class="row">
@@ -8,7 +8,7 @@
         </div>
     </div>
 </section>
-
+ -->
 <!-- <section id="search" class="overlay pb-0">
     
 </section> -->
@@ -197,5 +197,77 @@
          </div>
       </div>
    </section>
+</div>
+<div class="container my-3">
+  <section class="office-listing">
+        <div class="row">
+            <div class="col-md-12">
+              <h2 class="section-title section-title-center">
+                <b></b>
+                <span class="section-title-main">CÁC CĂN HỘ CÙNG QUẬN</span>
+                <b></b>
+              </h2>
+                <div class="row" >
+                <?php foreach($view_data['relatedProducts'] as $item) { ?>
+                    <div class="col-md-4 col-sm-6 office mb-4 project-box" >
+                        <div class="card stacked">
+                            <div class="image-tools top right show-on-hover ">
+                                <div class="div_khu_vuc_small"><a title="Bất động sản <?= $item['DistrictName'] ?>" href="<?= base_url ?>/can-ho/<?= strtolower(vn_to_str($item['DistrictName'])) ?>"> <?= $item['DistrictName'] ?></a>
+                                </div>
+                            </div>
+                            <div class="card-header p-0 lift img-project-box">
+                                <figure class="figure mb-0">
+                                    <a class="figure-img img-fluid" href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html">
+                                    <img class="rounded-top" src="<?= base_url ?>/images/products/<?= $item['Image'] ?>" alt="" /></a>            
+                                  
+                                    <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html" class="storylink">
+                                        <div class="hover-div">
+                                          <div>
+                                            <h2><?= $item['Name'] ?></h2>
+                                              <div class="contnt">
+                                                  <ul>
+                                                    <li>Đường
+                                            <?= $item['Street'] ?>,
+                                                <?= $item['WardName'] ?>,
+                                                    <?= $item['DistrictName'] ?></li>
+                                                    <li>Chủ đầu tư Khang Điền</li>
+                                                    <li>Giá từ <?= $item['Price'] / 1000000000 >= 1 ? number_format($item['Price'] / 1000000000)." tỷ " : number_format($item['Price'] / 1000000 )  . " triệu"  ?>/căn</li>
+                                                    <li>Ngày bàn giao: <?= $item['HandoverTime'] ?></li>
+                                                  </ul>                             
+                                              </div>
+                                              <span class="readmore-story">XEM THÊM <img src="https://nhatpham.net/wp-content/plugins/skycodec-elementor/assets/images/b-arrow.png" alt=""></span>
+                                          </div>
+                                        </div>
+                                  </a>  
+                                </figure>
+                            </div>
+                            <div class="card-body p-1 pt-3">
+                                <h5 class="card-title mb-0"><a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html"><?= $item['Name'] ?></a></h5>
+                                <p>
+                                    <i class="fa fa-map-marker"></i>
+                                Đường
+                                  <?= $item['Street'] ?>,
+                                      <?= $item['WardName'] ?>,
+                                          <?= $item['DistrictName'] ?>
+                                <br/>
+                                    <b>Giá: <?= $item['PriceOn1m2'] ?> / m<sup>2</sup></b>
+                                </p>
+
+                            </div>
+                            <div class="card-footer p-1">
+                                
+                                <a href="<?= base_url ?>/product/select/<?= $item['Id'] ?>" data-toggle="modal" data-target="#global"><i class="fa fa-check"></i> Chọn đi xem</a></a>  
+                            </div>
+                        </div>                            
+                    </div>
+                <?php } ?>
+                </div>
+            </div>
+
+            <!-- <div class="col-md-3" id="filter-container">
+                
+            </div> -->
+        </div>
+  </section>
 </div>
 

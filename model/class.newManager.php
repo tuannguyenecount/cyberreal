@@ -32,6 +32,46 @@ class NewManager
         return $database_Model->GetList($tsql);
     }
 
+    public function GetListByTag($tag, $skip, $take)
+    {
+        $params = array();
+        $tsql = "SELECT *
+                    FROM new 
+                    WHERE Status = 1 AND Tags LIKE ?
+                    ORDER BY Id desc LIMIT $skip, $take"; 
+        $database_Model = new Database();
+        $params = array("%".$tag.",%");
+        return $database_Model->GetList($tsql, $params);
+    }
+
+    public function GetListArticleSameTag($productId, $tags)
+    {
+        $tagArray = explode(",",$tags);
+        for($i = 0; $i < count($tagArray); $i++)
+        {
+            $tagArray[$i] = "%".$tagArray[$i].",%";
+        }
+        $whereTags = " WHERE Status = 1 AND Id <> ? AND ( ";
+
+        foreach($tagArray as $tagItem)
+        {
+            $whereTags .= " (Tags LIKE ?) OR ";
+        }
+
+        $whereTags .= " 1 <> 1 ) ";
+
+        $tsql = "SELECT *
+                        FROM new ".$whereTags."
+                        ORDER BY Id desc ";
+
+
+        $database_Model = new Database();
+        $params = array($productId);
+        $params = array_merge($params, $tagArray);
+        $lst = $database_Model->GetList($tsql, $params);
+        return $lst;
+    }
+
     public function GetTotalPage($take)
     {
         $params = array();
@@ -128,11 +168,32 @@ class NewManager
 	    return (int)$database_Model->ExecuteScalar($tsql, $params) > 0;
 	}
 
+    public function GetByTitle($Title)
+    {
+        $tsql = "SELECT * from new WHERE Title = ? ";
+        $database_Model = new Database();
+        $params = array($Title);
+        $rows = $database_Model->GetList($tsql, $params);
+        if(count($rows) > 0)
+        {
+            return $rows[0];
+        }
+        return null;
+    }
+
+    public function AddTemp($Title, $UserCreated)
+    {
+        $tsql = "INSERT INTO new(Title, UserCreated) VALUES (?,?)";
+        $database_Model = new Database();
+        $params = array($Title, $UserCreated);
+        return $database_Model->Execute($tsql, $params);
+    }
+
 	public function Add($model)
 	{
-        $tsql ="INSERT INTO new(Title, Description, Image, Content, UserCreated, Status, Alias, SeoTitle, SeoDescription, SeoKeyword)
-                VALUES(?, ?, ?,?, ?, ?, ?, ?, ?, ?) ";   
-        $params = array($model['Title'], $model['Description'], $model['Image'], $model['Content'], $model['UserCreated'], $model['Status'], $model['Alias'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword']);
+        $tsql ="INSERT INTO new(Title, Description, Image, Content, UserCreated, Status, Alias, SeoTitle, SeoDescription, SeoKeyword, Tags)
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";   
+        $params = array($model['Title'], $model['Description'], $model['Image'], $model['Content'], $model['UserCreated'], $model['Status'], $model['Alias'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword'], $model['Tags']);
         $database_Model = new Database();
 	    return $database_Model->Execute($tsql, $params);
 	}
@@ -141,9 +202,9 @@ class NewManager
 	{
         $tsql ="UPDATE new
                 SET	Title = ?, Description = ?, Image = ?, Content = ?, 
-                    Status = ?, Alias = ?, SeoTitle = ?, SeoDescription = ?, SeoKeyword = ?
+                    Status = ?, Alias = ?, SeoTitle = ?, SeoDescription = ?, SeoKeyword = ?, Tags = ?
                 WHERE Id = ? ";   
-        $params = array($model['Title'], $model['Description'], $model['Image'], $model['Content'], $model['Status'], $model['Alias'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword'], $model['Id']);
+        $params = array($model['Title'], $model['Description'], $model['Image'], $model['Content'], $model['Status'], $model['Alias'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword'], $model['Tags'], $model['Id']);
         $database_Model = new Database();
 	    return $database_Model->Execute($tsql, $params);
 	}
@@ -155,6 +216,25 @@ class NewManager
         $database_Model = new Database();
 	    return $database_Model->Execute($tsql, $params);
 	}
+
+    public function UpdateContent($Id, $content)
+    {
+        try 
+        {
+            $tsql = "UPDATE `new` SET `Content` = ? WHERE `Id` = ? ";
+            $params = array($content, $Id);  
+            $database_Model = new Database();
+            $result = $database_Model->Execute($tsql, $params);
+        }
+        catch (PDOException $e) {
+          echo "DataBase Error: ".$e->getMessage();
+          exit();
+        } catch (Exception $e) {
+          echo "General Error: ".$e->getMessage();
+          exit();
+        }
+        return $result;
+    }
 
 	public function GetErrorsMessage($Title, $Alias, $checkexiststitle, $checkexistsalias)
 	{

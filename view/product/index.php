@@ -1,4 +1,4 @@
-<section class="hero banner-w-search">
+<!-- <section class="hero banner-w-search">
     <div class="image image-overlay" style="background-image:url('<?=base_url?>/images/banner.jpg')"></div>
     <div class="container">
         <div class="row">
@@ -7,7 +7,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- <section id="search" class="overlay pb-0">
     
 </section> -->
