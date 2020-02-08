@@ -10,8 +10,8 @@
             include 'view/' . $view_data['section_meta'];
         } ?>
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Muli" />
-        <link href="<?= base_url ?>/css/style2.css?v=10" rel="stylesheet">
-        <link href="<?= base_url ?>/css/custom.css?v=3" rel="stylesheet">
+        <link href="<?= base_url ?>/css/style2.css?v=11" rel="stylesheet">
+        <link href="<?= base_url ?>/css/custom.css?v=4" rel="stylesheet">
         <link href="<?= base_url ?>/css/icon.css?v=1" rel="stylesheet">
         <link href="<?= base_url ?>/assets/fc340a4a/css/kv-widgets.min.css" rel="stylesheet">
         <link href="<?= base_url ?>/assets/a1ef791c/css/dependent-dropdown.min.css" rel="stylesheet">
@@ -175,7 +175,6 @@
         <div id="bangtin"></div> 
 
     </body>
-
     <script src="<?= base_url ?>/js/vendor.min.js"></script>
     <script src="<?= base_url ?>/assets/a98fcf71/yii.js"></script>
     <script src="<?= base_url ?>/js/slideout.min.js"></script>
@@ -187,6 +186,31 @@
     <script src="<?= base_url ?>/js/DatePicker/jquery-ui.js"></script>
     <script src="<?= base_url ?>/js/DatePicker/jquery.ui.datepicker-vi.js"></script>
     <script>
+        var navbar = document.getElementById("nav-container");
+        var sticky = navbar.offsetTop;
+        function changeMenu() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } 
+            else {
+                navbar.classList.remove("sticky");
+            }
+        }
+
+        function changeFormHoTro() {
+            var formhotro = document.getElementById("formhotro");
+            if(formhotro == undefined)
+            {
+                return false;
+            }
+            var footerOffsetTop = document.getElementsByTagName("footer")[0].offsetTop ;
+            if (window.pageYOffset >= 1200  && window.pageYOffset  <=  footerOffsetTop - 1800) {
+                formhotro.classList.add("fixedFormHoTro")
+            } else {
+                formhotro.classList.remove("fixedFormHoTro");
+            }
+        }
+
         $(function () {
             $( ".calendar" ).datepicker( $.datepicker.regional[ "vi" ] );
             $('[data-toggle="tooltip"]').tooltip();
@@ -202,6 +226,12 @@
             $(document).on("mouseleave","#main-menu .dropdown-menu",function(){
                 $(this).removeClass("show");
             });
+
+            $(window).scroll(function() {
+                changeMenu();
+                changeFormHoTro();
+            });
+ 
             if($("#search") != undefined)
             {
                 $.ajax({
@@ -299,40 +329,7 @@
             //     e.preventDefault();
             // });
         });
-        setTimeout(function(){
-                window.onscroll = function() {
-                changeMenu();
-                var formhotro = document.getElementById("formhotro");
-                if(formhotro != undefined) {
-                    changeFormHoTro();
-                }
-            };
-
-            var navbar = document.getElementById("nav-container");
-            var sticky = navbar.offsetTop;
-            function changeMenu() {
-              if (window.pageYOffset >= sticky) {
-                navbar.classList.add("sticky")
-              } else {
-                navbar.classList.remove("sticky");
-              }
-            }
-
-            var formhotro = document.getElementById("formhotro");
-            if(formhotro != undefined)
-            {
-                var formhotroOffsetTop = formhotro.offsetTop;
-                var footerOffsetTop = document.getElementsByTagName("footer")[0].offsetTop ;
-                function changeFormHoTro() {
-                  if (window.pageYOffset >= 1200  && window.pageYOffset  <=  footerOffsetTop - 1800) {
-                    formhotro.classList.add("fixedFormHoTro")
-                  } else {
-                    formhotro.classList.remove("fixedFormHoTro");
-                  }
-                }
-            }
-
-        }, 1000);
+        
     </script>
     <?php
         if (isset($view_data['section_scripts'])) {

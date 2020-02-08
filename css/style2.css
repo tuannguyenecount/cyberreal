@@ -29936,7 +29936,7 @@ html {
     font-size: 16px;
     width: 100%;
     height: 100%;
-    overflow-x:hidden;
+    /*overflow-x:hidden;*/
 }
 
 body *:focus,
@@ -30887,6 +30887,10 @@ footer .socials ul li {
     .pt-5, .py-5 {
         padding-top: 1.125rem !important;
         padding-bottom: .125rem !important;
+    }
+    body,
+    html {
+        overflow-x:hidden;
     }
 }
 /*# sourceMappingURL=style.css.map */

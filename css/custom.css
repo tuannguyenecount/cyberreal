@@ -214,8 +214,10 @@ margin: 8px 0 0 35px;
 @media(min-width: 1200px) {
     .fixedFormHoTro{    
         position: fixed;
-        right: 120px;
+        right: 150px;
         top: 100px;
         max-width: 350px;
     }
 }
+
+ 
