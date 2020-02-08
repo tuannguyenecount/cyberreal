@@ -130,6 +130,7 @@ header#main{
   top: 0 !important;
   width: 100% !important;
   opacity: 1 !important;
+  z-index:1;
 }
 .project-box .hover-div > div {
 height: 100%;
