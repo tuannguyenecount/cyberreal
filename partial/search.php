@@ -7,12 +7,12 @@
                     <form action="<?= base_url ?>/tim-kiem.html" method="POST">                    
                         <div class="row">
                             <div class="col-md">
-                                <input type="text" class="form-control" name="Name" placeholder="Nhập tên tòa nhà, ví dụ: Vincom, Vietcombank, International Plaza...">  
+                                <input type="text" class="form-control" name="Name" placeholder="Nhập tên căn hộ, ví dụ: Vincom, Vietcombank, International Plaza...">  
                                 <div class="advance-search mt-2" id="advance-search">
                                     <div class="row">
                                         <div class="col-md mb-2">
                                             <select class="form-control" id="District" name="District" data-selected="">
-                                                <option value="">Tất cả quận huyện</option>
+                                                <option value="">Tìm theo quận</option>
                                                 <?php foreach($view_data['districts'] as $item) { ?>
                                                     <option value="<?= $item['id'] ?>"><?= $item['_name'] ?></option>
                                                 <?php } ?>
@@ -20,7 +20,7 @@
                                         </div>
                                         <div class="col-md mb-2">
                                             <select class="form-control" name="Price">
-                                                <option value="">Tất cả giá</option>
+                                                <option value="">Giá bán</option>
                                                 <option value="duoi1ty">Dưới 1 tỷ</option>
                                                 <option value="1den3ty">1 - 3 tỷ</option>
                                                 <option value="3den5ty">3 - 5 tỷ</option>
@@ -30,16 +30,21 @@
                                         </div>
                                         <div class="col-md mb-2">
                                             <select class="form-control" name="Room">
-                                                <option value="">Tất cả số phòng</option>
-                                                <option value="1">1 Phòng</option>
-                                                <option value="2">2 Phòng</option>
-                                                <option value="3">3 Phòng</option>
-                                                <option value="4">4 Phòng</option>
-                                                <option value="5phongtrolen">5 Phòng trở lên</option>
+                                                <option value="">Số phòng ngủ</option>
+                                                <option value="1">1 phòng ngủ</option>
+                                                <option value="2">2 phòng ngủ</option>
+                                                <option value="3">3 phòng ngủ</option>
+                                                <option value="4">4 phòng ngủ</option>
+                                                <option value="5phongtrolen">5 phòng ngủ trở lên</option>
                                             </select>                                    
                                         </div>
                                         <div class="col-md mb-2">
-                                            <input type="text" name="HandoverTime" class="calendar form-control" style="height:38px" placeholder="Thời gian bàn giao" value="Thời gian bàn giao" />                                  
+                                            <select class="form-control" name="HandoverTime">
+                                                <option value="">Thời gian bàn giao</option>
+                                                <option value="2020">2020</option>
+                                                <option value="2021">2021</option>
+                                                <option value="2022">2022</option>
+                                            </select>                                  
                                         </div>
                                         <!-- <div class="col-md mb-2">
                                             <select class="form-control" id="Ward" name="Ward" data-selected="" >

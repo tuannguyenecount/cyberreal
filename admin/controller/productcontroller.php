@@ -67,7 +67,7 @@
         header("HTTP/1.0 404 Not Found");
         header("Location: ".base_url."/pages/404/index.html");
       }
-      $view_data['directions'] = $directionManager->GetList();
+      // $view_data['directions'] = $directionManager->GetList();
       $view_data['categories'] = $categoryManager->GetList();
       $view_data['fees'] = $feeManager->GetListByProductId((int)$_GET['id']);
       if(isset($_POST['Name']))
@@ -78,9 +78,9 @@
           $_POST['Status'] = isset($_POST['Status']) ? 1 : 0;
           $view_data['errors'] = $productManager->GetErrorsMessage($_POST, $_POST['Name_Old'] != $_POST['Name'], $_POST['Alias_Old'] != $_POST['Alias'] );
 
-          if(!empty($_POST['Street']) && $locationManager->CheckExistStreetName($_POST['Street']) == false){
-             $view_data['errors'][] = "Tên đường này không tồn tại. Vui lòng kiểm tra và nhập lại cho đúng.";
-          }
+          // if(!empty($_POST['Street']) && $locationManager->CheckExistStreetName($_POST['Street']) == false){
+          //    $view_data['errors'][] = "Tên đường này không tồn tại. Vui lòng kiểm tra và nhập lại cho đúng.";
+          // }
 
           if(isset($_FILES["file"]) && !empty($_FILES['file']['tmp_name']))
           {

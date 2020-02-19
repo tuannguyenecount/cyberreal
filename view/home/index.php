@@ -49,7 +49,7 @@
 	      	<div class="row">
 			    <?php for($i = 0; $i < ceil(count($view_data['productsHOT'])) / 2; $i++) { ?> 
 			      <?php $item = $view_data['productsHOT'][$i]; if($i == 0) { ?>
-			      <div class="col-md-6">
+			      <div class="col-md-6" onclick="window.open('<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html','_self')">
 			         <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html">
 			            <div class="banner-bg" style="background-image: url(<?= base_url ?>/images/products/<?= $item['Image'] ?>)">
 			               <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html" data-toggle="tooltip" title="<?= $item['Name'] ?>">
@@ -59,7 +59,7 @@
 			         </a>
 			      </div>
 			      <?php } else { ?>
-			      <div class="col-md-3">
+			      <div class="col-md-3" onclick="window.open('<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html','_self')">
 			         <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html">
 			            <div class="banner-bg" style="background-image: url(https://canho247.vn/wp-content/uploads/2019/10/lexington-residence.jpg)">
 			               <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html" data-toggle="tooltip" title="<?= $item['Name'] ?>">
@@ -73,7 +73,7 @@
 		   	<div class="row">
 			    <?php for($i = ceil(count($view_data['productsHOT']) / 2); $i < count($view_data['productsHOT']); $i++) { ?> 
 			      <?php $item = $view_data['productsHOT'][$i]; if($i < ceil(count($view_data['productsHOT']) - 1 )) { ?>
-			      <div class="col-md-3">
+			      <div class="col-md-3" onclick="window.open('<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html','_self')">
 			         <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html">
 			            <div class="banner-bg" style="background-image: url(<?= base_url ?>/images/products/<?= $item['Image'] ?>)">
 			               <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html" data-toggle="tooltip" title="<?= $item['Name'] ?>">
@@ -83,7 +83,7 @@
 			         </a>
 			      </div>
 			    <?php } else { ?>
-			      <div class="col-md-6">
+			      <div class="col-md-6" onclick="window.open('<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html','_self')">
 			         <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html">
 			            <div class="banner-bg" style="background-image: url(<?= base_url ?>/images/products/<?= $item['Image'] ?>)">
 			               <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html" data-toggle="tooltip" title="<?= $item['Name'] ?>">
@@ -155,7 +155,7 @@
                           </div>
                           <div class="card-footer p-1">
 
-                          <a class="text-warning" href="<?= base_url ?>/product/select/<?= $item['Id'] ?>" data-toggle="modal" data-target="#global"><i class="fa fa-check"></i> Chọn đi xem</a></a>
+                          
                           </div>
                          
                       </div>

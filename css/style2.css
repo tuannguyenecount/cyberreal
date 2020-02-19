@@ -29981,6 +29981,7 @@ header#main .navbar a.nav-link {
     border: none !important;
     padding: .6rem;
     font-size:1.1em;
+	font-weight: bold;
 }
 
 header#main .navbar a.nav-link:hover {

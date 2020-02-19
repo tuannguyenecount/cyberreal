@@ -44,6 +44,16 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td class="col-md-2">Năm bàn giao</td>
+                                        <td>
+                                            <select class="form-control" name="HandoverTime">
+                                                <option <?= isset($_POST['HandoverTime']) && $_POST['HandoverTime'] == 2020 ? "selected=''" : (!isset($_POST['HandoverTime']) && $view_data['model']['HandoverTime'] == 2020 ? "selected" : ""  )?>  value="2020">2020</option>
+                                                <option <?= isset($_POST['HandoverTime']) && $_POST['HandoverTime'] == 2021 ? "selected=''" : (!isset($_POST['HandoverTime']) && $view_data['model']['HandoverTime'] == 2021 ? "selected" : ""  )?>  value="2021">2021</option>
+                                                <option <?= isset($_POST['HandoverTime']) && $_POST['HandoverTime'] == 2022 ? "selected=''" : (!isset($_POST['HandoverTime']) && $view_data['model']['HandoverTime'] == 2022 ? "selected" : ""  )?> value="2022">2022</option>
+                                            </select>
+                                        </td>
+                                    </tr> 
+                                    <tr>
                                         <td class="col-md-2">Đơn giá / 1m^2 </td>
                                         <td>
                                             <input type="text" value="<?= isset($_POST['PriceOn1m2']) ? $_POST['PriceOn1m2'] : $view_data['model']['PriceOn1m2']   ?>"  name="PriceOn1m2" class="form-control" />
@@ -53,12 +63,6 @@
                                         <td class="col-md-2">Giá tổng cộng</td>
                                         <td>
                                             <input type="text" value="<?= isset($_POST['Price']) ? $_POST['Price'] : $view_data['model']['Price']   ?>"  name="Price" class="form-control divide" />
-                                        </td>
-                                    </tr> 
-                                    <tr>
-                                        <td class="col-md-2">Thời gian bàn giao</td>
-                                        <td>
-                                            <input type="text" value="<?= isset($_POST['HandoverTime']) ? $_POST['HandoverTime'] : $view_data['model']['HandoverTime']   ?>"  name="HandoverTime" class="calendar form-control" />
                                         </td>
                                     </tr>    
                                     <tr>
@@ -94,13 +98,13 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="col-md-2">Số phòng</td>
+                                        <td class="col-md-2">Số phòng ngủ</td>
                                         <td>
                                             <input type="number" min="0" step="1" max="128" class="form-control" 
                                             value="<?= isset($_POST['Room']) ? $_POST['Room'] : $view_data['model']['Room'] ?>" name="Room" />
                                         </td>
                                     </tr>
-                                    <tr>
+                                 <!--    <tr>
                                         <td class="col-md-2">Hướng</td>
                                         <td>
                                             <select class="form-control" name="Direction">
@@ -111,13 +115,13 @@
                                             <?php } ?>    
                                             </select>
                                         </td>
-                                    </tr>
-                                    <tr>
+                                    </tr> -->
+                                   <!--  <tr>
                                         <td class="col-md-2">Xếp hạng</td>
                                         <td>
                                            <input type="text" class="form-control" name="Rank" value="<?= isset($_POST['Rank']) ? $_POST['Rank'] : $view_data['model']['Rank'] ?>" />
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                     <tr>
                                         <td class="col-md-2">Các loại phí</td>
                                         <td>
@@ -156,7 +160,7 @@
                                            </select>
                                         </td>
                                     </tr>
-                                    <tr>
+                                   <!--  <tr>
                                         <td class="col-md-2">Phường/Xã</td>
                                         <td>
                                            <select id="Ward" data-selected="<?= isset($_POST['Ward']) ? $_POST['Ward'] : $view_data['model']['Ward'] ?>" class="form-control" name="Ward"> 
@@ -169,7 +173,7 @@
                                         <td>
                                           <input id="Street" class="form-control" name="Street" value="<?= isset($_POST['Street']) ? $_POST['Street'] : $view_data['model']['Street']  ?>" />
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                     <tr>
                                         <td class="col-md-2">Thông tin chung</td>
                                         <td>

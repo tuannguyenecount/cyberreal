@@ -62,13 +62,13 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="col-md-2">Số phòng</td>
+                                    <td class="col-md-2">Số phòng ngủ</td>
                                     <td>
                                         <input type="text" readonly="" class="form-control" 
                                         value="<?= $view_data['model']['Room'] ?>" name="Room" />
                                     </td>
                                 </tr>
-                                <tr>
+                               <!--  <tr>
                                     <td class="col-md-2">Hướng</td>
                                     <td>
                                         <select disabled="" class="form-control" name="Direction">
@@ -84,7 +84,7 @@
                                     <td>
                                        <input type="text" readonly="" class="form-control" name="Rank" value="<?= $view_data['model']['Rank'] ?>" />
                                     </td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <td class="col-md-2">Các loại phí</td>
                                     <td>
@@ -122,7 +122,7 @@
                                        </select>
                                     </td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <td class="col-md-2">Phường/Xã</td>
                                     <td>
                                        <select id="Ward" readonly="" data-selected="<?= isset($_POST['Ward']) ? $_POST['Ward'] : $view_data['model']['Ward'] ?>" class="form-control" name="Ward"> 
@@ -135,7 +135,7 @@
                                     <td>
                                       <input id="Street" readonly="" class="form-control" name="Street" value="<?= $view_data['model']['Street'] ?>" />
                                     </td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <td class="col-md-2">Thông tin chung</td>
                                     <td>
@@ -174,7 +174,7 @@
                                 </tr>
 
                                 <tr>
-                                        <td class="col-md-2">Seo Title</td>
+                                    <td class="col-md-2">Seo Title</td>
                                         <td>
                                             <input class="form-control" readonly="" name="SeoTitle" value="<?=  $view_data['model']['SeoTitle']  ?>" />
                                     </tr>

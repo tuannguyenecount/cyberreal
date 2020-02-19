@@ -10,7 +10,7 @@
             include 'view/' . $view_data['section_meta'];
         } ?>
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Muli" />
-        <link href="<?= base_url ?>/css/style2.css?v=11" rel="stylesheet">
+        <link href="<?= base_url ?>/css/style2.css?v=12" rel="stylesheet">
         <link href="<?= base_url ?>/css/custom.css?v=4" rel="stylesheet">
         <link href="<?= base_url ?>/css/icon.css?v=1" rel="stylesheet">
         <link href="<?= base_url ?>/assets/fc340a4a/css/kv-widgets.min.css" rel="stylesheet">
@@ -70,10 +70,10 @@
                                     <h3 class="title text-light"><?= $_SESSION['InfoWeb']['WebName'] ?></h3>
                                     <div class="text-widget pt-1">
                                         <p> 
-                                            Địa chỉ: <?= $_SESSION['InfoWeb']['Address'] ?><br />
-                                            Điện thoại: <?= $_SESSION['InfoWeb']['Phone'] ?><br />
-                                            Email:&nbsp;<a href="mailto:<?= $_SESSION['InfoWeb']['Email'] ?>" ><?= $_SESSION['InfoWeb']['Email'] ?></a><br />
-                                            Website:&nbsp;<?= base_url ?></p>
+                                            <i class="fa fa-map"></i> Địa chỉ: <?= $_SESSION['InfoWeb']['Address'] ?><br />
+                                            <i class="fa fa-phone"></i> Điện thoại: <?= $_SESSION['InfoWeb']['Phone'] ?><br />
+                                            <i class="fa fa-inbox"></i> Email:&nbsp;<a href="mailto:<?= $_SESSION['InfoWeb']['Email'] ?>" ><?= $_SESSION['InfoWeb']['Email'] ?></a><br />
+                                            <i class="fa fa-globe"></i> Website:&nbsp;<?= base_url ?></p>
 
                                         <p>&nbsp;</p>
                                     </div>
@@ -204,7 +204,7 @@
                 return false;
             }
             var footerOffsetTop = document.getElementsByTagName("footer")[0].offsetTop ;
-            if (window.pageYOffset >= 1200  && window.pageYOffset  <=  footerOffsetTop - 1800) {
+            if (window.pageYOffset >= 1200  && window.pageYOffset  <=  footerOffsetTop - 1500) {
                 formhotro.classList.add("fixedFormHoTro")
             } else {
                 formhotro.classList.remove("fixedFormHoTro");

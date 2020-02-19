@@ -27,9 +27,9 @@
                     <?php } ?>
                 </li>
             <?php } ?>
-            <a class="nav-link" href="<?= base_url ?>/hen-di-xem.html">
+           <!--  <a class="nav-link" href="<?= base_url ?>/hen-di-xem.html">
                 <span class="btn btn-blue btn-sm btn-with-ico text-white font-weight-bold"><i class="icon-star"></i> Hẹn đi xem</span>
-            </a>
+            </a> -->
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url ?>/lien-he.html">Liên hệ</a>
             </li>

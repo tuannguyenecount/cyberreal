@@ -1,14 +1,5 @@
-<!-- <section class="hero banner-w-search">
-    <div class="image image-overlay" style="background-image:url('<?=base_url?>/images/banner.jpg')"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col text-white">
-                <h1 class="mb-2">Bạn Đang Muốn Tìm Kiếm Dự Án Như Thế Nào?</h1>
-            </div>
-        </div>
-    </div>
-</section>
- -->
+
+
 <!-- <section id="search" class="overlay pb-0">
     
 </section> -->
@@ -65,16 +56,16 @@
                      <i class="icon-square bg-success text-white icon-boxed mr-1"></i><strong class="text-nowrap">Diện tích</strong>: <?= $view_data['model']['Area'] ?>
                   </li>
                   <li class="list-group-item d-flex align-items-center">
-                     <i class="icon-windows bg-success text-white icon-boxed mr-1"></i><strong class="text-nowrap">Số phòng</strong>: <?= $view_data['model']['Room'] ?> phòng
+                     <i class="icon-windows bg-success text-white icon-boxed mr-1"></i><strong class="text-nowrap">Số phòng ngủ</strong>: <?= $view_data['model']['Room'] ?> phòng
                   </li>
-                  <li class="list-group-item d-flex align-items-center">
+                <!--   <li class="list-group-item d-flex align-items-center">
                      <i class="icon-compass bg-success text-white icon-boxed mr-1"></i><strong class="text-nowrap">Hướng</strong>:  <?= $view_data['model']['DirectionName'] ?>
                   </li>
                   <li class="list-group-item d-flex align-items-center">
                      <i class="icon-star bg-success text-white icon-boxed mr-1"></i><strong class="text-nowrap">Xếp Hạng</strong>: <?= $view_data['model']['Rank'] ?>                                
-                  </li>
+                  </li> -->
                   <li class="list-group-item d-flex align-items-center">
-                     <i class="icon-calendar bg-success text-white icon-boxed mr-1"></i><strong class="text-nowrap">Ngày bàn giao</strong>: <?= $view_data['model']['HandoverTime'] ?>                                
+                     <i class="icon-calendar bg-success text-white icon-boxed mr-1"></i><strong class="text-nowrap">Năm bàn giao</strong>: <?= $view_data['model']['HandoverTime'] ?>                                
                   </li>
                <!--    <li class="list-group-item d-flex align-items-center">
                      <i class="icon-toggle-on bg-primary text-white icon-boxed mr-1"></i><strong class="text-nowrap">Tình trạng</strong>: Đang cho thuê                                
@@ -104,9 +95,9 @@
                   </div>
                 </div>
               <?php } ?>
-               <div class="controls my-3">
+              <!--  <div class="controls my-3">
                   <a class="btn btn-primary btn-lg d-block d-lg-inline-block" href="<?= base_url ?>/product/select/<?= $view_data['model']['Id'] ?>" data-toggle="modal" data-target="#global"><i class="fas fa-business-time"></i> Chọn đi xem</a></a>                        
-               </div>
+               </div> -->
             </div>
          </div>
       </section>
@@ -128,9 +119,7 @@
                <li class="nav-item">
                   <a class="nav-link" id="pills-uu_diem-tab" data-toggle="pill" href="#pills-uu_diem" role="tab" aria-controls="pills-uu_diem" aria-selected="false">Ưu điểm</a>
                </li>
-               <li class="nav-item">
-                  <a class="nav-link" data-toggle="pill" href="#reviews">Đánh giá</a>
-               </li>
+              
             </ul>
          </section>
          <div class="row mb-4">
@@ -154,15 +143,7 @@
                      </div>
                   </div>
                </section>
-               <section class="bordered stacked p-3 mb-4 my-4 office-reviews overflow-hidden" id="reviews">
-                  <i class="icon-star-half-o icon-background text-blue"></i>
-                  <h4 class="title text-uppercase">Khách hàng đánh giá</h4>
-                  <div class="comments">
-                    <div id="fb-root"></div>
-                      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v5.0&appId=1444659255736273&autoLogAppEvents=1"></script>
-                     <div class="fb-comments" data-href="<?= base_url ?>/<?= $view_data['model']['CategoryAlias'] ?>/<?= $view_data['model']['Alias'] ?>.html" data-numposts="10" data-width="100%"></div>
-                  </div>
-               </section>
+              
             </div>
            <!--  <div class="col-lg-3" id="filter-container">
                
@@ -256,7 +237,7 @@
                             </div>
                             <div class="card-footer p-1">
                                 
-                                <a href="<?= base_url ?>/product/select/<?= $item['Id'] ?>" data-toggle="modal" data-target="#global"><i class="fa fa-check"></i> Chọn đi xem</a></a>  
+                               
                             </div>
                         </div>                            
                     </div>

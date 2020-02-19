@@ -1,13 +1,4 @@
-<!-- <section class="hero banner-w-search">
-    <div class="image image-overlay" style="background-image:url('<?=base_url?>/images/banner.jpg')"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col text-white">
-                <h1 class="mb-2">Bạn Đang Muốn Tìm Kiếm Dự Án Như Thế Nào?</h1>
-            </div>
-        </div>
-    </div>
-</section> -->
+
 <!-- <section id="search" class="overlay pb-0">
     
 </section> -->
@@ -72,12 +63,33 @@
                             </div>
                             <div class="card-footer p-1">
                                 
-                                <a href="<?= base_url ?>/product/select/<?= $item['Id'] ?>" data-toggle="modal" data-target="#global"><i class="fa fa-check"></i> Chọn đi xem</a></a>  
+                                 
                             </div>
                         </div>                            
                     </div>
                 <?php } ?>
                 </div>
+                  <?php if(isset($view_data['description']) && !empty($view_data['description'])) { ?>
+                <section class="desc">
+                    <div class="row justify-content-center mb-4">
+                        <div class="col-md-10">
+                            <h1 class="text-center"></h1>
+                            <article class="description">
+                                <div class="show-less-content" id="category-description" data-max-height="200">
+                                    <?= $view_data['description'] ?>
+                                </div>
+
+                                <div data-target="#category-description" class="show-less text-center" style="display:none">
+                                    <span class="btn btn-outline-secondary">Thu gọn</span>
+                                </div>
+                                <div data-target="#category-description" class="show-more text-center" style="display:none">
+                                    <span class="btn btn-outline-secondary">Xem thêm</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+                <?php } ?>
                 <?php if(isset($view_data['page'])) { ?>
                 <div class="row text-center" style="width:95%;margin-left:auto; margin-right:auto">
                     <ul class="pagination" style="margin: 0 auto">
@@ -100,27 +112,7 @@
                 </div>
                 <?php  } ?>
 
-                <?php if(isset($view_data['description']) && !empty($view_data['description'])) { ?>
-                <section class="desc">
-                    <div class="row justify-content-center mb-4">
-                        <div class="col-md-10">
-                            <h1 class="text-center"></h1>
-                            <article class="description">
-                                <div class="show-less-content" id="category-description" data-max-height="200">
-                                    <?= $view_data['description'] ?>
-                                </div>
-
-                                <div data-target="#category-description" class="show-less text-center" style="display:none">
-                                    <span class="btn btn-outline-secondary">Thu gọn</span>
-                                </div>
-                                <div data-target="#category-description" class="show-more text-center" style="display:none">
-                                    <span class="btn btn-outline-secondary">Xem thêm</span>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </section>
-                <?php } ?>
+              
             </div>
 
             <div class="col-md-3" id="filter-container">

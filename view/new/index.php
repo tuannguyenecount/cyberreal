@@ -1,16 +1,7 @@
 <?php 
    $pageCurrent = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 ?>
-<!-- <section class="hero banner-w-search">
-    <div class="image image-overlay" style="background-image:url('<?=base_url?>/images/banner.jpg')"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col text-white">
-                <h1 class="mb-2">Bạn Đang Muốn Tìm Kiếm Dự Án Như Thế Nào?</h1>
-            </div>
-        </div>
-    </div>
-</section> -->
+
 <!-- <section id="search" class="overlay pb-0">
     
 </section> -->

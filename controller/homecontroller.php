@@ -50,7 +50,7 @@
                 $view_data['errors'] = $mailBoxManager->GetErrorsMessage($_POST);
                 if(CheckRecaptchav2() == false)
                 {
-                    $view_data['errors'][] = "Mã xác nhận không đúng!";
+                     $view_data['errors'][] = "Mã xác nhận không đúng!";
                 }
                 if(empty($_POST['Content']))
                 {
