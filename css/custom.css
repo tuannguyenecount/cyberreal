@@ -5,6 +5,9 @@ select.form-control{
 header#main{
     height:90px;
 }
+#nav-container{
+    max-height: 100px;
+}
 .clearfix{
     clear: both;
 }
@@ -215,7 +218,7 @@ margin: 8px 0 0 35px;
 @media(min-width: 1200px) {
     .fixedFormHoTro{    
         position: fixed;
-        right: 150px;
+        right: 100px;
         top: 100px;
         max-width: 350px;
     }
