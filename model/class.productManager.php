@@ -370,9 +370,9 @@ class ProductManager
 	public function Edit($model)
 	{
 
-        $tsql = "UPDATE `product` SET `Name` = ?,`CategoryId`= ?,`Area` = ?,`Room` = ?,`Address` = ?,`Province` = ?,`District` = ?,`GeneralInformation`=?,`Location`=?,`Structure`=?,`ServiceCharge`=?,`Advantages`=?, `Price`=?, `PriceOn1m2` = ?, `Image`=?, `HandoverTime` = ?, `Alias`=?,`Status`=?,`SortOrder`=?,`HOT`=?, `SeoTitle` = ?, `SeoDescription` = ?, `SeoKeyword` = ? WHERE `Id` = ? ";   
+        $tsql = "UPDATE `product` SET `Name` = ?,`CategoryId`= ?,`Area` = ?,`Room` = ?,`Address` = ?,`Province` = ?,`District` = ?,`Ward` = ?,`Street`=?, `GeneralInformation`=?,`Location`=?,`Utilities`=?,`Ground`=?,`PriceInformation`=?, `Price`=?, `PriceOn1m2` = ?, `Image`=?, `HandoverTime` = ?, `Alias`=?,`Status`=?,`SortOrder`=?,`HOT`=?, `SeoTitle` = ?, `SeoDescription` = ?, `SeoKeyword` = ? WHERE `Id` = ? ";   
 
-        $params =  array($model['Name'], $model['CategoryId'], $model['Area'], $model['Room'], $model['Address'], $model['Province'], $model['District'], $model['GeneralInformation'], $model['Location'], $model['Structure'], $model['ServiceCharge'], $model['Advantages'], $model['Price'], $model['PriceOn1m2'], $model['Image'], $model['HandoverTime'], $model['Alias'], $model['Status'], $model['SortOrder'], $model['HOT'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword'], $model['Id']);
+        $params =  array($model['Name'], $model['CategoryId'], $model['Area'], $model['Room'], $model['Address'], $model['Province'], $model['District'], $model['Ward'], $model['Street'], $model['GeneralInformation'], $model['Location'], $model['Utilities'], $model['Ground'], $model['PriceInformation'], $model['Price'], $model['PriceOn1m2'], $model['Image'], $model['HandoverTime'], $model['Alias'], $model['Status'], $model['SortOrder'], $model['HOT'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword'], $model['Id']);
 
         $database_Model = new Database();
 	    $result = $database_Model->Execute($tsql, $params);

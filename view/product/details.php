@@ -111,13 +111,13 @@
                   <a class="nav-link" id="pills-vi_tri-tab" data-toggle="pill" href="#pills-vi_tri" role="tab" aria-controls="pills-vi_tri" aria-selected="false">Vị trí</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" id="pills-ket_cau-tab" data-toggle="pill" href="#pills-ket_cau" role="tab" aria-controls="pills-ket_cau" aria-selected="false">Kết cấu</a>
+                  <a class="nav-link" id="pills-tien_ich-tab" data-toggle="pill" href="#pills-tien_ich" role="tab" aria-controls="pills-tien_ich" aria-selected="false">Tiện ích</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" id="pills-phi_dich_vu-tab" data-toggle="pill" href="#pills-phi_dich_vu" role="tab" aria-controls="pills-phi_dich_vu" aria-selected="false">Phí dịch vụ</a>
+                  <a class="nav-link" id="pills-mat_bang-tab" data-toggle="pill" href="#pills-mat_bang" role="tab" aria-controls="pills-mat_bang" aria-selected="false">Mặt bằng</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" id="pills-uu_diem-tab" data-toggle="pill" href="#pills-uu_diem" role="tab" aria-controls="pills-uu_diem" aria-selected="false">Ưu điểm</a>
+                  <a class="nav-link" id="pills-gia_ban-tab" data-toggle="pill" href="#pills-gia_ban" role="tab" aria-controls="pills-gia_ban" aria-selected="false">Giá bán</a>
                </li>
               
             </ul>
@@ -132,14 +132,14 @@
                      <div class="tab-pane fade" id="pills-vi_tri" role="tabpanel" aria-labelledby="pills-home-tab">
                         <?= $view_data['model']['Location'] ?>
                      </div>
-                     <div class="tab-pane fade" id="pills-ket_cau" role="tabpanel" aria-labelledby="pills-home-tab">
-                        <?= $view_data['model']['Structure'] ?>
+                     <div class="tab-pane fade" id="pills-tien_ich" role="tabpanel" aria-labelledby="pills-tien_ich-tab">
+                        <?= $view_data['model']['Utilities'] ?>
                      </div>
-                     <div class="tab-pane fade" id="pills-phi_dich_vu" role="tabpanel" aria-labelledby="pills-home-tab">
-                        <?= $view_data['model']['ServiceCharge'] ?>
+                     <div class="tab-pane fade" id="pills-mat_bang" role="tabpanel" aria-labelledby="pills-mat_bang-tab">
+                        <?= $view_data['model']['Ground'] ?>
                      </div>
-                     <div class="tab-pane fade" id="pills-uu_diem" role="tabpanel" aria-labelledby="pills-home-tab">
-                        <?= $view_data['model']['Advantages'] ?>
+                     <div class="tab-pane fade" id="pills-gia_ban" role="tabpanel" aria-labelledby="pills-gia_ban-tab">
+                        <?= $view_data['model']['PriceInformation'] ?>
                      </div>
                   </div>
                </section>

@@ -26,8 +26,8 @@
                            <th>Tên dự án</th>
                            <th>Loại dự án</th>
                            <th>Quận/Huyện</th>
-                           <!-- <th>Phường/Xã</th>
-                           <th>Đường</th> -->
+                           <th>Phường/Xã</th>
+                           <th>Đường</th>
                            <th class="text-center">HOT</th>
                            <th class="text-center">Trạng thái</th>
                            <th class="text-center col-md-2">Thao tác</th>
@@ -49,8 +49,8 @@
                               <?= $item['CategoryName'] ?>
                            </td> 
                            <td><?= $item['DistrictName'] ?></td>
-                          <!--  <td><?= $item['WardName'] ?></td>
-                           <td><?= $item['Street'] ?></td> -->
+                           <td><?= $item['WardName'] ?></td>
+                           <td><?= $item['Street'] ?></td>
                            <td class="text-center">
                               <?php if ($item['HOT']) { ?>
                               

@@ -122,7 +122,7 @@
                                        </select>
                                     </td>
                                 </tr>
-                                <!-- <tr>
+                                <tr>
                                     <td class="col-md-2">Phường/Xã</td>
                                     <td>
                                        <select id="Ward" readonly="" data-selected="<?= isset($_POST['Ward']) ? $_POST['Ward'] : $view_data['model']['Ward'] ?>" class="form-control" name="Ward"> 
@@ -135,7 +135,7 @@
                                     <td>
                                       <input id="Street" readonly="" class="form-control" name="Street" value="<?= $view_data['model']['Street'] ?>" />
                                     </td>
-                                </tr> -->
+                                </tr>
                                 <tr>
                                     <td class="col-md-2">Thông tin chung</td>
                                     <td>
@@ -149,30 +149,28 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="col-md-2">Kết cấu</td>
+                                    <td class="col-md-2">Tiện ích</td>
                                     <td>
-                                        <textarea id="Structure" readonly="" name="Structure"><?=  $view_data['model']['Structure']  ?></textarea>
+                                        <textarea id="Utilities" readonly="" name="Utilities"><?=  $view_data['model']['Utilities']  ?></textarea>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="col-md-2">Phí dịch vụ</td>
+                                    <td class="col-md-2">Mặt bằng</td>
                                     <td>
-                                        <textarea id="ServiceCharge" readonly="" name="ServiceCharge"><?= $view_data['model']['ServiceCharge']   ?></textarea>
+                                        <textarea id="Ground" readonly="" name="Ground"><?= $view_data['model']['Ground']   ?></textarea>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="col-md-2">Ưu điểm</td>
+                                    <td class="col-md-2">Thông tin giá bán</td>
                                     <td>
-                                        <textarea id="Advantages" readonly="" name="Advantages"><?= $view_data['model']['Advantages']   ?></textarea>
+                                        <textarea id="PriceInformation" readonly="" name="PriceInformation"><?= $view_data['model']['PriceInformation']   ?></textarea>
                                     </td>
-                                </tr>
-                                                            
+                                </tr>                        
                                 <tr>
                                     <td class="col-md-2">Trạng thái</td>
                                     <td>
                                         <input readonly="" <?= $view_data['model']['Status'] == true ? "checked" : "" ?> type="checkbox" name="Status" value="1" />
                                 </tr>
-
                                 <tr>
                                     <td class="col-md-2">Seo Title</td>
                                         <td>

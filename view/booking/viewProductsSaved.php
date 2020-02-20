@@ -13,7 +13,7 @@
 	<section class="desc">
    	<div class="row justify-content-center mb-4">
       	<div class="col-md-8 text-center">
-         	<h1>Danh sách tòa nhà đã lưu</h1>
+         	<h1>Danh sách căn hộ đã lưu</h1>
          	<p>Quý Khách vui lòng chọn ngày đi xem căn hộ và đặt lịch hẹn bên dưới. Xin chân thành cảm ơn!</p>
       	</div>
    	</div>

@@ -160,7 +160,7 @@
                                            </select>
                                         </td>
                                     </tr>
-                                   <!--  <tr>
+                                    <tr>
                                         <td class="col-md-2">Phường/Xã</td>
                                         <td>
                                            <select id="Ward" data-selected="<?= isset($_POST['Ward']) ? $_POST['Ward'] : $view_data['model']['Ward'] ?>" class="form-control" name="Ward"> 
@@ -173,7 +173,7 @@
                                         <td>
                                           <input id="Street" class="form-control" name="Street" value="<?= isset($_POST['Street']) ? $_POST['Street'] : $view_data['model']['Street']  ?>" />
                                         </td>
-                                    </tr> -->
+                                    </tr>
                                     <tr>
                                         <td class="col-md-2">Thông tin chung</td>
                                         <td>
@@ -187,25 +187,23 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="col-md-2">Kết cấu</td>
+                                        <td class="col-md-2">Tiện ích</td>
                                         <td>
-                                            <textarea id="Structure" name="Structure"><?= isset($_POST['Structure']) ? $_POST['Structure'] :  $view_data['model']['Structure']   ?></textarea>
+                                            <textarea id="Utilities" name="Utilities"><?= isset($_POST['Utilities']) ? $_POST['Utilities'] :  $view_data['model']['Utilities']   ?></textarea>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="col-md-2">Phí dịch vụ</td>
+                                        <td class="col-md-2">Mặt bằng</td>
                                         <td>
-                                            <textarea id="ServiceCharge"  name="ServiceCharge"><?= isset($_POST['ServiceCharge']) ? $_POST['ServiceCharge'] : $view_data['model']['ServiceCharge']   ?></textarea>
+                                            <textarea id="Ground"  name="Ground"><?= isset($_POST['Ground']) ? $_POST['Ground'] : $view_data['model']['Ground']   ?></textarea>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="col-md-2">Ưu điểm</td>
+                                        <td class="col-md-2">Thông tin giá bán</td>
                                         <td>
-                                            <textarea id="Advantages" name="Advantages"><?= isset($_POST['Advantages']) ? $_POST['Advantages'] : $view_data['model']['Advantages']   ?></textarea>
+                                            <textarea id="PriceInformation" name="PriceInformation"><?= isset($_POST['PriceInformation']) ? $_POST['PriceInformation'] : $view_data['model']['PriceInformation']   ?></textarea>
                                         </td>
                                     </tr>
-
-    
 
                                     <tr>
                                         <td class="col-md-2">Seo Title</td>
