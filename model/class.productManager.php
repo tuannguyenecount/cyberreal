@@ -315,6 +315,15 @@ class ProductManager
         return count($rows) == 1 ? $rows[0] : null;
     }
 
+    public function GetListNameProducts()
+    {
+        $tsql = "SELECT A.Name
+                    FROM product A
+                    WHERE A.Status = 1 ";   
+        $database_Model = new Database();
+        return $database_Model->GetList($tsql);
+    }
+
 	public function CheckExistsName($name)
 	{
         $tsql = "SELECT COUNT(*) AS CNT

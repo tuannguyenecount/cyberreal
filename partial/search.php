@@ -7,7 +7,7 @@
                     <form action="<?= base_url ?>/tim-kiem.html" method="POST">                    
                         <div class="row">
                             <div class="col-md">
-                                <input type="text" class="form-control" name="Name" placeholder="Nhập tên căn hộ, ví dụ: Vincom, Vietcombank, International Plaza...">  
+                                <input type="text" id="keyword" class="form-control" name="Name" placeholder="Nhập tên căn hộ, ví dụ: Vincom, Vietcombank, International Plaza...">  
                                 <div class="advance-search mt-2" id="advance-search">
                                     <div class="row">
                                         <div class="col-md mb-2">
@@ -109,10 +109,16 @@
             </div>
         </div>
 </div>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $('#Street').select2({
+        theme: "flat",
+    });
+    $( ".calendar" ).datepicker( $.datepicker.regional[ "vi" ] );
+    $.post("<?= base_url ?>/product/getListNameProduct", function(data){
+        $("#keyword").autocomplete({
+            source: JSON.parse(data)
+        });
+    });
 
-    <script>
-        $('#Street').select2({
-                    theme: "flat",
-                });
-        $( ".calendar" ).datepicker( $.datepicker.regional[ "vi" ] );
-    </script> 
+</script> 

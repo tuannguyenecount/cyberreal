@@ -151,6 +151,7 @@
             <div class="col-md-4" id="formHoTroContainer">
               <div  id="formhotro">
                 <div class="well" >
+                  <img src="<?= base_url ?>/images/users/user.png" style="float:left;margin-right:10px" class="img-circle" width="50" height="50" />
                   <h5><?= $_SESSION['InfoWeb']['Representative'] ?></h5>
                   <p><?= $_SESSION['InfoWeb']['Department'] ?></p>
                 </div>

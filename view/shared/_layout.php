@@ -67,7 +67,10 @@
                         <div class="col-12 col-md-6 ">
                             <div class="card border-0 bordered">
                                 <div class="card-body p-0">
-                                    <h3 class="title text-light"><?= $_SESSION['InfoWeb']['WebName'] ?></h3>
+                                   <!--  <h3 class="title text-light"><?= $_SESSION['InfoWeb']['WebName'] ?></h3> -->
+                                   <p>
+                                       <img src="<?= base_url ?>/images/<?= $_SESSION['InfoWeb']['LogoFooter'] ?>" width="150" height="auto" />
+                                   </p>
                                     <div class="text-widget pt-1">
                                         <p> 
                                             <i class="fa fa-map"></i> Địa chỉ: <?= $_SESSION['InfoWeb']['Address'] ?><br />

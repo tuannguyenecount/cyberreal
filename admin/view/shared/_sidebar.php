@@ -150,12 +150,12 @@
                 <i class="fa fa-file"></i> <span>File Robots.txt</span>
             </a>
         </li>
-        <li>
+     <!--    <li>
             <a href="<?= base_url_admin ?>/infoweb/sitemap">
                 <i class="fa fa-file"></i> <span>Sitemap</span>
             </a>
         </li>
-
+ -->
         <li class="header">QUẢN LÝ CÁ NHÂN</li>
         <li>
             <a href="<?=base_url_admin?>/user/profile">

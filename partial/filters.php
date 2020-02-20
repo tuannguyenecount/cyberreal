@@ -15,12 +15,12 @@
       <?php } ?>                           
       </div>
    </div>
-   <div class="bordered stacked mb-3 p-0">
+  <!--  <div class="bordered stacked mb-3 p-0">
       <h3 class="title m-0" style="color:#333">Căn hộ theo Hướng</h3>
       <div class="list-group">
       <?php foreach($view_data['directions'] as $item) { ?>
          <a class="list-group-item list-group-item-action" href="<?= base_url ?>/can-ho/<?= $item['Alias'] ?>"><?= $item['Name'] ?></a>                    
       <?php } ?>
       </div>
-   </div>
+   </div> -->
 </aside>

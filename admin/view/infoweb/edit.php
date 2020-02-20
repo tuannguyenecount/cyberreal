@@ -49,6 +49,13 @@
                             </div>
 
                             <div class="form-group">
+                                <label class = "control-label col-md-3">Logo Footer</label>
+                                <div class="col-md-7">
+                                    <input type="file" name="fileLogoFooter" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class = "control-label col-md-3">Favicon</label>
                                 <div class="col-md-7">
                                     <input type="file" name="fileFavicon" accept=".ico" />

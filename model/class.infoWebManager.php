@@ -13,9 +13,9 @@ class InfoWebManager {
 
     public function Edit($model) {
         $tsql = "UPDATE infoweb 
-                 Set WebName = ?, Representative = ?, Department = ?, Logo = ?, Favicon = ?, Phone = ?, Zalo = ?, Email = ?, Address = ?,
+                 Set WebName = ?, Representative = ?, Department = ?, Logo = ?, LogoFooter = ?, Favicon = ?, Phone = ?, Zalo = ?, Email = ?, Address = ?,
                  Fanpage = ?, GoogleMap = ?, CopyRight = ?, ViTriDangHot = ?, SeoTitle = ?, SeoDescription = ?, SeoKeyword = ?, OgTitle = ?, OgDescription = ?, OgFacebookId = ?, OgSiteName = ?, OgImage = ? ";
-        $params = array($model['WebName'], $model['Representative'], $model['Department'], $model['Logo'], $model['Favicon'], $model['Phone'], $model['Zalo'], $model['Email'], $model['Address'], $model['Fanpage'], $model['GoogleMap'], $model['CopyRight'], $model['ViTriDangHot'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword'], $model['OgTitle'], $model['OgDescription'], $model['OgFacebookId'], $model['OgSiteName'], $model['OgImage']);
+        $params = array($model['WebName'], $model['Representative'], $model['Department'], $model['Logo'],$model['LogoFooter'], $model['Favicon'], $model['Phone'], $model['Zalo'], $model['Email'], $model['Address'], $model['Fanpage'], $model['GoogleMap'], $model['CopyRight'], $model['ViTriDangHot'], $model['SeoTitle'], $model['SeoDescription'], $model['SeoKeyword'], $model['OgTitle'], $model['OgDescription'], $model['OgFacebookId'], $model['OgSiteName'], $model['OgImage']);
         $database_Model = new Database();
         return $database_Model->Execute($tsql, $params);
     }

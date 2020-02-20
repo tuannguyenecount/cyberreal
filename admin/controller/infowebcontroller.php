@@ -27,6 +27,21 @@
                 $view_data['errors'][] = $result;
             }
         }
+        if(isset($_FILES["fileLogoFooter"]) && !empty($_FILES['fileLogoFooter']['tmp_name'])) {
+            $check = getimagesize($_FILES["fileLogoFooter"]["tmp_name"]);
+            if($check !== false)
+            {
+              $mt = microtime(true);
+              $mt =  $mt*1000; //microsecs
+              $ticks = (string)$mt*10; //100 Nanosecs
+              $name = $_FILES["fileLogoFooter"]["name"];
+              $ext = end((explode(".", $name))); # extra () to prevent notice
+              $_POST['LogoFooter'] = $ticks.".".$ext;
+              $result = UploadFile("fileLogoFooter",SITE_PATH."/images/".$_POST['LogoFooter']);
+              if($result != 1)
+                $view_data['errors'][] = $result;
+            }
+        }
         if(isset($_FILES["fileFavicon"]) && !empty($_FILES['fileFavicon']['tmp_name'])) {
             $check = getimagesize($_FILES["fileFavicon"]["tmp_name"]);
             if($check !== false)

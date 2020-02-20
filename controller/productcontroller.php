@@ -15,6 +15,17 @@
 
     switch($action)
     {
+        case "getListNameProduct":
+        {
+            $view_data['model'] = $productManager->GetListNameProducts();
+            $result = array();
+            foreach($view_data['model'] as $item)
+            {
+                $result[] = $item['Name'];
+            }
+            echo json_encode($result);
+            exit();
+        }
         case "search":
         {
 
