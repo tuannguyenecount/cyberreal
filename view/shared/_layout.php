@@ -10,15 +10,15 @@
             include 'view/' . $view_data['section_meta'];
         } ?>
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Muli" />
-        <link href="<?= base_url ?>/css/style2.css?v=12" rel="stylesheet">
-        <link href="<?= base_url ?>/css/custom.css?v=4" rel="stylesheet">
+        <link href="<?= base_url ?>/css/style2.css?v=13" rel="stylesheet">
+        <link href="<?= base_url ?>/css/custom.css?v=5" rel="stylesheet">
         <link href="<?= base_url ?>/css/icon.css?v=1" rel="stylesheet">
         <link href="<?= base_url ?>/assets/fc340a4a/css/kv-widgets.min.css" rel="stylesheet">
         <link href="<?= base_url ?>/assets/a1ef791c/css/dependent-dropdown.min.css" rel="stylesheet">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
         <link href="<?= base_url ?>/css/select2.css?v=1" rel="stylesheet">
         <link href="<?=base_url?>/assets/css/jquery.niftymodals.css" rel="stylesheet" />
-        <link href="<?=base_url?>/css/callbutton.css" rel="stylesheet" />
+        <link href="<?=base_url?>/css/callbutton.css?v=2" rel="stylesheet" />
         <link href="https://canho247.vn/wp-content/themes/flatsome/assets/css/flatsome.css?ver=3.8.4" />
         <link rel="stylesheet" href="<?= base_url ?>/js/DatePicker/themes/jquery-ui.css">
         <?php
@@ -145,7 +145,8 @@
             <!-- / footer -->
 
             <div class="call-now-button ui-draggable ui-draggable-handle" id="draggable">
-                <div><p class="call-text"> <?= $_SESSION['InfoWeb']['Phone'] ?> </p>
+                <div>
+                   <!--  <p class="call-text"> <?= $_SESSION['InfoWeb']['Phone'] ?> </p> -->
                     <a href="tel:<?= $_SESSION['InfoWeb']['Phone'] ?>" id="quickcallbutton" '="" title="Call Now">
                     <div class="quick-alo-ph-circle active"></div>
                     <div class="quick-alo-ph-circle-fill active"></div>
@@ -154,7 +155,8 @@
                 </div>
             </div>
              <div class="call-now-button ui-draggable ui-draggable-handle" id="zalobutton" >
-                <div><p class="call-text"> <?= $_SESSION['InfoWeb']['Zalo'] ?> </p>
+                <div>
+                   <!--  <p class="call-text"> <?= $_SESSION['InfoWeb']['Zalo'] ?> </p> -->
                     <a href="<?= $_SESSION['InfoWeb']['Zalo'] ?>" id="quickcallbutton" '="" title="Call Now">
                     <div class="zalo-ph-circle active" style="background: ('<?= base_url ?>/images/email.png') no-repeat center center !important;"></div>
                     <div class="zalo-ph-circle-fill active"></div>

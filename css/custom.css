@@ -120,10 +120,11 @@ header#main{
 } 
 #zalobutton{
     left:unset;
-    right:3%;
+    right:80px !important;
+    bottom:180px !important;
 }
-.call-now-button { top: 90%; }
-.call-now-button { left: 3%; }
+.call-now-button { bottom: 80px; }
+.call-now-button { right: 80px; }
 .call-now-button { background: #152b75; }
 .call-now-button div a .quick-alo-ph-img-circle, .call-now-button div a .quick-alo-phone-img-circle { background-color: #dd3333; }
 .call-now-button .call-text { color: #ffffff; }
@@ -223,5 +224,11 @@ margin: 8px 0 0 35px;
         max-width: 350px;
     }
 }
+@media(min-width: 960px) {
+    #zalobutton{
+        display: none !important;
+    }
+}
+
 
  

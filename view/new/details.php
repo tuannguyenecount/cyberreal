@@ -59,8 +59,35 @@
             </div>
             <?php } ?>
          </div>
-         <div class="col-md-3" id="filter-container">
+         <div class="col-md-3"  >
             <aside class="filters">
+               
+               <div class="bordered stacked mb-3 p-0">
+                  <h3 class="title m-0"  style="color:#333">Tin Mới Nhất</h3>
+                  <?php for($i = 0; $i < count($view_data['news']); $i++) { $item = $view_data['news'][$i]; ?>
+                  <div class="col-md-12 clearfix margin-bottom-20 text-center">
+                     <a href="<?= base_url ?>/tin-tuc/<?= $item['Alias'] ?>.html"><img src="<?= base_url ?>/images/news/<?= $item['Image'] ?>" alt="<?= $item['Title'] ?>" class="img-responsive" /></a>
+                  </div> 
+                  <div class="col-md-12 margin-bottom-20 text-left">
+                     <h6><a href="<?= base_url ?>/tin-tuc/<?= $item['Alias'] ?>.html"><?= $item['Title'] ?></a></h6>
+                     <div class="is-divider"></div>
+                  </div>
+
+               <?php } ?>
+               </div>
+               <div class="bordered stacked mb-3 p-0">
+                  <h3 class="title m-0"  style="color:#333">Dự Án Mới Nhất</h3>
+                  <?php for($i = 0; $i < count($view_data['products']); $i++) { $item = $view_data['products'][$i]; if($item['HOT'] == true) { continue; } ?>
+                  <div class="col-md-12 clearfix margin-bottom-20 text-center">
+                     <a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html"><img src="<?= base_url ?>/images/products/<?= $item['Image'] ?>" alt="<?= $item['Title'] ?>" class="img-responsive" /></a>
+                  </div> 
+                  <div class="col-md-12 margin-bottom-20 text-left">
+                     <h6><a href="<?= base_url ?>/<?= $item['CategoryAlias'] ?>/<?= $item['Alias'] ?>.html"><?= $item['Name'] ?></a></h6>
+                     <div class="is-divider"></div>
+                  </div>
+
+               <?php } ?>
+               </div>
                <div class="bordered stacked mb-3 p-0" style="overflow:hidden;padding-bottom:20px !important">
                   <h3 class="title m-0" style="color:#333">Tags</h3>
                   <span class="label-tags"><i class="fa fa-hashtag" aria-hidden="true"></i> Tags</span>

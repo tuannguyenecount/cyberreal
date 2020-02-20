@@ -6,3 +6,8 @@ ftp account:
 139.99.121.209
 tuannguyen
 1oziN3g&wfDDa2fd
+
+
+http://172.96.191.5/cpanel
+Domain: canho247.com.vn
+Password: Clmk58293@

@@ -166,11 +166,11 @@
         </div>
     </div>
 
-    <div class="py-5 bg-home" id="chudautu" >
+    <div class="py-5 bg-home" id="chudautu" style="background: url('<?= base_url ?>/images/bg-black.jpg')">
       <div class="container">
         <h2 class="section-title section-title-center">
           <b></b>
-          <span class="section-title-main">Chủ Đầu Tư Nổi Bật</span>
+          <span class="section-title-main" style="color:#fff">Chủ Đầu Tư Nổi Bật</span>
           <b></b>
         </h2>
         <div class="row">

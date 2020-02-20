@@ -6,9 +6,6 @@
     .call-now-button .call-text {
         display: none
     }
-    #zalobutton{
-        right:100px !important;
-    }
 }
 
 .quick-call-button {

@@ -17,4 +17,17 @@
         focusOnSelect: true,
         variableWidth: true,
     });
+
+    function changeTabDetail() {
+        var detailTab = document.getElementById("detail-tabs");
+        var footerOffsetTop = document.getElementsByTagName("footer")[0].offsetTop ;
+        if (window.pageYOffset >= 900  && window.pageYOffset  <=  footerOffsetTop - 1000) {
+            detailTab.classList.add("detail-tabs-fixed")
+        } else {
+            detailTab.classList.remove("detail-tabs-fixed");
+        }
+    }
+    $(window).scroll(function() {
+        changeTabDetail();
+    });
 });</script>

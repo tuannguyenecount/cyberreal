@@ -102,7 +102,7 @@
          </div>
       </section>
       <div class="position-relative">
-         <section class="detail-tabs my-2">
+         <section class="detail-tabs my-2" id="detail-tabs">
             <ul class="nav nav-pills d-flex" id="pills-tab" role="tablist">
                <li class="nav-item">
                   <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Thông tin chung</a>

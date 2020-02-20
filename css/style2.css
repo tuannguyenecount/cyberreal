@@ -12826,6 +12826,10 @@ article>section>.row {
     .content-body {
         padding: 20px
     }
+  /*  .detail-tabs-fixed{
+        position: relative;
+        width:100%;
+    }*/
 }
 
 .content-body>section:not(:first-of-type) {
@@ -17655,6 +17659,13 @@ pre[class*=language-],
     .navbar {
         padding-top: 0;
         padding-bottom: 0
+    }
+    .detail-tabs-fixed{
+        position: fixed;
+        top: 70px;
+        width: 50%;
+        left: 10%;
+        z-index: 99;
     }
 }
 
@@ -30893,5 +30904,6 @@ footer .socials ul li {
     html {
         overflow-x:hidden;
     }
+
 }
 /*# sourceMappingURL=style.css.map */

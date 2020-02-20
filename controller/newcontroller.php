@@ -1,10 +1,12 @@
 <?php 
     include_once 'model/class.newManager.php';
     include_once 'model/class.locationManager.php';
+    include_once 'model/class.productManager.php';
 
     $newManager = new NewManager();
     $locationManager = new LocationManager();
-
+    $productManager = new ProductManager();
+    
     switch($action)
     {
         case "index":
@@ -55,6 +57,8 @@
                 $view_data['articleSameTag'] = array();
             }
             $view_data['title'] = $view_data['model']['Title'];
+            $view_data['news'] = $newManager->GetTopNew(4);
+            $view_data['products'] = $productManager->GetListNew();
             $view_data['section_styles'] = "new/styles.php";
             $view_data['view_name'] = "new/details.php";
             break;

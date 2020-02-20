@@ -1,3 +1,7 @@
+http://172.96.191.5/cpanel
+Domain: canho247.com.vn
+Password: Clmk58293@
+
 
 http://access.pavietnam.vn/
 Domain : goldrezin.com
@@ -7,9 +11,9 @@ Domain demo:
 http://goldrezin.com
 
 DB Info:
-localhost
-cyberrealdbv2
-cyberrealuser
-Wcy6puNGls#6if3b
+ $serverName = "localhost"; 
+    $uid = 'canhocom_tuannguyen';   
+    $pwd = '#NCd{ZvLKC00';  
+    $databaseName = "canhocom_cyberrealdb"; 
 
 
