@@ -17,7 +17,7 @@
         $mail->SMTPAuth = true;                  // enable SMTP authentication
         $mail->Port = 465;                    // set the SMTP port for the GMAIL server
         $mail->Username = "chuyenlaptrinh@gmail.com"; // SMTP account username example
-        $mail->Password = "nguyenaituan";        // SMTP account password example
+        $mail->Password = "Y5AWqBb455yKkZSy";        // SMTP account password example
         $mail->SMTPSecure = "ssl";
         $mail->SetFrom($mail->Username, "CanHo247.Com.Vn");
         $mail->AddAddress($mailTo, $subject);
