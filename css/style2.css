@@ -29962,7 +29962,7 @@ a {
 header#main {
     background-color: #fff;
     position: relative;
-    z-index: 9999
+    z-index: 98;
 }
 
 header#main .top .title {
