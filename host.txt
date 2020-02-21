@@ -9,5 +9,5 @@ tuannguyen
 
 
 http://172.96.191.5/cpanel
-Domain: canho247.com.vn
+canhocom
 Password: Clmk58293@
